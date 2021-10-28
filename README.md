@@ -1,0 +1,2 @@
+# lote
+Linhx's note
