@@ -1,0 +1,131 @@
+
+> lote@0.0.0 dev /media/linh/Data2/Work/mine/note/lote/admin-fe
+> vite
+
+
+> lote@0.0.0 dev /media/linh/Data2/Work/mine/note/lote/fe
+> vite
+
+Pre-bundling dependencies:
+  vue
+  vue-router
+  axios
+(this will be run only when your dependencies or config have changed)
+Pre-bundling dependencies:
+  vue
+  vue-router
+  axios
+(this will be run only when your dependencies or config have changed)
+
+  vite v2.6.13 dev server running at:
+
+  > Local: http://localhost:3000/
+  > Network: use `--host` to expose
+
+  ready in 607ms.
+
+Port 3000 is in use, trying another one...
+
+  vite v2.6.10 dev server running at:
+
+  > Local: http://localhost:3001/
+  > Network: use `--host` to expose
+
+  ready in 609ms.
+
+
+> be@0.0.1 start:dev /media/linh/Data2/Work/mine/note/lote/be
+> nest start --watch
+
+c[[90m7:00:42 PM[0m] Starting compilation in watch mode...
+
+[[90m7:00:45 PM[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 44661  - [39m10/28/2021, 7:00:45 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 44661  - [39m10/28/2021, 7:00:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +9ms[39m
+[32m[Nest] 44661  - [39m10/28/2021, 7:00:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mNoteController {/notes}:[39m[38;5;3m +4ms[39m
+[32m[Nest] 44661  - [39m10/28/2021, 7:00:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/notes, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 44661  - [39m10/28/2021, 7:00:45 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2ms[39m
+[31m[Nest] 44661  - [39m10/28/2021, 7:00:45 PM [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3000[39m[38;5;3m +2ms[39m
+(node:44661) UnhandledPromiseRejectionWarning: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (net.js:1316:16)
+    at listenInCluster (net.js:1364:12)
+    at Server.listen (net.js:1450:7)
+    at ExpressAdapter.listen (/media/linh/Data2/Work/mine/note/lote/be/node_modules/@nestjs/platform-express/adapters/express-adapter.js:53:32)
+    at /media/linh/Data2/Work/mine/note/lote/be/node_modules/@nestjs/core/nest-application.js:168:46
+    at new Promise (<anonymous>)
+    at NestApplication.listen (/media/linh/Data2/Work/mine/note/lote/be/node_modules/@nestjs/core/nest-application.js:157:16)
+    at bootstrap (/media/linh/Data2/Work/mine/note/lote/be/src/main.ts:6:3)
+(node:44661) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:44661) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+[vite:css] @import must precede all other statements (besides @charset)
+172|  }
+173|  
+174|  @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+   |   ^
+175|  
+176|  @import url(http://fonts.googleapis.com/css?family=Arimo:700,700italic);
+[vite:css] @import must precede all other statements (besides @charset)
+174|  @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+175|  
+176|  @import url(http://fonts.googleapis.com/css?family=Arimo:700,700italic);
+   |   ^
+177|  
+178|  html {
+Killed
+npm ERR! code ELIFECYCLE
+npm ERR! errno 137
+npm ERR! lote@0.0.0 dev: `vite`
+npm ERR! Exit status 137
+npm ERR! 
+npm ERR! Failed at the lote@0.0.0 dev script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/linh/.npm/_logs/2021-10-28T12_02_15_665Z-debug.log
+[vite:css] @import must precede all other statements (besides @charset)
+172|  }
+173|  
+174|  @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+   |   ^
+175|  
+176|  @import url(http://fonts.googleapis.com/css?family=Arimo:700,700italic);
+[vite:css] @import must precede all other statements (besides @charset)
+174|  @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+175|  
+176|  @import url(http://fonts.googleapis.com/css?family=Arimo:700,700italic);
+   |   ^
+177|  
+178|  html {
+Killed
+npm ERR! code ELIFECYCLE
+npm ERR! errno 137
+npm ERR! lote@0.0.0 dev: `vite`
+npm ERR! Exit status 137
+npm ERR! 
+npm ERR! Failed at the lote@0.0.0 dev script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/linh/.npm/_logs/2021-10-28T12_02_36_945Z-debug.log
+c[[90m7:04:54 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m7:04:54 PM[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 45770  - [39m10/28/2021, 7:04:55 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 45770  - [39m10/28/2021, 7:04:55 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +10ms[39m
+[32m[Nest] 45770  - [39m10/28/2021, 7:04:55 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mNoteController {/notes}:[39m[38;5;3m +4ms[39m
+[32m[Nest] 45770  - [39m10/28/2021, 7:04:55 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/notes, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 45770  - [39m10/28/2021, 7:04:55 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2ms[39m
+[31m[Nest] 45770  - [39m10/28/2021, 7:04:55 PM [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3000[39m[38;5;3m +3ms[39m
+(node:45770) UnhandledPromiseRejectionWarning: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (net.js:1316:16)
+    at listenInCluster (net.js:1364:12)
+    at Server.listen (net.js:1450:7)
+    at ExpressAdapter.listen (/media/linh/Data2/Work/mine/note/lote/be/node_modules/@nestjs/platform-express/adapters/express-adapter.js:53:32)
+    at /media/linh/Data2/Work/mine/note/lote/be/node_modules/@nestjs/core/nest-application.js:168:46
+    at new Promise (<anonymous>)
+    at NestApplication.listen (/media/linh/Data2/Work/mine/note/lote/be/node_modules/@nestjs/core/nest-application.js:157:16)
+    at bootstrap (/media/linh/Data2/Work/mine/note/lote/be/src/main.ts:6:3)
+(node:45770) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:45770) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
