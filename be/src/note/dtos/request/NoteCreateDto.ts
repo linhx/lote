@@ -3,4 +3,6 @@ export default class NoteCreateDto {
   title: string;
   overview: string;
   content: string;
+  tags: string[];
+  category: number;
 }

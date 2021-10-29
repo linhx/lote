@@ -1,18 +1,19 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import NoteCreateDto from 'src/note/dtos/request/NoteCreateDto';
+import NoteFilterListDto from './dtos/request/NoteFilterListDto';
 import { NoteService } from './note.service';
 
 @Controller('notes')
 export class NoteController {
-  constructor(private readonly appService: NoteService) {}
+  constructor(private readonly noteService: NoteService) {}
 
   @Get()
-  getHello(): string {
-    return '';
+  getList(@Query() dto: NoteFilterListDto) {
+    return this.noteService.getPublishedList(new NoteFilterListDto(dto));
   }
 
   @Post()
   async create(@Body() dto: NoteCreateDto) {
-    return this.appService.create(dto);
+    return this.noteService.create(dto);
   }
 }

@@ -14,6 +14,12 @@ export class Note {
   @Prop()
   overview: string;
 
+  @Prop()
+  tags: string[];
+
+  @Prop()
+  category: number;
+
   @Prop({ default: false })
   isPublished: boolean;
 
