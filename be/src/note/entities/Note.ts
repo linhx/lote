@@ -5,7 +5,7 @@ export type NoteDocument = Note & Document;
 
 @Schema()
 export class Note {
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   permalink: string;
 
   @Prop({ required: true })

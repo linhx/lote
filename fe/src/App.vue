@@ -3,7 +3,10 @@ import Home from './components/Home.vue'
 </script>
 
 <template>
-  <router-view />
+  <div>
+    <h3>My note</h3>
+    <router-view />
+  </div>
 </template>
 
 <style>

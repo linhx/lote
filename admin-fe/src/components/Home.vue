@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div>
-      <h3>My note</h3>
-    </div>
   </div>
 </template>
 

@@ -3,6 +3,7 @@
     <div>
       <h3>My note</h3>
     </div>
+    <router-view />
   </div>
 </template>
 

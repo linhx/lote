@@ -3,9 +3,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { NoteModule } from './note/note.module';
 
 @Module({
-  imports: [MongooseModule.forRoot(process.env.MONGO_DB_URL, {
-    dbName: 'note'
-  }),
+  imports: [
+    MongooseModule.forRoot(process.env.MONGO_DB_URL, {
+      dbName: 'note'
+    }),
     NoteModule
   ],
   controllers: [],

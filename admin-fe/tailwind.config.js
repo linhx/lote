@@ -2,7 +2,7 @@ module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts}'],
   darkMode: false,
   corePlugins: {
-    preflight: false,
+    // preflight: false,
   },
   theme: {
     extend: {},
@@ -10,5 +10,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')
+  ],
 }
