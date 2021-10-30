@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import './assets/css/index.css';
-// import './assets/css/modest.css';
+import 'quill/dist/quill.snow.css';
 import router from './router';
 import IdMixin from './mixins/IdMixin';
 
