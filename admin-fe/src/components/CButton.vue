@@ -1,5 +1,5 @@
 <template>
-  <button class="btn disabled:opacity-50" :class="classes" @click="onClick" :disabled="disabled"><slot /></button>
+  <button class="btn disabled:opacity-50" :class="classes" :disabled="disabled"><slot /></button>
 </template>
 
 <script lang="ts">
@@ -17,11 +17,6 @@ export default defineComponent({
         classes += `btn-${this.variant} `;
       }
       return classes;
-    }
-  },
-  methods: {
-    onClick(e: Event) {
-      this.$emit('click', e);
     }
   }
 });

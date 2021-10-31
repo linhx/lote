@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import Home from './components/Home.vue'
-</script>
-
 <template>
   <div>
     <h3>My note</h3>

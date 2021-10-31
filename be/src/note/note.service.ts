@@ -9,6 +9,7 @@ import NoteFilterListDto from './dtos/request/NoteFilterListDto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { CSession, Db } from '../common/db';
+import { NOTE_DATA_FOLDER } from 'src/constants';
 
 @Injectable()
 export class NoteService {
@@ -18,12 +19,12 @@ export class NoteService {
   async create(session: CSession, dto: NoteCreateDto) {
     const { content, ...rest } = dto;
     return this.db.withTransaction(session, async (_session) => {
-      const newNote = new this.noteModel(rest, null, {  });
+      const newNote = new this.noteModel(rest);
       const note = await newNote.save({ session: _session });
   
       // create folder
-      const folder = path.join(process.env.NOTE_DATA_FOLDER, rest.permalink);
-      fs.mkdirSync(path.join(process.env.NOTE_DATA_FOLDER, rest.permalink), { recursive: true });
+      const folder = path.join(NOTE_DATA_FOLDER, rest.permalink);
+      fs.mkdirSync(path.join(NOTE_DATA_FOLDER, rest.permalink), { recursive: true });
       const file = path.join(folder, 'index.html');
       fs.writeFileSync(file, content);
       return note;
@@ -31,8 +32,16 @@ export class NoteService {
   }
 
   async findById(session: CSession, id: string) {
-    this.db.withTransaction(session, (ss) => {
+    return this.db.withTransaction(session, (ss) => {
       return this.noteModel.findById(id).session(ss);
+    });
+  }
+
+  async findPermalink(session: CSession, permalink: string) {
+    return this.db.withTransaction(session, (ss) => {
+      return this.noteModel.findOne({
+        permalink
+      }).session(ss);
     });
   }
 

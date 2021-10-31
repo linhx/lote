@@ -2,3 +2,6 @@ nohup.out
 
 # data db
 data
+
+# static backend
+static

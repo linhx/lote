@@ -1,25 +1,25 @@
 <template>
   <div class="flex rounded-xl">
     <div class="w-24 h-24 flex-shrink-0 overflow-hidden">
-      <img class="object-cover h-full" :alt="name" :src="image" />
+      <img class="object-cover h-full" :alt="note.title" :src="note.image" />
     </div>
     <div class="body pl-5 text-left space-y-1">
-      <router-link tag="div" class="text-lg font-semibold" :to="'/note/' + permalink">{{ name }}</router-link>
-      <div class="overview text-sm italic font-extralight whitespace-pre-wrap">{{ overview }}</div>
+      <router-link tag="div" class="text-lg font-semibold" :to="'/note/' + note.permalink">{{ note.title }}</router-link>
+      <div class="overview text-sm italic font-extralight whitespace-pre-wrap">{{ note.overview }}</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+import NotePreviewDto from '../dtos/NotePreviewDto';
 
 export default defineComponent({
   props: {
-    id: Number,
-    permalink: String,
-    image: String,
-    name: String,
-    overview: String
+    note: {
+      type: Object as PropType<NotePreviewDto>,
+      required: true
+    }
   }
 });
 </script>
