@@ -8,7 +8,6 @@ const mixin: ComponentOptions = {
   },
   methods: {
     safeId (suffix: string) {
-      console.log('', this._.uid)
       suffix = suffix !== undefined ? suffix : ''
 
       var id = this.id || this.localId || null
