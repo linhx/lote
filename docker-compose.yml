@@ -4,10 +4,14 @@ services:
   mongo:
     image: mongo:latest
     restart: on-failure
+    volumes:
+      - ./data/db:/data/db
+    command: --bind_ip_all --replSet rs0
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
       MONGO_INITDB_DATABASE: note
+      MONGO_REPLICA_SET_NAME: rs0
     ports:
       - 27017:27017
 
@@ -24,3 +28,5 @@ services:
     environment:
       CORS_ORIGINS: http://localhost:3001,http://localhost:3002
       MONGO_DB_URL: mongodb://root:root@mongo:27017
+      MONGO_DB_REPLICA: rs0
+      NOTE_DATA_FOLDER: ./data

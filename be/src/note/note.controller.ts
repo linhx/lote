@@ -9,11 +9,11 @@ export class NoteController {
 
   @Get()
   getList(@Query() dto: NoteFilterListDto) {
-    return this.noteService.getPublishedList(new NoteFilterListDto(dto));
+    return this.noteService.getPublishedList(null, new NoteFilterListDto(dto));
   }
 
   @Post()
   async create(@Body() dto: NoteCreateDto) {
-    return this.noteService.create(dto);
+    return this.noteService.create(null, dto);
   }
 }
