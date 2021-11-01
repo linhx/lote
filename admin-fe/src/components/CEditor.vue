@@ -2,6 +2,13 @@
   <div class="c-editor">
     <div :id="editorId" v-html="value" :class="editorClass">
     </div>
+    <input
+      ref="inputFile"
+      type="file"
+      accept="image/png, image/gif, image/jpeg, image/bmp, image/x-icon"
+      class="hidden"
+      @change="onChangeFile"
+       />
   </div>
 </template>
 
@@ -17,11 +24,13 @@ export default defineComponent({
   },
   data(): {
       editor?: Quill,
-      value: string | undefined
+      value: string | undefined,
+      image: File | undefined
     } {
     return {
       editor: undefined,
-      value: this.modelValue
+      value: this.modelValue,
+      image: undefined
     }
   },
   computed: {
@@ -32,7 +41,17 @@ export default defineComponent({
   methods: {
     onChange: debounce(function (this: any) {
       this.$emit('update:modelValue', this.editor?.root.innerHTML)
-    }, 700)
+    }, 700),
+    onChangeFile(e: Event) {
+      const target = (<HTMLInputElement> e.target);
+      target.value = '';
+      const file = target.files && target.files.length ? target.files[0] : null;
+      if (!file) {
+        return;
+      }
+
+      
+    }
   },
   mounted() {
     this.editor = new Quill(`#${this.editorId}`, {
@@ -53,6 +72,10 @@ export default defineComponent({
     });
     this.editor.on('text-change', () => {
       this.onChange();
+    });
+    var toolbar = this.editor.getModule('toolbar');
+    toolbar.addHandler('image', (img: any) => {
+      (<HTMLElement>this.$refs.inputFile).click();
     });
   }
 });
