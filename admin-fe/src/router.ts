@@ -1,10 +1,10 @@
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
-import Home from './components/Home.vue';
-import NoteCreate from './views/note/NoteCreate.vue';
+import NoteCreateView from './views/note/NoteCreateView.vue';
+import NotesView from './views/note/NotesView.vue';
 
 const routes: RouteRecordRaw[] = [
-  { path: '/', component: Home },
-  { path: '/note/create', component: NoteCreate }
+  { path: '/', component: NotesView },
+  { path: '/note/create', component: NoteCreateView }
 ];
 
 const router = createRouter({

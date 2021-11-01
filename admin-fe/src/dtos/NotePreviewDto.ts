@@ -1,8 +1,13 @@
 export default interface NotePreviewDto {
   id: number,
   permalink: string,
-  name: string,
-  date: Date,
+  title: string,
   overview: string,
-  image: string
+  image: string,
+  isPublished: boolean,
+  isDeleted: boolean,
+  tags: string[],
+  category?: number,
+  createdAt: Date,
+  updatedAt: Date,
 }
