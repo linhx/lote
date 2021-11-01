@@ -2,11 +2,13 @@ version: "3.8"
 
 services:
   mongo:
-    image: mongo:latest
+    build: ./db
+    hostname: mongo
     restart: on-failure
     volumes:
-      - ./data/db:/data/db
-    command: --bind_ip_all --replSet rs0
+      - ./db/data:/data/db
+      - ./db/init:/docker-entrypoint-initdb.d/
+    command: --bind_ip_all --replSet rs0 --keyFile /data/db.key
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
@@ -21,6 +23,9 @@ services:
       - mongo
     volumes:
       - .:/usr/src/app
+      - /usr/src/app/admin-fe/node_modules
+      - /usr/src/app/fe/node_modules
+      - /usr/src/app/be/node_modules
     ports:
       - 3000:3000
       - 3001:3001

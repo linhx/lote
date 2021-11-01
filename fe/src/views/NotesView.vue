@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h3>My note</h3>
     <note-preview
       class="my-6"
       v-for="note in noteList?.items"

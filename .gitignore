@@ -1,7 +1,7 @@
 nohup.out
 
 # data db
-data
+db/data
 
 # static backend
 static
