@@ -10,6 +10,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { CSession, Db } from '../common/db';
 import { NOTE_DATA_FOLDER } from 'src/constants';
+import BusinessError from 'src/exceptions/BusinessError';
 
 @Injectable()
 export class NoteService {
@@ -19,6 +20,10 @@ export class NoteService {
   async create(session: CSession, dto: NoteCreateDto) {
     const { content, ...rest } = dto;
     return this.db.withTransaction(session, async (_session) => {
+      const existsByPermalink = await this.existsByPermalink(_session, rest.permalink);
+      if (existsByPermalink) {
+        throw new BusinessError('error.note.duplicate-permalink');
+      }
       const newNote = new this.noteModel(rest);
       const note = await newNote.save({ session: _session });
   
@@ -33,23 +38,23 @@ export class NoteService {
 
   async findById(session: CSession, id: string) {
     return this.db.withTransaction(session, (ss) => {
-      return this.noteModel.findById(id).session(ss);
+      return this.noteModel.findById(id).session(ss).exec();
     });
   }
 
-  async findPermalink(session: CSession, permalink: string) {
+  async findByPermalink(session: CSession, permalink: string) {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel.findOne({
         permalink
-      }).session(ss);
+      }).session(ss).exec();
     });
   }
 
   existsByPermalink(session: CSession, permalink: string): Promise<Boolean> {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel.count({
-        permalink
-      }).session(ss);
+        permalink,
+      }).session(ss).exec();
     });
   }
 
@@ -68,6 +73,21 @@ export class NoteService {
       .limit(dto.limit).exec().then(results => results.map(rs => NoteItemListDto.fromEntity(rs)));
   
       const count = await this.noteModel.count(condition).exec();
+  
+      return PageDto.create(items, dto.page, dto.limit, count);
+    });
+  }
+
+  async findAll(session: CSession, dto: NoteFilterListDto): Promise<PageDto<NoteItemListDto>> {
+    return this.db.withTransaction(session, async (ss) => {
+      var items = await this.noteModel
+      .find()
+      .session(ss)
+      .sort({ createdAt: 1 })
+      .skip(dto.getSkip())
+      .limit(dto.limit).exec().then(results => results.map(rs => NoteItemListDto.fromEntity(rs)));
+  
+      const count = await this.noteModel.count().exec();
   
       return PageDto.create(items, dto.page, dto.limit, count);
     });

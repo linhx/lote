@@ -12,9 +12,14 @@ export class NoteController {
     return this.noteService.getPublishedList(null, new NoteFilterListDto(dto));
   }
 
+  @Get('all')
+  getAll(@Query() dto: NoteFilterListDto) {
+    return this.noteService.findAll(null, new NoteFilterListDto(dto));
+  }
+
   @Get('l/:permalink')
   getByPermalink(@Param('permalink') permalink: string) {
-    return this.noteService.findPermalink(null, permalink);
+    return this.noteService.findByPermalink(null, permalink);
   }
 
   @Post()
