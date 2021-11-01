@@ -1,12 +1,16 @@
 <template>
   <div>
-    <h3>My note</h3>
-    <note-preview
-      class="my-6"
-      v-for="note in noteList?.items"
-      :key="note.id"
-      :note="note"
-    />
+    <div class="w-full md:max-w-4xl mx-auto pt-10">
+      <div class="font-bold text-2xl">
+        <h2>Linhx's Notes</h2>
+      </div>
+      <note-preview
+        class="my-4 border-t-2"
+        v-for="note in noteList?.items"
+        :key="note.id"
+        :note="note"
+      />
+    </div>
   </div>
 </template>
 

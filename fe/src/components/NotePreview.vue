@@ -1,6 +1,6 @@
 <template>
   <div class="flex rounded-xl">
-    <div class="w-24 h-24 flex-shrink-0 overflow-hidden">
+    <div class="w-20 h-20 flex-shrink-0 overflow-hidden">
       <img class="object-cover h-full" :alt="note.title" :src="note.image" />
     </div>
     <div class="body pl-5 text-left space-y-1">

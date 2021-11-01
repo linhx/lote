@@ -4,6 +4,8 @@ export default interface NotePreviewDto {
   title: string,
   overview: string,
   image: string,
+  tags: string[],
+  category?: number,
   createdAt: Date,
   updatedAt: Date,
 }

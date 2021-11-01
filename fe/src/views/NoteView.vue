@@ -1,7 +1,17 @@
 <template>
-  <div>
-    <h3>{{ note?.title }}</h3>
-    <div ref="content"></div>
+  <div class="">
+    <router-link to="/">
+      <img src="../assets/img/icon-home.png" alt="home" class="w-10 m-3 rounded-full border-2"/>
+    </router-link>
+    <div class="w-full md:max-w-4xl mx-auto pt-10">
+      <div class="font-bold text-2xl">
+        <h2>{{ note?.title }}</h2>
+        <hr/>
+      </div>
+      <div class="ql-container ql-snow border-0">
+        <div ref="content" class="ql-editor"></div>
+      </div>
+    </div>
   </div>
 </template>
 
