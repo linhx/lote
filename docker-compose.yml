@@ -6,7 +6,7 @@ services:
     hostname: mongo
     restart: on-failure
     volumes:
-      - ./db/data:/data/db
+      - ./data/db:/data/db
       - ./db/init:/docker-entrypoint-initdb.d/
     command: --bind_ip_all --replSet rs0 --keyFile /data/db.key
     environment:
@@ -34,4 +34,5 @@ services:
       CORS_ORIGINS: http://localhost:3001,http://localhost:3002
       MONGO_DB_URL: mongodb://root:root@mongo:27017
       MONGO_DB_REPLICA: rs0
-      STATIC_FOLDER: /usr/src/app/static
+      STATIC_FOLDER: /usr/src/app/data/static
+      FILE_TEMP_FOLDER: /usr/src/app/data/temp

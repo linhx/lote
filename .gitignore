@@ -1,7 +1,8 @@
 nohup.out
 
-# data db
-db/data
+# data dev
+data
 
-# static backend
-static
+
+# webstorm
+.idea
