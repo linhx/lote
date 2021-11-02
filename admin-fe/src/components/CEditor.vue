@@ -16,21 +16,20 @@
 import { defineComponent } from 'vue';
 import Quill from 'quill';
 import debounce from 'lodash.debounce';
+import FileRepository from '../repositories/FileRepository';
 
 export default defineComponent({
+  $editor: null,
   props: {
     modelValue: String,
     editorClass: String
   },
   data(): {
-      editor?: Quill,
-      value: string | undefined,
-      image: File | undefined
+      $editor?: Quill | null,
+      value: string | undefined
     } {
     return {
-      editor: undefined,
-      value: this.modelValue,
-      image: undefined
+      value: this.modelValue
     }
   },
   computed: {
@@ -40,21 +39,25 @@ export default defineComponent({
   },
   methods: {
     onChange: debounce(function (this: any) {
-      this.$emit('update:modelValue', this.editor?.root.innerHTML)
+      this.$emit('update:modelValue', this.$editor?.root.innerHTML)
     }, 700),
-    onChangeFile(e: Event) {
+    async onChangeFile(e: Event) {
       const target = (<HTMLInputElement> e.target);
-      target.value = '';
       const file = target.files && target.files.length ? target.files[0] : null;
       if (!file) {
         return;
       }
+      target.value = '';
 
-      
+      const tempFile = await FileRepository.uploadTempFile(file);
+      const range = this.$editor?.getSelection(true);
+      const rangeIndex = range?.index || 0;
+      this.$editor?.insertEmbed(rangeIndex, 'image', tempFile.url, Quill.sources.USER);
+      this.$editor?.setSelection(rangeIndex + 1, 0, Quill.sources.SILENT);
     }
   },
   mounted() {
-    this.editor = new Quill(`#${this.editorId}`, {
+    this.$editor = new Quill(`#${this.editorId}`, {
       theme: 'snow',
       modules: {
         toolbar: [
@@ -70,13 +73,16 @@ export default defineComponent({
         ]
       },
     });
-    this.editor.on('text-change', () => {
+    this.$editor.on('text-change', () => {
       this.onChange();
     });
-    var toolbar = this.editor.getModule('toolbar');
+    var toolbar = this.$editor.getModule('toolbar');
     toolbar.addHandler('image', (img: any) => {
       (<HTMLElement>this.$refs.inputFile).click();
     });
+  },
+  beforeUnmount() {
+    this.$editor = null;
   }
 });
 </script>
