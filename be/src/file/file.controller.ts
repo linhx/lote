@@ -9,6 +9,7 @@ import { diskStorage } from 'multer';
 import { FILE_TEMP_FOLDER } from 'src/constants';
 import { FileService } from './file.service';
 import * as FileUtils from '../utilites/FileUtils';
+import FileDto from './dtos/response/FileDto';
 
 @Controller('files')
 export class FileController {
@@ -25,7 +26,8 @@ export class FileController {
       }),
     }),
   )
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
-    return this.fileService.saveTempFile(null, file);
+  async uploadFile(@UploadedFile() file: Express.Multer.File) {
+    const cFile = await this.fileService.saveTempFile(null, file);
+    return FileDto.fromEntity(cFile);
   }
 }

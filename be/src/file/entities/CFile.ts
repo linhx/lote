@@ -17,6 +17,9 @@ export class CFile {
   @Prop()
   path: string;
 
+  @Prop()
+  url: string;
+
   @Prop({ default: false })
   isTemp: boolean;
 

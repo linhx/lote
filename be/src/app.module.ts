@@ -5,11 +5,13 @@ import { NoteModule } from './note/note.module';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ScheduleModule } from '@nestjs/schedule';
-import { STATIC_FOLDER } from './constants';
+import { FILE_TEMP_FOLDER, FILE_TEMP_URL_PREFIX, STATIC_FOLDER } from './constants';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
     MongooseModule.forRoot(process.env.MONGO_DB_URL, {
       dbName: 'note',
       replicaSet: process.env.MONGO_DB_REPLICA,
@@ -17,6 +19,9 @@ import { STATIC_FOLDER } from './constants';
     ServeStaticModule.forRoot({
       rootPath: STATIC_FOLDER,
       serveRoot: '/static',
+    },{
+      rootPath: FILE_TEMP_FOLDER,
+      serveRoot: FILE_TEMP_URL_PREFIX,
     }),
     ScheduleModule.forRoot(),
     FileModule,

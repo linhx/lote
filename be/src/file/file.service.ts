@@ -6,6 +6,8 @@ import { CFile, CFileDocument } from "./entities/CFile";
 import { Cron } from "@nestjs/schedule";
 import * as DateTimeUtils from '../utilites/DateTimeUtils';
 import * as fs from 'fs';
+import * as path from 'path';
+import { FILE_TEMP_URL_PREFIX } from 'src/constants';
 
 @Injectable()
 export class FileService {
@@ -27,14 +29,19 @@ export class FileService {
       }).session(_session)
         .exec();
 
-      console.log(expiredTempFiles);
       const promisesDeleteTempFile = expiredTempFiles.map(e => {
         return new Promise((resolve, reject) => {
-          this.deleteFile(_session, e).then(() => {
+          try {
             fs.unlinkSync(e.path);
-            resolve(true);
-          }).catch((e: Error) => {
+          } catch (e) {
             this.logger.error("error.file.cantDeleteTemp", e.stack);
+            resolve(false);
+            return;
+          }
+          this.deleteFile(_session, e).then(() => {
+            resolve(true);
+          }).catch(e => {
+            this.logger.error("error.file.cantDeleteTempDb", e.stack);
             resolve(false);
           });
         });
@@ -57,6 +64,7 @@ export class FileService {
         type: file.mimetype,
         size: file.size,
         path: file.path,
+        url: path.join(FILE_TEMP_URL_PREFIX, file.filename)
       });
 
       return fileModel.save({ session: _session });
