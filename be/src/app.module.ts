@@ -4,6 +4,7 @@ import { FileModule } from './file/file.module';
 import { NoteModule } from './note/note.module';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { ScheduleModule } from '@nestjs/schedule';
 import { STATIC_FOLDER } from './constants';
 
 @Module({
@@ -17,6 +18,7 @@ import { STATIC_FOLDER } from './constants';
       rootPath: STATIC_FOLDER,
       serveRoot: '/static',
     }),
+    ScheduleModule.forRoot(),
     FileModule,
     NoteModule,
   ],

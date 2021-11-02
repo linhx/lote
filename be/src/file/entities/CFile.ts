@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type FileDocument = File & Document;
+export type CFileDocument = CFile & Document;
 
 @Schema()
-export class File {
+export class CFile {
   @Prop({ required: true })
   name: string;
 
@@ -30,4 +30,4 @@ export class File {
   updatedAt: Date;
 }
 
-export const FileSchema = SchemaFactory.createForClass(File);
+export const CFileSchema = SchemaFactory.createForClass(CFile);
