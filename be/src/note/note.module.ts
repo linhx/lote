@@ -8,7 +8,7 @@ import { CommonModule } from '../common/common.module';
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: 'Note', schema: NoteSchema }]),
-    CommonModule
+    CommonModule,
   ],
   controllers: [NoteController],
   providers: [NoteService],

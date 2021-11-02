@@ -11,14 +11,14 @@ import { STATIC_FOLDER } from './constants';
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MONGO_DB_URL, {
       dbName: 'note',
-      replicaSet: process.env.MONGO_DB_REPLICA
+      replicaSet: process.env.MONGO_DB_REPLICA,
     }),
     ServeStaticModule.forRoot({
       rootPath: STATIC_FOLDER,
-      serveRoot: '/static'
+      serveRoot: '/static',
     }),
     FileModule,
-    NoteModule
+    NoteModule,
   ],
   controllers: [],
   providers: [],

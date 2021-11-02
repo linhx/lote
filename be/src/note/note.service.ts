@@ -14,22 +14,29 @@ import BusinessError from 'src/exceptions/BusinessError';
 
 @Injectable()
 export class NoteService {
-  constructor(@InjectModel(Note.name) private noteModel: Model<NoteDocument>,
-    private db: Db) {}
+  constructor(
+    @InjectModel(Note.name) private noteModel: Model<NoteDocument>,
+    private db: Db,
+  ) {}
 
   async create(session: CSession, dto: NoteCreateDto) {
     const { content, ...rest } = dto;
     return this.db.withTransaction(session, async (_session) => {
-      const existsByPermalink = await this.existsByPermalink(_session, rest.permalink);
+      const existsByPermalink = await this.existsByPermalink(
+        _session,
+        rest.permalink,
+      );
       if (existsByPermalink) {
         throw new BusinessError('error.note.duplicate-permalink');
       }
       const newNote = new this.noteModel(rest);
       const note = await newNote.save({ session: _session });
-  
+
       // create folder
       const folder = path.join(NOTE_DATA_FOLDER, rest.permalink);
-      fs.mkdirSync(path.join(NOTE_DATA_FOLDER, rest.permalink), { recursive: true });
+      fs.mkdirSync(path.join(NOTE_DATA_FOLDER, rest.permalink), {
+        recursive: true,
+      });
       const file = path.join(folder, 'index.html');
       fs.writeFileSync(file, content);
       return note;
