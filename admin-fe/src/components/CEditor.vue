@@ -16,8 +16,11 @@
 import { defineComponent } from 'vue';
 import Quill from 'quill';
 import BlotFormatter from 'quill-blot-formatter';
+// import Parchment from 'parchment';
+import { sanitize } from 'quill/formats/link';
 import debounce from 'lodash.debounce';
 import FileRepository from '../repositories/FileRepository';
+import ResFileDto from "../dtos/ResFileDto";
 
 Quill.register('modules/blotFormatter', BlotFormatter);
 
@@ -36,6 +39,61 @@ class ExtendBubbleTheme extends BubbleTheme {
 }
 
 Quill.register("themes/bubble", ExtendBubbleTheme);
+
+const ATTRIBUTES = ['alt', 'height', 'width'];
+
+class Image extends Quill.import('blots/embed') {
+  static create(value: ResFileDto) {
+    const node = super.create(value);
+    node.setAttribute('src', this.sanitize(value.url));
+    return node;
+  }
+
+  static formats(domNode) {
+    return ATTRIBUTES.reduce((formats, attribute) => {
+      if (domNode.hasAttribute(attribute)) {
+        formats[attribute] = domNode.getAttribute(attribute);
+      }
+      return formats;
+    }, {});
+  }
+
+  static match(url) {
+    return /\.(jpe?g|gif|png)$/.test(url) || /^data:image\/.+;base64/.test(url);
+  }
+
+  static register() {
+    if (/Firefox/i.test(navigator.userAgent)) {
+      setTimeout(() => {
+        // Disable image resizing in Firefox
+        document.execCommand('enableObjectResizing', false, false);
+      }, 1);
+    }
+  }
+
+  static sanitize(url) {
+    return sanitize(url, ['http', 'https', 'data']) ? url : '//:0';
+  }
+
+  static value(domNode) {
+    return domNode.getAttribute('src');
+  }
+
+  format(name, value) {
+    if (ATTRIBUTES.indexOf(name) > -1) {
+      if (value) {
+        this.domNode.setAttribute(name, value);
+      } else {
+        this.domNode.removeAttribute(name);
+      }
+    } else {
+      super.format(name, value);
+    }
+  }
+}
+Image.blotName = 'image';
+Image.tagName = 'IMG';
+Quill.register(Image, true);
 
 export default defineComponent({
   $editor: null,
@@ -71,7 +129,7 @@ export default defineComponent({
       const tempFile = await FileRepository.uploadTempFile(file);
       const range = this.$editor?.getSelection(true);
       const rangeIndex = range?.index || 0;
-      this.$editor?.insertEmbed(rangeIndex, 'image', tempFile.url, Quill.sources.USER);
+      this.$editor?.insertEmbed(rangeIndex, 'image', tempFile, Quill.sources.USER);
       this.$editor?.setSelection(rangeIndex + 1, 0, Quill.sources.SILENT);
     }
   },
@@ -93,8 +151,9 @@ export default defineComponent({
         blotFormatter: {}
       },
     });
-    this.$editor.on('text-change', () => {
-      this.onChange();
+    this.$editor.on('text-change', (delta, oldContents, source: String) => {
+      // this.onChange();
+      console.log(this.$editor.getContents());
     });
     var toolbar = this.$editor.getModule('toolbar');
     toolbar.addHandler('image', (img: any) => {
