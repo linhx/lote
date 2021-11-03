@@ -1,5 +1,5 @@
 <template>
-  <div class="c-editor">
+  <div class="c-editor border border-gray-300 rounded-md">
     <div :id="editorId" v-html="value" :class="editorClass">
     </div>
     <input
@@ -15,8 +15,27 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Quill from 'quill';
+import BlotFormatter from 'quill-blot-formatter';
 import debounce from 'lodash.debounce';
 import FileRepository from '../repositories/FileRepository';
+
+Quill.register('modules/blotFormatter', BlotFormatter);
+
+const BubbleTheme = Quill.import("themes/bubble");
+class ExtendBubbleTheme extends BubbleTheme {
+  constructor(quill: any, options: any) {
+    super(quill, options);
+
+    quill.container.addEventListener('contextmenu', (e: Event) => {
+      e.preventDefault();
+      quill.theme.tooltip.edit();
+      quill.theme.tooltip.show();
+      return false;
+    });
+  }
+}
+
+Quill.register("themes/bubble", ExtendBubbleTheme);
 
 export default defineComponent({
   $editor: null,
@@ -58,7 +77,7 @@ export default defineComponent({
   },
   mounted() {
     this.$editor = new Quill(`#${this.editorId}`, {
-      theme: 'snow',
+      theme: 'bubble',
       modules: {
         toolbar: [
           [{ "font": [] }, { "size": ["small", false, "large", "huge"] }],
@@ -68,9 +87,10 @@ export default defineComponent({
           [{ "header": 1 }, { "header": 2 }, "blockquote", "code-block"],
           [{ "list": "ordered" }, { "list": "bullet" }, { "indent": "-1" }, { "indent": "+1" }],
           [{ "direction": "rtl" }, { "align": [] }],
-          ["link", "image", "video", "formula"],
+          ["link", "image", "video"],
           ["clean"]
-        ]
+        ],
+        blotFormatter: {}
       },
     });
     this.$editor.on('text-change', () => {
@@ -97,5 +117,4 @@ export default defineComponent({
   border-bottom-right-radius: 0.375rem;
   font-size: 16px;
 }
-
 </style>
