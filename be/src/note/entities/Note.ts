@@ -12,6 +12,9 @@ export class Note {
   title: string;
 
   @Prop()
+  banner: string;
+
+  @Prop()
   overview: string;
 
   @Prop()
@@ -19,6 +22,12 @@ export class Note {
 
   @Prop()
   category: number;
+
+  @Prop()
+  images: string[];
+
+  @Prop()
+  content: string;
 
   @Prop({ default: false })
   isPublished: boolean;

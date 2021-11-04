@@ -26,4 +26,9 @@ export class NoteController {
   async create(@Body() dto: NoteCreateDto) {
     return this.noteService.create(null, dto);
   }
+
+  @Post('publish/:id')
+  async publish(@Param('id') id: string) {
+    return this.noteService.publishById(null, id);
+  }
 }

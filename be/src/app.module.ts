@@ -5,7 +5,7 @@ import { NoteModule } from './note/note.module';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ScheduleModule } from '@nestjs/schedule';
-import { FILE_TEMP_FOLDER, FILE_TEMP_URL_PREFIX, STATIC_FOLDER } from './constants';
+import {FILE_TEMP_FOLDER, FILE_TEMP_URL_PREFIX, STATIC_FOLDER, STATIC_URL_PREFIX} from './constants';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { FILE_TEMP_FOLDER, FILE_TEMP_URL_PREFIX, STATIC_FOLDER } from './constan
     }),
     ServeStaticModule.forRoot({
       rootPath: STATIC_FOLDER,
-      serveRoot: '/static',
+      serveRoot: STATIC_URL_PREFIX,
     },{
       rootPath: FILE_TEMP_FOLDER,
       serveRoot: FILE_TEMP_URL_PREFIX,

@@ -37,4 +37,4 @@ services:
       FILE_TEMP_FOLDER: /usr/src/app/data/temp
       FILE_TEMP_DELETE_SCHEDULER: 0 0 0 * * 7
       FILE_TEMP_URL_PREFIX: /temp
-      
+      BASE_URL: http://localhost:3000/
