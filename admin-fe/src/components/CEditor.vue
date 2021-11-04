@@ -15,13 +15,14 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import CQuill from './c-editor/CQuill';
+import Delta from 'quill-delta';
 import FileRepository from '../repositories/FileRepository';
 
 export default defineComponent({
   $editor: null,
   $delta: null,
   props: {
-    content: Object,
+    content: Object as PropType<Delta>,
     editorClass: String
   },
   data(): {
@@ -47,7 +48,7 @@ export default defineComponent({
       const tempFile = await FileRepository.uploadTempFile(file);
       const range = this.$editor?.getSelection(true);
       const rangeIndex = range?.index || 0;
-      this.$editor?.insertEmbed(rangeIndex, 'image', tempFile, CQuill.sources.USER);
+      this.$editor?.insertEmbed(rangeIndex, 'imagec', tempFile, CQuill.sources.USER);
       this.$editor?.setSelection(rangeIndex + 1, 0, CQuill.sources.SILENT);
     },
     getContents() {
@@ -72,7 +73,7 @@ export default defineComponent({
         blotFormatter: {}
       },
     });
-    this.$editor.setContents((<Delta>this.content));
+    this.$editor.setContents(this.content);
     const toolbar = this.$editor.getModule('toolbar');
     toolbar.addHandler('image', (img: any) => {
       (<HTMLElement>this.$refs.inputFile).click();

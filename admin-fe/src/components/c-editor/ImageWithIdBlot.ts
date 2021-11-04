@@ -12,13 +12,15 @@ export default class ImageWithIdBlot extends Quill.import('formats/image') {
   static create(value: ResFileDto) {
     const node = super.create(value.url);
     node.dataset.imgId = value.id;
+    node.dataset.imgName = value.name;
     return node;
   }
 
   static value(domNode: HTMLImageElement) {
     return {
       url: domNode.getAttribute('src'),
-      id: domNode.dataset.imgId
+      id: domNode.dataset.imgId,
+      name: domNode.dataset.imgName
     }
   }
 
@@ -46,3 +48,5 @@ export default class ImageWithIdBlot extends Quill.import('formats/image') {
     }
   }
 }
+
+ImageWithIdBlot.blotName = 'imagec';

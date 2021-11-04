@@ -1,7 +1,7 @@
 <template>
   <div class="mt-10 sm:mt-0 shadow p-3">
     <div class="md:grid md:grid-cols-3 md:gap-6">
-      <div class="mt-5 md:mt-0 md:col-span-2">
+      <div class="mt-5 md:mt-0 md:col-span-1">
         <c-field label="Title">
           <c-input v-model="note.title" name="title" />
         </c-field>
@@ -9,6 +9,11 @@
       <div class="mt-5 md:mt-0 md:col-span-1">
         <c-field label="Permalink">
           <c-input v-model="note.permalink" name="permalink" />
+        </c-field>
+      </div>
+      <div class="mt-5 md:mt-0 md:col-span-1">
+        <c-field label="Banner">
+          <c-file-input accept="image/*" name="banner" @change="onChangeBanner" />
         </c-field>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-3">
@@ -41,7 +46,9 @@ import CEditor from '../../components/CEditor.vue';
 import CField from '../../components/CField.vue';
 import CTagInput from '../../components/CTagInput.vue';
 import CButton from '../../components/CButton.vue';
+import CFileInput from '../../components/CFileInput.vue';
 import NoteRepository from '../../repositories/NoteRepository';
+import FileRepository from "../../repositories/FileRepository";
 
 export default defineComponent({
   components: {
@@ -50,7 +57,8 @@ export default defineComponent({
     CTextarea,
     CEditor,
     CTagInput,
-    CButton
+    CButton,
+    CFileInput
 },
   data () {
     return {
@@ -61,21 +69,38 @@ export default defineComponent({
         overview: '',
         tags: [],
         category: 0,
-      }
+      },
+      noteBanner: null
     }
   },
   methods: {
+    async uploadNoteBanner() {
+      if (this.noteBanner) {
+        const file = await FileRepository.uploadTempFile(this.noteBanner);
+        return file.id;
+      }
+    },
     async onSave() {
       try {
         this.isLoading = true;
-        const content = JSON.stringify((<any>this.$refs.editor).getContents());
+        const banner = await this.uploadNoteBanner();
+        const content = (<any>this.$refs.editor).getContents();
         await NoteRepository.create({
           ...this.note,
+          banner,
           content
         });
       } finally {
         this.isLoading = false;
       }
+    },
+    onChangeBanner(e: Event) {
+      const target = (<HTMLInputElement> e.target);
+      const file = target.files && target.files.length ? target.files[0] : null;
+      if (!file) {
+        return;
+      }
+      this.noteBanner = file;
     }
   }
 });
