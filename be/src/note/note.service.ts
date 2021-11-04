@@ -37,7 +37,7 @@ export class NoteService {
       fs.mkdirSync(path.join(NOTE_DATA_FOLDER, rest.permalink), {
         recursive: true,
       });
-      const file = path.join(folder, 'index.html');
+      const file = path.join(folder, 'index.json');
       fs.writeFileSync(file, content);
       return note;
     });

@@ -4,7 +4,6 @@ services:
   mongo:
     build: ./db
     hostname: mongo
-    restart: on-failure
     volumes:
       - ./data/db:/data/db
       - ./db/init:/docker-entrypoint-initdb.d/

@@ -18,7 +18,7 @@
       </div>
       <div class="mt-5 md:mt-0 md:col-span-3">
         <c-field label="Content">
-          <c-editor v-model="note.content" editor-class="h-32"></c-editor>
+          <c-editor ref="editor" editor-class="h-32"></c-editor>
         </c-field>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">
@@ -59,7 +59,6 @@ export default defineComponent({
         title: '',
         permalink: '',
         overview: '',
-        content: '',
         tags: [],
         category: 0,
       }
@@ -69,7 +68,11 @@ export default defineComponent({
     async onSave() {
       try {
         this.isLoading = true;
-        await NoteRepository.create(this.note);
+        const content = JSON.stringify((<any>this.$refs.editor).getContents());
+        await NoteRepository.create({
+          ...this.note,
+          content
+        });
       } finally {
         this.isLoading = false;
       }
