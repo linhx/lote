@@ -14,6 +14,7 @@ import BusinessError from 'src/exceptions/BusinessError';
 import {FileService} from "../file/file.service";
 import HtmlUtils from "./utilities/HtmlUtils";
 import * as StringUtils from "../utilites/StringUtils";
+import * as FileUtils from '../utilites/FileUtils';
 
 @Injectable()
 export class NoteService {
@@ -76,15 +77,22 @@ export class NoteService {
 
   async publish(session: CSession, note: NoteDocument) {
     return this.db.withTransaction(session, async (_session) => {
-      const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
-      const noteUrl = StringUtils.joinUrl(NOTE_URL_BASE, note.permalink);
-      const contentHtml = HtmlUtils.deltaToHtml(JSON.parse(contentJson), noteUrl);
+      const folder = path.join(NOTE_DATA_FOLDER, note.permalink);
+
+      fs.rmSync(folder, { recursive: true, force: true });
 
       const folder = path.join(NOTE_DATA_FOLDER, note.permalink);
       fs.mkdirSync(folder, {
         recursive: true,
       });
+
       const file = path.join(folder, 'index.html');
+      const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
+      const noteUrl = StringUtils.joinUrl(NOTE_URL_BASE, note.permalink);
+      const contentHtml = HtmlUtils.deltaToHtml(
+        JSON.parse(contentJson),
+        noteUrl,
+      );
       fs.writeFileSync(file, contentHtml);
 
       const files = await this.fileService.findByIds(_session, note.images);
@@ -95,7 +103,10 @@ export class NoteService {
       });
 
       for (let file of files) {
-        fs.copyFileSync(file.path, path.join(folderImg, file.name));
+        fs.copyFileSync(
+          file.path,
+          path.join(folderImg, `${file._id}.${FileUtils.getExt(file.name)}`),
+        );
       }
 
       note.isPublished = true;
