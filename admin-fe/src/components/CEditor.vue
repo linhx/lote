@@ -1,6 +1,6 @@
 <template>
   <div class="c-editor border border-gray-300 rounded-md">
-    <div :id="editorId" v-html="value" :class="editorClass">
+    <div :id="editorId" :class="editorClass">
     </div>
     <input
       ref="inputFile"
@@ -8,47 +8,27 @@
       accept="image/png, image/gif, image/jpeg, image/bmp, image/x-icon"
       class="hidden"
       @change="onChangeFile"
-       />
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import Quill from 'quill';
-import BlotFormatter from 'quill-blot-formatter';
-import debounce from 'lodash.debounce';
+import { defineComponent, PropType } from 'vue';
+import CQuill from './c-editor/CQuill';
+import Delta from 'quill-delta';
 import FileRepository from '../repositories/FileRepository';
-
-Quill.register('modules/blotFormatter', BlotFormatter);
-
-const BubbleTheme = Quill.import("themes/bubble");
-class ExtendBubbleTheme extends BubbleTheme {
-  constructor(quill: any, options: any) {
-    super(quill, options);
-
-    quill.container.addEventListener('contextmenu', (e: Event) => {
-      e.preventDefault();
-      quill.theme.tooltip.edit();
-      quill.theme.tooltip.show();
-      return false;
-    });
-  }
-}
-
-Quill.register("themes/bubble", ExtendBubbleTheme);
 
 export default defineComponent({
   $editor: null,
+  $delta: null,
   props: {
-    modelValue: String,
+    content: Object as PropType<Delta>,
     editorClass: String
   },
   data(): {
-      $editor?: Quill | null,
-      value: string | undefined
+      $editor?: CQuill | null
     } {
     return {
-      value: this.modelValue
     }
   },
   computed: {
@@ -57,9 +37,6 @@ export default defineComponent({
     }
   },
   methods: {
-    onChange: debounce(function (this: any) {
-      this.$emit('update:modelValue', this.$editor?.root.innerHTML)
-    }, 700),
     async onChangeFile(e: Event) {
       const target = (<HTMLInputElement> e.target);
       const file = target.files && target.files.length ? target.files[0] : null;
@@ -71,12 +48,15 @@ export default defineComponent({
       const tempFile = await FileRepository.uploadTempFile(file);
       const range = this.$editor?.getSelection(true);
       const rangeIndex = range?.index || 0;
-      this.$editor?.insertEmbed(rangeIndex, 'image', tempFile.url, Quill.sources.USER);
-      this.$editor?.setSelection(rangeIndex + 1, 0, Quill.sources.SILENT);
+      this.$editor?.insertEmbed(rangeIndex, 'imagec', tempFile, CQuill.sources.USER);
+      this.$editor?.setSelection(rangeIndex + 1, 0, CQuill.sources.SILENT);
+    },
+    getContents() {
+      return this.$editor?.getContents();
     }
   },
   mounted() {
-    this.$editor = new Quill(`#${this.editorId}`, {
+    this.$editor = new CQuill(`#${this.editorId}`, {
       theme: 'bubble',
       modules: {
         toolbar: [
@@ -93,10 +73,8 @@ export default defineComponent({
         blotFormatter: {}
       },
     });
-    this.$editor.on('text-change', () => {
-      this.onChange();
-    });
-    var toolbar = this.$editor.getModule('toolbar');
+    this.$editor.setContents(this.content);
+    const toolbar = this.$editor.getModule('toolbar');
     toolbar.addHandler('image', (img: any) => {
       (<HTMLElement>this.$refs.inputFile).click();
     });

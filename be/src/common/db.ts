@@ -9,7 +9,10 @@ export type CSession = ClientSession | undefined;
 export class Db {
   constructor(@InjectConnection() private conn: Connection) {}
 
-  async withTransaction(session: CSession, callback: (session: CSession) => any) {
+  async withTransaction(
+    session: CSession,
+    callback: (session: CSession) => any,
+  ) {
     const _session = session ? session : await this.conn.startSession();
     return callback(_session);
   }

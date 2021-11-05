@@ -5,10 +5,11 @@ export default class NoteCreateDto {
   permalink: string;
   @IsNotEmpty()
   title: string;
+  banner: string;
   @IsNotEmpty()
   overview: string;
   @IsNotEmpty()
-  content: string;
+  content: any;
   tags: string[];
   category: number;
 }

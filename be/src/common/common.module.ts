@@ -5,6 +5,6 @@ import { Db } from './db';
   imports: [],
   controllers: [],
   providers: [Db],
-  exports: [Db]
+  exports: [Db],
 })
 export class CommonModule {}
