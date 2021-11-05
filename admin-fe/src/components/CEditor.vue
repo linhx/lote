@@ -61,7 +61,7 @@ export default defineComponent({
       modules: {
         toolbar: [
           [{ "font": [] }, { "size": ["small", false, "large", "huge"] }],
-          ["bold", "italic", "underline", "strike"],
+          ["bold", "italic", "underline", "strike", "code"],
           [{ "color": [] }, { "background": [] }],
           [{ "script": "sub" }, { "script": "super" }],
           [{ "header": 1 }, { "header": 2 }, "blockquote", "code-block"],
@@ -78,6 +78,15 @@ export default defineComponent({
     toolbar.addHandler('image', (img: any) => {
       (<HTMLElement>this.$refs.inputFile).click();
     });
+
+    toolbar.addHandler('code-block', (value: boolean) => {
+      if (value) {
+        const lang = prompt('Input language');
+        this.$editor?.format('code-block', lang, 'user');
+      } else {
+        this.$editor?.format('code-block', false, 'user');
+      }
+    })
   },
   beforeUnmount() {
     this.$editor = null;
