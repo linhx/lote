@@ -68,6 +68,7 @@ export class FileService {
     return this.db.withTransaction(session, (_session) => {
       const fileModel = new this.fileModel({
         name: file.originalname,
+        publishName: file.filename,
         type: file.mimetype,
         size: file.size,
         path: file.path,

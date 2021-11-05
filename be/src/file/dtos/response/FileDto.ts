@@ -15,7 +15,7 @@ export default class FileDto {
   static fromEntity(file: CFileDocument) {
     const dto = new FileDto();
     dto.id = file._id;
-    dto.name = file.name;
+    dto.name = file.publishName;
     dto.url = file.url.startsWith('/')
       ? new URL(file.url, process.env.BASE_URL).href
       : file.url;

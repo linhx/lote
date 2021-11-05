@@ -84,9 +84,7 @@ export class NoteService {
     return this.db.withTransaction(session, async (_session) => {
       const folder = path.join(NOTE_DATA_FOLDER, note.permalink);
 
-      fs.rmSync(folder, { recursive: true, force: true });
-
-      const folder = path.join(NOTE_DATA_FOLDER, note.permalink);
+      fs.rmdirSync(folder, { recursive: true });
       fs.mkdirSync(folder, {
         recursive: true,
       });

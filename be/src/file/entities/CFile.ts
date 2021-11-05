@@ -9,6 +9,9 @@ export class CFile {
   name: string;
 
   @Prop({ required: true })
+  publishName: string;
+
+  @Prop({ required: true })
   type: string;
 
   @Prop()

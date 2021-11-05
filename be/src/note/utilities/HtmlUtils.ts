@@ -1,5 +1,6 @@
 import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 import * as StringUtils from '../../utilites/StringUtils';
+import * as FileUtils from '../../utilites/FileUtils';
 import { NOTE_URL_BASE } from '../../constants';
 
 export default {
@@ -9,7 +10,10 @@ export default {
       if (customOp.insert.type === 'imagec') {
         const val = customOp.insert.value;
         const attrs = customOp.attributes;
-        const imageUrl = StringUtils.joinUrl(noteUrl, `img/${val.name}`);
+        const imageUrl = StringUtils.joinUrl(
+          noteUrl,
+          `img/${val.id}.${FileUtils.getExt(val.name)}`,
+        );
         return (
           `<img src="${imageUrl}" ` +
           (attrs.alt ? `alt="${attrs.alt}" ` : '') +

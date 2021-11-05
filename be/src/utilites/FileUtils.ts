@@ -1,9 +1,10 @@
 import { uuid } from './StringUtils';
+import { nanoid } from 'nanoid';
 
 export const getExt = (name: string) => {
   return name?.substring(name?.lastIndexOf('.') + 1);
 };
 
 export const randomFileName = (fileName: string) => {
-  return uuid() + '.' + getExt(fileName);
+  return nanoid() + '.' + getExt(fileName);
 };
