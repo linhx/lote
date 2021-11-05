@@ -16,7 +16,9 @@ export default class FileDto {
     const dto = new FileDto();
     dto.id = file._id;
     dto.name = file.name;
-    dto.url = file.url.startsWith('/') ? new URL(file.url, process.env.BASE_URL).href : file.url;
+    dto.url = file.url.startsWith('/')
+      ? new URL(file.url, process.env.BASE_URL).href
+      : file.url;
     dto.type = file.type;
     dto.size = file.size;
     dto.isTemp = file.isTemp;

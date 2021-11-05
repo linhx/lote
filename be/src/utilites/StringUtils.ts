@@ -26,6 +26,6 @@ export const joinUrl = function (...paths: string[]) {
       paths[i] = paths[i].replace(/^\/+|\/+$/g, '');
     }
   }
-  const _paths = paths.filter(e => e);
+  const _paths = paths.filter((e) => e);
   return _paths.join('/');
 };

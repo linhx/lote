@@ -9,11 +9,16 @@ import NoteFilterListDto from './dtos/request/NoteFilterListDto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { CSession, Db } from '../common/db';
-import {NOTE_DATA_DRAFT_FOLDER, NOTE_DATA_FOLDER, NOTE_URL_BASE, STATIC_URL_PREFIX} from 'src/constants';
+import {
+  NOTE_DATA_DRAFT_FOLDER,
+  NOTE_DATA_FOLDER,
+  NOTE_URL_BASE,
+  STATIC_URL_PREFIX,
+} from 'src/constants';
 import BusinessError from 'src/exceptions/BusinessError';
-import {FileService} from "../file/file.service";
-import HtmlUtils from "./utilities/HtmlUtils";
-import * as StringUtils from "../utilites/StringUtils";
+import { FileService } from '../file/file.service';
+import HtmlUtils from './utilities/HtmlUtils';
+import * as StringUtils from '../utilites/StringUtils';
 import * as FileUtils from '../utilites/FileUtils';
 
 @Injectable()
@@ -21,7 +26,7 @@ export class NoteService {
   constructor(
     @InjectModel(Note.name) private noteModel: Model<NoteDocument>,
     private readonly db: Db,
-    private readonly fileService: FileService
+    private readonly fileService: FileService,
   ) {}
 
   async create(session: CSession, dto: NoteCreateDto) {
@@ -50,7 +55,7 @@ export class NoteService {
 
       const newNote = new this.noteModel({
         ...rest,
-        images
+        images,
       });
       const note = await newNote.save({ session: _session });
 
@@ -123,51 +128,67 @@ export class NoteService {
 
   async findByPermalink(session: CSession, permalink: string) {
     return this.db.withTransaction(session, (ss) => {
-      return this.noteModel.findOne({
-        permalink
-      }).session(ss).exec();
+      return this.noteModel
+        .findOne({
+          permalink,
+        })
+        .session(ss)
+        .exec();
     });
   }
 
   existsByPermalink(session: CSession, permalink: string): Promise<Boolean> {
     return this.db.withTransaction(session, (ss) => {
-      return this.noteModel.count({
-        permalink,
-      }).session(ss).exec();
+      return this.noteModel
+        .count({
+          permalink,
+        })
+        .session(ss)
+        .exec();
     });
   }
 
-  async getPublishedList(session: CSession, dto: NoteFilterListDto): Promise<PageDto<NoteItemListDto>> {
+  async getPublishedList(
+    session: CSession,
+    dto: NoteFilterListDto,
+  ): Promise<PageDto<NoteItemListDto>> {
     const condition = {
       isPublished: true,
-      isDeleted: false
-    }
+      isDeleted: false,
+    };
 
     return this.db.withTransaction(session, async (ss) => {
       const items = await this.noteModel
-      .find(condition)
-      .session(ss)
-      .sort({ createdAt: 1 })
-      .skip(dto.getSkip())
-      .limit(dto.limit).exec().then(results => results.map(rs => NoteItemListDto.fromEntity(rs)));
-  
+        .find(condition)
+        .session(ss)
+        .sort({ createdAt: 1 })
+        .skip(dto.getSkip())
+        .limit(dto.limit)
+        .exec()
+        .then((results) => results.map((rs) => NoteItemListDto.fromEntity(rs)));
+
       const count = await this.noteModel.count(condition).exec();
-  
+
       return PageDto.create(items, dto.page, dto.limit, count);
     });
   }
 
-  async findAll(session: CSession, dto: NoteFilterListDto): Promise<PageDto<NoteItemListDto>> {
+  async findAll(
+    session: CSession,
+    dto: NoteFilterListDto,
+  ): Promise<PageDto<NoteItemListDto>> {
     return this.db.withTransaction(session, async (ss) => {
       const items = await this.noteModel
-      .find()
-      .session(ss)
-      .sort({ createdAt: 1 })
-      .skip(dto.getSkip())
-      .limit(dto.limit).exec().then(results => results.map(rs => NoteItemListDto.fromEntity(rs)));
-  
+        .find()
+        .session(ss)
+        .sort({ createdAt: 1 })
+        .skip(dto.getSkip())
+        .limit(dto.limit)
+        .exec()
+        .then((results) => results.map((rs) => NoteItemListDto.fromEntity(rs)));
+
       const count = await this.noteModel.count().exec();
-  
+
       return PageDto.create(items, dto.page, dto.limit, count);
     });
   }
