@@ -20,6 +20,8 @@ import { defineComponent } from 'vue';
 import NoteDto from '../dtos/NoteDto';
 import NoteRepository from '../repositories/NoteRepository';
 
+declare var hljs: any
+
 export default defineComponent({
   props: {
     permalink: {
@@ -39,9 +41,11 @@ export default defineComponent({
     NoteRepository.getByPermalink(this.permalink).then(res => {
       this.note = res;
     });
-
     NoteRepository.getContent(this.permalink).then(res => {
       (<HTMLElement>this.$refs.content).innerHTML = res;
+      document.querySelectorAll('pre[data-language]').forEach((el) => {
+        hljs.highlightElement(el);
+      });
     });
   }
 })
