@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div class="w-full md:max-w-4xl mx-auto pt-10">
     <note-preview
-      class="my-6"
-      v-for="note in noteList?.items"
-      :key="note.id"
-      :note="note"
+        class="py-3 border-b-2"
+        v-for="note in noteList?.items"
+        :key="note.id"
+        :note="note"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import {defineComponent} from 'vue'
 import NotePreview from './NotePreview.vue';
 import NoteRepository from '../../repositories/NoteRepository';
 import PageDto from '../../dtos/PageDto';
@@ -21,7 +21,7 @@ export default defineComponent({
   components: {
     NotePreview
   },
-  data (): {
+  data(): {
     noteList: PageDto<NotePreviewDto> | null,
     filter: ReqNoteFilterDto
   } {
