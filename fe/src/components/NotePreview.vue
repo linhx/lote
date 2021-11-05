@@ -1,11 +1,18 @@
 <template>
-  <div class="flex rounded-xl">
-    <div class="w-20 h-20 flex-shrink-0 overflow-hidden">
-      <img class="object-cover h-full" :alt="note.title" :src="note.image" />
-    </div>
-    <div class="body pl-5 text-left space-y-1">
-      <router-link tag="div" class="text-lg font-semibold" :to="'/note/' + note.permalink">{{ note.title }}</router-link>
-      <div class="overview text-sm italic font-extralight whitespace-pre-wrap">{{ note.overview }}</div>
+  <div class="flex">
+    <div class="body pl-5 text-left space-y-1 w-full">
+      <div>
+        <router-link tag="div" class="text-2xl font-semibold text-red-600 inline-block" :to="'/note/' + note.permalink">{{ note.title }}</router-link>
+      </div>
+      <div class="font-extralight whitespace-pre-wrap w-full">
+        <div class="whitespace-nowrap truncate">{{ note.overview }}</div>
+        <div class="mt-2.5">
+          <span class="text-gray-600 mr-2 text-sm">{{ dateFormat }}</span>
+          <span v-for="tag in note.tags" :key="tag" class="text-gray-600 text-sm bg-gray-200 px-1">
+            {{ tag }}
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -19,16 +26,12 @@ export default defineComponent({
     note: {
       type: Object as PropType<NotePreviewDto>,
       required: true
+    },
+  },
+  computed: {
+    dateFormat() {
+      return new Date(this.note.createdAt).toLocaleDateString();
     }
   }
 });
 </script>
-
-<style scoped lang="postcss">
-.overview {
-    @apply overflow-hidden overflow-ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-</style>
