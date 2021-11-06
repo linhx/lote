@@ -11,6 +11,9 @@ import {
   STATIC_FOLDER,
   STATIC_URL_PREFIX,
 } from './constants';
+import { AuthModule } from './auth/auth.module';
+import { APP_GUARD } from '@nestjs/core';
+import { SsoAuthGuard } from './auth/oauth2.strategy';
 
 @Module({
   imports: [
@@ -34,8 +37,12 @@ import {
     ScheduleModule.forRoot(),
     FileModule,
     NoteModule,
+    AuthModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [{
+    provide: APP_GUARD,
+    useClass: SsoAuthGuard,
+  }],
 })
 export class AppModule {}
