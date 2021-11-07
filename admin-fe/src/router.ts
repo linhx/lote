@@ -1,10 +1,16 @@
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 import NoteCreateView from './views/note/NoteCreateView.vue';
 import NotesView from './views/note/NotesView.vue';
+import NoteUpdateView from './views/note/NoteUpdateView.vue';
 
 const routes: RouteRecordRaw[] = [
   { path: '/', component: NotesView },
-  { path: '/note/create', component: NoteCreateView }
+  { path: '/note/create', component: NoteCreateView },
+  {
+    path: '/note/:id',
+    component: NoteUpdateView,
+    props: route => ({ id: route.params.id })
+  }
 ];
 
 const router = createRouter({

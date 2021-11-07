@@ -53,6 +53,9 @@ export default defineComponent({
     },
     getContents() {
       return this.$editor?.getContents();
+    },
+    setContents(contents: Delta) {
+      this.$editor?.setContents(contents);
     }
   },
   mounted() {

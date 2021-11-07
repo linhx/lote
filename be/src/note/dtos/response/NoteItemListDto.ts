@@ -1,6 +1,7 @@
-import { Note } from 'src/note/entities/Note';
+import { NoteDocument } from 'src/note/entities/Note';
 
 export default class NoteItemListDto {
+  id: string;
   permalink: string;
   title: string;
   overview: string;
@@ -8,8 +9,9 @@ export default class NoteItemListDto {
   category: number;
   createdAt: Date;
 
-  static fromEntity(entity: Note) {
+  static fromEntity(entity: NoteDocument) {
     const dto = new NoteItemListDto();
+    dto.id = entity._id;
     dto.title = entity.title;
     dto.permalink = entity.permalink;
     dto.overview = entity.overview;

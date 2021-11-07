@@ -1,5 +1,5 @@
 export default interface NotePreviewDto {
-  id: number,
+  id: string,
   permalink: string,
   title: string,
   overview: string,
