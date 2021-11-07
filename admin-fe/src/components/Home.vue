@@ -23,7 +23,10 @@ export default defineComponent({
   },
 
   mounted() {
-    NoteRepository.getList().then(res => {
+    NoteRepository.getList({
+      page: 1,
+      limit: 100
+    }).then(res => {
       this.noteList = res;
     });
   }

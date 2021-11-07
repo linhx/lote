@@ -73,7 +73,9 @@ export default defineComponent({
         blotFormatter: {}
       },
     });
-    this.$editor.setContents(this.content);
+    if (this.content) {
+      this.$editor.setContents(this.content);
+    }
     const toolbar = this.$editor.getModule('toolbar');
     toolbar.addHandler('image', (img: any) => {
       (<HTMLElement>this.$refs.inputFile).click();

@@ -49,6 +49,7 @@ import CButton from '../../components/CButton.vue';
 import CFileInput from '../../components/CFileInput.vue';
 import NoteRepository from '../../repositories/NoteRepository';
 import FileRepository from "../../repositories/FileRepository";
+import NoteCreateDto from '../../dtos/NoteCreateDto';
 
 export default defineComponent({
   components: {
@@ -60,7 +61,17 @@ export default defineComponent({
     CButton,
     CFileInput
 },
-  data () {
+  data (): {
+    isLoading: boolean,
+    note: {
+      title: string,
+      permalink: string,
+      overview: string,
+      tags: string[],
+      category: number,
+    },
+    noteBanner?: File
+  } {
     return {
       isLoading: false,
       note: {
@@ -70,7 +81,7 @@ export default defineComponent({
         tags: [],
         category: 0,
       },
-      noteBanner: null
+      noteBanner: undefined
     }
   },
   methods: {
