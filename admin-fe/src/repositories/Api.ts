@@ -5,7 +5,7 @@ const api = axios.create({
   withCredentials: true
 });
 
-const authApi = axios.create({
+export const authApi = axios.create({
   baseURL: import.meta.env.VITE_APP_AUTH_URL,
   withCredentials: true
 });
@@ -39,7 +39,7 @@ const refreshToken = () => {
     authApi.post('/refresh-token').then(() => {
       onAccessTokenFetched(true);
     }).catch(({ response }) => {
-      const messages = response.data?.messages;
+      const messages = response?.data?.messages;
       if (messages && messages[0].messageCode === 'error.refreshToken.alreadyUsed') {
         return authApi.post('/cancel-logout', {
           llhs: messages[0].params.llhs

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Home from './components/Home.vue'
+import AuthRepository from './repositories/AuthRepository';
 </script>
 
 <template>
@@ -10,6 +11,19 @@ import Home from './components/Home.vue'
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  async beforeCreate() {
+    await AuthRepository.getLoggedInUser().catch(() => {
+      window.location.href = import.meta.env.VITE_APP_LOGIN_URL + '?callbackUrl=' + window.location.href;
+    });
+  }
+})
+</script>
+
 
 <style>
 #app {
