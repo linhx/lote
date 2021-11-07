@@ -1,5 +1,4 @@
 import { join } from 'path';
-import { URL } from 'url';
 import * as StringUtils from './utilites/StringUtils';
 
 export const STATIC_FOLDER = process.env.STATIC_FOLDER.startsWith('/')
