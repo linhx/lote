@@ -23,7 +23,7 @@ function onAccessTokenFetched (success: boolean) {
 
 let isRefreshingToken = false;
 
-const refreshToken = () => {
+export const refreshToken = () => {
   const result = new Promise((resolve, reject) => {
     addSubscriber((success: boolean) => {
       if (success) {
