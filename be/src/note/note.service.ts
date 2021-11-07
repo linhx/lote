@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import PageDto from '../dtos/response/PageDto';
 import NoteItemListDto from './dtos/response/NoteItemListDto';
+import PublicNoteItemListDto from './dtos/response/PublicNoteItemListDto';
 import NoteFilterListDto from './dtos/request/NoteFilterListDto';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -20,6 +21,7 @@ import { FileService } from '../file/file.service';
 import HtmlUtils from './utilities/HtmlUtils';
 import * as StringUtils from '../utilites/StringUtils';
 import * as FileUtils from '../utilites/FileUtils';
+import NoteDto from './dtos/response/NoteDto';
 
 @Injectable()
 export class NoteService {
@@ -124,6 +126,12 @@ export class NoteService {
     });
   }
 
+  async findIncludeContentById(session: CSession, id: string) {
+    const note = await this.findById(session, id);
+    const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
+    return NoteDto.fromEntity(note, contentJson);
+  }
+
   async findByPermalink(session: CSession, permalink: string) {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel
@@ -149,7 +157,7 @@ export class NoteService {
   async getPublishedList(
     session: CSession,
     dto: NoteFilterListDto,
-  ): Promise<PageDto<NoteItemListDto>> {
+  ): Promise<PageDto<PublicNoteItemListDto>> {
     const condition = {
       isPublished: true,
       isDeleted: false,
@@ -163,7 +171,7 @@ export class NoteService {
         .skip(dto.getSkip())
         .limit(dto.limit)
         .exec()
-        .then((results) => results.map((rs) => NoteItemListDto.fromEntity(rs)));
+        .then((results) => results.map((rs) => PublicNoteItemListDto.fromEntity(rs)));
 
       const count = await this.noteModel.count(condition).exec();
 

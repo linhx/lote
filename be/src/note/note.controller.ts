@@ -30,6 +30,11 @@ export class NoteController {
     return this.noteService.create(null, dto);
   }
 
+  @Get('/:id')
+  async getById(@Param('id') id: string) {
+    return this.noteService.findIncludeContentById(null, id);
+  }
+
   @Post('publish/:id')
   async publish(@Param('id') id: string) {
     return this.noteService.publishById(null, id);
