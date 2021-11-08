@@ -6,6 +6,6 @@ export default interface NotePreviewDto {
   image: string,
   tags: string[],
   category?: number,
-  createdAt: Date,
-  updatedAt: Date,
+  publishedAt: Date,
+  updatePublicationAt: Date,
 }

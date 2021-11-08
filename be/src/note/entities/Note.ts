@@ -35,6 +35,9 @@ export class Note {
   @Prop()
   publishedAt: Date;
 
+  @Prop()
+  updatePublicationAt: Date;
+
   @Prop({ default: false })
   isDeleted: boolean;
 

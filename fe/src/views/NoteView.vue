@@ -8,6 +8,9 @@
         <h2>{{ note?.title }}</h2>
         <hr/>
       </div>
+      <div class="text-right text-gray-600 mr-2 text-sm">
+        <span>{{ publishedDate }}</span>
+      </div>
       <div class="ql-container ql-snow border-0">
         <div ref="content" class="ql-editor"></div>
       </div>
@@ -34,6 +37,15 @@ export default defineComponent({
   } {
     return {
       note: undefined
+    }
+  },
+
+  computed: {
+    publishedDate() {
+      if (this.note?.publishedAt) {
+        return new Date(this.note?.publishedAt).toLocaleDateString();
+      }
+      return '';
     }
   },
 

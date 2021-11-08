@@ -167,10 +167,11 @@ export class NoteService {
         );
       }
 
-      if (!note.isPublished) {
-        note.isPublished = true;
+      note.isPublished = true;
+      if (!note.publishedAt) {
         note.publishedAt = new Date();
       }
+      note.updatePublicationAt = new Date();
       await note.save();
       return note;
     });
@@ -186,6 +187,19 @@ export class NoteService {
     const note = await this.findById(session, id);
     const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
     return NoteDto.fromEntity(note, contentJson);
+  }
+
+  async findPublisedByPermalink(session: CSession, permalink: string) {
+    return this.db.withTransaction(session, (ss) => {
+      return this.noteModel
+        .findOne({
+          permalink,
+          isPublished: true,
+          isDeleted: false,
+        })
+        .session(ss)
+        .exec();
+    });
   }
 
   async findByPermalink(session: CSession, permalink: string) {

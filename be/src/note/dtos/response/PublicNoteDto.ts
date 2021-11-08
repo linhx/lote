@@ -1,18 +1,20 @@
-import { Note } from 'src/note/entities/Note';
+import { NoteDocument } from 'src/note/entities/Note';
 
-export default class PublicNoteItemListDto {
+export default class PublicNoteDto {
   permalink: string;
   title: string;
+  banner: string;
   overview: string;
   tags: string[];
   category: number;
   publishedAt: Date;
   updatePublicationAt: Date;
 
-  static fromEntity(entity: Note) {
-    const dto = new PublicNoteItemListDto();
-    dto.title = entity.title;
+  static fromEntity(entity: NoteDocument) {
+    const dto = new PublicNoteDto();
     dto.permalink = entity.permalink;
+    dto.title = entity.title;
+    dto.banner = entity.banner;
     dto.overview = entity.overview;
     dto.tags = entity.tags;
     dto.category = entity.category;

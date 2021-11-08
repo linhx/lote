@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Param, Post, Query, UseGuards } from '@nestjs/common';
-import { Public, SsoAuthGuard } from 'src/auth/oauth2.strategy';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Public } from 'src/auth/oauth2.strategy';
 import NoteCreateDto from 'src/note/dtos/request/NoteCreateDto';
 import NoteFilterListDto from './dtos/request/NoteFilterListDto';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
+import PublicNoteDto from './dtos/response/PublicNoteDto';
 import { NoteService } from './note.service';
 
 @Controller('notes')
@@ -11,7 +12,7 @@ export class NoteController {
 
   @Public()
   @Get()
-  getList(@Query() dto: NoteFilterListDto) {
+  getPublishedList(@Query() dto: NoteFilterListDto) {
     return this.noteService.getPublishedList(null, new NoteFilterListDto(dto));
   }
 
@@ -22,8 +23,12 @@ export class NoteController {
 
   @Public()
   @Get('l/:permalink')
-  getByPermalink(@Param('permalink') permalink: string) {
-    return this.noteService.findByPermalink(null, permalink);
+  async getPublisedByPermalink(@Param('permalink') permalink: string) {
+    const entity = await this.noteService.findPublisedByPermalink(
+      null,
+      permalink,
+    );
+    return PublicNoteDto.fromEntity(entity);
   }
 
   @Post()

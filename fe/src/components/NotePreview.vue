@@ -7,7 +7,7 @@
       <div class="font-extralight whitespace-pre-wrap w-full">
         <div class="whitespace-nowrap truncate">{{ note.overview }}</div>
         <div class="mt-2.5">
-          <span class="text-gray-600 mr-2 text-sm">{{ dateFormat }}</span>
+          <span class="text-gray-600 mr-2 text-sm">{{ publishedDate }}</span>
           <span v-for="tag in note.tags" :key="tag" class="text-gray-600 text-sm bg-gray-200 px-1">
             {{ tag }}
           </span>
@@ -29,8 +29,8 @@ export default defineComponent({
     },
   },
   computed: {
-    dateFormat() {
-      return new Date(this.note.createdAt).toLocaleDateString();
+    publishedDate() {
+      return new Date(this.note.publishedAt).toLocaleDateString();
     }
   }
 });
