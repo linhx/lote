@@ -12,9 +12,8 @@ import * as path from 'path';
 import { CSession, Db } from '../common/db';
 import {
   NOTE_DATA_DRAFT_FOLDER,
-  NOTE_DATA_FOLDER,
+  NOTE_PUBLISH_FOLDER,
   NOTE_URL_BASE,
-  STATIC_URL_PREFIX,
 } from 'src/constants';
 import BusinessError from 'src/exceptions/BusinessError';
 import { FileService } from '../file/file.service';
@@ -64,7 +63,7 @@ export class NoteService {
       const note = await newNote.save({ session: _session });
 
       // create folder
-      const folder = path.join(NOTE_DATA_DRAFT_FOLDER, rest.permalink);
+      const folder = path.join(NOTE_DATA_DRAFT_FOLDER, note._id);
       fs.mkdirSync(folder, {
         recursive: true,
       });
@@ -132,7 +131,7 @@ export class NoteService {
 
   async publish(session: CSession, note: NoteDocument) {
     return this.db.withTransaction(session, async (_session) => {
-      const folder = path.join(NOTE_DATA_FOLDER, note.permalink);
+      const folder = path.join(NOTE_PUBLISH_FOLDER, note.permalink);
 
       fs.rmdirSync(folder, { recursive: true });
       fs.mkdirSync(folder, {
