@@ -39,16 +39,20 @@ export class FileController {
 
   @Get('temp/:path(*)')
   temp(@Param('path') filePath: string, @Res() res: Response) {
-    res.sendFile(path.join(FILE_TEMP_FOLDER, filePath), () => {
-      res.sendStatus(404);
+    res.sendFile(path.join(FILE_TEMP_FOLDER, filePath), (err: any) => {
+      if (err) {
+        res.sendStatus(404);
+      }
     });
   }
 
   @Public()
   @Get('static/:path(*)')
   static(@Param('path') filePath: string, @Res() res: Response) {
-    res.sendFile(path.join(STATIC_FOLDER, filePath), () => {
-      res.sendStatus(404);
+    res.sendFile(path.join(STATIC_FOLDER, filePath), (err: any) => {
+      if (err) {
+        res.sendStatus(404);
+      }
     });
   }
 }
