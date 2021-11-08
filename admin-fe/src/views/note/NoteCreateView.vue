@@ -49,7 +49,6 @@ import CButton from '../../components/CButton.vue';
 import CFileInput from '../../components/CFileInput.vue';
 import NoteRepository from '../../repositories/NoteRepository';
 import FileRepository from "../../repositories/FileRepository";
-import NoteCreateDto from '../../dtos/NoteCreateDto';
 
 export default defineComponent({
   components: {
@@ -100,7 +99,11 @@ export default defineComponent({
           ...this.note,
           banner,
           content
+        }).catch(e => {
+          alert(e.response?.message)
         });
+      } catch(e: any) {
+        alert(e.message)
       } finally {
         this.isLoading = false;
       }
