@@ -147,21 +147,30 @@ export class NoteService {
       );
       fs.writeFileSync(file, contentHtml);
 
-      const files = await this.fileService.findByIds(_session, note.images);
+      const imageFiles = await this.fileService.findByIds(
+        _session,
+        note.images,
+      );
 
       const folderImg = path.join(folder, 'img');
       fs.mkdirSync(folderImg, {
         recursive: true,
       });
 
-      for (let file of files) {
+      for (const imageFile of imageFiles) {
         fs.copyFileSync(
-          file.path,
-          path.join(folderImg, `${file._id}.${FileUtils.getExt(file.name)}`),
+          imageFile.path,
+          path.join(
+            folderImg,
+            `${imageFile._id}.${FileUtils.getExt(imageFile.name)}`,
+          ),
         );
       }
 
-      note.isPublished = true;
+      if (!note.isPublished) {
+        note.isPublished = true;
+        note.publishedAt = new Date();
+      }
       await note.save();
       return note;
     });
@@ -214,11 +223,13 @@ export class NoteService {
       const items = await this.noteModel
         .find(condition)
         .session(ss)
-        .sort({ createdAt: 1 })
+        .sort({ publishedAt: -1 })
         .skip(dto.getSkip())
         .limit(dto.limit)
         .exec()
-        .then((results) => results.map((rs) => PublicNoteItemListDto.fromEntity(rs)));
+        .then((results) =>
+          results.map((rs) => PublicNoteItemListDto.fromEntity(rs)),
+        );
 
       const count = await this.noteModel.count(condition).exec();
 
@@ -234,7 +245,7 @@ export class NoteService {
       const items = await this.noteModel
         .find()
         .session(ss)
-        .sort({ createdAt: 1 })
+        .sort({ createdAt: -1 })
         .skip(dto.getSkip())
         .limit(dto.limit)
         .exec()

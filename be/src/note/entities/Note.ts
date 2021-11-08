@@ -32,6 +32,9 @@ export class Note {
   @Prop({ default: false })
   isPublished: boolean;
 
+  @Prop()
+  publishedAt: Date;
+
   @Prop({ default: false })
   isDeleted: boolean;
 
