@@ -116,6 +116,7 @@ export class FileService {
         },
         {
           isTemp: false,
+          updatedAt: new Date()
         },
         {
           session: _session,

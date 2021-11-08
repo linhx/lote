@@ -115,6 +115,7 @@ export class NoteService {
       oldNote.images = images;
       oldNote.tags = rest.tags;
       oldNote.category = rest.category;
+      oldNote.updatedAt = new Date();
 
       fs.writeFileSync(oldNote.content, JSON.stringify(content));
 
