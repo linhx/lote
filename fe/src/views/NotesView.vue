@@ -1,14 +1,17 @@
 <template>
-  <div class="w-full md:max-w-4xl mx-auto pt-10">
-    <div class="font-bold text-2xl">
-      <h2>Linhx's Notes</h2>
+  <div>
+    <div v-show="isNotesView" class="w-full md:max-w-4xl mx-auto pt-10">
+      <div class="font-bold text-2xl">
+        <h2>Linhx's Notes</h2>
+      </div>
+      <note-preview
+        class="py-3 border-b-2"
+        v-for="note in noteList?.items"
+        :key="note.id"
+        :note="note"
+      />
     </div>
-    <note-preview
-      class="py-3 border-b-2"
-      v-for="note in noteList?.items"
-      :key="note.id"
-      :note="note"
-    />
+    <router-view />
   </div>
 </template>
 
@@ -33,6 +36,11 @@ export default defineComponent({
       filter: {
         page: 1
       }
+    }
+  },
+  computed: {
+    isNotesView() {
+      return this.$route.name === 'NotesView'
     }
   },
 
