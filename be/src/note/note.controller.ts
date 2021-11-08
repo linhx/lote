@@ -2,6 +2,7 @@ import { Body, Controller, Get, Param, Post, Query, UseGuards } from '@nestjs/co
 import { Public, SsoAuthGuard } from 'src/auth/oauth2.strategy';
 import NoteCreateDto from 'src/note/dtos/request/NoteCreateDto';
 import NoteFilterListDto from './dtos/request/NoteFilterListDto';
+import NoteUpdateDto from './dtos/request/NoteUpdateDto';
 import { NoteService } from './note.service';
 
 @Controller('notes')
@@ -33,6 +34,11 @@ export class NoteController {
   @Get('/:id')
   async getById(@Param('id') id: string) {
     return this.noteService.findIncludeContentById(null, id);
+  }
+
+  @Post('/:id')
+  async update(@Param('id') id: string, @Body() dto: NoteUpdateDto) {
+    return this.noteService.update(null, id, dto);
   }
 
   @Post('publish/:id')

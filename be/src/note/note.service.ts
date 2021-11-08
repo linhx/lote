@@ -21,7 +21,9 @@ import { FileService } from '../file/file.service';
 import HtmlUtils from './utilities/HtmlUtils';
 import * as StringUtils from '../utilites/StringUtils';
 import * as FileUtils from '../utilites/FileUtils';
+import * as ArrayUtils from '../utilites/ArrayUtils';
 import NoteDto from './dtos/response/NoteDto';
+import NoteUpdateDto from './dtos/request/NoteUpdateDto';
 
 @Injectable()
 export class NoteService {
@@ -75,6 +77,52 @@ export class NoteService {
     });
   }
 
+  async update(session: CSession, id: string, dto: NoteUpdateDto) {
+    return this.db.withTransaction(session, async (_session) => {
+      const oldNote = await this.findById(_session, id);
+      if (!oldNote) {
+        throw new BusinessError('error.note.notfound');
+      }
+      const { content, ...rest } = dto;
+
+      const images = [];
+      if (rest.banner) {
+        images.push(rest.banner);
+      }
+      for (let op of content.ops) {
+        if (op.insert?.imagec) {
+          images.push(op.insert?.imagec.id);
+        }
+      }
+
+      const diffImages = ArrayUtils.diffBoth(
+        oldNote.images,
+        images,
+        (oldImgId, newImgId) => oldImgId === newImgId,
+      );
+
+      const deleteImages = diffImages.left;
+      this.fileService.deleteFileByIds(_session, deleteImages);
+
+      const newImages = diffImages.right;
+      // make images not temporary files
+      await this.fileService.permanentFile(_session, newImages);
+
+      oldNote.title = rest.title;
+      oldNote.permalink = rest.permalink;
+      oldNote.banner = rest.banner;
+      oldNote.overview = rest.overview;
+      oldNote.overview = rest.overview;
+      oldNote.images = images;
+      oldNote.tags = rest.tags;
+      oldNote.category = rest.category;
+
+      fs.writeFileSync(oldNote.content, JSON.stringify(content));
+
+      return oldNote.save({ session: _session });
+    });
+  }
+
   async publishById(session: CSession, id: string) {
     return this.db.withTransaction(session, async (_session) => {
       const note = await this.findById(_session, id);
@@ -120,7 +168,7 @@ export class NoteService {
     });
   }
 
-  async findById(session: CSession, id: string) {
+  async findById(session: CSession, id: string): Promise<NoteDocument> {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel.findById(id).session(ss).exec();
     });

@@ -64,6 +64,29 @@ export class FileService {
     });
   }
 
+  async deleteFileById(session: CSession, id: string) {
+    const deletedFile = await this.db.withTransaction(session, (_session) => {
+      return this.fileModel.findByIdAndDelete(id).session(_session).exec();
+    });
+
+    fs.unlinkSync(deletedFile.path);
+    return deletedFile;
+  }
+
+  async deleteFileByIds(session: CSession, ids: string[]) {
+    return this.db.withTransaction(session, (_session) => {
+      const allPromises = ids.map((id) => {
+        return new Promise((resolve, reject) => {
+          this.deleteFileById(_session, id)
+            .then((rs) => resolve(rs))
+            .catch((e) => reject(e));
+        });
+      });
+
+      return Promise.all(allPromises);
+    });
+  }
+
   saveTempFile(session: CSession, file: Express.Multer.File) {
     return this.db.withTransaction(session, (_session) => {
       const fileModel = new this.fileModel({
