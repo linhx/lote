@@ -50,7 +50,7 @@ import CButton from '../../components/CButton.vue';
 import CFileInput from '../../components/CFileInput.vue';
 import NoteRepository from '../../repositories/NoteRepository';
 import FileRepository from "../../repositories/FileRepository";
-import NoteUpdateDto from '../../dtos/NoteUpdateDto';
+import NoteDto from '../../dtos/NoteDto';
 
 export default defineComponent({
   components: {
@@ -70,7 +70,7 @@ export default defineComponent({
   },
   data (): {
     isLoading: boolean,
-    note: NoteUpdateDto,
+    note: NoteDto,
     noteBanner?: File
   } {
     return {
@@ -92,10 +92,28 @@ export default defineComponent({
       if (this.noteBanner) {
         const file = await FileRepository.uploadTempFile(this.noteBanner);
         return file.id;
+      } else {
+        return this.note.banner;
       }
     },
     async onSave() {
-      // TODO
+      try {
+        this.isLoading = true;
+        const banner = await this.uploadNoteBanner();
+        const content = (<any>this.$refs.editor).getContents();
+        const {
+          id,
+          ...dto
+        } = this.note;
+        await NoteRepository.update(
+          id, {
+            ...dto,
+            banner,
+            content
+          });
+      } finally {
+        this.isLoading = false;
+      }
     },
     onChangeBanner(e: Event) {
       const target = (<HTMLInputElement> e.target);
