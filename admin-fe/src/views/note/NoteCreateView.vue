@@ -51,6 +51,12 @@ import NoteRepository from '../../repositories/NoteRepository';
 import FileRepository from "../../repositories/FileRepository";
 import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
 
+const warningUnsave = (e: any) => {
+  const confirmationMessage = 'Warning unsaved changes';
+  (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+  return confirmationMessage;
+}
+
 export default defineComponent({
   components: {
     CField,
@@ -120,6 +126,13 @@ export default defineComponent({
       }
       this.noteBanner = file;
     }
-  }
+  },
+  created() {
+    window.addEventListener('beforeunload', warningUnsave)
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('beforeunload', warningUnsave)
+  },
 });
 </script>
