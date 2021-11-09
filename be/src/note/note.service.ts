@@ -63,7 +63,7 @@ export class NoteService {
       const note = await newNote.save({ session: _session });
 
       // create folder
-      const folder = path.join(NOTE_DATA_DRAFT_FOLDER, note._id);
+      const folder = path.join(NOTE_DATA_DRAFT_FOLDER, `${note._id}`);
       fs.mkdirSync(folder, {
         recursive: true,
       });
