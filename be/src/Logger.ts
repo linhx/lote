@@ -11,7 +11,7 @@ const format = printf(({ timestamp, level, label, message, stack, ...others }:
   const errStack = stack ? `\n${stack}` : '';
 
   let meta = '';
-  if (level !== 'error') {
+  if (level === 'error') {
     const args = others[Symbol.for('splat')];
     meta = args? `\n\t${args.map(safeStringify).join('\n\t')}` : '';
   }
