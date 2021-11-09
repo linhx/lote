@@ -16,6 +16,6 @@ export default {
   },
 
   getContent(permalink: string): Promise<string> {
-    return api.get(`files/static/note/${permalink}/index.html`)
+    return api.get(`notes/f/${permalink}/index.html`)
   }
 }

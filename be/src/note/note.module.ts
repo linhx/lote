@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { NoteController } from './note.controller';
 import { NoteService } from './note.service';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -11,6 +11,7 @@ import { FileModule } from '../file/file.module';
     MongooseModule.forFeature([{ name: 'Note', schema: NoteSchema }]),
     CommonModule,
     FileModule,
+    CacheModule.register()
   ],
   controllers: [NoteController],
   providers: [NoteService],

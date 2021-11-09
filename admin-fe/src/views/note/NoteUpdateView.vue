@@ -34,6 +34,8 @@
       <div class="mt-5 md:mt-0 md:col-span-3 items-center">
         <c-button variant="green" @click="onSave" :disabled="isLoading">Save</c-button>
         <c-button variant="green" class="ml-2" @click="publish" :disabled="isLoading">Publish</c-button>
+        <c-button variant="red" class="ml-2" @click="softDelete" :disabled="isLoading">Soft Delete</c-button>
+        <c-button variant="red" class="ml-2" @click="hardDelete" :disabled="isLoading">Delete</c-button>
       </div>
     </div>
   </div>
@@ -138,6 +140,32 @@ export default defineComponent({
         this.isLoading = false;
         alert(e.message);
       });
+    },
+    softDelete() {
+      var result = confirm("Xóa?");
+      if (result) {
+        this.isLoading = true;
+        NoteRepository.softDelete(this.id)
+        .then(() => {
+          this.isLoading = false;
+        }).catch((e: Error) => {
+          this.isLoading = false;
+          alert(e.message);
+        });
+      }
+    },
+    hardDelete() {
+      var result = confirm("Xóa hoàn toàn?");
+      if (result) {
+        this.isLoading = true;
+        NoteRepository.delete(this.id)
+        .then(() => {
+          this.isLoading = false;
+        }).catch((e: Error) => {
+          this.isLoading = false;
+          alert(e.message);
+        });
+      }
     }
   },
 

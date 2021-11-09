@@ -130,9 +130,13 @@ export class NoteService {
     });
   }
 
+  private createNotePublishFolder(permalink: string) {
+    return path.join(NOTE_PUBLISH_FOLDER, permalink)
+  }
+
   async publish(session: CSession, note: NoteDocument) {
     return this.db.withTransaction(session, async (_session) => {
-      const folder = path.join(NOTE_PUBLISH_FOLDER, note.permalink);
+      const folder = this.createNotePublishFolder(note.permalink);
 
       fs.rmdirSync(folder, { recursive: true });
       fs.mkdirSync(folder, {
@@ -194,6 +198,19 @@ export class NoteService {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel
         .findOne({
+          permalink,
+          isPublished: true,
+          isDeleted: false,
+        })
+        .session(ss)
+        .exec();
+    });
+  }
+
+  async existsPublishedByPermalink(session: CSession, permalink: string) {
+    return this.db.withTransaction(session, (ss) => {
+      return this.noteModel
+        .count({
           permalink,
           isPublished: true,
           isDeleted: false,
@@ -269,6 +286,35 @@ export class NoteService {
       const count = await this.noteModel.count().exec();
 
       return PageDto.create(items, dto.page, dto.limit, count);
+    });
+  }
+
+  async deleteById(session: CSession, id: string) {
+    return this.db.withTransaction(session, async (ss) => {
+      const note = await this.noteModel.findByIdAndDelete(id, { session: ss });
+      if (!note) {
+        throw new Error('error.note.delete.notfound');
+      }
+
+      await this.fileService.deleteFileByIds(ss, note.images);
+
+      fs.unlinkSync(note.content);
+      const folder = this.createNotePublishFolder(note.permalink);
+      fs.rmdirSync(folder, { recursive: true });
+    });
+  }
+
+  async softDeleteById(session: CSession, id: string) {
+    return this.db.withTransaction(session, async (ss) => {
+      const note = await this.noteModel.findByIdAndUpdate(id, {
+        isDeleted: true,
+      }, {
+        session: ss
+      })
+      if (!note) {
+        throw new Error('error.note.delete.notfound');
+      }
+      return note;
     });
   }
 }
