@@ -107,7 +107,7 @@ export class FileService {
     if (!filesId || filesId.length === 0) {
       return null;
     }
-    return this.db.withTransaction(session, (_session) => {
+    return this.db.withTransaction(session, async (_session) => {
       return this.fileModel.updateMany(
         {
           _id: {

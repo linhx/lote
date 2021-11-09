@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectConnection } from '@nestjs/mongoose';
-import { Session } from 'inspector';
 import { ClientSession, Connection } from 'mongoose';
 
 export type CSession = ClientSession | undefined;
@@ -11,9 +10,17 @@ export class Db {
 
   async withTransaction(
     session: CSession,
-    callback: (session: CSession) => any,
+    callback: (session: CSession) => Promise<any>,
   ) {
-    const _session = session ? session : await this.conn.startSession();
-    return callback(_session);
+    if (session) {
+      return callback(session);
+    } else {
+      const _session = await this.conn.startSession();
+      let result;
+      await _session.withTransaction<any>(async (ss) => {
+        result = await callback(ss);
+      });
+      return result;
+    }
   }
 }
