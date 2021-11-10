@@ -18,13 +18,16 @@ export const diffBoth = (
   const diff1 = [];
   const diff2Index: boolean[] = new Array(arr2.length);
   for (const ele1 of arr1) {
+    let isInclude = false;
     for (let i = 0; i < arr2.length; i++) {
       const ele2 = arr2[i];
-      if (!compare(ele1, ele2)) {
-        diff1.push(ele1);
-      } else {
+      if (compare(ele1, ele2)) {
+        isInclude = true;
         diff2Index[i] = true;
       }
+    }
+    if (!isInclude) {
+      diff1.push(ele1);
     }
   }
 
