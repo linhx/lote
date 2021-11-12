@@ -61,6 +61,7 @@ export default defineComponent({
   mounted() {
     this.$editor = new CQuill(`#${this.editorId}`, {
       theme: 'bubble',
+      scrollingContainer: 'html',
       modules: {
         toolbar: [
           [{ "font": [] }, { "size": ["small", false, "large", "huge"] }],
@@ -111,8 +112,5 @@ export default defineComponent({
 }
 .ql-clipboard {
   position: fixed;
-  display: none;
-  left: 50%;
-  top: 50%;
 }
 </style>
