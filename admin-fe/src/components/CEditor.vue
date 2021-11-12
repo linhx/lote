@@ -109,4 +109,10 @@ export default defineComponent({
   border-bottom-right-radius: 0.375rem;
   font-size: 16px;
 }
+.ql-clipboard {
+  position: fixed;
+  display: none;
+  left: 50%;
+  top: 50%;
+}
 </style>
