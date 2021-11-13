@@ -5,7 +5,7 @@
         <h2>Linhx's Notes</h2>
       </div>
       <note-preview
-        class="py-3 border-b-2"
+        class="py-3 border-b-1"
         v-for="note in noteList?.items"
         :key="note.id"
         :note="note"

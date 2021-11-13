@@ -4,8 +4,8 @@
       <img src="../assets/img/icon-home.png" alt="home" class="w-10 m-3 rounded-full border-2"/>
     </router-link>
     <div class="w-full md:max-w-3xl mx-auto pt-10">
-      <div class="font-bold text-2xl">
-        <h2>{{ note?.title }}</h2>
+      <div class="font-bold text-3xl">
+        <h2 class="text-orange-600">{{ note?.title }}</h2>
         <hr/>
       </div>
       <div class="text-right text-gray-600 mr-2 text-sm">
