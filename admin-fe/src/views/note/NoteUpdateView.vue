@@ -53,9 +53,11 @@ import CFileInput from '../../components/CFileInput.vue';
 import NoteRepository from '../../repositories/NoteRepository';
 import FileRepository from "../../repositories/FileRepository";
 import NoteDto from '../../dtos/NoteDto';
+import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
+
+const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
 const warningUnsave = (e: any) => {
-  const confirmationMessage = 'Warning unsaved changes';
   (e || window.event).returnValue = confirmationMessage; //Gecko + IE
   return confirmationMessage;
 }
@@ -169,9 +171,6 @@ export default defineComponent({
     }
   },
 
-  created() {
-    window.addEventListener('beforeunload', warningUnsave)
-  },
   beforeMount() {
     NoteRepository.findById(this.id).then(res => {
       const {
@@ -187,8 +186,17 @@ export default defineComponent({
       alert(e.message);
     });
   },
-  beforeDestroy() {
-    window.removeEventListener('beforeunload', warningUnsave)
+  beforeRouteEnter() {
+    window.addEventListener('beforeunload', warningUnsave)
   },
+  beforeRouteLeave(to, from , next)  {
+    const answer = window.confirm(confirmationMessage)
+    if (answer) {
+      window.removeEventListener('beforeunload', warningUnsave)
+      next()
+    } else {
+      next(false)
+    }
+  }
 });
 </script>

@@ -51,8 +51,9 @@ import NoteRepository from '../../repositories/NoteRepository';
 import FileRepository from "../../repositories/FileRepository";
 import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
 
+const confirmationMessage = 'Warning unsaved changes'; // TODO message source
+
 const warningUnsave = (e: any) => {
-  const confirmationMessage = 'Warning unsaved changes';
   (e || window.event).returnValue = confirmationMessage; //Gecko + IE
   return confirmationMessage;
 }
@@ -127,12 +128,17 @@ export default defineComponent({
       this.noteBanner = file;
     }
   },
-  created() {
+  beforeRouteEnter() {
     window.addEventListener('beforeunload', warningUnsave)
   },
-
-  beforeDestroy() {
-    window.removeEventListener('beforeunload', warningUnsave)
-  },
+  beforeRouteLeave(to, from , next)  {
+      const answer = window.confirm(confirmationMessage)
+    if (answer) {
+      window.removeEventListener('beforeunload', warningUnsave)
+      next()
+    } else {
+      next(false)
+    }
+  }
 });
 </script>
