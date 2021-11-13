@@ -30,6 +30,10 @@
   @apply bg-green-700;
 }
 
+.border-b-1 {
+  border-bottom-width: 1px;
+}
+
 .h-auto-important {
   height: auto !important;
   max-height: 1000px !important;

@@ -7,12 +7,12 @@ import IdMixin from './mixins/IdMixin';
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    safeId: (suffix: string) => string
-    localId: string
+    safeId: (suffix: string) => string;
+    localId: string;
   }
 }
 
 const app = createApp(App);
 app.use(router);
-app.mixin(IdMixin)
+app.mixin(IdMixin);
 app.mount('#app');

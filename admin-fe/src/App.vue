@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import Home from './components/Home.vue'
+import Home from './components/Home.vue';
+import NavBar from './components/NavBar.vue';
 </script>
 
 <template>
-  <div v-if="show" class="min-h-full flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div><router-link to="/" tag="h2">My note</router-link></div>
+  <nav-bar />
+  <div v-if="show" class="min-h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
     <div class="w-full space-y-8 p-3">
       <router-view />
     </div>

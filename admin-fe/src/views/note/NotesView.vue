@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full md:max-w-4xl mx-auto pt-10">
+  <div class="w-full md:max-w-4xl mx-auto">
     <note-preview
-        class="py-3 border-b-2"
+        class="py-3 border-b-1"
         v-for="note in noteList?.items"
         :key="note.id"
         :note="note"
