@@ -3,7 +3,7 @@
     <div class="md:grid md:grid-cols-3 md:gap-6">
       <div class="mt-5 md:mt-0 md:col-span-1">
         <c-field label="Title">
-          <c-input v-model="note.title" name="title" />
+          <c-input v-model="note.title" name="title" @change="onChangeTitle" />
         </c-field>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-1">
@@ -98,6 +98,9 @@ export default defineComponent({
     }
   },
   methods: {
+    onChangeTitle() {
+      this.note.permalink = convertFreeTextToKebabCase(this.note.title) || '';
+    },
     async uploadNoteBanner() {
       if (this.noteBanner) {
         const file = await FileRepository.uploadTempFile(this.noteBanner);
