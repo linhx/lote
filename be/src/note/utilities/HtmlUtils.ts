@@ -1,7 +1,6 @@
 import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 import * as StringUtils from '../../utilites/StringUtils';
 import * as FileUtils from '../../utilites/FileUtils';
-import { NOTE_URL_BASE } from '../../constants';
 
 export default {
   deltaToHtml(delta: any, noteUrl: string) {

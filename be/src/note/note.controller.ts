@@ -7,10 +7,10 @@ import PublicNoteDto from './dtos/response/PublicNoteDto';
 import { NoteService } from './note.service';
 import * as path from 'path';
 import { Response } from 'express';
-import { NOTE_PUBLISH_FOLDER } from 'src/constants';
+import { NOTE_PUBLISH_FOLDER, PATH_NOTES, PATH_NOTES_FILE } from 'src/constants';
 import { Cache } from 'cache-manager';
 
-@Controller('notes')
+@Controller(PATH_NOTES)
 export class NoteController {
   constructor(private readonly noteService: NoteService,
     @Inject(CACHE_MANAGER) private cacheManager: Cache) {}
@@ -57,7 +57,7 @@ export class NoteController {
   }
 
   @Public()
-  @Get('f/:permalink/:file(*)')
+  @Get(`${PATH_NOTES_FILE}/:permalink/:file(*)`)
   async static(@Param('permalink') permalink: string,
     @Param('file') filePath: string,
     @Res() res: Response) {
