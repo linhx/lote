@@ -67,4 +67,7 @@ export default defineComponent({
 .ql-editor p {
   @apply leading-relaxed;
 }
+.ql-container > .ql-editor ol > li {
+  word-break: break-all;
+}
 </style>
