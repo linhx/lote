@@ -3,7 +3,7 @@
     <router-link to="/">
       <img src="../assets/img/icon-home.png" alt="home" class="w-10 m-3 rounded-full border-2"/>
     </router-link>
-    <div class="w-full md:max-w-4xl mx-auto pt-10">
+    <div class="w-full md:max-w-3xl mx-auto pt-10">
       <div class="font-bold text-2xl">
         <h2>{{ note?.title }}</h2>
         <hr/>
@@ -62,3 +62,9 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="postcss">
+.ql-editor p {
+  @apply leading-relaxed;
+}
+</style>
