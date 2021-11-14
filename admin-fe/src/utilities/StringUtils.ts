@@ -1,4 +1,3 @@
-
 export const isEmpty = (val?: string) => {
   if (!val) {
     return true;

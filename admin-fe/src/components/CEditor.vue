@@ -17,6 +17,7 @@ import { defineComponent, PropType } from 'vue';
 import CQuill from './c-editor/CQuill';
 import Delta from 'quill-delta';
 import FileRepository from '../repositories/FileRepository';
+import * as FileUtils from '../utilities/FileUtils';
 
 export default defineComponent({
   $editor: null,
@@ -37,6 +38,13 @@ export default defineComponent({
     }
   },
   methods: {
+    async uploadAndInsertImage(img: File) {
+      const tempFile = await FileRepository.uploadTempFile(img);
+      const range = this.$editor?.getSelection(true);
+      const rangeIndex = range?.index || 0;
+      this.$editor?.insertEmbed(rangeIndex, 'imagec', tempFile, CQuill.sources.USER);
+      this.$editor?.setSelection(rangeIndex + 1, 0, CQuill.sources.SILENT);
+    },
     async onChangeFile(e: Event) {
       const target = (<HTMLInputElement> e.target);
       const file = target.files && target.files.length ? target.files[0] : null;
@@ -45,11 +53,18 @@ export default defineComponent({
       }
       target.value = '';
 
-      const tempFile = await FileRepository.uploadTempFile(file);
-      const range = this.$editor?.getSelection(true);
-      const rangeIndex = range?.index || 0;
-      this.$editor?.insertEmbed(rangeIndex, 'imagec', tempFile, CQuill.sources.USER);
-      this.$editor?.setSelection(rangeIndex + 1, 0, CQuill.sources.SILENT);
+      await this.uploadAndInsertImage(file);
+    },
+    async insertImageBase64(img: string) {
+      const file = await FileUtils.urltoFile(img, FileUtils.randomFileName('png'), 'image/png');
+      if (file) {
+        await this.uploadAndInsertImage(file);
+      }
+    },
+    pasteImage(node: any, delta: any) {
+      const imageBase64 = delta.ops[0]?.insert?.imagec.url;
+      this.insertImageBase64(imageBase64);
+      return new Delta().insert('');
     },
     getContents() {
       return this.$editor?.getContents();
@@ -74,7 +89,12 @@ export default defineComponent({
           ["link", "image", "video"],
           ["clean"]
         ],
-        blotFormatter: {}
+        blotFormatter: {},
+        clipboard: {
+          matchers: [
+            ['IMG', this.pasteImage],
+          ]
+        }
       },
     });
     if (this.content) {
@@ -92,7 +112,7 @@ export default defineComponent({
       } else {
         this.$editor?.format('code-block', false, 'user');
       }
-    })
+    });
   },
   beforeUnmount() {
     this.$editor = null;
