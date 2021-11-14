@@ -32,6 +32,10 @@ export class NoteService {
     private readonly fileService: FileService,
   ) {}
 
+  private createNoteDraftFolder(id: string) {
+    return path.join(NOTE_DATA_DRAFT_FOLDER, id)
+  }
+
   async create(session: CSession, dto: NoteCreateDto) {
     const { content, ...rest } = dto;
     return this.db.withTransaction(session, async (_session) => {
@@ -63,7 +67,7 @@ export class NoteService {
       const note = await newNote.save({ session: _session });
 
       // create folder
-      const folder = path.join(NOTE_DATA_DRAFT_FOLDER, `${note._id}`);
+      const folder = this.createNoteDraftFolder(`${note._id}`);
       fs.mkdirSync(folder, {
         recursive: true,
       });
@@ -298,9 +302,10 @@ export class NoteService {
 
       await this.fileService.deleteFileByIds(ss, note.images);
 
-      fs.unlinkSync(note.content);
-      const folder = this.createNotePublishFolder(note.permalink);
-      fs.rmdirSync(folder, { recursive: true });
+      const draftFolder = this.createNoteDraftFolder(`${note._id}`);
+      fs.rmdirSync(draftFolder, { recursive: true });
+      const publishedFolder = this.createNotePublishFolder(note.permalink);
+      fs.rmdirSync(publishedFolder, { recursive: true });
     });
   }
 
