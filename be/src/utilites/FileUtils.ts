@@ -1,4 +1,3 @@
-import { uuid } from './StringUtils';
 import { nanoid } from 'nanoid';
 
 export const getExt = (name: string) => {

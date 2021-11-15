@@ -150,7 +150,7 @@ export class NoteService {
       const file = path.join(folder, 'index.html');
       const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
       const noteUrl = StringUtils.joinUrl(NOTE_URL_BASE, note.permalink);
-      const contentHtml = HtmlUtils.deltaToHtml(
+      const contentHtml = HtmlUtils.deltaToPublishedHtml(
         JSON.parse(contentJson),
         noteUrl,
       );
@@ -171,7 +171,7 @@ export class NoteService {
           imageFile.path,
           path.join(
             folderImg,
-            `${imageFile._id}.${FileUtils.getExt(imageFile.name)}`,
+            `${imageFile.name}`,
           ),
         );
       }
