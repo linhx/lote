@@ -34,6 +34,7 @@
       <div class="mt-5 md:mt-0 md:col-span-3 items-center">
         <c-button variant="green" @click="onSave" :disabled="isLoading">Save</c-button>
         <c-button variant="green" class="ml-2" @click="publish" :disabled="isLoading">Publish</c-button>
+        <c-button variant="blue" class="ml-2" @click="preview" :disabled="isLoading">Preview</c-button>
         <c-button variant="red" class="ml-2" @click="softDelete" :disabled="isLoading">Soft Delete</c-button>
         <c-button variant="red" class="ml-2" @click="hardDelete" :disabled="isLoading">Delete</c-button>
       </div>
@@ -93,6 +94,7 @@ export default defineComponent({
         content: '',
         tags: [],
         category: 0,
+        publishedAt: undefined,
       },
       noteBanner: undefined
     }
@@ -145,6 +147,9 @@ export default defineComponent({
         this.isLoading = false;
         alert(e.message);
       });
+    },
+    preview() {
+      window.open(`/note/${this.id}/preview`, '_blank')?.focus();
     },
     softDelete() {
       var result = confirm("Xóa?");

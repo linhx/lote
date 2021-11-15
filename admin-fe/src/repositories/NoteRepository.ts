@@ -27,5 +27,8 @@ export default {
   },
   delete(id: string) {
     return api.delete('notes/h/' + id);
+  },
+  getContentPreview(id: string): Promise<string> {
+    return api.get(`notes/${id}/preview`);
   }
 }

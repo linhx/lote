@@ -7,4 +7,5 @@ export default interface NoteDto {
   content: string;
   tags: string[];
   category: number;
+  publishedAt?: Date;
 }
