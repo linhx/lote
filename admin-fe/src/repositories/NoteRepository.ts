@@ -1,5 +1,5 @@
 import PageDto from '../dtos/PageDto';
-import NotePreviewDto from '../dtos/NotePreviewDto';
+import NoteItemListDto from '../dtos/NoteItemListDto';
 import api from './Api'
 import NoteCreateDto from '../dtos/NoteCreateDto';
 import ReqNoteFilterDto from '../dtos/ReqNoteFilterDto';
@@ -7,7 +7,7 @@ import NoteDto from '../dtos/NoteDto';
 import NoteUpdateDto from '../dtos/NoteUpdateDto';
 
 export default {
-  getList(filter: ReqNoteFilterDto): Promise<PageDto<NotePreviewDto>> {
+  getList(filter: ReqNoteFilterDto): Promise<PageDto<NoteItemListDto>> {
     return api.get('notes/all', { params: filter });
   },
   create(dto: NoteCreateDto) {

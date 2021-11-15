@@ -12,6 +12,8 @@ export default class NoteDto {
   content: string;
   isPublished: boolean;
   isDeleted: boolean;
+  publishedAt: Date;
+  updatePublicationAt: Date;
   createdAt: Date;
   updatedAt: Date;
 
@@ -28,6 +30,8 @@ export default class NoteDto {
     dto.content = content;
     dto.isPublished = entity.isPublished;
     dto.isDeleted = entity.isDeleted;
+    dto.publishedAt = entity.publishedAt;
+    dto.updatePublicationAt = entity.updatePublicationAt;
     dto.createdAt = entity.createdAt;
     dto.updatedAt = entity.updatedAt;
     return dto;
