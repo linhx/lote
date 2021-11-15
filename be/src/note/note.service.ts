@@ -171,7 +171,7 @@ export class NoteService {
           imageFile.path,
           path.join(
             folderImg,
-            `${imageFile.name}`,
+            `${imageFile.publishName}`,
           ),
         );
       }
