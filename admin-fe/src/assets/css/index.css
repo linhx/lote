@@ -34,75 +34,23 @@
   border-bottom-width: 1px;
 }
 
-.h-auto-important {
-  height: auto !important;
-  max-height: 1000px !important;
-  -webkit-transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
-  -moz-transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
-  -o-transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
-  -ms-transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
-  transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
+.ql-container {
+  box-sizing: border-box;
+  font-family: "open sans", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  height: 100%;
+  margin: 0px;
+  position: relative;
 }
 
-
-:root {
-  --timeline-border-width: 6px;
-  --timeline-dot-size: var(--timeline-border-width);
-  --timeline-dot-border-radius: calc((var(--timeline-dot-size) + var(--timeline-border-width) * 2)/ 2);
-  --timeline-padding: 16px;
-  --timeline-dot-right: calc(-1 * (var(--timeline-dot-size) + var(--timeline-border-width) + var(--timeline-padding)));
+.ql-container a[target="_blank"]::after {
+  content: url('../img/external-link.svg');
+  margin-left: 2px;
 }
 
-
-.timeline {
-  @apply flex;
+.ql-editor p {
+  @apply leading-relaxed;
 }
-
-.timeline__timewrapper {
-  @apply w-24 flex-shrink-0;
-  padding-right: var(--timeline-padding);
-  justify-content: center;
-}
-
-.timeline__timewrapper__time {
-  @apply flex relative items-center justify-end font-semibold ;
-}
-
-.timeline__timewrapper__dot {
-  @apply absolute border-blue-400 inline-block border-solid;
-  width: var(--timeline-dot-size);
-  height: var(--timeline-dot-size);
-  border-radius: var(--timeline-dot-border-radius);
-  border-width: var(--timeline-border-width);
-  right: var(--timeline-dot-right);
-}
-
-.timeline__content {
-  @apply flex-grow pb-3;
-  padding-left: var(--timeline-padding);
-  border-left: var(--timeline-border-width) solid rgba(229, 231, 235, var(--tw-border-opacity));
-}
-
-.timeline:last-child .timeline__content {
-  @apply pb-0;
-}
-
-.timeline__content > p {
-  margin-top: 0;
-}
-
-.timeline__content > p:last-child {
-  margin-bottom: 0;
-}
-
-
-img[alt^=banner] {
-  @apply w-full object-cover object-left-top cursor-pointer;
-  height: 300px;
-  max-height: 300px;
-  -webkit-transition: max-height 0.3s ease-in-out, box-shadow 0.6s linear;
-  -moz-transition: max-height 0.3s ease-in-out, box-shadow 0.6s linear;
-  -o-transition: max-height 0.3s ease-in-out, box-shadow 0.6s linear;
-  -ms-transition: max-height 0.3s ease-in-out, box-shadow 0.6s linear;
-  transition: max-height 0.3s ease-in-out, box-shadow 0.6s linear;
+.ql-container > .ql-editor ol > li {
+  word-break: break-all;
 }

@@ -330,7 +330,8 @@ export class NoteService {
         throw new Error('error.note.preview.notfound');
       }
 
-      return HtmlUtils.deltaToPreviewHtml(note.content);
+      const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
+      return HtmlUtils.deltaToPreviewHtml(JSON.parse(contentJson));
     });
   }
 }

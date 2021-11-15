@@ -7,7 +7,7 @@
     <div class="text-right text-gray-600 mr-2 text-sm">
       <span>{{ publishedDate }}</span>
     </div>
-    <div class="ql-container ql-snow border-0">
+    <div class="ql-container border-0">
       <div ref="content" class="ql-editor"></div>
     </div>
   </div>
@@ -57,12 +57,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="postcss">
-.ql-editor p {
-  @apply leading-relaxed;
-}
-.ql-container > .ql-editor ol > li {
-  word-break: break-all;
-}
-</style>

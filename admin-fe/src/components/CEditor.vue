@@ -128,7 +128,6 @@ export default defineComponent({
 .c-editor > .ql-container {
   border-bottom-left-radius: 0.375rem;
   border-bottom-right-radius: 0.375rem;
-  font-size: 16px;
 }
 .ql-clipboard {
   position: fixed;
