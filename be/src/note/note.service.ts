@@ -194,6 +194,9 @@ export class NoteService {
 
   async findIncludeContentById(session: CSession, id: string) {
     const note = await this.findById(session, id);
+    if (!note) {
+      throw new BusinessError('error.note.notfound');
+    }
     const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
     return NoteDto.fromEntity(note, contentJson);
   }
