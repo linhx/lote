@@ -5,6 +5,7 @@ import { CSession, Db } from '../common/db';
 import { CFile, CFileDocument } from './entities/CFile';
 import { Cron } from '@nestjs/schedule';
 import * as DateTimeUtils from '../utilites/DateTimeUtils';
+import * as FileUtils from '../utilites/FileUtils';
 import * as fs from 'fs';
 import * as path from 'path';
 import { FILE_TEMP_URL_PREFIX } from 'src/constants';
@@ -34,9 +35,9 @@ export class FileService {
       const promisesDeleteTempFile = expiredTempFiles.map((e) => {
         return new Promise((resolve, reject) => {
           try {
-            fs.unlinkSync(e.path);
-          } catch (e) {
-            this.logger.error('error.file.cantDeleteTemp', e.stack);
+            FileUtils.unlinkSyncSilentEnoent(e.path);
+          } catch (err) {
+            this.logger.error('error.file.cantDeleteTemp', err.stack);
             resolve(false);
             return;
           }
@@ -44,8 +45,8 @@ export class FileService {
             .then(() => {
               resolve(true);
             })
-            .catch((e) => {
-              this.logger.error('error.file.cantDeleteTempDb', e.stack);
+            .catch((err) => {
+              this.logger.error('error.file.cantDeleteTempDb', err.stack);
               resolve(false);
             });
         });
@@ -69,7 +70,7 @@ export class FileService {
       return this.fileModel.findByIdAndDelete(id).session(_session).exec();
     });
 
-    fs.unlinkSync(deletedFile.path);
+    FileUtils.unlinkSyncSilentEnoent(deletedFile.path);
     return deletedFile;
   }
 
