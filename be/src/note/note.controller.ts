@@ -86,4 +86,9 @@ export class NoteController {
   async softDelete(@Param('id') id: string) {
     await this.noteService.softDeleteById(null, id);
   }
+
+  @Get(':id/preview')
+  async preview(@Param('id') id: string) {
+    return this.noteService.getContentPreview(null, id);
+  }
 }

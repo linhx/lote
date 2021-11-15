@@ -315,11 +315,22 @@ export class NoteService {
         isDeleted: true,
       }, {
         session: ss
-      })
+      });
       if (!note) {
         throw new Error('error.note.delete.notfound');
       }
       return note;
+    });
+  }
+
+  async getContentPreview(session: CSession, id: string) {
+    return this.db.withTransaction(session, async (ss) => {
+      const note = await this.findById(ss, id);
+      if (!note) {
+        throw new Error('error.note.preview.notfound');
+      }
+
+      return HtmlUtils.deltaToPreviewHtml(note.content);
     });
   }
 }
