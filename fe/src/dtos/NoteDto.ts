@@ -1,7 +1,8 @@
 export default interface NoteDto {
-  id: number,
-  permalink: string,
-  title: string,
-  publishedAt: Date,
-  updatePublicationAt: Date,
+  id: number;
+  permalink: string;
+  title: string;
+  tags: string[];
+  publishedAt: Date;
+  updatePublicationAt: Date;
 }
