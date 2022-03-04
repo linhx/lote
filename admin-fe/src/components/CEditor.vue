@@ -78,23 +78,27 @@ export default defineComponent({
       theme: 'bubble',
       scrollingContainer: 'html',
       modules: {
-        toolbar: [
-          [{ "font": [] }, { "size": ["small", false, "large", "huge"] }],
-          ["bold", "italic", "underline", "strike", "code"],
-          [{ "color": [] }, { "background": [] }],
-          [{ "script": "sub" }, { "script": "super" }],
-          [{ "header": 1 }, { "header": 2 }, "blockquote", "code-block"],
-          [{ "list": "ordered" }, { "list": "bullet" }, { "indent": "-1" }, { "indent": "+1" }],
-          [{ "direction": "rtl" }, { "align": [] }],
-          ["link", "image", "video"],
-          ["clean"]
-        ],
+        toolbar: {
+          container: [
+            [{ 'font': [] }, { 'size': ['small', false, 'large', 'huge'] }],
+            ['bold', 'italic', 'underline', 'strike', 'code'],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'script': 'sub' }, { 'script': 'super' }],
+            [{ 'header': 1 }, { 'header': 2 }, 'blockquote', 'code-block'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+            [{ 'direction': 'rtl' }, { 'align': [] }],
+            ['link', 'image', 'video', 'emoji'],
+            ['clean'],
+          ],
+          handlers: {'emoji': function() {}}
+        },
         blotFormatter: {},
         clipboard: {
           matchers: [
             ['IMG', this.pasteImage],
           ]
-        }
+        },
+        'emoji-toolbar': true,
       },
     });
     if (this.content) {

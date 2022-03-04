@@ -18,3 +18,5 @@ interface ImportMeta {
 }
 
 declare module 'quill-blot-formatter/dist/BlotFormatter';
+
+declare module 'quill-emoji';

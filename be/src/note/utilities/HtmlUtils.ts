@@ -5,8 +5,8 @@ export default {
   deltaToPublishedHtml(delta: any, noteUrl: string) {
     const converter = new QuillDeltaToHtmlConverter(delta.ops);
     converter.renderCustomWith(function (customOp, contextOp) {
+      const val = customOp.insert.value;
       if (customOp.insert.type === 'imagec') {
-        const val = customOp.insert.value;
         const attrs = customOp.attributes;
         const imageUrl = StringUtils.joinUrl(
           noteUrl,
@@ -21,6 +21,8 @@ export default {
           (attrs.style ? `style="${attrs.style}" ` : '') +
           '>'
         );
+      } else if (customOp.insert.type === 'emoji') {
+        return `<span class="ap ap-${val}"></span>`;
       }
     });
     return converter.convert();
@@ -29,8 +31,8 @@ export default {
   deltaToPreviewHtml(delta: any) {
     const converter = new QuillDeltaToHtmlConverter(delta.ops);
     converter.renderCustomWith(function (customOp, contextOp) {
+      const val = customOp.insert.value;
       if (customOp.insert.type === 'imagec') {
-        const val = customOp.insert.value;
         const attrs = customOp.attributes;
         return (
           `<img src="${val.url}" ` +
@@ -41,6 +43,8 @@ export default {
           (attrs.style ? `style="${attrs.style}" ` : '') +
           '>'
         );
+      } else if (customOp.insert.type === 'emoji') {
+        return `<span class="ap ap-${val}"></span>`;
       }
     });
     return converter.convert();

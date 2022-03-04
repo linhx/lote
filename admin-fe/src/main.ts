@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import 'quill/dist/quill.bubble.css';
+import 'quill-emoji/dist/quill-emoji.css';
 import './assets/css/index.css';
 import router from './router';
 import IdMixin from './mixins/IdMixin';

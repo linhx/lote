@@ -54,3 +54,13 @@
 .ql-container > .ql-editor ol > li {
   word-break: break-all;
 }
+
+body .ap{
+  background-image:url('../img/sheet_messenger_64_indexed_128.png') !important;
+  vertical-align: middle;
+}
+
+body .ql-emojiblot {
+  vertical-align: middle;
+  display: inline;
+}
