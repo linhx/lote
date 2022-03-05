@@ -18,8 +18,8 @@ import {
 import BusinessError from 'src/exceptions/BusinessError';
 import { FileService } from '../file/file.service';
 import HtmlUtils from './utilities/HtmlUtils';
+import * as NoteComponent from './utilities/NoteComponent';
 import * as StringUtils from '../utilites/StringUtils';
-import * as FileUtils from '../utilites/FileUtils';
 import * as ArrayUtils from '../utilites/ArrayUtils';
 import NoteDto from './dtos/response/NoteDto';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
@@ -138,6 +138,9 @@ export class NoteService {
     return path.join(NOTE_PUBLISH_FOLDER, permalink)
   }
 
+  /**
+   * create Vue component file to the frontend project. and copy images to the frontend project
+   */
   async publish(session: CSession, note: NoteDocument) {
     return this.db.withTransaction(session, async (_session) => {
       const folder = this.createNotePublishFolder(note.permalink);
@@ -147,14 +150,10 @@ export class NoteService {
         recursive: true,
       });
 
-      const file = path.join(folder, 'index.html');
+      const file = path.join(folder, `${note.permalink}.vue`);
       const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
-      const noteUrl = StringUtils.joinUrl(NOTE_URL_BASE, note.permalink);
-      const contentHtml = HtmlUtils.deltaToPublishedHtml(
-        JSON.parse(contentJson),
-        noteUrl,
-      );
-      fs.writeFileSync(file, contentHtml);
+
+      fs.writeFileSync(file, NoteComponent.create(note, JSON.parse(contentJson)));
 
       const imageFiles = await this.fileService.findByIds(
         _session,

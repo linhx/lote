@@ -1,17 +1,13 @@
 import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
-import * as StringUtils from '../../utilites/StringUtils';
 
 export default {
-  deltaToPublishedHtml(delta: any, noteUrl: string) {
+  deltaToPublishedHtml(delta: any) {
     const converter = new QuillDeltaToHtmlConverter(delta.ops);
     converter.renderCustomWith(function (customOp, contextOp) {
       const val = customOp.insert.value;
       if (customOp.insert.type === 'imagec') {
         const attrs = customOp.attributes;
-        const imageUrl = StringUtils.joinUrl(
-          noteUrl,
-          `img/${val.name}`,
-        );
+        const imageUrl = `/img/${val.name}`;
         return (
           `<img src="${imageUrl}" ` +
           (attrs.alt ? `alt="${attrs.alt}" ` : '') +
