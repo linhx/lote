@@ -1,11 +1,17 @@
+import { NOTE_PUBLISH_BASE_URL } from 'src/constants';
 import HtmlUtils from './HtmlUtils';
 
-export const create = (note: { title: string, tags: string[], publishedAt: Date }, delta: any) => {
-  const content = HtmlUtils.deltaToPublishedHtml(delta);
+export const create = (note: { title: string, tags: string[], publishedAt: Date, permalink: string }, delta: any) => {
+  const content = HtmlUtils.deltaToPublishedHtml(delta, note, NOTE_PUBLISH_BASE_URL);
+  let tags = '[]';
+  if (note.tags && note.tags.length) {
+    tags = `['${note.tags.join('\',\'')}']`
+  }
+  const publishedAt = note.publishedAt.toISOString();
   return `<template>
   <div class="">
     <router-link to="/">
-      <img src="../assets/img/icon-home.png" alt="home" class="w-10 m-3 rounded-full border-2"/>
+      <img src="../src/assets/img/icon-home.png" alt="home" class="w-10 m-3 rounded-full border-2"/>
     </router-link>
     <div class="w-full md:max-w-3xl mx-auto py-10">
       <div class="font-bold text-3xl">
@@ -47,9 +53,9 @@ export default defineComponent({
   } {
     return {
       note: {
-        title: ${note.title},
-        tags: [${note.tags}],
-        publishedAt: ${note.publishedAt}
+        title: '${note.title}',
+        tags: ${tags},
+        publishedAt: '${publishedAt}'
       }
     }
   },
@@ -69,14 +75,5 @@ export default defineComponent({
     });
   }
 })
-</script>
-
-<style lang="postcss">
-.ql-editor p {
-  @apply leading-relaxed;
-}
-.ql-container > .ql-editor ol > li {
-  word-break: break-all;
-}
-</style>`;
+</script>`;
 }

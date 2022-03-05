@@ -8,7 +8,10 @@ export const STATIC_FOLDER = process.env.STATIC_FOLDER.startsWith('/')
   ? process.env.STATIC_FOLDER
   : join(__dirname, process.env.STATIC_FOLDER);
 
+export const NOTE_PUBLISH_BASE_URL = process.env.NOTE_PUBLISH_BASE_URL;
 export const NOTE_PUBLISH_FOLDER = process.env.NOTE_PUBLISH_FOLDER;
+export const NOTE_IMAGES_PUBLISH_FOLDER = process.env.NOTE_IMAGES_PUBLISH_FOLDER;
+export const PUBLISH_SCRIPT = process.env.PUBLISH_SCRIPT;
 
 export const FILE_TEMP_FOLDER =
   process.env.FILE_TEMP_FOLDER && process.env.FILE_TEMP_FOLDER.startsWith('/')

@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
+import { exec } from 'child_process';
 import { Note, NoteDocument } from './entities/Note';
 import NoteCreateDto from './dtos/request/NoteCreateDto';
 import { Model } from 'mongoose';
@@ -12,8 +13,9 @@ import * as path from 'path';
 import { CSession, Db } from '../common/db';
 import {
   NOTE_DATA_DRAFT_FOLDER,
+  NOTE_IMAGES_PUBLISH_FOLDER,
   NOTE_PUBLISH_FOLDER,
-  NOTE_URL_BASE,
+  PUBLISH_SCRIPT,
 } from 'src/constants';
 import BusinessError from 'src/exceptions/BusinessError';
 import { FileService } from '../file/file.service';
@@ -23,9 +25,12 @@ import * as StringUtils from '../utilites/StringUtils';
 import * as ArrayUtils from '../utilites/ArrayUtils';
 import NoteDto from './dtos/response/NoteDto';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
+import * as FileUtils from '../utilites/FileUtils';
 
 @Injectable()
 export class NoteService {
+  private readonly logger = new Logger(NoteService.name);
+
   constructor(
     @InjectModel(Note.name) private noteModel: Model<NoteDocument>,
     private readonly db: Db,
@@ -134,25 +139,16 @@ export class NoteService {
     });
   }
 
-  private createNotePublishFolder(permalink: string) {
-    return path.join(NOTE_PUBLISH_FOLDER, permalink)
-  }
-
   /**
    * create Vue component file to the frontend project. and copy images to the frontend project
    */
   async publish(session: CSession, note: NoteDocument) {
     return this.db.withTransaction(session, async (_session) => {
-      const folder = this.createNotePublishFolder(note.permalink);
+      const noteComponentFolder = NOTE_PUBLISH_FOLDER;
 
-      fs.rmdirSync(folder, { recursive: true });
-      fs.mkdirSync(folder, {
-        recursive: true,
-      });
-
-      const file = path.join(folder, `${note.permalink}.vue`);
+      const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
+      FileUtils.unlinkSyncSilentEnoent(file);
       const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
-
       fs.writeFileSync(file, NoteComponent.create(note, JSON.parse(contentJson)));
 
       const imageFiles = await this.fileService.findByIds(
@@ -160,8 +156,9 @@ export class NoteService {
         note.images,
       );
 
-      const folderImg = path.join(folder, 'img');
-      fs.mkdirSync(folderImg, {
+      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, 'img', note.permalink);
+      fs.rmdirSync(imagesFolder, { recursive: true });
+      fs.mkdirSync(imagesFolder, {
         recursive: true,
       });
 
@@ -169,11 +166,24 @@ export class NoteService {
         fs.copyFileSync(
           imageFile.path,
           path.join(
-            folderImg,
+            imagesFolder,
             `${imageFile.publishName}`,
           ),
         );
       }
+
+      exec('sh ' + PUBLISH_SCRIPT, (error, stdout, stderr) => {
+        if (error) {
+          this.logger.error(`error: ${error.message}`);
+          return;
+        }
+        if (stderr) {
+          this.logger.log(`stderr: ${stderr}`);
+          console.log(`stderr: ${stderr}`);
+          return;
+        }
+        this.logger.log(`stdout: ${stdout}`);
+      });
 
       note.isPublished = true;
       if (!note.publishedAt) {
@@ -306,8 +316,7 @@ export class NoteService {
 
       const draftFolder = this.createNoteDraftFolder(`${note._id}`);
       fs.rmdirSync(draftFolder, { recursive: true });
-      const publishedFolder = this.createNotePublishFolder(note.permalink);
-      fs.rmdirSync(publishedFolder, { recursive: true });
+      // TODO delete from published folder
     });
   }
 

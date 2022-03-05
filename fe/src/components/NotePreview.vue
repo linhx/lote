@@ -2,7 +2,7 @@
   <div class="flex">
     <div class="body pl-5 text-left space-y-1 w-full">
       <div>
-        <router-link tag="div" class="text-2xl font-semibold text-orange-600 inline-block" :to="'/note/' + note.permalink">{{ note.title }}</router-link>
+        <router-link tag="div" class="text-2xl font-semibold text-orange-600 inline-block" :to="note.permalink">{{ note.title }}</router-link>
       </div>
       <div class="font-light whitespace-pre-wrap w-full">
         <div class="whitespace-nowrap truncate">{{ note.overview }}</div>

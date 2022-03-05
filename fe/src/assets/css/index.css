@@ -9,3 +9,10 @@
 .text-orange-600 {
   color: rgba(234,88,12,1);
 }
+
+body .ql-editor p {
+  @apply leading-relaxed;
+}
+body .ql-container > .ql-editor ol > li {
+  word-break: break-all;
+}
