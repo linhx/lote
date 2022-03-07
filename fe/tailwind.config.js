@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts}'],
+  purge: ['./index.html', './src/**/*.{vue,js,ts}', './notes/*.{vue,js,ts}'],
   darkMode: false,
   corePlugins: {
   },
