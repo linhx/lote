@@ -28,6 +28,18 @@ export function pathToFile(path: string): string | undefined {
   }
 }
 
+export function permalinkToFile(path: string): string | undefined {
+  let pagePath = decodeURIComponent(path);
+
+  // client production build needs to account for page hash, which is
+  // injected directly in the page's html
+  const pageHash = __VP_HASH_MAP__['note-' + pagePath.toLowerCase()]; // TODO refactor note-
+  if (pageHash) {
+    const base = import.meta.env.BASE_URL;
+    return `${base}assets/note-${pagePath}.${pageHash}.js`;
+  }
+}
+
 export function usePrefetch(route: RouteLocationNormalizedLoaded) {
   if (!window.IntersectionObserver) {
     return

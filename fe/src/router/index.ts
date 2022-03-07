@@ -1,11 +1,11 @@
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 import NotesView from '../views/NotesView.vue';
-import { pathToFile } from './preFetch';
+import { permalinkToFile } from './preFetch';
 
 const noteRoutes: RouteRecordRaw[] = []
 for (const noteChunk in __VP_HASH_MAP__) {
   const path = noteChunk.substring(5);
-  const component = pathToFile(path);
+  const component = permalinkToFile(path);
   if (component) {
     noteRoutes.push({
       path,
