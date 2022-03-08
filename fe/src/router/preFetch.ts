@@ -1,7 +1,6 @@
-// Clone from vitepress
+// idea from vitepress
 
-import { onMounted, onUnmounted, watch } from 'vue';
-import { RouteLocationNormalizedLoaded } from 'vue-router';
+import { onUnmounted } from 'vue';
 
 const hasFetched = new Set<string>()
 const createLink = () => document.createElement('link');
@@ -40,78 +39,82 @@ export function permalinkToFile(path: string): string | undefined {
   }
 }
 
-export function usePrefetch(route: RouteLocationNormalizedLoaded) {
+let observer : IntersectionObserver | null = null;
+const getObserver = () => {
   if (!window.IntersectionObserver) {
-    return
+    return;
   }
-
   let conn
   if (
     (conn = (navigator as any).connection) &&
     (conn.saveData || /2g/.test(conn.effectiveType))
   ) {
     // Don't prefetch if using 2G or if Save-Data is enabled.
-    return
+    return;
+  }
+  if (observer) {
+    return observer;
   }
 
-  const rIC = (window as any).requestIdleCallback || setTimeout
-  let observer: IntersectionObserver | null = null
-
-  const observeLinks = () => {
-    if (observer) {
-      observer.disconnect()
-    }
-
-    observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const link = entry.target as HTMLAnchorElement
-          observer!.unobserve(link)
-          const { pathname } = link
-          if (!hasFetched.has(pathname)) {
-            hasFetched.add(pathname)
-            const pageChunkPath = pathToFile(pathname);
-            doFetch(pageChunkPath);
-          }
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const link = entry.target as HTMLAnchorElement
+        observer!.unobserve(link)
+        const { pathname } = link
+        if (!hasFetched.has(pathname)) {
+          hasFetched.add(pathname)
+          const pageChunkPath = pathToFile(pathname);
+          doFetch(pageChunkPath);
         }
-      })
+      }
     })
+  });
+  return observer;
+}
 
-    rIC(() => {
-      document.querySelectorAll('#app a').forEach((link) => {
-        const { target, hostname, pathname } = link as HTMLAnchorElement
-        const extMatch = pathname.match(/\.\w+$/)
-        if (extMatch && extMatch[0] !== '.html') {
-          return
-        }
-
-        if (
-          // only prefetch same tab navigation, since a new tab will load
-          // the lean js chunk instead.
-          target !== `_blank` &&
-          // only prefetch inbound links
-          hostname === location.hostname
-        ) {
-          if (pathname !== location.pathname) {
-            observer!.observe(link)
-          } else {
-            // No need to prefetch chunk for the current page, but also mark
-            // it as already fetched. This is because the initial page uses its
-            // lean chunk, and if we don't mark it, navigation to another page
-            // with a link back to the first page will fetch its full chunk
-            // which isn't needed.
-            hasFetched.add(pathname)
-          }
-        }
-      })
-    })
-  }
-
-  onMounted(observeLinks)
-
-  watch(() => route.path, observeLinks)
-
+export function removeObserver() {
   onUnmounted(() => {
     observer && observer.disconnect()
   })
+}
+
+export function removePrefetch(link?: HTMLAnchorElement | null) {
+  if (!link) {
+    return;
+  }
+  observer && observer.unobserve(link);
+}
+
+export function usePrefetch(link?: HTMLAnchorElement | null) {
+  if (!link) {
+    return;
+  }
+  const _observer = getObserver();
+  if (!_observer) {
+    return;
+  }
+
+  const rIC = (window as any).requestIdleCallback || setTimeout
+  rIC(() => {
+    const { target, hostname, pathname } = link as HTMLAnchorElement;
+    if (
+      // only prefetch same tab navigation, since a new tab will load
+      // the lean js chunk instead.
+      target !== `_blank` &&
+      // only prefetch inbound links
+      hostname === location.hostname
+    ) {
+      if (pathname !== location.pathname) {
+        _observer!.observe(link)
+      } else {
+        // No need to prefetch chunk for the current page, but also mark
+        // it as already fetched. This is because the initial page uses its
+        // lean chunk, and if we don't mark it, navigation to another page
+        // with a link back to the first page will fetch its full chunk
+        // which isn't needed.
+        hasFetched.add(pathname)
+      }
+    }
+  });
 }

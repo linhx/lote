@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
-import { usePrefetch } from './router/preFetch';
-const route = useRoute();
+import { removeObserver } from './router/preFetch';
 
-usePrefetch(route);
+removeObserver();
 </script>
 
 <template>
