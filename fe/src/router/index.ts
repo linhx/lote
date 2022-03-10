@@ -10,7 +10,12 @@ for (const noteChunk in __VP_HASH_MAP__) {
     noteRoutes.push({
       path,
       component() {
-        return import(component);
+        return import(component).catch(() => {
+          if(navigator.onLine) {
+            return import(component + '?v=' + new Date().toISOString());
+          }
+          alert('Please check your internet connection!');
+        });
       }
     });
   }

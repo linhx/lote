@@ -10,8 +10,7 @@ export const create = (note: { title: string, tags: string[], publishedAt: Date,
   const publishedAt = note.publishedAt.toISOString();
   return `<template>
   <div class="">
-    <prefetch-link to="/">
-      <img src="../src/assets/img/icon-home.png" alt="home" class="w-10 m-3 rounded-full border-2"/>
+    <prefetch-link to="/" class="home-icon">
     </prefetch-link>
     <div class="w-full md:max-w-3xl mx-auto py-10">
       <div class="font-bold text-3xl">
