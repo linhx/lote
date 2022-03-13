@@ -172,25 +172,31 @@ export class NoteService {
         );
       }
 
-      exec('sh ' + PUBLISH_SCRIPT, (error, stdout, stderr) => {
-        if (error) {
-          this.logger.error(`error: ${error.message}`);
-          return;
-        }
-        if (stderr) {
-          this.logger.log(`stderr: ${stderr}`);
-          console.log(`stderr: ${stderr}`);
-          return;
-        }
-        this.logger.log(`stdout: ${stdout}`);
+      const publish = new Promise((resolve, reject) => {
+        exec('sh ' + PUBLISH_SCRIPT, (error, stdout, stderr) => {
+          if (error) {
+            this.logger.error(`error: ${error.message}`);
+            reject(error);
+            return;
+          }
+          if (stderr) {
+            this.logger.log(`stderr: ${stderr}`);
+            console.log(`stderr: ${stderr}`);
+            reject(stderr);
+            return;
+          }
+          resolve(true);
+        });
       });
+      publish.then(() => {
+        note.isPublished = true;
+        if (!note.publishedAt) {
+          note.publishedAt = new Date();
+        }
+        note.updatePublicationAt = new Date();
+        return note.save();
+      })
 
-      note.isPublished = true;
-      if (!note.publishedAt) {
-        note.publishedAt = new Date();
-      }
-      note.updatePublicationAt = new Date();
-      await note.save();
       return note;
     });
   }
