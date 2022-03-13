@@ -56,6 +56,11 @@ export class NoteController {
     return this.noteService.publishById(null, id);
   }
 
+  @Post('unpublish/:id')
+  async unpublish(@Param('id') id: string) {
+    return this.noteService.unpublishById(null, id);
+  }
+
   @Public()
   @Get(`${PATH_NOTES_FILE}/:permalink/:file(*)`)
   async static(@Param('permalink') permalink: string,

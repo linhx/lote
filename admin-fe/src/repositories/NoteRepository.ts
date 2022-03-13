@@ -22,6 +22,9 @@ export default {
   publish(id: string) {
     return api.post('notes/publish/' + id);
   },
+  unpublish(id: string) {
+    return api.post('notes/unpublish/' + id);
+  },
   softDelete(id: string) {
     return api.delete('notes/' + id);
   },

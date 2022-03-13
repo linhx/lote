@@ -181,7 +181,6 @@ export class NoteService {
           }
           if (stderr) {
             this.logger.log(`stderr: ${stderr}`);
-            console.log(`stderr: ${stderr}`);
             reject(stderr);
             return;
           }
@@ -189,6 +188,7 @@ export class NoteService {
         });
       });
       publish.then(() => {
+        note.isDeleted = false;
         note.isPublished = true;
         if (!note.publishedAt) {
           note.publishedAt = new Date();
@@ -196,6 +196,44 @@ export class NoteService {
         note.updatePublicationAt = new Date();
         return note.save();
       })
+
+      return note;
+    });
+  }
+
+  async unpublishById(session: CSession, id: string) {
+    return this.db.withTransaction(session, async (_session) => {
+      const note = await this.findById(_session, id);
+      if (!note) {
+        throw new Error('error.note.unpublish.notfound');
+      }
+      const noteComponentFolder = NOTE_PUBLISH_FOLDER;
+
+      const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
+      FileUtils.unlinkSyncSilentEnoent(file);
+
+      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, 'img', note.permalink);
+      fs.rmdirSync(imagesFolder, { recursive: true });
+
+      const publish = new Promise((resolve, reject) => {
+        exec('sh ' + PUBLISH_SCRIPT, (error, stdout, stderr) => {
+          if (error) {
+            this.logger.error(`error: ${error.message}`);
+            reject(error);
+            return;
+          }
+          if (stderr) {
+            this.logger.log(`stderr: ${stderr}`);
+            reject(stderr);
+            return;
+          }
+          resolve(true);
+        });
+      });
+      publish.then(() => {
+        note.isPublished = false;
+        return note.save();
+      });
 
       return note;
     });
