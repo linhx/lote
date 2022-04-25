@@ -365,15 +365,40 @@ export class NoteService {
   }
 
   async softDeleteById(session: CSession, id: string) {
-    return this.db.withTransaction(session, async (ss) => {
-      const note = await this.noteModel.findByIdAndUpdate(id, {
-        isDeleted: true,
-      }, {
-        session: ss
-      });
+    return this.db.withTransaction(session, async (_session) => {
+      const note = await this.findById(_session, id);
       if (!note) {
         throw new Error('error.note.delete.notfound');
       }
+      const noteComponentFolder = NOTE_PUBLISH_FOLDER;
+
+      const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
+      FileUtils.unlinkSyncSilentEnoent(file);
+
+      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, 'img', note.permalink);
+      fs.rmdirSync(imagesFolder, { recursive: true });
+
+      const publish = new Promise((resolve, reject) => {
+        exec('sh ' + PUBLISH_SCRIPT, (error, stdout, stderr) => {
+          if (error) {
+            this.logger.error(`error: ${error.message}`);
+            reject(error);
+            return;
+          }
+          if (stderr) {
+            this.logger.log(`stderr: ${stderr}`);
+            reject(stderr);
+            return;
+          }
+          resolve(true);
+        });
+      });
+      publish.then(() => {
+        note.isDeleted = true;
+        note.isPublished = false;
+        return note.save();
+      });
+
       return note;
     });
   }
