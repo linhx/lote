@@ -22,7 +22,6 @@ import BusinessError from 'src/exceptions/BusinessError';
 import { FileService } from '../file/file.service';
 import HtmlUtils from './utilities/HtmlUtils';
 import * as NoteComponent from './utilities/NoteComponent';
-import * as StringUtils from '../utilites/StringUtils';
 import * as ArrayUtils from '../utilites/ArrayUtils';
 import NoteDto from './dtos/response/NoteDto';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
