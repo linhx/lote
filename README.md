@@ -6,6 +6,11 @@ Linhx's note
 
 - [ ] View note on development mode
 
+## Prerequire
+
+- Node v16.15.0
+- Mongodb >= v4.0
+
 ## Development
 
 ## Init mongo
