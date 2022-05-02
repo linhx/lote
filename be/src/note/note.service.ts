@@ -73,11 +73,8 @@ export class NoteService {
 
       // create folder
       const folder = this.createNoteDraftFolder(`${note._id}`);
-      fs.mkdirSync(folder, {
-        recursive: true,
-      });
       const file = path.join(folder, 'index.json');
-      fs.writeFileSync(file, JSON.stringify(content));
+      FileUtils.writeFileSync(file, JSON.stringify(content), { recursive: true });
 
       note.content = file;
       await note.save();
@@ -126,7 +123,7 @@ export class NoteService {
       oldNote.category = rest.category;
       oldNote.updatedAt = new Date();
 
-      fs.writeFileSync(oldNote.content, JSON.stringify(content));
+      FileUtils.writeFileSync(oldNote.content, JSON.stringify(content));
 
       return oldNote.save({ session: _session });
     });
@@ -175,7 +172,7 @@ export class NoteService {
       const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
       FileUtils.unlinkSyncSilentEnoent(file);
       const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
-      fs.writeFileSync(file, NoteComponent.create(note, JSON.parse(contentJson)));
+      FileUtils.writeFileSync(file, NoteComponent.create(note, JSON.parse(contentJson)), { recursive: true });
 
       // replace new images
       const imageFiles = await this.fileService.findByIds(

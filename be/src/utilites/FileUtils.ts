@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
 import * as fs from 'fs';
+import path from 'path';
 
 export const getExt = (name: string) => {
   return name?.substring(name?.lastIndexOf('.') + 1);
@@ -27,4 +28,15 @@ export const rmSyncSilentEnoent = (dir: string, options: fs.RmOptions) => {
       throw e;
     }
   }
+}
+
+type WriteFileOptions = fs.WriteFileOptions & { recursive?: boolean };
+export const writeFileSync = (file: string, data: string | NodeJS.ArrayBufferView, options?: WriteFileOptions) => {
+  if (options.recursive) {
+    const dir = path.dirname(file);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+  }
+  fs.writeFileSync(file, data, options);
 }
