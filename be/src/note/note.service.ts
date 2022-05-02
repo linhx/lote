@@ -200,7 +200,9 @@ export class NoteService {
         note.isPublished = true;
         note.updatePublicationAt = new Date();
         return note.save();
-      })
+      }).catch((e: Error) => {
+        this.logger.error('error.publish.cantDeploy', e.stack);
+      });
 
       return note;
     });
@@ -249,6 +251,8 @@ export class NoteService {
       publish.then(() => {
         note.isPublished = false;
         return note.save();
+      }).catch((e: Error) => {
+        this.logger.error('error.unpublish.cantDeleteNote', e.stack);
       });
 
       return note;
@@ -395,6 +399,8 @@ export class NoteService {
         note.isDeleted = true;
         note.isPublished = false;
         return note.save();
+      }).catch((e: Error) => {
+        this.logger.error('error.soltDelete.cantDeleteNote', e.stack);
       });
 
       return note;

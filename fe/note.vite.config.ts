@@ -118,7 +118,7 @@ export default ({ mode }) => {
         external: ['vue'],
         input: {
           ...notes,
-          dummy: 'dummy' // avoid empty rollup input
+          dummy: './dummy.js' // avoid error if rollup input is empty when there are no notes
         },
         preserveEntrySignatures: "allow-extension",
       }
