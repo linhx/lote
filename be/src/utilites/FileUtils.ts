@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import * as fs from 'fs';
-import path from 'path';
+import * as path from 'path';
 
 export const getExt = (name: string) => {
   return name?.substring(name?.lastIndexOf('.') + 1);
