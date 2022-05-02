@@ -35,7 +35,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         ...notes,
-        app: resolve(__dirname, 'index.html')
+        app: resolve(__dirname, 'index.html'),
+        'vue-modules': resolve(__dirname, 'src/vue-modules.ts')
       },
       preserveEntrySignatures: "allow-extension",
     }
