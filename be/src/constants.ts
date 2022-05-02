@@ -6,8 +6,6 @@ export const PATH_NOTES_FILE = 'f';
 
 export const NOTE_FE_BASE_URL = process.env.NOTE_FE_BASE_URL;
 export const NOTE_FE_SOURCE_DIR = process.env.NOTE_FE_SOURCE_DIR;
-export const NOTE_FE_BUILD_DIR = process.env.NOTE_FE_BUILD_DIR;
-export const NOTE_FE_DEPLOY_DIR = process.env.NOTE_FE_DEPLOY_DIR;
 export const NOTE_PUBLISH_DIR = process.env.NOTE_PUBLISH_DIR;
 export const NOTE_IMAGES_PUBLISH_DIR = process.env.NOTE_IMAGES_PUBLISH_DIR;
 export const PUBLISH_SCRIPT = process.env.PUBLISH_SCRIPT;
