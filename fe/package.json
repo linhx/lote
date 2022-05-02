@@ -5,6 +5,7 @@
     "dev": "vite",
     "build": "BUILD_MODE=build vue-tsc --noEmit && vite build && vite --config note.vite.config.ts build --emptyOutDir=false",
     "build-note": "BUILD_MODE=build-note vite --config note.vite.config.ts build",
+    "rebuild-notes": "BUILD_MODE=rebuild-all-notes vite --config note.vite.config.ts build",
     "serve": "vite preview"
   },
   "dependencies": {
