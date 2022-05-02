@@ -168,6 +168,10 @@ export class NoteService {
     return this.db.withTransaction(session, async (_session) => {
       const noteComponentFolder = NOTE_PUBLISH_DIR;
 
+      if (!note.publishedAt) {
+        note.publishedAt = new Date();
+      }
+
       // create note as vue component into the `fe` source code dir
       const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
       FileUtils.unlinkSyncSilentEnoent(file);
