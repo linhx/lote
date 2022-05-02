@@ -2,9 +2,12 @@
 
 Linhx's note
 
+IMPORTANT: can't view a note in development mode
+
 ## TODO
 
 - [ ] View note on development mode
+- [ ] Avoid caching note-chunk-map.js
 
 ## Prerequire
 
