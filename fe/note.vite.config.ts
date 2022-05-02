@@ -9,10 +9,16 @@ declare const __VP_HASH_MAP__: Record<string, string>;
 
 const NOTE_COMPONENT_PREFIX = 'note-';
 const notes: { [name: string]: string } = {};
-fs.readdirSync('./notes').forEach(file => {
-  const noteName = fileNameWithoutExtension(file);
-  notes[NOTE_COMPONENT_PREFIX + noteName] = resolve(__dirname, './notes', file);
-});
+try {
+  fs.readdirSync('./notes').forEach(file => {
+    const noteName = fileNameWithoutExtension(file);
+    notes[NOTE_COMPONENT_PREFIX + noteName] = resolve(__dirname, './notes', file);
+  });
+} catch (e) {
+  if (e.code !== 'ENOENT') {
+    throw e;
+  }
+}
 
 const hashRE = /\.(\w+)\.js$/;
 const vitePressPlugin = ({
@@ -111,7 +117,8 @@ export default ({ mode }) => {
       rollupOptions: {
         external: ['vue'],
         input: {
-          ...notes
+          ...notes,
+          dummy: 'dummy' // avoid empty rollup input
         },
         preserveEntrySignatures: "allow-extension",
       }
