@@ -32,7 +32,7 @@ export const rmSyncSilentEnoent = (dir: string, options: fs.RmOptions) => {
 
 type WriteFileOptions = fs.WriteFileOptions & { recursive?: boolean };
 export const writeFileSync = (file: string, data: string | NodeJS.ArrayBufferView, options?: WriteFileOptions) => {
-  if (options.recursive) {
+  if (options && options.recursive) {
     const dir = path.dirname(file);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
