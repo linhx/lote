@@ -293,7 +293,7 @@ export class NoteService {
   async existsPublishedByPermalink(session: CSession, permalink: string) {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel
-        .count({
+        .countDocuments({
           permalink,
           isPublished: true,
           isDeleted: false,
@@ -317,7 +317,7 @@ export class NoteService {
   existsByPermalink(session: CSession, permalink: string): Promise<Boolean> {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel
-        .count({
+        .countDocuments({
           permalink,
         })
         .session(ss)

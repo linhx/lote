@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import dotenvExpand from 'dotenv-expand';
+import * as dotenvExpand from 'dotenv-expand';
 dotenvExpand(config());
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
