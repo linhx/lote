@@ -54,7 +54,7 @@ const vitePressPlugin = ({
 const getVueModulesFile = (deployDir) => {
   const assetsDir = deployDir.startsWith('/') ? join(deployDir, 'assets') : join(__dirname, deployDir, 'assets');
   if (!fs.existsSync(assetsDir)){
-    throw new Error('assetsDir does not exist. Maybe the DEPLOY_DIR is wrong or you forgot to build the entire project and deploy.');
+    throw new Error(`${assetsDir} does not exist. Maybe the DEPLOY_DIR is wrong or you forgot to build the entire project and deploy.`);
   }
 
   const files = fs.readdirSync(assetsDir);
@@ -63,7 +63,7 @@ const getVueModulesFile = (deployDir) => {
       return file;
     }
   }
-  throw new Error('Maybe the DEPLOY_DIR is wrong or you forgot to build the entire project and deploy.');
+  throw new Error(`Maybe the DEPLOY_DIR (${assetsDir}) is wrong or you forgot to build the entire project and deploy.`);
 }
 
 /**

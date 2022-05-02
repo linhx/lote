@@ -6,7 +6,7 @@ const noteRoutes: RouteRecordRaw[] = []
 
 if (import.meta.env.PROD) {
   for (const noteChunk in __VP_HASH_MAP__) {
-    const path = noteChunk.substring(5);
+    const path = noteChunk;
     const component = permalinkToFile(path);
     if (component) {
       noteRoutes.push({

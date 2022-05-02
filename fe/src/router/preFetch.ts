@@ -21,9 +21,9 @@ export function pathToFile(path: string): string | undefined {
   pagePath = pagePath.slice(base.length);
   // client production build needs to account for page hash, which is
   // injected directly in the page's html
-  const pageHash = __VP_HASH_MAP__['note-' + pagePath.toLowerCase()]; // TODO refactor note-
+  const pageHash = __VP_HASH_MAP__[pagePath.toLowerCase()]; // TODO refactor note-
   if (pageHash) {
-    return `${base}notes/note-${pagePath}.${pageHash}.js`;
+    return `${base}notes/${pagePath}.${pageHash}.js`;
   }
 }
 
@@ -32,10 +32,10 @@ export function permalinkToFile(path: string): string | undefined {
 
   // client production build needs to account for page hash, which is
   // injected directly in the page's html
-  const pageHash = __VP_HASH_MAP__['note-' + pagePath.toLowerCase()]; // TODO refactor note-
+  const pageHash = __VP_HASH_MAP__[pagePath.toLowerCase()]; // TODO refactor note-
   if (pageHash) {
     const base = import.meta.env.BASE_URL;
-    return `${base}notes/note-${pagePath}.${pageHash}.js`;
+    return `${base}notes/${pagePath}.${pageHash}.js`;
   }
 }
 

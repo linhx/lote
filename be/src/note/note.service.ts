@@ -184,7 +184,7 @@ export class NoteService {
         note.images,
       );
       const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_DIR, note.permalink);
-      fs.rmdirSync(imagesFolder, { recursive: true });
+      FileUtils.rmSyncSilentEnoent(imagesFolder, { recursive: true });
       fs.mkdirSync(imagesFolder, {
         recursive: true,
       });
@@ -202,9 +202,6 @@ export class NoteService {
       publish.then(() => {
         note.isDeleted = false;
         note.isPublished = true;
-        if (!note.publishedAt) {
-          note.publishedAt = new Date();
-        }
         note.updatePublicationAt = new Date();
         return note.save();
       })
@@ -382,7 +379,7 @@ export class NoteService {
       await this.fileService.deleteFileByIds(ss, note.images);
 
       const draftFolder = this.createNoteDraftFolder(`${note._id}`);
-      fs.rmdirSync(draftFolder, { recursive: true });
+      FileUtils.rmSyncSilentEnoent(draftFolder, { recursive: true });
 
       // delete from `fe` deployed dir, and remove from note-chunk-map
       return this.deleteDeloyedNote(note);
