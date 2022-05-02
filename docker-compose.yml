@@ -35,6 +35,6 @@ services:
       MONGO_DB_REPLICA: rs0
       STATIC_FOLDER: /usr/src/app/data/static
       FILE_TEMP_FOLDER: /usr/src/app/data/temp
-      FILE_TEMP_DELETE_SCHEDULER: 0 0 0 * * 7
+      FILE_TEMP_DELETE_SCHEDULER: 0 0 0 * * 6
       FILE_TEMP_URL_PREFIX: /files/temp
       BASE_URL: http://localhost:3000/
