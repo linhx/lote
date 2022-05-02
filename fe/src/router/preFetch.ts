@@ -23,7 +23,7 @@ export function pathToFile(path: string): string | undefined {
   // injected directly in the page's html
   const pageHash = __VP_HASH_MAP__['note-' + pagePath.toLowerCase()]; // TODO refactor note-
   if (pageHash) {
-    return `${base}assets/note-${pagePath}.${pageHash}.js`;
+    return `${base}notes/note-${pagePath}.${pageHash}.js`;
   }
 }
 
@@ -35,7 +35,7 @@ export function permalinkToFile(path: string): string | undefined {
   const pageHash = __VP_HASH_MAP__['note-' + pagePath.toLowerCase()]; // TODO refactor note-
   if (pageHash) {
     const base = import.meta.env.BASE_URL;
-    return `${base}assets/note-${pagePath}.${pageHash}.js`;
+    return `${base}notes/note-${pagePath}.${pageHash}.js`;
   }
 }
 

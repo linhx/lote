@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite build && npm run build-note -- --emptyOutDir=false",
     "build-note": "vite --config note.vite.config.ts build",
     "serve": "vite preview"
   },

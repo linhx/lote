@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import { join, resolve } from 'path';
 import fs from 'fs';
 import { fileNameWithoutExtension } from './src/utilities/FileUtils';
-const OUT_DIR = './dist-note';
+const OUT_DIR = './dist';
 
 const notes: { [name: string]: string } = {};
 fs.readdirSync('./notes').forEach(file => {

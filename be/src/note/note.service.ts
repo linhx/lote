@@ -156,7 +156,7 @@ export class NoteService {
         note.images,
       );
 
-      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, 'img', note.permalink);
+      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, note.permalink);
       fs.rmdirSync(imagesFolder, { recursive: true });
       fs.mkdirSync(imagesFolder, {
         recursive: true,
@@ -212,7 +212,7 @@ export class NoteService {
       const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
       FileUtils.unlinkSyncSilentEnoent(file);
 
-      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, 'img', note.permalink);
+      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, note.permalink);
       fs.rmdirSync(imagesFolder, { recursive: true });
 
       const publish = new Promise((resolve, reject) => {
@@ -375,7 +375,7 @@ export class NoteService {
       const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
       FileUtils.unlinkSyncSilentEnoent(file);
 
-      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, 'img', note.permalink);
+      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, note.permalink);
       fs.rmdirSync(imagesFolder, { recursive: true });
 
       const publish = new Promise((resolve, reject) => {

@@ -10,7 +10,7 @@ export default {
         const attrs = customOp.attributes;
         const imageUrl = StringUtils.joinUrl(
           noteUrlBase,
-          `img/${note.permalink}/${val.name}`,
+          `/note-img/${note.permalink}/${val.name}`,
         );
         return (
           `<img src="${imageUrl}" ` +
