@@ -1,5 +1,5 @@
 import { Body, CACHE_MANAGER, Controller, Delete, Get, Inject, Param, Post, Query, Res } from '@nestjs/common';
-import { Public } from 'src/auth/oauth2.strategy';
+import { Public } from 'src/auth/sso.strategy';
 import NoteCreateDto from 'src/note/dtos/request/NoteCreateDto';
 import NoteFilterListDto from './dtos/request/NoteFilterListDto';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';

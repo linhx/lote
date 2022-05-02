@@ -46,6 +46,9 @@ sudo docker-compose up
 
 3. Manage by using PM2 or installing as a Linux service.
 
+NOTE: for authentication, I'm using an authentication server to validate the access token from cookie.
+You should change the strategy to your.
+
 ### Admin frontend (admin-fe)
 
 1. Update .env
@@ -59,6 +62,9 @@ sudo docker-compose up
     ```
 
 3. Deploy the `dist` using a Web server like: nginx or apache2
+
+NOTE: for authentication, I'm using an authentication server to validate the access token from cookie.
+You should change the strategy to your.
 
 ### Frontend (fe)
 

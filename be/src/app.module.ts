@@ -6,7 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
-import { SsoAuthGuard } from './auth/oauth2.strategy';
+import { SsoAuthGuard } from './auth/sso.strategy';
 
 @Module({
   imports: [
