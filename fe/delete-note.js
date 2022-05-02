@@ -4,6 +4,10 @@ const { loadEnv } = require('vite');
 process.env = {...process.env, ...loadEnv('development', process.cwd())};
 const args = process.argv.slice(2);
 
+if (!fs.existsSync(process.env.VITE_APP_DEPLOY_DIR)) {
+  throw new Error(`Maybe the VITE_APP_DEPLOY_DIR (${process.env.VITE_APP_DEPLOY_DIR}) is wrong or you forgot to deploy.`);
+}
+
 const note = args[0];
 if (note) {
   const regexNoteFile = new RegExp(note + '\\.(\\w+)\\.js$');
