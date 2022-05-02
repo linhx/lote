@@ -12,9 +12,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { CSession, Db } from '../common/db';
 import {
-  NOTE_DATA_DRAFT_FOLDER,
-  NOTE_IMAGES_PUBLISH_FOLDER,
-  NOTE_PUBLISH_FOLDER,
+  NOTE_DATA_DRAFT_DIR,
+  NOTE_IMAGES_PUBLISH_DIR,
+  NOTE_PUBLISH_DIR,
   DEPLOY_NOTE_SCRIPT,
   UNPULISH_NOTE_SCRIPT,
 } from 'src/constants';
@@ -39,7 +39,7 @@ export class NoteService {
   ) {}
 
   private createNoteDraftFolder(id: string) {
-    return path.join(NOTE_DATA_DRAFT_FOLDER, id)
+    return path.join(NOTE_DATA_DRAFT_DIR, id)
   }
 
   async create(session: CSession, dto: NoteCreateDto) {
@@ -170,7 +170,7 @@ export class NoteService {
    */
   async publish(session: CSession, note: NoteDocument) {
     return this.db.withTransaction(session, async (_session) => {
-      const noteComponentFolder = NOTE_PUBLISH_FOLDER;
+      const noteComponentFolder = NOTE_PUBLISH_DIR;
 
       // create note as vue component into the `fe` source code dir
       const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
@@ -183,7 +183,7 @@ export class NoteService {
         _session,
         note.images,
       );
-      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, note.permalink);
+      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_DIR, note.permalink);
       fs.rmdirSync(imagesFolder, { recursive: true });
       fs.mkdirSync(imagesFolder, {
         recursive: true,
@@ -216,11 +216,11 @@ export class NoteService {
 
   deleteDeloyedNote(note: NoteDocument) {
     // remove note component
-    const file = path.join(NOTE_PUBLISH_FOLDER, `${note.permalink}.vue`);
+    const file = path.join(NOTE_PUBLISH_DIR, `${note.permalink}.vue`);
     FileUtils.unlinkSyncSilentEnoent(file);
 
     // remove note's images
-    const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, note.permalink);
+    const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_DIR, note.permalink);
     FileUtils.rmSyncSilentEnoent(imagesFolder, { recursive: true });
 
     return new Promise((resolve, reject) => {

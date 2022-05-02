@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { FILE_TEMP_FOLDER } from 'src/constants';
+import { FILE_TEMP_DIR } from 'src/constants';
 import { FileService } from './file.service';
 import * as FileUtils from '../utilites/FileUtils';
 import FileDto from './dtos/response/FileDto';
@@ -24,7 +24,7 @@ export class FileController {
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: FILE_TEMP_FOLDER,
+        destination: FILE_TEMP_DIR,
         filename: (req, file, cb) => {
           cb(null, FileUtils.randomFileName(file.originalname));
         },
@@ -38,7 +38,7 @@ export class FileController {
 
   @Get('temp/:path(*)')
   temp(@Param('path') filePath: string, @Res() res: Response) {
-    res.sendFile(path.join(FILE_TEMP_FOLDER, filePath), (err: any) => {
+    res.sendFile(path.join(FILE_TEMP_DIR, filePath), (err: any) => {
       if (err) {
         res.sendStatus(404);
       }

@@ -7,7 +7,7 @@ import PublicNoteDto from './dtos/response/PublicNoteDto';
 import { NoteService } from './note.service';
 import * as path from 'path';
 import { Response } from 'express';
-import { NOTE_PUBLISH_FOLDER, PATH_NOTES, PATH_NOTES_FILE } from 'src/constants';
+import { NOTE_PUBLISH_DIR, PATH_NOTES, PATH_NOTES_FILE } from 'src/constants';
 import { Cache } from 'cache-manager';
 
 @Controller(PATH_NOTES)
@@ -74,7 +74,7 @@ export class NoteController {
     if (!isPublished) {
       res.sendStatus(404);
     } else {
-      res.sendFile(path.join(NOTE_PUBLISH_FOLDER, permalink, filePath), (err: any) => {
+      res.sendFile(path.join(NOTE_PUBLISH_DIR, permalink, filePath), (err: any) => {
         if (err) {
           res.sendStatus(404);
         }

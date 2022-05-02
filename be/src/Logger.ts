@@ -26,7 +26,7 @@ const transportError = new winston.transports.DailyRotateFile({
   maxFiles: '20d',
   level: 'error',
   utc: true,
-  dirname: process.env.LOG_FOLDER
+  dirname: process.env.LOG_DIR
 });
 
 const transportCombined = new winston.transports.DailyRotateFile({
@@ -36,7 +36,7 @@ const transportCombined = new winston.transports.DailyRotateFile({
   maxSize: '20m',
   maxFiles: '20d',
   utc: true,
-  dirname: process.env.LOG_FOLDER
+  dirname: process.env.LOG_DIR
 });
 
 const logger = winston.createLogger({

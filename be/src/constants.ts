@@ -5,21 +5,21 @@ export const PATH_NOTES = 'notes';
 export const PATH_NOTES_FILE = 'f';
 
 export const NOTE_FE_BASE_URL = process.env.NOTE_FE_BASE_URL;
-export const NOTE_FE_SOURCE_FOLDER = process.env.NOTE_FE_SOURCE_FOLDER;
-export const NOTE_FE_BUILD_FOLDER = process.env.NOTE_FE_BUILD_FOLDER;
-export const NOTE_FE_DEPLOY_FOLDER = process.env.NOTE_FE_DEPLOY_FOLDER;
-export const NOTE_PUBLISH_FOLDER = process.env.NOTE_PUBLISH_FOLDER;
-export const NOTE_IMAGES_PUBLISH_FOLDER = process.env.NOTE_IMAGES_PUBLISH_FOLDER;
+export const NOTE_FE_SOURCE_DIR = process.env.NOTE_FE_SOURCE_DIR;
+export const NOTE_FE_BUILD_DIR = process.env.NOTE_FE_BUILD_DIR;
+export const NOTE_FE_DEPLOY_DIR = process.env.NOTE_FE_DEPLOY_DIR;
+export const NOTE_PUBLISH_DIR = process.env.NOTE_PUBLISH_DIR;
+export const NOTE_IMAGES_PUBLISH_DIR = process.env.NOTE_IMAGES_PUBLISH_DIR;
 export const PUBLISH_SCRIPT = process.env.PUBLISH_SCRIPT;
 export const DEPLOY_NOTE_SCRIPT = process.env.DEPLOY_NOTE_SCRIPT;
 export const UNPULISH_NOTE_SCRIPT = process.env.UNPULISH_NOTE_SCRIPT;
 
-export const FILE_TEMP_FOLDER =
-  process.env.FILE_TEMP_FOLDER && process.env.FILE_TEMP_FOLDER.startsWith('/')
-    ? process.env.FILE_TEMP_FOLDER
-    : join(__dirname, process.env.FILE_TEMP_FOLDER);
+export const FILE_TEMP_DIR =
+  process.env.FILE_TEMP_DIR && process.env.FILE_TEMP_DIR.startsWith('/')
+    ? process.env.FILE_TEMP_DIR
+    : join(__dirname, process.env.FILE_TEMP_DIR);
 
-export const NOTE_DATA_DRAFT_FOLDER = join(FILE_TEMP_FOLDER, 'note-draft');
+export const NOTE_DATA_DRAFT_DIR = join(FILE_TEMP_DIR, 'note-draft');
 
 export const FILE_TEMP_URL_PREFIX = process.env.FILE_TEMP_URL_PREFIX;
 
