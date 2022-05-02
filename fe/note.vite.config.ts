@@ -49,13 +49,15 @@ const getVueModulesFile = (deployDir) => {
 
 export default ({ mode }) => {
   process.env = {...process.env, ...loadEnv(mode, process.cwd())};
-  const vueModulesFile = getVueModulesFile(process.env.VITE_APP_DEPLOY_DIR);
+
+  const assetsDir = process.env.BUILD_MODE === 'build-note'? process.env.VITE_APP_DEPLOY_DIR : OUT_DIR;
+  const vueModulesFile = getVueModulesFile(assetsDir);
 
   const vueModuluesPlugin: Plugin = {
     name: 'vue-modules',
     renderChunk: (code: string, chunk, options) => {
       if (code) {
-        return code.replace('from \'vue\'', `from '${vueModulesFile}'`);
+        return code.replace('from \'vue\'', `from '/assets/${vueModulesFile}'`);
       }
     }
   }
