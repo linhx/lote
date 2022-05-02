@@ -146,22 +146,22 @@ export class NoteService {
     return this.db.withTransaction(session, async (_session) => {
       const noteComponentFolder = NOTE_PUBLISH_FOLDER;
 
+      // create note as vue component into the `fe` source code dir
       const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
       FileUtils.unlinkSyncSilentEnoent(file);
       const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
       fs.writeFileSync(file, NoteComponent.create(note, JSON.parse(contentJson)));
 
+      // replace new images
       const imageFiles = await this.fileService.findByIds(
         _session,
         note.images,
       );
-
       const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, note.permalink);
       fs.rmdirSync(imagesFolder, { recursive: true });
       fs.mkdirSync(imagesFolder, {
         recursive: true,
       });
-
       for (const imageFile of imageFiles) {
         fs.copyFileSync(
           imageFile.path,
@@ -209,12 +209,15 @@ export class NoteService {
       }
       const noteComponentFolder = NOTE_PUBLISH_FOLDER;
 
+      // remove note component
       const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
       FileUtils.unlinkSyncSilentEnoent(file);
 
+      // remove note's images
       const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, note.permalink);
       fs.rmdirSync(imagesFolder, { recursive: true });
 
+      // rebuild to `fe` deployment dir
       const publish = new Promise((resolve, reject) => {
         exec('sh ' + PUBLISH_SCRIPT, (error, stdout, stderr) => {
           if (error) {
