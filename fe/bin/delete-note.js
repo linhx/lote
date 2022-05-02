@@ -11,10 +11,8 @@ if (!fs.existsSync(process.env.VITE_APP_DEPLOY_DIR)) {
 const note = args[0];
 if (note) {
   const regexNoteFile = new RegExp(note + '\\.(\\w+)\\.js$');
-  fs.readdir(process.env.VITE_APP_NOTE_DIR, (err, files) => {
-    if (!files) {
-      return;
-    }
+  const files = fs.readdirSync(process.env.VITE_APP_NOTE_DIR);
+  if (files) {
     files.forEach(file => {
         if(regexNoteFile.test(file)) {
           const filePath = path.join(process.env.VITE_APP_NOTE_DIR, file);
@@ -27,7 +25,7 @@ if (note) {
           }
         }
     });
-  });
+  }
 
   // remove note's images
   const imagesFolder = path.join(process.env.VITE_APP_NOTE_IMG_DIR, note);
