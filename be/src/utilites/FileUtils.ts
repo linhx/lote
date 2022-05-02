@@ -18,3 +18,13 @@ export const unlinkSyncSilentEnoent = (filePath: string) => {
     }
   }
 }
+
+export const rmSyncSilentEnoent = (dir: string, options: fs.RmOptions) => {
+  try {
+    fs.rmSync(dir, options);
+  } catch(e: any) {
+    if (e.code !== 'ENOENT') {
+      throw e;
+    }
+  }
+}

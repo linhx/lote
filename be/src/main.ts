@@ -1,5 +1,6 @@
 import { config } from 'dotenv';
-config();
+import dotenvExpand from 'dotenv-expand';
+dotenvExpand(config());
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';

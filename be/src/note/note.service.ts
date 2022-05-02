@@ -15,7 +15,8 @@ import {
   NOTE_DATA_DRAFT_FOLDER,
   NOTE_IMAGES_PUBLISH_FOLDER,
   NOTE_PUBLISH_FOLDER,
-  PUBLISH_SCRIPT,
+  DEPLOY_NOTE_SCRIPT,
+  UNPULISH_NOTE_SCRIPT,
 } from 'src/constants';
 import BusinessError from 'src/exceptions/BusinessError';
 import { FileService } from '../file/file.service';
@@ -140,6 +141,31 @@ export class NoteService {
   }
 
   /**
+   * build notes component in the `fe` project then copy the result to the `fe` deployed dir
+   */
+  publishNotes() {
+    return new Promise((resolve, reject) => {
+      if (DEPLOY_NOTE_SCRIPT) {
+        exec(DEPLOY_NOTE_SCRIPT, (error, stdout, stderr) => {
+          if (error) {
+            this.logger.error(`error: ${error.message}`);
+            reject(error);
+            return;
+          }
+          if (stderr) {
+            this.logger.log(`stderr: ${stderr}`);
+            reject(stderr);
+            return;
+          }
+          resolve(true);
+        });
+      } else {
+        resolve(true);
+      }
+    });
+  }
+
+  /**
    * create Vue component file to the frontend project. and copy images to the frontend project
    */
   async publish(session: CSession, note: NoteDocument) {
@@ -172,21 +198,7 @@ export class NoteService {
         );
       }
 
-      const publish = new Promise((resolve, reject) => {
-        exec('sh ' + PUBLISH_SCRIPT, (error, stdout, stderr) => {
-          if (error) {
-            this.logger.error(`error: ${error.message}`);
-            reject(error);
-            return;
-          }
-          if (stderr) {
-            this.logger.log(`stderr: ${stderr}`);
-            reject(stderr);
-            return;
-          }
-          resolve(true);
-        });
-      });
+      const publish = this.publishNotes();
       publish.then(() => {
         note.isDeleted = false;
         note.isPublished = true;
@@ -201,25 +213,19 @@ export class NoteService {
     });
   }
 
-  async unpublishById(session: CSession, id: string) {
-    return this.db.withTransaction(session, async (_session) => {
-      const note = await this.findById(_session, id);
-      if (!note) {
-        throw new Error('error.note.unpublish.notfound');
-      }
-      const noteComponentFolder = NOTE_PUBLISH_FOLDER;
 
-      // remove note component
-      const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
-      FileUtils.unlinkSyncSilentEnoent(file);
+  deleteDeloyedNote(note: NoteDocument) {
+    // remove note component
+    const file = path.join(NOTE_PUBLISH_FOLDER, `${note.permalink}.vue`);
+    FileUtils.unlinkSyncSilentEnoent(file);
 
-      // remove note's images
-      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, note.permalink);
-      fs.rmdirSync(imagesFolder, { recursive: true });
+    // remove note's images
+    const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, note.permalink);
+    FileUtils.rmSyncSilentEnoent(imagesFolder, { recursive: true });
 
-      // rebuild to `fe` deployment dir
-      const publish = new Promise((resolve, reject) => {
-        exec('sh ' + PUBLISH_SCRIPT, (error, stdout, stderr) => {
+    return new Promise((resolve, reject) => {
+      if (UNPULISH_NOTE_SCRIPT) {
+        exec(`${UNPULISH_NOTE_SCRIPT} "${note.permalink}"`, (error, stdout, stderr) => {
           if (error) {
             this.logger.error(`error: ${error.message}`);
             reject(error);
@@ -232,7 +238,21 @@ export class NoteService {
           }
           resolve(true);
         });
-      });
+      } else {
+        resolve(true);
+      }
+    });
+  }
+
+  async unpublishById(session: CSession, id: string) {
+    return this.db.withTransaction(session, async (_session) => {
+      const note = await this.findById(_session, id);
+      if (!note) {
+        throw new Error('error.note.unpublish.notfound');
+      }
+
+      // delete from `fe` deployed dir, and remove from note-chunk-map
+      const publish = this.deleteDeloyedNote(note);
       publish.then(() => {
         note.isPublished = false;
         return note.save();
@@ -363,7 +383,9 @@ export class NoteService {
 
       const draftFolder = this.createNoteDraftFolder(`${note._id}`);
       fs.rmdirSync(draftFolder, { recursive: true });
-      // TODO delete from published folder
+
+      // delete from `fe` deployed dir, and remove from note-chunk-map
+      return this.deleteDeloyedNote(note);
     });
   }
 
@@ -373,29 +395,9 @@ export class NoteService {
       if (!note) {
         throw new Error('error.note.delete.notfound');
       }
-      const noteComponentFolder = NOTE_PUBLISH_FOLDER;
 
-      const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
-      FileUtils.unlinkSyncSilentEnoent(file);
-
-      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_FOLDER, note.permalink);
-      fs.rmdirSync(imagesFolder, { recursive: true });
-
-      const publish = new Promise((resolve, reject) => {
-        exec('sh ' + PUBLISH_SCRIPT, (error, stdout, stderr) => {
-          if (error) {
-            this.logger.error(`error: ${error.message}`);
-            reject(error);
-            return;
-          }
-          if (stderr) {
-            this.logger.log(`stderr: ${stderr}`);
-            reject(stderr);
-            return;
-          }
-          resolve(true);
-        });
-      });
+      // delete from `fe` deployed dir, and remove from note-chunk-map
+      const publish = this.deleteDeloyedNote(note);
       publish.then(() => {
         note.isDeleted = true;
         note.isPublished = false;

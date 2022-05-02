@@ -1,8 +1,8 @@
-import { NOTE_PUBLISH_BASE_URL } from 'src/constants';
+import { NOTE_FE_BASE_URL } from 'src/constants';
 import HtmlUtils from './HtmlUtils';
 
 export const create = (note: { title: string, tags: string[], publishedAt: Date, permalink: string }, delta: any) => {
-  const content = HtmlUtils.deltaToPublishedHtml(delta, note, NOTE_PUBLISH_BASE_URL);
+  const content = HtmlUtils.deltaToPublishedHtml(delta, note, NOTE_FE_BASE_URL);
   let tags = '[]';
   if (note.tags && note.tags.length) {
     tags = `['${note.tags.join('\',\'')}']`

@@ -7,19 +7,22 @@ const OUT_DIR = './dist';
 const MODE_BUILD_NOTE = 'build-note';
 declare const __VP_HASH_MAP__: Record<string, string>;
 
+const NOTE_COMPONENT_PREFIX = 'note-';
 const notes: { [name: string]: string } = {};
 fs.readdirSync('./notes').forEach(file => {
   const noteName = fileNameWithoutExtension(file);
-  notes['note-' + noteName] = resolve(__dirname, './notes', file);
+  notes[NOTE_COMPONENT_PREFIX + noteName] = resolve(__dirname, './notes', file);
 });
 
 const hashRE = /\.(\w+)\.js$/;
 const vitePressPlugin = ({
-  reCreateNoteChunkMap, deployDir
+  reCreateNoteChunkMap,
+  deployDir
 }): Plugin => {
   let pageToHashMap = {};
   if (!reCreateNoteChunkMap) {
     try {
+      // read the current __VP_HASH_MAP__ in the `fe` deployed dir
       require(`${deployDir}/note-chunk-map.js`);
       pageToHashMap = __VP_HASH_MAP__ || {};
     } catch(e) {
@@ -33,9 +36,10 @@ const vitePressPlugin = ({
       for (const name in bundle) {
         const chunk = bundle[name];
   
-        if (chunk.name.startsWith('note-')) {
+        if (chunk.name.startsWith(NOTE_COMPONENT_PREFIX)) {
           const hash = chunk.fileName.match(hashRE)![1];
-          pageToHashMap![chunk.name.toLowerCase()] = hash;
+          chunk.fileName = chunk.fileName.replace(`/${NOTE_COMPONENT_PREFIX}`, '/');
+          pageToHashMap![chunk.name.toLowerCase().substring(NOTE_COMPONENT_PREFIX.length)] = hash;
         }
       }
       if (!fs.existsSync(OUT_DIR)) {
@@ -88,6 +92,7 @@ const vueModuluesPlugin = ({ distDir }) => {
 export default ({ mode }) => {
   process.env = {...process.env, ...loadEnv(mode, process.cwd())};
 
+
   const distDir = process.env.BUILD_MODE === MODE_BUILD_NOTE? process.env.VITE_APP_DEPLOY_DIR : OUT_DIR;
   const reCreateNoteChunkMap = process.env.BUILD_MODE !== MODE_BUILD_NOTE;
 
@@ -95,7 +100,10 @@ export default ({ mode }) => {
     plugins: [
       vue(),
       vueModuluesPlugin({ distDir }),
-      vitePressPlugin({ reCreateNoteChunkMap, deployDir: process.env.VITE_APP_DEPLOY_DIR })
+      vitePressPlugin({
+        reCreateNoteChunkMap,
+        deployDir: process.env.VITE_APP_DEPLOY_DIR
+      })
     ],
     build: {
       outDir: OUT_DIR,
