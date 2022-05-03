@@ -11,7 +11,7 @@
 }
 
 body .ql-editor p {
-  @apply leading-relaxed;
+  @apply leading-relaxed indent-6;
 }
 body .ql-container > .ql-editor ol > li {
   word-break: break-all;

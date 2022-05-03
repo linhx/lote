@@ -297,10 +297,6 @@ export class NoteService {
       recursive: true,
     });
 
-    const singleNoteImagesDir = path.join(SINGLE_NOTE_IMAGES_PUBLISH_DIR, note.permalink);
-    fs.mkdirSync(singleNoteImagesDir, {
-      recursive: true,
-    });
     for (const imageFile of imageFiles) {
       // save to the directory where all the images are saved
       fs.copyFileSync(
