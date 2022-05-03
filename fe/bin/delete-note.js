@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const fileUtils = require('./FileUtils');
+const updateNotChunkMapVer = require('./UpdateNotChunkMapVer');
 const { loadEnv } = require('vite');
 process.env = {...process.env, ...loadEnv('development', process.cwd())};
 const args = process.argv.slice(2);
@@ -32,4 +33,6 @@ if (note) {
 
   delete __VP_HASH_MAP__[note];
   fs.writeFileSync(noteChunkMapFile, `__VP_HASH_MAP__ = ${JSON.stringify(__VP_HASH_MAP__)}`, );
+
+  updateNotChunkMapVer.update(`${process.env.VITE_APP_DEPLOY_DIR}/index.html`);
 }

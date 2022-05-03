@@ -14,3 +14,4 @@ if (fs.existsSync(process.env.VITE_APP_DEPLOY_DIR)) {
   fs.mkdirSync(process.env.VITE_APP_DEPLOY_DIR, { recursive: true });
 }
 fs.copySync('./dist', process.env.VITE_APP_DEPLOY_DIR, { overwrite: true });
+updateNotChunkMapVer.update(`${process.env.VITE_APP_DEPLOY_DIR}/index.html`);

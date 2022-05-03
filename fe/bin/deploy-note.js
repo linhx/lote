@@ -2,6 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const { loadEnv } = require('vite');
 const fileUtils = require('./FileUtils');
+const updateNotChunkMapVer = require('./UpdateNotChunkMapVer');
 process.env = {...process.env, ...loadEnv('development', process.cwd())};
 
 const newNotes = fs.readdirSync('./dist/notes');
@@ -20,3 +21,5 @@ if (oldNotes) {
 }
 
 fs.copySync('./dist', process.env.VITE_APP_DEPLOY_DIR, { overwrite: true });
+
+updateNotChunkMapVer.update(`${process.env.VITE_APP_DEPLOY_DIR}/index.html`);
