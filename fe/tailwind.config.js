@@ -20,6 +20,7 @@ module.exports = {
       'mt-5',
       'bg-gray-200',
       'px-1',
+      'mx-1',
     ]
   },
   darkMode: false,

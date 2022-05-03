@@ -27,7 +27,7 @@ export const create = (note: { title: string, tags: string[], publishedAt: Date,
       </div>
       <div class="mt-5">
         <span class="font-bold text-xl">Tags </span>
-        <span v-for="tag in note.tags" :key="tag" class="text-gray-600 text-sm bg-gray-200 px-1">
+        <span v-for="tag in note.tags" :key="tag" class="text-gray-600 text-sm bg-gray-200 px-1 mx-1">
           {{ tag }}
         </span>
       </div>
