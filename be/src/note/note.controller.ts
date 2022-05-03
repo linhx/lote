@@ -61,6 +61,16 @@ export class NoteController {
     return this.noteService.unpublishById(null, id);
   }
 
+  @Post('redeploy-fe')
+  async redeployFe() {
+    return this.noteService.deployFe();
+  }
+
+  @Post('redeploy-notes')
+  async redeployNotes(@Param('id') id: string) {
+    return this.noteService.publishNotes();
+  }
+
   @Public()
   @Get(`${PATH_NOTES_FILE}/:permalink/:file(*)`)
   async static(@Param('permalink') permalink: string,

@@ -33,5 +33,11 @@ export default {
   },
   getContentPreview(id: string): Promise<string> {
     return api.get(`notes/${id}/preview`);
+  },
+  redeployFe() {
+    return api.post(`notes/redeploy`);
+  },
+  redeployOnlyNotes() {
+    return api.post(`notes/redeploy-notes`);
   }
 }

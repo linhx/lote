@@ -13,6 +13,8 @@ export const SINGLE_NOTE_IMAGES_PUBLISH_DIR = process.env.SINGLE_NOTE_IMAGES_PUB
 export const PUBLISH_SCRIPT = process.env.PUBLISH_SCRIPT;
 export const DEPLOY_NOTE_SCRIPT = process.env.DEPLOY_NOTE_SCRIPT;
 export const UNPULISH_NOTE_SCRIPT = process.env.UNPULISH_NOTE_SCRIPT;
+export const DEPLOY_FE_SCRIPT = process.env.DEPLOY_FE_SCRIPT;
+export const DEPLOY_NOTES_SCRIPT = process.env.DEPLOY_NOTES_SCRIPT;
 
 export const FILE_TEMP_DIR =
   process.env.FILE_TEMP_DIR && process.env.FILE_TEMP_DIR.startsWith('/')

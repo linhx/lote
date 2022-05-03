@@ -19,6 +19,8 @@ import {
   UNPULISH_NOTE_SCRIPT,
   SINGLE_NOTE_PUBLISH_DIR,
   SINGLE_NOTE_IMAGES_PUBLISH_DIR,
+  DEPLOY_NOTES_SCRIPT,
+  DEPLOY_FE_SCRIPT,
 } from 'src/constants';
 import BusinessError from 'src/exceptions/BusinessError';
 import { FileService } from '../file/file.service';
@@ -140,12 +142,62 @@ export class NoteService {
   }
 
   /**
+   * build note component in the `fe` project then copy the result to the `fe` deployed dir
+   */
+  publishNote() {
+    return new Promise((resolve, reject) => {
+      if (DEPLOY_NOTE_SCRIPT) {
+        exec(DEPLOY_NOTE_SCRIPT, (error, stdout, stderr) => {
+          if (error) {
+            this.logger.error(`error: ${error.message}`);
+            reject(error);
+            return;
+          }
+          if (stderr) {
+            this.logger.log(`stderr: ${stderr}`);
+            reject(stderr);
+            return;
+          }
+          resolve(true);
+        });
+      } else {
+        resolve(true);
+      }
+    });
+  }
+
+  /**
    * build notes component in the `fe` project then copy the result to the `fe` deployed dir
    */
   publishNotes() {
     return new Promise((resolve, reject) => {
-      if (DEPLOY_NOTE_SCRIPT) {
-        exec(DEPLOY_NOTE_SCRIPT, (error, stdout, stderr) => {
+      if (DEPLOY_NOTES_SCRIPT) {
+        exec(DEPLOY_NOTES_SCRIPT, (error, stdout, stderr) => {
+          if (error) {
+            this.logger.error(`error: ${error.message}`);
+            reject(error);
+            return;
+          }
+          if (stderr) {
+            this.logger.log(`stderr: ${stderr}`);
+            reject(stderr);
+            return;
+          }
+          resolve(true);
+        });
+      } else {
+        resolve(true);
+      }
+    });
+  }
+
+  /**
+   * build notes component in the `fe` project then copy the result to the `fe` deployed dir
+   */
+  deployFe() {
+    return new Promise((resolve, reject) => {
+      if (DEPLOY_FE_SCRIPT) {
+        exec(DEPLOY_FE_SCRIPT, (error, stdout, stderr) => {
           if (error) {
             this.logger.error(`error: ${error.message}`);
             reject(error);
@@ -212,8 +264,6 @@ export class NoteService {
         ),
       );
     }
-
-
   }
 
   /**
@@ -240,7 +290,7 @@ export class NoteService {
       );
       this.saveNoteImages(note, imageFiles);
 
-      const publish = this.publishNotes();
+      const publish = this.publishNote();
       publish.then(() => {
         note.isDeleted = false;
         note.isPublished = true;

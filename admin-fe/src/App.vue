@@ -3,7 +3,7 @@ import NavBar from './components/NavBar.vue';
 </script>
 
 <template>
-  <nav-bar />
+  <nav-bar @click="onClickMenu" />
   <div v-if="show" class="min-h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
     <div class="w-full space-y-8 p-3">
       <router-view />
@@ -15,11 +15,38 @@ import NavBar from './components/NavBar.vue';
 import { defineComponent } from 'vue'
 import { refreshToken } from './repositories/Api';
 import AuthRepository from './repositories/AuthRepository';
+import NoteRepository from './repositories/NoteRepository';
 
 export default defineComponent({
   data() {
     return {
       show: false
+    }
+  },
+  methods: {
+    redeployFe() {
+      var result = confirm("DANGER: Re-deploy the whole app?");
+      if (!result) {
+        return;
+      }
+      // TODO show result
+      return NoteRepository.redeployFe();
+    },
+    redeployOnlyNotes() {
+      var result = confirm("DANGER: Re-deploy all of the notes?");
+      if (!result) {
+        return;
+      }
+      // TODO show result
+      return NoteRepository.redeployOnlyNotes();
+    },
+    onClickMenu(item: string) {
+      if (item === 'redeploy') {
+        return this.redeployFe();
+      }
+      if (item === 'redeployNotes') {
+        return this.redeployOnlyNotes();
+      }
     }
   },
   async beforeCreate() {
