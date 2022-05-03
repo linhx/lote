@@ -35,7 +35,7 @@ export default {
     return api.get(`notes/${id}/preview`);
   },
   redeployFe() {
-    return api.post(`notes/redeploy`);
+    return api.post(`notes/redeploy-fe`);
   },
   redeployOnlyNotes() {
     return api.post(`notes/redeploy-notes`);

@@ -41,6 +41,16 @@ export class NoteController {
     return this.noteService.create(null, dto);
   }
 
+  @Post('redeploy-fe')
+  async redeployFe() {
+    return this.noteService.deployFe();
+  }
+
+  @Post('redeploy-notes')
+  async redeployNotes() {
+    return this.noteService.publishNotes();
+  }
+
   @Get('/:id')
   async getById(@Param('id') id: string) {
     return this.noteService.findIncludeContentById(null, id);
@@ -59,16 +69,6 @@ export class NoteController {
   @Post('unpublish/:id')
   async unpublish(@Param('id') id: string) {
     return this.noteService.unpublishById(null, id);
-  }
-
-  @Post('redeploy-fe')
-  async redeployFe() {
-    return this.noteService.deployFe();
-  }
-
-  @Post('redeploy-notes')
-  async redeployNotes(@Param('id') id: string) {
-    return this.noteService.publishNotes();
   }
 
   @Public()
