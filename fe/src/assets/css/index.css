@@ -14,9 +14,6 @@ body .ql-editor p {
   @apply leading-relaxed;
   text-indent: 1.5rem;
 }
-body .ql-container > .ql-editor ol > li {
-  word-break: break-all;
-}
 
 .home-icon {
   @apply inline-block w-10 h-10 m-3 rounded-full border-2 bg-contain;
