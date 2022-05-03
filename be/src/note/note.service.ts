@@ -170,7 +170,7 @@ export class NoteService {
    * build notes component in the `fe` project then copy the result to the `fe` deployed dir
    */
   publishNotes() {
-    return new Promise((resolve, reject) => {
+    const deploy = new Promise((resolve, reject) => {
       if (DEPLOY_NOTES_SCRIPT) {
         exec(DEPLOY_NOTES_SCRIPT, (error, stdout, stderr) => {
           if (error) {
@@ -189,13 +189,16 @@ export class NoteService {
         resolve(true);
       }
     });
+    deploy.catch((e: Error) => {
+      this.logger.error('error.publishNotes.cantDeploy', e.message);
+    });
   }
 
   /**
    * build notes component in the `fe` project then copy the result to the `fe` deployed dir
    */
   deployFe() {
-    return new Promise((resolve, reject) => {
+    const deploy = new Promise((resolve, reject) => {
       if (DEPLOY_FE_SCRIPT) {
         exec(DEPLOY_FE_SCRIPT, (error, stdout, stderr) => {
           if (error) {
@@ -213,6 +216,9 @@ export class NoteService {
       } else {
         resolve(true);
       }
+    });
+    deploy.catch((e: Error) => {
+      this.logger.error('error.deployFe.cantDeploy', e.message);
     });
   }
 
