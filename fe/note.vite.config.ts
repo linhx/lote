@@ -127,10 +127,10 @@ export default ({ mode }) => {
   let publicDir;
   if (process.env.BUILD_MODE === MODE_BUILD_SINGLE_NOTE) {
     noteDir = './single-note';
-    publicDir = noteDir + '/note-img';
+    publicDir = noteDir + '/img';
   } else {
     noteDir = './notes';
-    publicDir = './public/note-img';
+    publicDir = './public';
   }
   const notes = getNotesRollupInput(noteDir);
 
