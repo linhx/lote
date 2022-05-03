@@ -40,3 +40,17 @@ export const writeFileSync = (file: string, data: string | NodeJS.ArrayBufferVie
   }
   fs.writeFileSync(file, data, options);
 }
+
+export const rmSyncInsideSilentEnoent = (dir: string, options?: fs.RmOptions) => {
+  try {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const filePath = path.join(dir, file);
+      fs.rmSync(filePath, options);
+    }
+  } catch(e: any) {
+    if (e.code !== 'ENOENT') {
+      throw e;
+    }
+  }
+}

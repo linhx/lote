@@ -4,10 +4,11 @@
   "scripts": {
     "dev": "vite",
     "build": "BUILD_MODE=build vue-tsc --noEmit && vite build && vite --config note.vite.config.ts build --emptyOutDir=false",
-    "build-note": "BUILD_MODE=build-note vite --config note.vite.config.ts build",
-    "rebuild-notes": "BUILD_MODE=rebuild-all-notes vite --config note.vite.config.ts build",
+    "build-notes": "BUILD_MODE=build-notes vite --config note.vite.config.ts build",
+    "build-single-note": "BUILD_MODE=build-single-note vite --config note.vite.config.ts build",
     "deploy": "npm run build && node ./bin/deploy",
-    "deploy-note": "npm run build-note && node ./bin/deploy-note",
+    "deploy-notes": "npm run build-notes && node ./bin/deploy-notes",
+    "deploy-single-note": "npm run build-single-note && node ./bin/deploy-note",
     "delete-note": "node ./bin/delete-note",
     "serve": "vite preview"
   },

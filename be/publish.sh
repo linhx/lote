@@ -8,4 +8,4 @@ do
 done
 
 cd $fesourcedir
-npm run deploy-note
+npm run deploy-single-note

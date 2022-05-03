@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const fileUtils = require('./FileUtils');
 const { loadEnv } = require('vite');
 process.env = {...process.env, ...loadEnv('development', process.cwd())};
 const args = process.argv.slice(2);
@@ -14,28 +15,16 @@ if (note) {
   const files = fs.readdirSync(process.env.VITE_APP_NOTE_DIR);
   if (files) {
     files.forEach(file => {
-        if(regexNoteFile.test(file)) {
-          const filePath = path.join(process.env.VITE_APP_NOTE_DIR, file);
-          try {
-            fs.unlinkSync(filePath)
-          } catch(e) {
-            if (e.code !== 'ENOENT') {
-              throw e;
-            }
-          }
-        }
+      if(regexNoteFile.test(file)) {
+        const filePath = path.join(process.env.VITE_APP_NOTE_DIR, file);
+        fileUtils.rmSyncSilent(filePath);
+      }
     });
   }
 
   // remove note's images
   const imagesFolder = path.join(process.env.VITE_APP_NOTE_IMG_DIR, note);
-  try {
-    fs.rmSync(imagesFolder, { recursive: true });
-  } catch(e) {
-    if (e.code !== 'ENOENT') {
-      throw e;
-    }
-  }
+  fileUtils.rmSyncSilent(imagesFolder, { recursive: true });
 
   // rebuild note-chunk-map.js
   const noteChunkMapFile = `${process.env.VITE_APP_DEPLOY_DIR}/note-chunk-map.js`;

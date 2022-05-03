@@ -1,5 +1,6 @@
 const fs = require('fs-extra');
 const { loadEnv } = require('vite');
+const fileUtils = require('./FileUtils');
 process.env = {...process.env, ...loadEnv('development', process.cwd())};
 
 const newNotes = fs.readdirSync(process.env.VITE_APP_NOTE_DIR);
@@ -11,13 +12,7 @@ if (oldNotes) {
     oldNotes.forEach(file => {
       if(regexNoteFile.test(file)) {
         const filePath = path.join(process.env.VITE_APP_DEPLOY_DIR, file);
-        try {
-          fs.unlinkSync(filePath);
-        } catch(e) {
-          if (e.code !== 'ENOENT') {
-            throw e;
-          }
-        }
+        fileUtils.rmSyncSilent(filePath);
       }
     });
   }

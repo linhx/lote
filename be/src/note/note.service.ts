@@ -17,6 +17,8 @@ import {
   NOTE_PUBLISH_DIR,
   DEPLOY_NOTE_SCRIPT,
   UNPULISH_NOTE_SCRIPT,
+  SINGLE_NOTE_PUBLISH_DIR,
+  SINGLE_NOTE_IMAGES_PUBLISH_DIR,
 } from 'src/constants';
 import BusinessError from 'src/exceptions/BusinessError';
 import { FileService } from '../file/file.service';
@@ -26,6 +28,7 @@ import * as ArrayUtils from '../utilites/ArrayUtils';
 import NoteDto from './dtos/response/NoteDto';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
 import * as FileUtils from '../utilites/FileUtils';
+import { CFileDocument } from 'src/file/entities/CFile';
 
 @Injectable()
 export class NoteService {
@@ -161,42 +164,81 @@ export class NoteService {
     });
   }
 
+  saveNoteComponent(note: NoteDocument) {
+    // create note as vue component into the `fe` source code dir
+
+    // save to the directory where all the notes are saved
+    const noteComponentName = `${note.permalink}.vue`;
+    const file = path.join(NOTE_PUBLISH_DIR, noteComponentName);
+    const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
+    const noteComponent = NoteComponent.create(note, JSON.parse(contentJson));
+    FileUtils.writeFileSync(file, noteComponent, { recursive: true });
+
+    // save to the directory for one note
+    const singleNoteComponentDir = SINGLE_NOTE_PUBLISH_DIR;
+    FileUtils.rmSyncInsideSilentEnoent(singleNoteComponentDir, { recursive: true });
+    const singleNoteComponentFile = path.join(singleNoteComponentDir, noteComponentName);
+    FileUtils.writeFileSync(singleNoteComponentFile, noteComponent, { recursive: true });
+  }
+
+  saveNoteImages(note: NoteDocument, imageFiles: CFileDocument[]) {
+    FileUtils.rmSyncInsideSilentEnoent(NOTE_IMAGES_PUBLISH_DIR, { recursive: true });
+    const imagesDir = path.join(NOTE_IMAGES_PUBLISH_DIR, note.permalink);
+    FileUtils.rmSyncSilentEnoent(imagesDir, { recursive: true });
+    fs.mkdirSync(imagesDir, {
+      recursive: true,
+    });
+
+    const singleNoteImagesDir = path.join(SINGLE_NOTE_IMAGES_PUBLISH_DIR, note.permalink);
+    fs.mkdirSync(singleNoteImagesDir, {
+      recursive: true,
+    });
+    for (const imageFile of imageFiles) {
+      // save to the directory where all the images are saved
+      fs.copyFileSync(
+        imageFile.path,
+        path.join(
+          imagesDir,
+          `${imageFile.publishName}`,
+        ),
+      );
+
+    // save to the directory for one note
+      fs.copyFileSync(
+        imageFile.path,
+        path.join(
+          singleNoteImagesDir,
+          `${imageFile.publishName}`,
+        ),
+      );
+    }
+
+
+  }
+
   /**
    * create Vue component file to the frontend project. and copy images to the frontend project
    */
   async publish(session: CSession, note: NoteDocument) {
     return this.db.withTransaction(session, async (_session) => {
-      const noteComponentFolder = NOTE_PUBLISH_DIR;
 
       if (!note.publishedAt) {
         note.publishedAt = new Date();
       }
 
-      // create note as vue component into the `fe` source code dir
-      const file = path.join(noteComponentFolder, `${note.permalink}.vue`);
-      FileUtils.unlinkSyncSilentEnoent(file);
-      const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
-      FileUtils.writeFileSync(file, NoteComponent.create(note, JSON.parse(contentJson)), { recursive: true });
+      // clean the directory of single note
+      const singleNoteComponentDir = SINGLE_NOTE_PUBLISH_DIR;
+      FileUtils.rmSyncInsideSilentEnoent(singleNoteComponentDir, { recursive: true });
 
-      // replace new images
+      // save note component
+      this.saveNoteComponent(note);
+
+      // save images
       const imageFiles = await this.fileService.findByIds(
         _session,
         note.images,
       );
-      const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_DIR, note.permalink);
-      FileUtils.rmSyncSilentEnoent(imagesFolder, { recursive: true });
-      fs.mkdirSync(imagesFolder, {
-        recursive: true,
-      });
-      for (const imageFile of imageFiles) {
-        fs.copyFileSync(
-          imageFile.path,
-          path.join(
-            imagesFolder,
-            `${imageFile.publishName}`,
-          ),
-        );
-      }
+      this.saveNoteImages(note, imageFiles);
 
       const publish = this.publishNotes();
       publish.then(() => {
@@ -205,7 +247,7 @@ export class NoteService {
         note.updatePublicationAt = new Date();
         return note.save();
       }).catch((e: Error) => {
-        this.logger.error('error.publish.cantDeploy', e.stack);
+        this.logger.error('error.publish.cantDeploy', e.message);
       });
 
       return note;
@@ -256,7 +298,7 @@ export class NoteService {
         note.isPublished = false;
         return note.save();
       }).catch((e: Error) => {
-        this.logger.error('error.unpublish.cantDeleteNote', e.stack);
+        this.logger.error('error.unpublish.cantDeleteNote', e.message);
       });
 
       return note;
@@ -404,7 +446,7 @@ export class NoteService {
         note.isPublished = false;
         return note.save();
       }).catch((e: Error) => {
-        this.logger.error('error.soltDelete.cantDeleteNote', e.stack);
+        this.logger.error('error.soltDelete.cantDeleteNote', e.message);
       });
 
       return note;

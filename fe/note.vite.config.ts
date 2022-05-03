@@ -3,28 +3,38 @@ import vue from '@vitejs/plugin-vue';
 import { join, resolve } from 'path';
 import fs from 'fs';
 import { fileNameWithoutExtension } from './src/utilities/FileUtils';
-const OUT_DIR = './dist';
-const MODE_BUILD_NOTE = 'build-note';
 declare const __VP_HASH_MAP__: Record<string, string>;
-
+const OUT_DIR = './dist';
+const MODE_BUILD = 'build';
+const MODE_BUILD_NOTES = 'build-notes';
+const MODE_BUILD_SINGLE_NOTE = 'build-single-note';
 const NOTE_COMPONENT_PREFIX = 'note-';
-const notes: { [name: string]: string } = {};
-try {
-  fs.readdirSync('./notes').forEach(file => {
-    const noteName = fileNameWithoutExtension(file);
-    notes[NOTE_COMPONENT_PREFIX + noteName] = resolve(__dirname, './notes', file);
-  });
-} catch (e) {
-  if (e.code !== 'ENOENT') {
-    throw e;
+
+const getNotesRollupInput = (noteDir) => {
+  const notes: { [name: string]: string } = {};
+
+  try {
+    fs.readdirSync(noteDir).forEach(file => {
+      if (file.endsWith('.vue')) {
+        const noteName = fileNameWithoutExtension(file);
+        notes[NOTE_COMPONENT_PREFIX + noteName] = resolve(__dirname, noteDir, file);
+      }
+    });
+  } catch (e) {
+    if (e.code !== 'ENOENT') {
+      throw e;
+    }
   }
+
+  return notes;
 }
 
 const hashRE = /\.(\w+)\.js$/;
 const vitePressPlugin = ({
-  reCreateNoteChunkMap,
-  deployDir
+  env
 }): Plugin => {
+  const reCreateNoteChunkMap = env.BUILD_MODE === MODE_BUILD || env.BUILD_MODE === MODE_BUILD_NOTES;
+  const deployDir = env.VITE_APP_DEPLOY_DIR;
   let pageToHashMap = {};
   if (!reCreateNoteChunkMap) {
     try {
@@ -82,7 +92,22 @@ const getVueModulesFile = (deployDir) => {
  * @param config config
  * @returns 
  */
-const vueModuluesPlugin = ({ distDir }) => {
+const vueModuluesPlugin = ({ env }) => {
+  let distDir;
+  switch(process.env.BUILD_MODE) {
+    case MODE_BUILD_NOTES:
+    case MODE_BUILD_SINGLE_NOTE:
+      // get the vue-modules.ts's built file in deployed directory
+      distDir = process.env.VITE_APP_DEPLOY_DIR;
+      break;
+    case MODE_BUILD:
+      // get the vue-modules.ts's built file in the the directory just finished building
+      distDir = OUT_DIR;
+      break;
+    default:
+      distDir = OUT_DIR;
+      break;
+  }
   const vueModulesFile = getVueModulesFile(distDir);
 
   return {
@@ -98,19 +123,24 @@ const vueModuluesPlugin = ({ distDir }) => {
 export default ({ mode }) => {
   process.env = {...process.env, ...loadEnv(mode, process.cwd())};
 
-
-  const distDir = process.env.BUILD_MODE === MODE_BUILD_NOTE? process.env.VITE_APP_DEPLOY_DIR : OUT_DIR;
-  const reCreateNoteChunkMap = process.env.BUILD_MODE !== MODE_BUILD_NOTE;
+  let noteDir;
+  let publicDir;
+  if (process.env.BUILD_MODE === MODE_BUILD_SINGLE_NOTE) {
+    noteDir = './single-note';
+    publicDir = noteDir + '/note-img';
+  } else {
+    noteDir = './notes';
+    publicDir = './public/note-img';
+  }
+  const notes = getNotesRollupInput(noteDir);
 
   return defineConfig({
     plugins: [
       vue(),
-      vueModuluesPlugin({ distDir }),
-      vitePressPlugin({
-        reCreateNoteChunkMap,
-        deployDir: process.env.VITE_APP_DEPLOY_DIR
-      })
+      vueModuluesPlugin({ env: process.env }),
+      vitePressPlugin({ env: process.env })
     ],
+    publicDir, // take the advantage of publicDir to copy the static images
     build: {
       outDir: OUT_DIR,
       assetsDir: 'notes',
