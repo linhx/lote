@@ -3,7 +3,7 @@ import NavBar from './components/NavBar.vue';
 </script>
 
 <template>
-  <nav-bar @click="onClickMenu" />
+  <nav-bar @clickMenu="onClickMenu" />
   <div v-if="show" class="min-h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
     <div class="w-full space-y-8 p-3">
       <router-view />

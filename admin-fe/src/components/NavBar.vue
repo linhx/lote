@@ -59,7 +59,7 @@ export default defineComponent({
     },
     clickMenu(name: string) {
       this.closeMenu();
-      this.$emit(name);
+      this.$emit('clickMenu', name);
     }
   }
 })
