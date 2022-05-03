@@ -68,7 +68,7 @@ export default defineComponent({
     }
   },
 
-  beforeMount() {
+  mounted() {
     document.querySelectorAll('pre[data-language]').forEach((el) => {
       hljs.highlightElement(el);
     });
