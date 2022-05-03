@@ -51,6 +51,11 @@ export class NoteController {
     return this.noteService.publishNotes();
   }
 
+  @Post('recreate-and-deploy-notes')
+  async recreateAndDeployNotes() {
+    this.noteService.recreateAndPublishNotes(null);
+  }
+
   @Get('/:id')
   async getById(@Param('id') id: string) {
     return this.noteService.findIncludeContentById(null, id);

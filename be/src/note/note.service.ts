@@ -222,6 +222,19 @@ export class NoteService {
     });
   }
 
+  /**
+   * TODO avoid duplicated code
+   * 
+   * @param note 
+   */
+  saveNoteComponentToPublishDir(note: NoteDocument) {
+    const noteComponentName = `${note.permalink}.vue`;
+    const file = path.join(NOTE_PUBLISH_DIR, noteComponentName);
+    const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
+    const noteComponent = NoteComponent.create(note, JSON.parse(contentJson));
+    FileUtils.writeFileSync(file, noteComponent, { recursive: true });
+  }
+
   saveNoteComponent(note: NoteDocument) {
     // create note as vue component into the `fe` source code dir
 
@@ -240,7 +253,6 @@ export class NoteService {
   }
 
   saveNoteImages(note: NoteDocument, imageFiles: CFileDocument[]) {
-    FileUtils.rmSyncInsideSilentEnoent(NOTE_IMAGES_PUBLISH_DIR, { recursive: true });
     const imagesDir = path.join(NOTE_IMAGES_PUBLISH_DIR, note.permalink);
     FileUtils.rmSyncSilentEnoent(imagesDir, { recursive: true });
     fs.mkdirSync(imagesDir, {
@@ -270,6 +282,58 @@ export class NoteService {
         ),
       );
     }
+  }
+
+  /**
+   * TODO avoid duplicated code
+   * 
+   * @param note 
+   * @param imageFiles 
+   */
+  saveNoteImagesToPublishDir(note: NoteDocument, imageFiles: CFileDocument[]) {
+    const imagesDir = path.join(NOTE_IMAGES_PUBLISH_DIR, note.permalink);
+    FileUtils.rmSyncSilentEnoent(imagesDir, { recursive: true });
+    fs.mkdirSync(imagesDir, {
+      recursive: true,
+    });
+
+    const singleNoteImagesDir = path.join(SINGLE_NOTE_IMAGES_PUBLISH_DIR, note.permalink);
+    fs.mkdirSync(singleNoteImagesDir, {
+      recursive: true,
+    });
+    for (const imageFile of imageFiles) {
+      // save to the directory where all the images are saved
+      fs.copyFileSync(
+        imageFile.path,
+        path.join(
+          imagesDir,
+          `${imageFile.publishName}`,
+        ),
+      );
+    }
+  }
+
+  recreateAndPublishNotes(session: CSession) {
+    return this.db.withTransaction(session, async (ss) => {
+      FileUtils.rmSyncInsideSilentEnoent(NOTE_PUBLISH_DIR, { recursive: true });
+      FileUtils.rmSyncInsideSilentEnoent(NOTE_IMAGES_PUBLISH_DIR, { recursive: true });
+
+      const notes = await this.getAllPublishedListModel(ss);
+      const recreate = notes.map(note => this.saveNoteComponentToPublishDir(note));
+
+      // save images
+      const reSaveImages = notes.map(async note => {
+        const imageFiles = await this.fileService.findByIds(
+          ss,
+          note.images,
+        );
+        this.saveNoteImagesToPublishDir(note, imageFiles);
+      });
+
+      await Promise.all(recreate.concat(reSaveImages));
+
+      this.publishNotes();
+    });
   }
 
   /**
@@ -419,6 +483,19 @@ export class NoteService {
         .countDocuments({
           permalink,
         })
+        .session(ss)
+        .exec();
+    });
+  }
+
+  getAllPublishedListModel(session: CSession) {
+    return this.db.withTransaction(session, async (ss) => {
+      const condition = {
+        isPublished: true,
+        isDeleted: false,
+      };
+      return this.noteModel
+        .find(condition)
         .session(ss)
         .exec();
     });

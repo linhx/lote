@@ -40,12 +40,23 @@ export default defineComponent({
       // TODO show result
       return NoteRepository.redeployOnlyNotes();
     },
+    recreateAndDeployNotes() {
+      var result = confirm("DANGER: Re-create and deploy all notes?");
+      if (!result) {
+        return;
+      }
+      // TODO show result
+      return NoteRepository.recreateAndDeployNotes();
+    },
     onClickMenu(item: string) {
       if (item === 'redeploy') {
         return this.redeployFe();
       }
       if (item === 'redeployNotes') {
         return this.redeployOnlyNotes();
+      }
+      if (item === 'recreateAndDeployNotes') {
+        return this.recreateAndDeployNotes();
       }
     }
   },

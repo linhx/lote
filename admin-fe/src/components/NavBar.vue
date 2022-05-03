@@ -25,6 +25,7 @@
             <router-link to="/note/create" class="menu-item">Create</router-link>
             <button class="menu-item" @click="clickMenu('redeploy')">Re-deploy FE</button>
             <button class="menu-item" @click="clickMenu('redeployNotes')">Re-deploy all notes</button>
+            <button class="menu-item" @click="clickMenu('recreateAndDeployNotes')">Re-create and deploy all notes</button>
           </div>
         </div>
       </div>
@@ -36,6 +37,7 @@
       <router-link to="/note/create" class="menu-item-mobile" @click="closeMenu">Create</router-link>
       <button class="menu-item-mobile" @click="clickMenu('redeploy')">Re-deploy FE</button>
       <button class="menu-item-mobile" @click="clickMenu('redeployNotes')">Re-deploy all notes</button>
+      <button class="menu-item-mobile" @click="clickMenu('recreateAndDeployNotes')">Re-create and deploy all notes</button>
     </div>
   </div>
 </nav>

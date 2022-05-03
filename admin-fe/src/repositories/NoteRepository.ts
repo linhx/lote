@@ -39,5 +39,8 @@ export default {
   },
   redeployOnlyNotes() {
     return api.post(`notes/redeploy-notes`);
+  },
+  recreateAndDeployNotes() {
+    return api.post(`notes/recreate-and-deploy-notes`);
   }
 }
