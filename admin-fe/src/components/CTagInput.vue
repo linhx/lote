@@ -26,7 +26,6 @@ export default defineComponent({
 
   data() {
     return {
-      value: this.modelValue,
       tagValue: ''
     }
   },
@@ -36,19 +35,20 @@ export default defineComponent({
       const newTag = (<HTMLInputElement>e.target)?.value.trim().toLowerCase();
       this.tagValue = '';
       if (newTag) {
-        const index = this.value? this.value.indexOf(newTag) : -1;
+        const index = this.modelValue? this.modelValue.indexOf(newTag) : -1;
         if (index > -1) {
           return;
         }
-        this.value?.push(newTag);
-        this.$emit('update:modelValue', this.value);
+        const newValue = this.modelValue? [...this.modelValue, newTag] : [newTag];
+        this.$emit('update:modelValue', newValue);
       }
     },
     onRemoveTag(tag: string) {
-      const index = this.value? this.value.indexOf(tag) : -1;
-      if (index > -1) {
-        this.value?.splice(index, 1);
-        this.$emit('update:modelValue', this.value);
+      const index = this.modelValue? this.modelValue.indexOf(tag) : -1;
+      if (index > -1 && this.modelValue) {
+        const cloneValue = [...this.modelValue]
+        cloneValue.splice(index, 1);
+        this.$emit('update:modelValue', cloneValue);
       }
     }
   },
