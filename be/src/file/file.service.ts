@@ -70,7 +70,9 @@ export class FileService {
       return this.fileModel.findByIdAndDelete(id).session(_session).exec();
     });
 
-    FileUtils.unlinkSyncSilentEnoent(deletedFile.path);
+    if (deletedFile) {
+      FileUtils.unlinkSyncSilentEnoent(deletedFile.path);
+    }
     return deletedFile;
   }
 
