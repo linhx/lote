@@ -50,6 +50,7 @@ import CFileInput from '../../components/CFileInput.vue';
 import NoteRepository from '../../repositories/NoteRepository';
 import FileRepository from "../../repositories/FileRepository";
 import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
+import NoteDto from '../../dtos/NoteDto';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -110,7 +111,11 @@ export default defineComponent({
           ...this.note,
           banner,
           content
-        }).catch(e => {
+        })
+        .then((res: NoteDto) => {
+          this.$router.push(`/note/${res.id}`);
+        })
+        .catch(e => {
           alert(e.response?.message)
         });
       } catch(e: any) {

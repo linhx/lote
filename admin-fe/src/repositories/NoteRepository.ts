@@ -10,7 +10,7 @@ export default {
   getList(filter: ReqNoteFilterDto): Promise<PageDto<NoteItemListDto>> {
     return api.get('notes/all', { params: filter });
   },
-  create(dto: NoteCreateDto) {
+  create(dto: NoteCreateDto): Promise<NoteDto> {
     return api.post('notes', dto);
   },
   findById(id: string): Promise<NoteDto> {
