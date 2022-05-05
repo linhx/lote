@@ -3,12 +3,14 @@ import NoteCreateView from './views/note/NoteCreateView.vue';
 import NotePreviewView from './views/note/NotePreviewView.vue';
 import NotesView from './views/note/NotesView.vue';
 import NoteUpdateView from './views/note/NoteUpdateView.vue';
+import ROUTES_NAME from './constants/routes';
 
 const routes: RouteRecordRaw[] = [
-  { path: '/', component: NotesView },
+  { path: '/', name: ROUTES_NAME.NOTES, component: NotesView },
   { path: '/note/create', component: NoteCreateView },
   {
     path: '/note/:id',
+    name: ROUTES_NAME.NOTE_UPDATE,
     component: NoteUpdateView,
     props: route => ({ id: route.params.id })
   },

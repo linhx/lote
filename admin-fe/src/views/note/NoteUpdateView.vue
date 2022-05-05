@@ -55,6 +55,7 @@ import NoteRepository from '../../repositories/NoteRepository';
 import FileRepository from "../../repositories/FileRepository";
 import NoteDto from '../../dtos/NoteDto';
 import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
+import ROUTES_NAME from '../../constants/routes';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -189,6 +190,8 @@ export default defineComponent({
         NoteRepository.delete(this.id)
         .then(() => {
           this.isLoading = false;
+          window.removeEventListener('beforeunload', warningUnsave);
+          this.$router.push(ROUTES_NAME.NOTES);
         }).catch((e: Error) => {
           this.isLoading = false;
           alert(e.message);
@@ -213,15 +216,15 @@ export default defineComponent({
     });
   },
   beforeRouteEnter() {
-    window.addEventListener('beforeunload', warningUnsave)
+    window.addEventListener('beforeunload', warningUnsave);
   },
   beforeRouteLeave(to, from , next)  {
-    const answer = window.confirm(confirmationMessage)
+    const answer = window.confirm(confirmationMessage);
     if (answer) {
-      window.removeEventListener('beforeunload', warningUnsave)
-      next()
+      window.removeEventListener('beforeunload', warningUnsave);
+      next();
     } else {
-      next(false)
+      next(false);
     }
   }
 });

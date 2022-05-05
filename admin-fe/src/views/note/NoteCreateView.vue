@@ -51,6 +51,7 @@ import NoteRepository from '../../repositories/NoteRepository';
 import FileRepository from "../../repositories/FileRepository";
 import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
 import NoteDto from '../../dtos/NoteDto';
+import ROUTES_NAME from '../../constants/routes';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -113,13 +114,17 @@ export default defineComponent({
           content
         })
         .then((res: NoteDto) => {
-          this.$router.push(`/note/${res.id}`);
+          window.removeEventListener('beforeunload', warningUnsave);
+          this.$router.push({
+            name: ROUTES_NAME.NOTE_UPDATE,
+            params: { id: res.id }
+          });
         })
         .catch(e => {
-          alert(e.response?.message)
+          alert(e.response?.message);
         });
       } catch(e: any) {
-        alert(e.message)
+        alert(e.message);
       } finally {
         this.isLoading = false;
       }
@@ -134,15 +139,15 @@ export default defineComponent({
     }
   },
   beforeRouteEnter() {
-    window.addEventListener('beforeunload', warningUnsave)
+    window.addEventListener('beforeunload', warningUnsave);
   },
   beforeRouteLeave(to, from , next)  {
-      const answer = window.confirm(confirmationMessage)
+    const answer = window.confirm(confirmationMessage);
     if (answer) {
-      window.removeEventListener('beforeunload', warningUnsave)
-      next()
+      window.removeEventListener('beforeunload', warningUnsave);
+      next();
     } else {
-      next(false)
+      next(false);
     }
   }
 });
