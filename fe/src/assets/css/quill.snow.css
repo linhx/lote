@@ -761,3 +761,9 @@
   content: url('../img/external-link.svg');
   margin-left: 2px;
 }
+
+/** custom */
+.ql-snow .ql-editor .hljs[data-language] {
+  white-space: pre;
+  overflow-x: auto;
+}
