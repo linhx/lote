@@ -7,6 +7,7 @@ IMPORTANT: can't view a note in development mode
 ## TODO
 
 - [ ] View note on development mode
+- [ ] Notify after performing asynchronous processing
 
 ## Prerequire
 
