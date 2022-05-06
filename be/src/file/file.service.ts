@@ -6,7 +6,6 @@ import { CFile, CFileDocument } from './entities/CFile';
 import { Cron } from '@nestjs/schedule';
 import * as DateTimeUtils from '../utilites/DateTimeUtils';
 import * as FileUtils from '../utilites/FileUtils';
-import * as fs from 'fs';
 import * as path from 'path';
 import { FILE_TEMP_URL_PREFIX } from 'src/constants';
 
@@ -119,7 +118,7 @@ export class FileService {
         },
         {
           isTemp: false,
-          updatedAt: new Date()
+          updatedAt: new Date(),
         },
         {
           session: _session,

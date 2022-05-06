@@ -31,6 +31,10 @@ export const create = (note: { title: string, tags: string[], publishedAt: Date,
           {{ tag }}
         </span>
       </div>
+
+      <div class="mt-4">
+        <comments-section :permalink="permalink" />
+      </div>
     </div>
   </div>
 </template>

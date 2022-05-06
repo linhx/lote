@@ -7,6 +7,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { SsoAuthGuard } from './auth/sso.strategy';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { SsoAuthGuard } from './auth/sso.strategy';
     ScheduleModule.forRoot(),
     FileModule,
     NoteModule,
+    CommentModule,
     AuthModule,
   ],
   controllers: [],

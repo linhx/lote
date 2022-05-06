@@ -15,5 +15,6 @@ import { FileModule } from '../file/file.module';
   ],
   controllers: [NoteController],
   providers: [NoteService],
+  exports: [NoteService],
 })
 export class NoteModule {}

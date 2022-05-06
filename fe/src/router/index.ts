@@ -18,7 +18,8 @@ if (import.meta.env.PROD) {
             }
             alert('Please check your internet connection!');
           });
-        }
+        },
+        props: { permalink: path }
       });
     }
   }
