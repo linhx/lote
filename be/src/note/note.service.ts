@@ -112,7 +112,7 @@ export class NoteService {
       );
 
       const deleteImages = diffImages.left;
-      this.fileService.deleteFileByIds(_session, deleteImages);
+      await this.fileService.deleteFileByIds(_session, deleteImages);
 
       const newImages = diffImages.right;
       // make images not temporary files
