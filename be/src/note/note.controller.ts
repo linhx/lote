@@ -1,4 +1,5 @@
 import { Body, CACHE_MANAGER, Controller, Delete, Get, Inject, Param, Post, Query, Res } from '@nestjs/common';
+import { SkipThrottle } from '@nestjs/throttler';
 import { Public } from 'src/auth/sso.strategy';
 import NoteCreateDto from 'src/note/dtos/request/NoteCreateDto';
 import NoteFilterListDto from './dtos/request/NoteFilterListDto';
@@ -11,6 +12,7 @@ import { NOTE_PUBLISH_DIR, PATH_NOTES, PATH_NOTES_FILE } from 'src/constants';
 import { Cache } from 'cache-manager';
 import NoteDto from './dtos/response/NoteDto';
 
+@SkipThrottle()
 @Controller(PATH_NOTES)
 export class NoteController {
   constructor(private readonly noteService: NoteService,

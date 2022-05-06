@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import { Public } from 'src/auth/sso.strategy';
 import { PATH_COMMENTS } from 'src/constants';
 import { CommentService } from './comment.service';
@@ -10,6 +11,7 @@ import CommentsDto from './dtos/CommentsDto';
 export class CommentController {
   constructor(private readonly commentService: CommentService) {}
 
+  @Throttle(1, 7)
   @Public()
   @Post('/:permalink')
   async create(
