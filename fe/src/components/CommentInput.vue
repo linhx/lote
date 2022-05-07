@@ -2,6 +2,9 @@
 import { nextTick, ref } from 'vue';
 import TextareaWithBtn from './TextareaWithBtn.vue';
 
+const props = defineProps<{
+  modelValue: { content: string, author: string }
+}>();
 const emit = defineEmits<{
   (e: 'post', value: { author: string, content: string }): void,
 }>();
@@ -27,11 +30,15 @@ const onEnterName = (e: KeyboardEvent) => {
 
 <template>
   <div>
-    <textarea-with-btn v-model="content" placeholder="Comment không quá 500 ký tự. (Ctrl + Enter)" :maxlength="500" @post="onSend" />
+    <textarea-with-btn
+      v-model="content"
+      placeholder="Comment không quá 500 ký tự. (Ctrl + Enter)"
+      :maxlength="500" @post="onSend"
+    />
     <input type="text"
       ref="nameRef"
       v-model="author"
-      placeholder="Tên của bạn (default: Anonymous)"
+      placeholder="Tên của bạn (tối thiểu 2 ký tự, default: Anonymous)"
       class="c-input comment-name"
       maxlength="30"
       @keydown="onEnterName">

@@ -5,16 +5,19 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { NoteSchema } from './entities/Note';
 import { CommonModule } from '../common/common.module';
 import { FileModule } from '../file/file.module';
+import { CommentController } from './comment.controller';
+import { CommentService } from './comment.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: 'Note', schema: NoteSchema }]),
     CommonModule,
     FileModule,
-    CacheModule.register()
+    CacheModule.register(),
+    HttpModule,
   ],
-  controllers: [NoteController],
-  providers: [NoteService],
-  exports: [NoteService],
+  controllers: [NoteController, CommentController],
+  providers: [NoteService, CommentService],
 })
 export class NoteModule {}

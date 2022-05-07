@@ -6,6 +6,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as cookieParser from 'cookie-parser';
 import { Logger } from './Logger';
+import { HttpExceptionFilter } from './http-exception.filter';
 
 async function bootstrap() {
   const logger =
@@ -19,6 +20,7 @@ async function bootstrap() {
   });
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
+  app.useGlobalFilters(new HttpExceptionFilter());
   await app.listen(process.env.SERVER_PORT);
 }
 bootstrap();

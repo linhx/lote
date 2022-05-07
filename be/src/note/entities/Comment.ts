@@ -1,16 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Document } from 'mongoose';
-import { Note } from 'src/note/entities/Note';
 
 export type CommentDocument = Comment & Document;
 
 @Schema()
 export class Comment {
   _id: mongoose.Schema.Types.ObjectId;
-
-  @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Note' })
-  note: Note;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' })
   parent: Comment;
@@ -26,6 +22,9 @@ export class Comment {
 
   @Prop({ default: false })
   isActive: boolean;
+
+  @Prop({ default: false })
+  isReaded: boolean;
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comment);

@@ -7,12 +7,13 @@ export default class NoteItemListDto {
   overview: string;
   tags: string[];
   category: number;
+  newCommentsCount: number;
   isPublished: boolean;
   updatePublicationAt: Date;
   createdAt: Date;
   updatedAt: Date;
 
-  static fromEntity(entity: NoteDocument) {
+  static fromEntity(entity: NoteDocument & { newCommentsCount: number }) {
     const dto = new NoteItemListDto();
     dto.id = entity._id;
     dto.title = entity.title;
@@ -20,6 +21,7 @@ export default class NoteItemListDto {
     dto.overview = entity.overview;
     dto.tags = entity.tags;
     dto.category = entity.category;
+    dto.newCommentsCount = entity.newCommentsCount;
     dto.isPublished = entity.isPublished;
     dto.updatePublicationAt = entity.updatePublicationAt;
     dto.createdAt = entity.createdAt;

@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { CommentSchema, Comment } from './Comment';
 
 export type NoteDocument = Note & Document;
 
@@ -46,6 +47,9 @@ export class Note {
 
   @Prop({ default: Date.now })
   updatedAt: Date;
+
+  @Prop({ type: [CommentSchema], default: [] })
+  comments: Comment[];
 }
 
 export const NoteSchema = SchemaFactory.createForClass(Note);

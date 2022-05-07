@@ -8,6 +8,7 @@ export default interface NoteItemListDto {
   isDeleted: boolean;
   tags: string[];
   category?: number;
+  newCommentsCount: number;
   updatePublicationAt: Date;
   createdAt: Date;
   updatedAt: Date;

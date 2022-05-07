@@ -1,4 +1,4 @@
-import { Comment } from '../entities/Comment';
+import { Comment } from '../../entities/Comment';
 
 export default class CommentDto {
   id: string;
@@ -11,6 +11,8 @@ export default class CommentDto {
 
   postedAt: Date;
 
+  isActive: boolean;
+
   static fromEntity(entity: Comment) {
     const dto = new CommentDto();
     dto.id = entity._id.toString();
@@ -18,6 +20,7 @@ export default class CommentDto {
     dto.author = entity.author;
     dto.content = entity.content;
     dto.postedAt = entity.postedAt;
+    dto.isActive = entity.isActive;
 
     return dto;
   }

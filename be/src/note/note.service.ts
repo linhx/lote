@@ -490,10 +490,7 @@ export class NoteService {
         isPublished: true,
         isDeleted: false,
       };
-      return this.noteModel
-        .find(condition)
-        .session(ss)
-        .exec();
+      return this.noteModel.find(condition).session(ss).exec();
     });
   }
 
@@ -530,7 +527,28 @@ export class NoteService {
   ): Promise<PageDto<NoteItemListDto>> {
     return this.db.withTransaction(session, async (ss) => {
       const items = await this.noteModel
-        .find()
+        .aggregate([
+          {
+            $project: {
+              _id: '$_id',
+              title: '$title',
+              permalink: '$permalink',
+              overview: '$overview',
+              tags: '$tags',
+              category: '$category',
+              publishedAt: '$publishedAt',
+              updatePublicationAt: '$updatePublicationAt',
+              newCommentsCount: {
+                $size: {
+                  $filter: {
+                    input: '$comments',
+                    cond: { $eq: ['$$this.isReaded', false] },
+                  },
+                },
+              },
+            },
+          },
+        ])
         .session(ss)
         .sort({ createdAt: -1 })
         .skip(dto.getSkip())

@@ -6,7 +6,10 @@ import CommentItem from './comment/CommentItem.vue';
 import TextareaWithBtn from './TextareaWithBtn.vue';
 import CommentInput from './CommentInput.vue';
 import CommentRepository from '../repositories/CommentRepository';
+import * as VueI18n from 'vue-i18n';
 
+
+const { t } = VueI18n.useI18n()
 const props = defineProps<{
   permalink: string;
 }>();
@@ -46,11 +49,34 @@ const commentsNested = computed(() => {
   }
 });
 
+const getCaptcha = () => {
+  return new Promise((resolve, reject) => {
+    grecaptcha.ready(function() {
+      try {
+        grecaptcha.execute(import.meta.env.VITE_APP_RECAPTCHA_SITE_KEY, { action: 'submit' }).then((token: string) => {
+          resolve(token);
+        }).catch((e: any) => {
+          reject(e);
+        });
+      } catch(e) {
+        reject(e);
+      }
+    });
+  });
+}
+
 const onComment = (comment: any) => {
-  CommentRepository.post(props.permalink, comment).then(() => {
-    alert('Comment sẽ được review');
-  }).catch(e => {
-    alert('Có lỗi xảy ra khi comment');
+  getCaptcha().then(captcha => {
+    CommentRepository.post(props.permalink, {
+        captcha,
+        ...comment
+      }).then(() => {
+        alert(t('message.comment.create.success'));
+      }).catch(e => {
+        alert(t(e.response.data.message));
+      });
+  }).catch(() => {
+    alert(t('error.comment.create.captcha'));
   });
 }
 </script>

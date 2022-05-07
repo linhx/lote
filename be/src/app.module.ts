@@ -8,7 +8,6 @@ import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { SsoAuthGuard } from './auth/sso.strategy';
-import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -26,7 +25,6 @@ import { CommentModule } from './comment/comment.module';
     }),
     FileModule,
     NoteModule,
-    CommentModule,
     AuthModule,
   ],
   controllers: [],

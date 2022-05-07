@@ -6,6 +6,7 @@ export default interface NotePreviewDto {
   image: string;
   tags: string[];
   category?: number;
+  newCommentsCount: number;
   publishedAt: Date;
   updatePublicationAt: Date;
 }

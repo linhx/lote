@@ -1,10 +1,19 @@
 <template>
   <div class="flex">
     <div class="body pl-5 text-left space-y-1 w-full">
-      <div>
-        <router-link tag="div" class="text-2xl font-semibold inline-block" :class="titleClass" :to="'/note/' + note.id">
-          {{ note.title }}
-        </router-link>
+      <div class="flex items-center">
+        <div class="flex-1 truncate">
+          <router-link
+            class="w-full text-2xl font-semibold inline-block truncate overflow-ellipsis"
+            :class="titleClass" :to="'/note/' + note.id">
+            {{ note.title }}
+          </router-link>
+        </div>
+        <div class="w-16 text-right">
+          <router-link :to="{ name: 'NOTE_COMMENTS', params: { id: note.id, title: note.title } }" class="p-1 rounded font-semibold inline-block hover:bg-gray-300">
+            {{ note.newCommentsCount }} 💬
+          </router-link>
+        </div>
       </div>
       <div class="font-extralight whitespace-pre-wrap w-full">
         <div class="whitespace-nowrap truncate">{{ note.overview }}</div>
