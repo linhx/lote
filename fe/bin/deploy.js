@@ -2,6 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const fileUtils = require('./FileUtils');
 const { loadEnv } = require('vite');
+const updateNotChunkMapVer = require('./UpdateNotChunkMapVer');
 process.env = {...process.env, ...loadEnv('development', process.cwd())};
 
 if (fs.existsSync(process.env.VITE_APP_DEPLOY_DIR)) {

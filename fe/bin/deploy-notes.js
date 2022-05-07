@@ -2,6 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const { loadEnv } = require('vite');
 const fileUtils = require('./FileUtils');
+const updateNotChunkMapVer = require('./UpdateNotChunkMapVer');
 process.env = {...process.env, ...loadEnv('development', process.cwd())};
 
 fileUtils.rmSyncSilent(process.env.VITE_APP_NOTE_DIR, { recursive: true });
