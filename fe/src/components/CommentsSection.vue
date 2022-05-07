@@ -84,6 +84,6 @@ const onComment = (comment: any) => {
 <template>
   <div>
     <comment-item v-for="comment in commentsNested" :key="comment.id" :comment="comment" @post="onComment"></comment-item>
-    <comment-input @post="onComment" />
+    <comment-input class="mt-4" @post="onComment" />
   </div>
 </template>

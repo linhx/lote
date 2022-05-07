@@ -23,3 +23,7 @@ body .ql-editor p {
 .c-input {
   @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-2 block w-full sm:text-sm border border-gray-300 rounded-md;
 }
+
+.grecaptcha-badge {
+  visibility: hidden;
+}

@@ -15,10 +15,9 @@ export class RecaptchaGuard implements CanActivate {
     const { body } = context.switchToHttp().getRequest();
 
     const { data } = await firstValueFrom(
-      this.httpService.post(`https://www.google.com/recaptcha/api/siteverify`, {
-        secret: process.env.RECAPTCHA_SECRET,
-        response: body.captcha,
-      }),
+      this.httpService.post(
+        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${body.captcha}`,
+      ),
     );
 
     if (!data.success) {
