@@ -2,9 +2,6 @@
 import { nextTick, ref } from 'vue';
 import TextareaWithBtn from './TextareaWithBtn.vue';
 
-const props = defineProps<{
-  modelValue: { content: string, author: string }
-}>();
 const emit = defineEmits<{
   (e: 'post', value: { author: string, content: string }): void,
 }>();
