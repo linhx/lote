@@ -77,9 +77,7 @@ const findComment = (comment: Comment) => {
 const activate = (comment: Comment) => {
   CommentRepository.active(props.noteId, comment.id).then(() => {
     const c = findComment(comment);
-    console.log('c', comment)
     if (!!c) {
-      console.log('c', c.isActive)
       c.isActive = true;
     }
   }).catch(e => {

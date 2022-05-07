@@ -58,7 +58,6 @@ export class CommentController {
       null,
       permalink,
     );
-    console.log('comments', comments);
     const dto = new CommentsDto();
     dto.items = comments.map((comment) => CommentDto.fromEntity(comment));
     return dto;

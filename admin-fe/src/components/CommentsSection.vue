@@ -17,7 +17,6 @@ const onPost = (newComment: any) => {
   emit('post', newComment);
 }
 const onActivate = (comment: any) => {
-  console.log('', comment)
   emit('activate', comment);
 }
 const onDelete = (comment: any) => {
