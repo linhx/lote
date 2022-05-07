@@ -538,6 +538,9 @@ export class NoteService {
               category: '$category',
               publishedAt: '$publishedAt',
               updatePublicationAt: '$updatePublicationAt',
+              isDeleted: '$isDeleted',
+              createdAt: '$createdAt',
+              updatedAt: '$updatedAt',
               newCommentsCount: {
                 $size: {
                   $filter: {
