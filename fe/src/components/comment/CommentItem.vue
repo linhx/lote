@@ -22,9 +22,11 @@ const onPost = (newComment: any) => {
 </script>
 
 <template>
-  <div class="border-gray-200 flex" :class="{ 'mb-2': !comment.parentId }">
-    <div class="h-14 w-14 bg-white">
-      <img src="../../assets/img/icon-home.png" alt="" class="md:h-12 md:w-12 w-10 h-10">
+  <div class="border-gray-200 flex mb-1" :class="{ 'mb-2': !comment.parentId }">
+    <div class="w-14 h-14 flex items-center">
+      <div class="md:h-12 md:w-12 w-10 h-10 rounded-full shadow-md comment-avatar">
+        <img src="../../assets/img/avatar.svg" alt="" class="md:h-12 md:w-12 w-10 h-10">
+      </div>
     </div>
 
     <div class="ml-2 flex-1">
@@ -50,3 +52,9 @@ const onPost = (newComment: any) => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.comment-avatar {
+  box-shadow: 0 1px 1px rgb(0 0 0 / 11%), 0 2px 2px rgb(0 0 0 / 11%), 0 4px 4px rgb(0 0 0 / 11%), 0 8px 8px rgb(0 0 0 / 11%), 0 16px 16px rgb(0 0 0 / 11%), 0 32px 32px rgb(0 0 0 / 11%);
+}
+</style>
