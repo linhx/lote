@@ -86,7 +86,7 @@ export class CommentController {
     @Param('noteId') noteId: string,
     @Body() dto: CommentCreateDto,
   ) {
-    dto.authorName = req.user.username;
+    dto.authorName = process.env.COMMENT_ADMIN_NAME || req.user.username;
     dto.author = {
       name: dto.authorName,
       uuid: '',
