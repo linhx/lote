@@ -4,7 +4,7 @@ import TextareaWithBtn from './TextareaWithBtn.vue';
 
 export type NewContent = {
   content: string;
-  author: string;
+  authorName: string;
 }
 
 const props = defineProps<{
@@ -13,7 +13,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: NewContent): void,
-  (e: 'post', value: { author: string, content: string }): void,
+  (e: 'post', value: { authorName: string, content: string }): void,
 }>();
 const nameRef = ref<HTMLElement>();
 const onSend = () => {
@@ -24,28 +24,28 @@ const onSend = () => {
 const onEnterName = (e: KeyboardEvent) => {
   if (e.key === 'Enter') {
     emit('post', {
-      author: props.modelValue.author,
-      content: props.modelValue.author
+      authorName: props.modelValue.authorName,
+      content: props.modelValue.content
     });
   }
 }
 const send = () => {
   emit('post', {
-    author: props.modelValue.author,
-    content: props.modelValue.author
+    authorName: props.modelValue.authorName,
+    content: props.modelValue.content
   });
 }
 
 const onInputContent = (val: string) => {
   emit('update:modelValue', {
     content: val,
-    author: props.modelValue.author
+    authorName: props.modelValue.authorName
   });
 }
-const onInputAuthor = (e: Event) => {
+const onInputAuthorName = (e: Event) => {
   emit('update:modelValue', {
     content: props.modelValue.content,
-    author: (<HTMLInputElement>e.target)?.value
+    authorName: (<HTMLInputElement>e.target)?.value
   });
 }
 </script>
@@ -62,11 +62,11 @@ const onInputAuthor = (e: Event) => {
     <div class="flex items-center mt-2">
       <input type="text"
         ref="nameRef"
-        :value="modelValue.author"
+        :value="modelValue.authorName"
         placeholder="Tên của bạn (tối thiểu 2 ký tự, default: Anonymous)"
         class="c-input comment-name"
         maxlength="30"
-        @input="onInputAuthor"
+        @input="onInputAuthorName"
         @keydown="onEnterName">
       <button class="w-9 h-9 inline-block rounded-full hover:shadow-md overflow-hidden ml-1" @click="send">
         <img src="../assets/img/icon-send-letter-48.png"/>

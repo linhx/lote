@@ -18,6 +18,15 @@ import { CommentService } from './comment.service';
 import CommentCreateDto from './dtos/request/CommentCreateDto';
 import CommentDto from './dtos/response/CommentDto';
 import CommentsDto from './dtos/response/CommentsDto';
+import * as md5 from 'blueimp-md5';
+import * as RequestIp from 'request-ip';
+import ROLES from '../constants/roles';
+
+const createUserMd5 = (name: string, req: any) => {
+  return md5(`${name}-${RequestIp.getClientIp(req)}`);
+};
+
+const DEFAULT_AUTHOR_NAME = 'Anonymous';
 
 @Controller(PATH_COMMENTS)
 export class CommentController {
@@ -36,17 +45,25 @@ export class CommentController {
   @Post('/:permalink')
   @UseGuards(RecaptchaGuard)
   async publicCreate(
+    @Request() req,
     @Param('permalink') permalink: string,
     @Body() dto: CommentCreateDto,
   ) {
-    if (CommentController.FORBIDDEN_NAMES.includes(dto.author.toLowerCase())) {
+    if (
+      CommentController.FORBIDDEN_NAMES.includes(dto.authorName.toLowerCase())
+    ) {
       throw new BusinessError('error.comment.create.forbiddenName');
     }
-    if (!dto.author) {
-      dto.author = 'Anonymous';
-    } else if (dto.author.length < 2) {
+    if (!dto.authorName) {
+      dto.authorName = DEFAULT_AUTHOR_NAME;
+    } else if (dto.authorName.length < 2) {
       throw new BusinessError('error.comment.create.nameToShort'); // TODO validation or use 400 status
     }
+    dto.author = {
+      name: dto.authorName,
+      uuid: createUserMd5(dto.authorName, req),
+      role: ROLES.GUEST,
+    };
     await this.commentService.createByPermalink(null, permalink, dto);
     return {};
   }
@@ -69,7 +86,12 @@ export class CommentController {
     @Param('noteId') noteId: string,
     @Body() dto: CommentCreateDto,
   ) {
-    dto.author = req.user.username;
+    dto.authorName = req.user.username;
+    dto.author = {
+      name: dto.authorName,
+      uuid: '',
+      role: ROLES.ADMIN,
+    };
     const comment = await this.commentService.createByNoteId(null, noteId, dto);
     return CommentDto.fromEntity(comment);
   }

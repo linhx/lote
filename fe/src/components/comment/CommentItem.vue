@@ -2,6 +2,8 @@
 import { ref, nextTick } from 'vue';
 import Comment from './Comment';
 import CommentInput from '../CommentInput.vue';
+import CommentAvatar from './CommentAvatar.vue';
+import ROLES from '../../constants/roles';
 
 const props = defineProps<{
   comment: Comment;
@@ -23,11 +25,11 @@ const onClickReply = () => {
 const newComment = ref<{
   parentId: string;
   content: string;
-  author: string;
+  authorName: string;
 }>({
   parentId: props.comment.id,
   content: '',
-  author: ''
+  authorName: ''
 });
 const onPost = (_newComment: any) => {
   _newComment.parentId = props.comment.id;
@@ -38,14 +40,15 @@ const onPost = (_newComment: any) => {
 <template>
   <div class="border-gray-200 flex mb-1" :class="{ 'mb-2': !comment.parentId }">
     <div class="w-14 h-14 flex items-center">
-      <div class="md:h-12 md:w-12 w-10 h-10 rounded-full shadow-md comment-avatar">
-        <img src="../../assets/img/avatar.svg" alt="" class="md:h-12 md:w-12 w-10 h-10">
+      <div class="md:h-12 md:w-12 w-10 h-10 rounded-full shadow-md comment-avatar overflow-hidden">
+        <img v-if="comment.author.role === ROLES.ADMIN" src="../../assets/img/admin-avatar.png" alt="Admin" class="md:h-12 md:w-12 w-10 h-10">
+        <comment-avatar v-else :hash="comment.author.uuid" :name="comment.author.name"></comment-avatar>
       </div>
     </div>
 
     <div class="ml-2 flex-1">
       <h6 class="font-bold">
-        {{ comment.author }}
+        {{ comment.author.name }}
         <span class="text-gray-400 ml-2 font-normal">{{ comment.postedAt.toLocaleString() }}</span>
       </h6>
       <p class="font-normal tracking-wide leading-6 whitespace-pre-wrap break-all">

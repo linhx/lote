@@ -15,7 +15,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'post', value: { author: string, content: string }): void,
+  (e: 'post', value: { authorName: string, content: string }): void,
 }>();
 
 const comments = ref<CommentDto[]>([]);
@@ -68,7 +68,7 @@ const getCaptcha = () => {
 
 const newComment = ref<NewContent>({
   content: '',
-  author: ''
+  authorName: ''
 });
 const onComment = (_newComment: any) => {
   getCaptcha().then(captcha => {
@@ -76,7 +76,7 @@ const onComment = (_newComment: any) => {
         captcha,
         parentId: _newComment.parentId,
         content: _newComment.content,
-        author: _newComment.author
+        authorName: _newComment.authorName
       }).then(() => {
         _newComment.content = '';
         alert(t('message.comment.create.success'));

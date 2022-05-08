@@ -3,7 +3,11 @@ import CommentDto from '../../dtos/CommentDto';
 export default class Comment {
   id: string;
   parentId: string;
-  author: string;
+  author: {
+    name: string;
+    uuid: string;
+    role: string;
+  };
   content: string;
   postedAt: Date;
   isActive: boolean;

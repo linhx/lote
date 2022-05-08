@@ -3,14 +3,13 @@ import { ref } from 'vue';
 import TextareaWithBtn from './TextareaWithBtn.vue';
 
 const emit = defineEmits<{
-  (e: 'post', value: any): void,
+  (e: 'post', value: { content: string; }): void,
 }>();
 const content = ref('');
 const nameRef = ref<HTMLElement>();
 const onSend = () => {
   emit('post', {
-    content: content.value,
-    author: ''
+    content: content.value
   });
   content.value = '';
 }

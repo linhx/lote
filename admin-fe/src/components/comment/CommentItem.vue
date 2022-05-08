@@ -7,7 +7,7 @@ const props = defineProps<{
   comment: Comment;
 }>();
 const emit = defineEmits<{
-  (e: 'post', value: { author: string, content: string }): void,
+  (e: 'post', value: { authorName: string, content: string }): void,
   (e: 'activate', value: Comment): void,
   (e: 'delete', value: Comment): void,
 }>();
@@ -45,7 +45,7 @@ const onDelete = () => {
 
     <div class="ml-2 flex-1">
       <h6 class="font-bold">
-        {{ comment.author }}
+        {{ comment.author.name }}
         <span class="text-gray-400 ml-2 font-normal">{{ comment.postedAt.toLocaleString() }}</span>
       </h6>
       <p class="font-normal tracking-wide leading-6 whitespace-pre-wrap break-all">

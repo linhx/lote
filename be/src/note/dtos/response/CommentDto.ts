@@ -5,7 +5,11 @@ export default class CommentDto {
 
   parentId: string;
 
-  author: string;
+  author: {
+    name: string;
+    uuid: string;
+    role: string;
+  };
 
   content: string;
 

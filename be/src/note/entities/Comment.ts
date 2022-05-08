@@ -4,6 +4,12 @@ import { Document } from 'mongoose';
 
 export type CommentDocument = Comment & Document;
 
+class CommentAuthor {
+  name: string;
+  uuid: string;
+  role: string;
+}
+
 @Schema()
 export class Comment {
   _id: mongoose.Schema.Types.ObjectId;
@@ -12,7 +18,7 @@ export class Comment {
   parent: Comment;
 
   @Prop({ required: true })
-  author: string;
+  author: CommentAuthor;
 
   @Prop({ required: true })
   content: string;
