@@ -74,6 +74,7 @@ const onComment = (_newComment: any) => {
   getCaptcha().then(captcha => {
     CommentRepository.post(props.permalink, {
         captcha,
+        parentId: _newComment.parentId,
         content: _newComment.content,
         author: _newComment.author
       }).then(() => {
