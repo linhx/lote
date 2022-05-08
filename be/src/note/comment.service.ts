@@ -99,18 +99,32 @@ export class CommentService {
   getAllActiveByPermalink(session: CSession, permalink: string) {
     return this.db.withTransaction(session, async (_session) => {
       const note = await this.noteModel
-        .findOne({
-          permalink,
-          isPublished: true,
-          isDeleted: false,
-        })
-        .select('comments')
+        .aggregate([
+          {
+            $match: { permalink, isPublished: true, isDeleted: false },
+          },
+          {
+            $project: {
+              _id: '$_id',
+              comments: {
+                $filter: {
+                  input: '$comments',
+                  as: 'comment',
+                  cond: {
+                    $eq: ['$$comment.isActive', true],
+                  },
+                },
+              },
+            },
+          },
+        ])
         .session(_session)
         .exec();
 
-      if (!note) throw new BusinessError('error.comment.list.noteDoesNotExist');
+      if (!note.length)
+        throw new BusinessError('error.comment.list.noteDoesNotExist');
 
-      return note.comments;
+      return note[0].comments;
     });
   }
 
