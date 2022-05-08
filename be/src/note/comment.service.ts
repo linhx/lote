@@ -58,6 +58,7 @@ export class CommentService {
       newComment.content = dto.content;
       newComment.author = dto.author;
       newComment.isActive = isActive;
+      newComment.isReaded = isActive;
 
       note.comments.push(newComment);
 
