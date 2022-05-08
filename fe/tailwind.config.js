@@ -21,6 +21,7 @@ module.exports = {
       'bg-gray-200',
       'px-1',
       'mx-1',
+      'mt-4'
     ]
   },
   darkMode: false,

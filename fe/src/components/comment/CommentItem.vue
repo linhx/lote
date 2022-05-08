@@ -7,17 +7,25 @@ const props = defineProps<{
   comment: Comment;
 }>();
 const emit = defineEmits<{
-  (e: 'post', value: { author: string, content: string }): void,
+  (e: 'post', value: any): void,
 }>();
 const showReply = ref(false);
 const onClickReply = () => {
   showReply.value = !showReply.value;
 }
-const onPost = (newComment: any) => {
-  emit('post', {
-    ...newComment,
-    parentId: props.comment.id
-  });
+
+const newComment = ref<{
+  parentId: string;
+  content: string;
+  author: string;
+}>({
+  parentId: props.comment.id,
+  content: '',
+  author: ''
+});
+const onPost = (_newComment: any) => {
+  _newComment.parentId = props.comment.id;
+  emit('post', _newComment); // TODO should not taking advantage of the reference to delete content
 }
 </script>
 
@@ -48,7 +56,12 @@ const onPost = (newComment: any) => {
       <div v-if="comment.subs.length" class="mt-2">
         <comment-item v-for="subComment in comment.subs" :key="subComment.id" :comment="subComment" ></comment-item>
       </div>
-      <comment-input v-if="showReply" class="mt-2" @post="onPost" />
+      <comment-input
+        v-if="showReply"
+        v-model="newComment"
+        class="mt-2"
+        @post="() => onPost(newComment)"
+      />
     </div>
   </div>
 </template>

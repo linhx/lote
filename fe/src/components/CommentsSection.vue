@@ -4,7 +4,7 @@ import CommentDto from '../dtos/CommentDto';
 import Comment from './comment/Comment';
 import CommentItem from './comment/CommentItem.vue';
 import TextareaWithBtn from './TextareaWithBtn.vue';
-import CommentInput from './CommentInput.vue';
+import CommentInput, { NewContent } from './CommentInput.vue';
 import CommentRepository from '../repositories/CommentRepository';
 import * as VueI18n from 'vue-i18n';
 
@@ -65,12 +65,19 @@ const getCaptcha = () => {
   });
 }
 
-const onComment = (comment: any) => {
+
+const newComment = ref<NewContent>({
+  content: '',
+  author: ''
+});
+const onComment = (_newComment: any) => {
   getCaptcha().then(captcha => {
     CommentRepository.post(props.permalink, {
         captcha,
-        ...comment
+        content: _newComment.content,
+        author: _newComment.author
       }).then(() => {
+        _newComment.content = '';
         alert(t('message.comment.create.success'));
       }).catch(e => {
         alert(t(e.response.data.message));
@@ -83,7 +90,16 @@ const onComment = (comment: any) => {
 
 <template>
   <div>
-    <comment-item v-for="comment in commentsNested" :key="comment.id" :comment="comment" @post="onComment"></comment-item>
-    <comment-input class="mt-4" @post="onComment" />
+    <comment-item
+      v-for="comment in commentsNested"
+      :key="comment.id"
+      :comment="comment"
+      @post="onComment"
+    ></comment-item>
+    <comment-input
+      v-model="newComment"
+      class="mt-4"
+      @post="() => onComment(newComment)"
+    />
   </div>
 </template>

@@ -536,6 +536,7 @@ export class NoteService {
               overview: '$overview',
               tags: '$tags',
               category: '$category',
+              isPublished: '$isPublished',
               publishedAt: '$publishedAt',
               updatePublicationAt: '$updatePublicationAt',
               isDeleted: '$isDeleted',
