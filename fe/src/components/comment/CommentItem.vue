@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from '@vue/reactivity';
+import { ref, nextTick } from 'vue';
 import Comment from './Comment';
 import CommentInput from '../CommentInput.vue';
 
@@ -10,8 +10,14 @@ const emit = defineEmits<{
   (e: 'post', value: any): void,
 }>();
 const showReply = ref(false);
+const commentInputRef = ref<HTMLElement>();
 const onClickReply = () => {
   showReply.value = !showReply.value;
+  if (showReply.value) {
+    nextTick(() => {
+      commentInputRef.value?.scrollIntoView();
+    });
+  }
 }
 
 const newComment = ref<{
@@ -53,9 +59,10 @@ const onPost = (_newComment: any) => {
             <path d="M1 1L6.5 7L12 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span> -->
         <span v-if="!comment.parentId" class="inline-block cursor-pointer text-blue-500 text-sm" @click="onClickReply">Reply</span>
       </div>
-      <div v-if="comment.subs.length" class="mt-2">
+      <div v-if="comment.subs && comment.subs.length" class="mt-2">
         <comment-item v-for="subComment in comment.subs" :key="subComment.id" :comment="subComment" ></comment-item>
       </div>
+      <div ref="commentInputRef" style="visibility: hidden;"></div>
       <comment-input
         v-if="showReply"
         v-model="newComment"

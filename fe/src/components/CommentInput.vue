@@ -29,6 +29,12 @@ const onEnterName = (e: KeyboardEvent) => {
     });
   }
 }
+const send = () => {
+  emit('post', {
+    author: props.modelValue.author,
+    content: props.modelValue.author
+  });
+}
 
 const onInputContent = (val: string) => {
   emit('update:modelValue', {
@@ -53,14 +59,19 @@ const onInputAuthor = (e: Event) => {
       @update:model-value="onInputContent"
       @post="onSend"
     />
-    <input type="text"
-      ref="nameRef"
-      :value="modelValue.author"
-      placeholder="Tên của bạn (tối thiểu 2 ký tự, default: Anonymous)"
-      class="c-input comment-name"
-      maxlength="30"
-      @input="onInputAuthor"
-      @keydown="onEnterName">
+    <div class="flex items-center mt-2">
+      <input type="text"
+        ref="nameRef"
+        :value="modelValue.author"
+        placeholder="Tên của bạn (tối thiểu 2 ký tự, default: Anonymous)"
+        class="c-input comment-name"
+        maxlength="30"
+        @input="onInputAuthor"
+        @keydown="onEnterName">
+      <button class="w-9 h-9 inline-block rounded-full hover:shadow-md overflow-hidden ml-1" @click="send">
+        <img src="../assets/img/icon-send-letter-48.png"/>
+      </button>
+    </div>
   </div>
 </template>
 
