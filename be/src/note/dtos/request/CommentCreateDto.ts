@@ -6,7 +6,7 @@ export default class CommentCreateDto {
 
   @IsOptional()
   @Transform(({ value }: TransformFnParams) => (value ? value.trim() : ''))
-  @MaxLength(20)
+  @MaxLength(30)
   authorName: string;
 
   @Transform(({ value }: TransformFnParams) => (value ? value.trim() : ''))
