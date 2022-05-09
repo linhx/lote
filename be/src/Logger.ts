@@ -5,18 +5,33 @@ import safeStringify from 'fast-safe-stringify';
 const { combine, timestamp, errors, printf } = winston.format;
 
 // tslint:disable-next-line:no-shadowed-variable
-const format = printf(({ timestamp, level, label, message, stack, ...others }:
-   { timestamp: string, level: string, label: string, message: any, stack: any, others: { [key in symbol]: string } }) => {
-  const namespace = label ? `(${label})` : '';
-  const errStack = stack ? `\n${stack}` : '';
+const format = printf(
+  ({
+    timestamp,
+    level,
+    label,
+    message,
+    stack,
+    ...others
+  }: {
+    timestamp: string;
+    level: string;
+    label: string;
+    message: any;
+    stack: any;
+    others: { [key in symbol]: string };
+  }) => {
+    const namespace = label ? `(${label})` : '';
+    const errStack = stack ? `\n${stack}` : '';
 
-  let meta = '';
-  if (level === 'error') {
-    const args = others[Symbol.for('splat')];
-    meta = args? `\n\t${args.map(safeStringify).join('\n\t')}` : '';
-  }
-  return `[${timestamp}] ${level}: ${namespace} ${message} ${meta} ${errStack}`;
-})
+    let meta = '';
+    if (level === 'error') {
+      const args = others[Symbol.for('splat')];
+      meta = args ? `\n\t${args.map(safeStringify).join('\n\t')}` : '';
+    }
+    return `[${timestamp}] ${level}: ${namespace} ${message} ${meta} ${errStack}`;
+  },
+);
 
 const transportError = new winston.transports.DailyRotateFile({
   filename: 'be-error-%DATE%.log',
@@ -26,7 +41,7 @@ const transportError = new winston.transports.DailyRotateFile({
   maxFiles: '20d',
   level: 'error',
   utc: true,
-  dirname: process.env.LOG_DIR
+  dirname: process.env.LOG_DIR,
 });
 
 const transportCombined = new winston.transports.DailyRotateFile({
@@ -36,20 +51,13 @@ const transportCombined = new winston.transports.DailyRotateFile({
   maxSize: '20m',
   maxFiles: '20d',
   utc: true,
-  dirname: process.env.LOG_DIR
+  dirname: process.env.LOG_DIR,
 });
 
 const logger = winston.createLogger({
   level: process.env.LOG_LEVEL,
-  format: combine(
-    timestamp(),
-    errors({ stack: true }),
-    format
-  ),
-  transports: [
-    transportError,
-    transportCombined
-  ]
+  format: combine(timestamp(), errors({ stack: true }), format),
+  transports: [transportError, transportCombined],
 });
 
 export class Logger implements LoggerService {

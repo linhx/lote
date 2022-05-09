@@ -1,11 +1,14 @@
 import { NOTE_FE_BASE_URL } from 'src/constants';
 import HtmlUtils from './HtmlUtils';
 
-export const create = (note: { title: string, tags: string[], publishedAt: Date, permalink: string }, delta: any) => {
+export const create = (
+  note: { title: string; tags: string[]; publishedAt: Date; permalink: string },
+  delta: any,
+) => {
   const content = HtmlUtils.deltaToPublishedHtml(delta, note, NOTE_FE_BASE_URL);
   let tags = '[]';
   if (note.tags && note.tags.length) {
-    tags = `['${note.tags.join('\',\'')}']`
+    tags = `['${note.tags.join("','")}']`;
   }
   const publishedAt = note.publishedAt.toISOString();
   return `<template>
@@ -79,4 +82,4 @@ export default defineComponent({
   }
 })
 </script>`;
-}
+};

@@ -18,15 +18,19 @@ export class SsoStrategy extends PassportStrategy(Strategy, 'sso') {
   async validate(request: any): Promise<any> {
     const at = request.cookies['at'];
     if (at) {
-      return await firstValueFrom(this.httpService.get(process.env.GET_USER_URL, {
-        headers: {
-          Cookie: `at=${at};`
-        }
-      })).then(res => {
-        return res.data;
-      }).catch(() => {
-        return false;
-      });
+      return await firstValueFrom(
+        this.httpService.get(process.env.GET_USER_URL, {
+          headers: {
+            Cookie: `at=${at};`,
+          },
+        }),
+      )
+        .then((res) => {
+          return res.data;
+        })
+        .catch(() => {
+          return false;
+        });
     } else {
       return false;
     }
@@ -39,11 +43,14 @@ export class SsoAuthGuard extends AuthGuard('sso') {
     super();
   }
 
-	public canActivate(context: ExecutionContext): any {
-		const isPublic = this.reflector.get<boolean>(IS_PUBLIC, context.getHandler());
-		if ( isPublic ) {
-			return true;
-		}
-		return super.canActivate(context);
-	}
+  public canActivate(context: ExecutionContext): any {
+    const isPublic = this.reflector.get<boolean>(
+      IS_PUBLIC,
+      context.getHandler(),
+    );
+    if (isPublic) {
+      return true;
+    }
+    return super.canActivate(context);
+  }
 }

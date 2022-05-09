@@ -1,4 +1,8 @@
-export const diff = (arr1: any[], arr2: any[], compare: (ele1: any, ele2) => boolean) => {
+export const diff = (
+  arr1: any[],
+  arr2: any[],
+  compare: (ele1: any, ele2) => boolean,
+) => {
   const result = [];
   for (const ele1 of arr1) {
     for (const ele2 of arr2) {
@@ -8,7 +12,7 @@ export const diff = (arr1: any[], arr2: any[], compare: (ele1: any, ele2) => boo
     }
   }
   return result;
-}
+};
 
 export const diffBoth = (
   arr1: any[],
@@ -42,4 +46,4 @@ export const diffBoth = (
     left: diff1,
     right: diff2,
   };
-}
+};

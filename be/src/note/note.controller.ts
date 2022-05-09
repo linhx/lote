@@ -1,4 +1,15 @@
-import { Body, CACHE_MANAGER, Controller, Delete, Get, Inject, Param, Post, Query, Res } from '@nestjs/common';
+import {
+  Body,
+  CACHE_MANAGER,
+  Controller,
+  Delete,
+  Get,
+  Inject,
+  Param,
+  Post,
+  Query,
+  Res,
+} from '@nestjs/common';
 import { SkipThrottle } from '@nestjs/throttler';
 import { Public } from 'src/auth/sso.strategy';
 import NoteCreateDto from 'src/note/dtos/request/NoteCreateDto';
@@ -15,8 +26,10 @@ import NoteDto from './dtos/response/NoteDto';
 @SkipThrottle()
 @Controller(PATH_NOTES)
 export class NoteController {
-  constructor(private readonly noteService: NoteService,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache) {}
+  constructor(
+    private readonly noteService: NoteService,
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+  ) {}
 
   @Public()
   @Get()
@@ -82,22 +95,30 @@ export class NoteController {
 
   @Public()
   @Get(`${PATH_NOTES_FILE}/:permalink/:file(*)`)
-  async static(@Param('permalink') permalink: string,
+  async static(
+    @Param('permalink') permalink: string,
     @Param('file') filePath: string,
-    @Res() res: Response) {
-    let isPublished = await this.cacheManager.get<Boolean>(permalink);
+    @Res() res: Response,
+  ) {
+    let isPublished = await this.cacheManager.get<boolean>(permalink);
     if (isPublished === null || isPublished === undefined) {
-      isPublished = await this.noteService.existsPublishedByPermalink(null, permalink);
+      isPublished = await this.noteService.existsPublishedByPermalink(
+        null,
+        permalink,
+      );
       await this.cacheManager.set(permalink, isPublished, { ttl: 20 });
     }
     if (!isPublished) {
       res.sendStatus(404);
     } else {
-      res.sendFile(path.join(NOTE_PUBLISH_DIR, permalink, filePath), (err: any) => {
-        if (err) {
-          res.sendStatus(404);
-        }
-      });
+      res.sendFile(
+        path.join(NOTE_PUBLISH_DIR, permalink, filePath),
+        (err: any) => {
+          if (err) {
+            res.sendStatus(404);
+          }
+        },
+      );
     }
   }
 

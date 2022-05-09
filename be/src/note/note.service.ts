@@ -43,7 +43,7 @@ export class NoteService {
   ) {}
 
   private createNoteDraftFolder(id: string) {
-    return path.join(NOTE_DATA_DRAFT_DIR, id)
+    return path.join(NOTE_DATA_DRAFT_DIR, id);
   }
 
   async create(session: CSession, dto: NoteCreateDto) {
@@ -61,7 +61,7 @@ export class NoteService {
       if (rest.banner) {
         images.push(rest.banner);
       }
-      for (let op of content.ops) {
+      for (const op of content.ops) {
         if (op.insert?.imagec) {
           images.push(op.insert?.imagec.id);
         }
@@ -79,7 +79,9 @@ export class NoteService {
       // create folder
       const folder = this.createNoteDraftFolder(`${note._id}`);
       const file = path.join(folder, 'index.json');
-      FileUtils.writeFileSync(file, JSON.stringify(content), { recursive: true });
+      FileUtils.writeFileSync(file, JSON.stringify(content), {
+        recursive: true,
+      });
 
       note.content = file;
       await note.save();
@@ -99,7 +101,7 @@ export class NoteService {
       if (rest.banner) {
         images.push(rest.banner);
       }
-      for (let op of content.ops) {
+      for (const op of content.ops) {
         if (op.insert?.imagec) {
           images.push(op.insert?.imagec.id);
         }
@@ -224,8 +226,8 @@ export class NoteService {
 
   /**
    * TODO avoid duplicated code
-   * 
-   * @param note 
+   *
+   * @param note
    */
   saveNoteComponentToPublishDir(note: NoteDocument) {
     const noteComponentName = `${note.permalink}.vue`;
@@ -247,9 +249,16 @@ export class NoteService {
 
     // save to the directory for one note
     const singleNoteComponentDir = SINGLE_NOTE_PUBLISH_DIR;
-    FileUtils.rmSyncInsideSilentEnoent(singleNoteComponentDir, { recursive: true });
-    const singleNoteComponentFile = path.join(singleNoteComponentDir, noteComponentName);
-    FileUtils.writeFileSync(singleNoteComponentFile, noteComponent, { recursive: true });
+    FileUtils.rmSyncInsideSilentEnoent(singleNoteComponentDir, {
+      recursive: true,
+    });
+    const singleNoteComponentFile = path.join(
+      singleNoteComponentDir,
+      noteComponentName,
+    );
+    FileUtils.writeFileSync(singleNoteComponentFile, noteComponent, {
+      recursive: true,
+    });
   }
 
   saveNoteImages(note: NoteDocument, imageFiles: CFileDocument[]) {
@@ -259,7 +268,10 @@ export class NoteService {
       recursive: true,
     });
 
-    const singleNoteImagesDir = path.join(SINGLE_NOTE_IMAGES_PUBLISH_DIR, note.permalink);
+    const singleNoteImagesDir = path.join(
+      SINGLE_NOTE_IMAGES_PUBLISH_DIR,
+      note.permalink,
+    );
     fs.mkdirSync(singleNoteImagesDir, {
       recursive: true,
     });
@@ -267,28 +279,22 @@ export class NoteService {
       // save to the directory where all the images are saved
       fs.copyFileSync(
         imageFile.path,
-        path.join(
-          imagesDir,
-          `${imageFile.publishName}`,
-        ),
+        path.join(imagesDir, `${imageFile.publishName}`),
       );
 
-    // save to the directory for one note
+      // save to the directory for one note
       fs.copyFileSync(
         imageFile.path,
-        path.join(
-          singleNoteImagesDir,
-          `${imageFile.publishName}`,
-        ),
+        path.join(singleNoteImagesDir, `${imageFile.publishName}`),
       );
     }
   }
 
   /**
    * TODO avoid duplicated code
-   * 
-   * @param note 
-   * @param imageFiles 
+   *
+   * @param note
+   * @param imageFiles
    */
   saveNoteImagesToPublishDir(note: NoteDocument, imageFiles: CFileDocument[]) {
     const imagesDir = path.join(NOTE_IMAGES_PUBLISH_DIR, note.permalink);
@@ -301,10 +307,7 @@ export class NoteService {
       // save to the directory where all the images are saved
       fs.copyFileSync(
         imageFile.path,
-        path.join(
-          imagesDir,
-          `${imageFile.publishName}`,
-        ),
+        path.join(imagesDir, `${imageFile.publishName}`),
       );
     }
   }
@@ -312,17 +315,18 @@ export class NoteService {
   recreateAndPublishNotes(session: CSession) {
     return this.db.withTransaction(session, async (ss) => {
       FileUtils.rmSyncInsideSilentEnoent(NOTE_PUBLISH_DIR, { recursive: true });
-      FileUtils.rmSyncInsideSilentEnoent(NOTE_IMAGES_PUBLISH_DIR, { recursive: true });
+      FileUtils.rmSyncInsideSilentEnoent(NOTE_IMAGES_PUBLISH_DIR, {
+        recursive: true,
+      });
 
       const notes = await this.getAllPublishedListModel(ss);
-      const recreate = notes.map(note => this.saveNoteComponentToPublishDir(note));
+      const recreate = notes.map((note) =>
+        this.saveNoteComponentToPublishDir(note),
+      );
 
       // save images
-      const reSaveImages = notes.map(async note => {
-        const imageFiles = await this.fileService.findByIds(
-          ss,
-          note.images,
-        );
+      const reSaveImages = notes.map(async (note) => {
+        const imageFiles = await this.fileService.findByIds(ss, note.images);
         this.saveNoteImagesToPublishDir(note, imageFiles);
       });
 
@@ -337,14 +341,15 @@ export class NoteService {
    */
   async publish(session: CSession, note: NoteDocument) {
     return this.db.withTransaction(session, async (_session) => {
-
       if (!note.publishedAt) {
         note.publishedAt = new Date();
       }
 
       // clean the directory of single note
       const singleNoteComponentDir = SINGLE_NOTE_PUBLISH_DIR;
-      FileUtils.rmSyncInsideSilentEnoent(singleNoteComponentDir, { recursive: true });
+      FileUtils.rmSyncInsideSilentEnoent(singleNoteComponentDir, {
+        recursive: true,
+      });
 
       // save note component
       this.saveNoteComponent(note);
@@ -357,19 +362,20 @@ export class NoteService {
       this.saveNoteImages(note, imageFiles);
 
       const publish = this.publishNote();
-      publish.then(() => {
-        note.isDeleted = false;
-        note.isPublished = true;
-        note.updatePublicationAt = new Date();
-        return note.save();
-      }).catch((e: Error) => {
-        this.logger.error('error.publish.cantDeploy', e.message);
-      });
+      publish
+        .then(() => {
+          note.isDeleted = false;
+          note.isPublished = true;
+          note.updatePublicationAt = new Date();
+          return note.save();
+        })
+        .catch((e: Error) => {
+          this.logger.error('error.publish.cantDeploy', e.message);
+        });
 
       return note;
     });
   }
-
 
   deleteDeloyedNote(note: NoteDocument) {
     // remove note component
@@ -382,19 +388,22 @@ export class NoteService {
 
     return new Promise((resolve, reject) => {
       if (UNPULISH_NOTE_SCRIPT) {
-        exec(`${UNPULISH_NOTE_SCRIPT} "${note.permalink}"`, (error, stdout, stderr) => {
-          if (error) {
-            this.logger.error(`error: ${error.message}`);
-            reject(error);
-            return;
-          }
-          if (stderr) {
-            this.logger.log(`stderr: ${stderr}`);
-            reject(stderr);
-            return;
-          }
-          resolve(true);
-        });
+        exec(
+          `${UNPULISH_NOTE_SCRIPT} "${note.permalink}"`,
+          (error, stdout, stderr) => {
+            if (error) {
+              this.logger.error(`error: ${error.message}`);
+              reject(error);
+              return;
+            }
+            if (stderr) {
+              this.logger.log(`stderr: ${stderr}`);
+              reject(stderr);
+              return;
+            }
+            resolve(true);
+          },
+        );
       } else {
         resolve(true);
       }
@@ -410,12 +419,14 @@ export class NoteService {
 
       // delete from `fe` deployed dir, and remove from note-chunk-map
       const publish = this.deleteDeloyedNote(note);
-      publish.then(() => {
-        note.isPublished = false;
-        return note.save();
-      }).catch((e: Error) => {
-        this.logger.error('error.unpublish.cantDeleteNote', e.message);
-      });
+      publish
+        .then(() => {
+          note.isPublished = false;
+          return note.save();
+        })
+        .catch((e: Error) => {
+          this.logger.error('error.unpublish.cantDeleteNote', e.message);
+        });
 
       return note;
     });
@@ -473,7 +484,7 @@ export class NoteService {
     });
   }
 
-  existsByPermalink(session: CSession, permalink: string): Promise<Boolean> {
+  existsByPermalink(session: CSession, permalink: string): Promise<boolean> {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel
         .countDocuments({
@@ -592,13 +603,15 @@ export class NoteService {
 
       // delete from `fe` deployed dir, and remove from note-chunk-map
       const publish = this.deleteDeloyedNote(note);
-      publish.then(() => {
-        note.isDeleted = true;
-        note.isPublished = false;
-        return note.save();
-      }).catch((e: Error) => {
-        this.logger.error('error.soltDelete.cantDeleteNote', e.message);
-      });
+      publish
+        .then(() => {
+          note.isDeleted = true;
+          note.isPublished = false;
+          return note.save();
+        })
+        .catch((e: Error) => {
+          this.logger.error('error.soltDelete.cantDeleteNote', e.message);
+        });
 
       return note;
     });

@@ -1,5 +1,4 @@
 import { CFileDocument } from 'src/file/entities/CFile';
-import * as path from 'path';
 import { URL } from 'url';
 
 export default class FileDto {

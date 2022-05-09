@@ -2,7 +2,11 @@ import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 import * as StringUtils from '../../utilites/StringUtils';
 
 export default {
-  deltaToPublishedHtml(delta: any, note: { permalink: string }, noteUrlBase: string) {
+  deltaToPublishedHtml(
+    delta: any,
+    note: { permalink: string },
+    noteUrlBase: string,
+  ) {
     const converter = new QuillDeltaToHtmlConverter(delta.ops);
     converter.renderCustomWith(function (customOp, contextOp) {
       const val = customOp.insert.value;

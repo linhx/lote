@@ -4,7 +4,7 @@ export default class PagingDto {
   @IsNotEmpty()
   page: number;
 
-  limit: number = 10;
+  limit = 10;
 
   constructor(query: any) {
     this.page = query?.page;
