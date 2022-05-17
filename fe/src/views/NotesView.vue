@@ -1,8 +1,8 @@
 <template>
   <div>
     <div v-show="isNotesView" class="w-full md:max-w-4xl mx-auto pt-10">
-      <div class="font-bold text-2xl">
-        <h2>Linhx's Notes</h2>
+      <div class="font-bold logo-text">
+        <h2 class="text-gray-800">Linhx's notes<span class="cursor-blinking">_</span></h2>
       </div>
       <note-preview
         class="py-3 border-b-1"
@@ -51,3 +51,14 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+.logo-text {
+  font-size: 2rem;
+  line-height: 2.25rem;
+}
+
+.cursor-blinking {
+animation: ping 1s cubic-bezier(0.79,-0.26, 0.65,-0.13) infinite;
+}
+</style>
