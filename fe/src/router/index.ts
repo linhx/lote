@@ -1,4 +1,6 @@
 import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
+import { PATHS_NAME } from '../constants/paths';
+import NotesTagView from '../views/NotesTagView.vue';
 import NotesView from '../views/NotesView.vue';
 import { permalinkToFile } from './preFetch';
 
@@ -30,10 +32,21 @@ if (import.meta.env.PROD) {
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'NotesView',
+    name: PATHS_NAME.NOTES,
     component: NotesView,
     children: noteRoutes
   },
+  {
+    path: '/tag/:tag',
+    name: PATHS_NAME.NOTES_TAG,
+    component: NotesTagView,
+    props: route => ({ tag: route.params.tag }),
+    children: noteRoutes,
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: View404
+  }
 ];
 
 const router = createRouter({

@@ -512,7 +512,14 @@ export class NoteService {
     const condition = {
       isPublished: true,
       isDeleted: false,
+    } as {
+      isPublished: boolean;
+      isDeleted: boolean;
+      tags?: string;
     };
+    if (dto.tag) {
+      condition.tags = dto.tag;
+    }
 
     return this.db.withTransaction(session, async (ss) => {
       const items = await this.noteModel

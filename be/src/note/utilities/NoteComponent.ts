@@ -13,8 +13,8 @@ export const create = (
   const publishedAt = note.publishedAt.toISOString();
   return `<template>
   <div class="">
-    <prefetch-link to="/" class="home-icon">
-    </prefetch-link>
+    <router-link to="/" class="home-icon">
+    </router-link>
     <div class="w-full md:max-w-3xl mx-auto py-10">
       <div class="font-bold text-3xl">
         <h2 class="text-orange-600">{{ note.title }}</h2>
@@ -30,9 +30,7 @@ export const create = (
       </div>
       <div class="mt-5">
         <span class="font-bold text-xl">Tags </span>
-        <span v-for="tag in note.tags" :key="tag" class="text-gray-600 text-sm bg-gray-200 px-1 mx-1">
-          {{ tag }}
-        </span>
+        <tag-link v-for="tag in note.tags" :key="tag" :tag="tag" />
       </div>
 
       <div class="mt-4">

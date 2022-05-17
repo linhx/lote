@@ -1,0 +1,82 @@
+<template>
+  <div>
+    <div v-show="isNotesView" class="w-full md:max-w-4xl mx-auto pt-10">
+      <div class="font-bold logo-text">
+        <h2 class="text-gray-800">Tag: {{ tag }}<span class="cursor-blinking">_</span></h2>
+      </div>
+      <note-preview
+        class="py-3 border-b-1"
+        v-for="note in noteList?.items"
+        :key="note.id"
+        :note="note"
+      />
+    </div>
+    <router-view />
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import NotePreview from '../components/NotePreview.vue';
+import NoteRepository from '../repositories/NoteRepository';
+import PageDto from '../dtos/PageDto';
+import NotePreviewDto from '../dtos/NotePreviewDto';
+import ReqNoteFilterDto from '../dtos/ReqNoteFilterDto';
+import { PATHS_NAME } from '../constants/paths';
+
+export default defineComponent({
+  components: {
+    NotePreview
+  },
+  props: {
+    tag: String,
+  },
+  data (): {
+    noteList: PageDto<NotePreviewDto> | null,
+    filter: ReqNoteFilterDto
+  } {
+    return {
+      noteList: null,
+      filter: {
+        page: 1,
+        limit: 100,
+      }
+    }
+  },
+  computed: {
+    isNotesView() {
+      return this.$route.name === PATHS_NAME.NOTES_TAG;
+    }
+  },
+
+  methods: {
+    getNotes(tag?: string) {
+      NoteRepository.getList({
+        ...this.filter,
+        tag
+      }).then(res => {
+        this.noteList = res;
+      });
+    }
+  },
+
+  beforeRouteUpdate(to) {
+    this.getNotes(to.params.tag as string);
+  },
+
+  mounted() {
+    this.getNotes(this.tag);
+  }
+})
+</script>
+
+<style scoped>
+.logo-text {
+  font-size: 2rem;
+  line-height: 2.25rem;
+}
+
+.cursor-blinking {
+animation: ping 1s cubic-bezier(0.79,-0.26, 0.65,-0.13) infinite;
+}
+</style>
