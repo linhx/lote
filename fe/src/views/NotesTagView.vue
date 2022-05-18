@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import { onBeforeRouteUpdate } from 'vue-router';
 import NotePreview from '../components/NotePreview.vue';
 import NoteRepository from '../repositories/NoteRepository';
@@ -12,13 +12,18 @@ const { getAllByTag } = noteStore;
 const props = defineProps<{
   tag: string;
 }>();
+const isLoading = ref(true);
 
 onBeforeRouteUpdate((to) => {
-  getAllByTag(to.params.tag as string);
+  getAllByTag(to.params.tag as string).finally(() => {
+    isLoading.value = false;
+  });
 });
 
 onBeforeMount(() => {
-  getAllByTag(props.tag);
+  getAllByTag(props.tag).finally(() => {
+    isLoading.value = false;
+  });
 });
 
 </script>
@@ -28,8 +33,8 @@ onBeforeMount(() => {
     <router-link to="/" class="icon-top icon-home">
     </router-link>
     <div class="w-full md:max-w-4xl mx-auto pt-10">
-      <div class="font-bold logo-text">
-        <h2 class="text-gray-800">Tag: {{ tag }}<span class="cursor-blinking">_</span></h2>
+      <div class="font-bold logo-text text-gray-800" :class="{ loading: isLoading }">
+        <h2 class="">Tag: {{ tag }}<span class="cursor-blinking">_</span></h2>
       </div>
       <note-preview
         class="py-3 border-b-1"

@@ -34,3 +34,8 @@ body .ql-editor p {
 .grecaptcha-badge {
   visibility: hidden;
 }
+
+.loading {
+  @apply animate-pulse text-red-900;
+  animation-duration: 500ms;
+}

@@ -9,21 +9,19 @@ export type NoteStore = {
   tagNotes?: PageDto<NotePreviewDto> & { tag?: string };
 };
 
+const defaultNotes = {
+  items: [],
+  page: 1,
+  total: 0
+}
+
 export const useNotesStore = defineStore('notes', {
   state: (): NoteStore => {
     return {
-      notes: {
-        items: [],
-        page: 1,
-        total: 0
-      },
+      notes: defaultNotes,
       fetched: false,
 
-      tagNotes: {
-        items: [],
-        page: 1,
-        total: 0
-      }
+      tagNotes: defaultNotes
     };
   },
   actions: {
@@ -31,7 +29,7 @@ export const useNotesStore = defineStore('notes', {
       if (this.fetched) {
         return;
       }
-      NoteRepository.getList({
+      return NoteRepository.getList({
         page: 1,
         limit: 100,
       }).then((res) => {
@@ -44,8 +42,9 @@ export const useNotesStore = defineStore('notes', {
       if (this.tagNotes?.tag === tag) {
         return;
       }
+      this.tagNotes = { ...defaultNotes };
 
-      NoteRepository.getList({
+      return NoteRepository.getList({
         page: 1,
         limit: 100,
         tag

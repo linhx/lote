@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import NotePreview from '../components/NotePreview.vue';
 import NoteRepository from '../repositories/NoteRepository';
 import { storeToRefs } from 'pinia';
 import { useNotesStore } from '../stores/notes';
 const noteStore = useNotesStore();
-const { notes } = storeToRefs(noteStore);
+const { notes, fetched } = storeToRefs(noteStore);
 const { getAll } = noteStore;
 
 onBeforeMount(() => {
@@ -17,8 +17,8 @@ onBeforeMount(() => {
 <template>
   <div>
     <div class="w-full md:max-w-4xl mx-auto pt-10">
-      <div class="font-bold logo-text">
-        <h2 class="text-gray-800">Linhx's notes<span class="cursor-blinking">_</span></h2>
+      <div class="font-bold logo-text text-gray-800" :class="{ loading: !fetched }">
+        <h2>Linhx's notes<span class="cursor-blinking">_</span></h2>
       </div>
       <note-preview
         class="py-3 border-b-1"
