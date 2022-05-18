@@ -15,6 +15,7 @@ const props = defineProps<{
 const isLoading = ref(true);
 
 onBeforeRouteUpdate((to) => {
+  isLoading.value = true;
   getAllByTag(to.params.tag as string).finally(() => {
     isLoading.value = false;
   });
