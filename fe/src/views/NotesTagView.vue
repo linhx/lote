@@ -7,18 +7,18 @@ import { storeToRefs } from 'pinia';
 import { useNotesStore } from '../stores/notes';
 const noteStore = useNotesStore();
 const { tagNotes } = storeToRefs(noteStore);
-const { getAllByTags } = noteStore;
+const { getAllByTag } = noteStore;
 
 const props = defineProps<{
   tag: string;
 }>();
 
 onBeforeRouteUpdate((to) => {
-  getAllByTags(to.params.tag as string);
+  getAllByTag(to.params.tag as string);
 });
 
 onBeforeMount(() => {
-  getAllByTags(props.tag);
+  getAllByTag(props.tag);
 });
 
 </script>

@@ -27,7 +27,7 @@ export const useNotesStore = defineStore('notes', {
     };
   },
   actions: {
-    async getAllNotes() {
+    async getAll() {
       if (this.fetched) {
         return;
       }
@@ -40,7 +40,7 @@ export const useNotesStore = defineStore('notes', {
       });
     },
 
-    async getAllByTags(tag: string) {
+    async getAllByTag(tag: string) {
       if (this.tagNotes?.tag === tag) {
         return;
       }

@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "BUILD_MODE=build vue-tsc --noEmit && vite build && vite --config note.vite.config.ts build --emptyOutDir=false",
+    "build-fe": "BUILD_MODE=build vue-tsc --noEmit && vite build",
+    "build": "npm run build-fe && vite --config note.vite.config.ts build --emptyOutDir=false",
     "build-notes": "BUILD_MODE=build-notes vite --config note.vite.config.ts build",
     "build-single-note": "BUILD_MODE=build-single-note vite --config note.vite.config.ts build",
     "deploy": "npm run build && node ./bin/deploy",
+    "deploy-fe": "npm run build-fe && node ./bin/deploy-fe",
     "deploy-notes": "npm run build-notes && node ./bin/deploy-notes",
     "deploy-single-note": "npm run build-single-note && node ./bin/deploy-note",
     "delete-note": "node ./bin/delete-note",

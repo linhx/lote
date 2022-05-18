@@ -6,10 +6,10 @@ import { storeToRefs } from 'pinia';
 import { useNotesStore } from '../stores/notes';
 const noteStore = useNotesStore();
 const { notes } = storeToRefs(noteStore);
-const { getAllNotes } = noteStore;
+const { getAll } = noteStore;
 
 onBeforeMount(() => {
-  getAllNotes();
+  getAll();
 });
 
 </script>
