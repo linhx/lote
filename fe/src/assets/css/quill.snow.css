@@ -464,15 +464,10 @@
   padding: 5px 10px;
 }
 .ql-snow .ql-editor code {
-  font-size: 85%;
-  padding-bottom: 2px;
-  padding-top: 2px;
+  font-size: 87%;
+  color: #777;
 }
-.ql-snow .ql-editor code:before,
-.ql-snow .ql-editor code:after {
-  content: "\A0";
-  letter-spacing: -2px;
-}
+
 .ql-snow .ql-editor pre.ql-syntax {
   background-color: #23241f;
   color: #f8f8f2;
