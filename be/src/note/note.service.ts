@@ -360,14 +360,16 @@ export class NoteService {
         note.images,
       );
       this.saveNoteImages(note, imageFiles);
+      await note.save();
 
       const publish = this.publishNote();
       publish
         .then(() => {
-          note.isDeleted = false;
-          note.isPublished = true;
-          note.updatePublicationAt = new Date();
-          return note.save();
+          return this.noteModel.findByIdAndUpdate(note.id, {
+            isDeleted: false,
+            isPublished: true,
+            updatePublicationAt: new Date(),
+          }).exec();
         })
         .catch((e: Error) => {
           this.logger.error('error.publish.cantDeploy', e.message);
@@ -421,8 +423,9 @@ export class NoteService {
       const publish = this.deleteDeloyedNote(note);
       publish
         .then(() => {
-          note.isPublished = false;
-          return note.save();
+          return this.noteModel.findByIdAndUpdate(note.id, {
+            isPublished: false,
+          }).exec();
         })
         .catch((e: Error) => {
           this.logger.error('error.unpublish.cantDeleteNote', e.message);
@@ -612,9 +615,10 @@ export class NoteService {
       const publish = this.deleteDeloyedNote(note);
       publish
         .then(() => {
-          note.isDeleted = true;
-          note.isPublished = false;
-          return note.save();
+          return this.noteModel.findByIdAndUpdate(note.id, {
+            isDeleted: true,
+            isPublished: true,
+          }).exec();
         })
         .catch((e: Error) => {
           this.logger.error('error.soltDelete.cantDeleteNote', e.message);
