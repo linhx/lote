@@ -34,15 +34,14 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: PATHS_NAME.NOTES,
-    component: NotesView,
-    children: noteRoutes
+    component: NotesView
   },
+  ...noteRoutes,
   {
     path: '/tag/:tag',
     name: PATHS_NAME.NOTES_TAG,
     component: NotesTagView,
     props: route => ({ tag: route.params.tag }),
-    children: noteRoutes,
   },
   {
     path: '/:pathMatch(.*)*',

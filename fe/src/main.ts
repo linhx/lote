@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { createPinia } from 'pinia'
 import App from './App.vue';
 import './assets/css/index.css';
 import './assets/css/quill.snow.css';
@@ -11,6 +12,7 @@ import TagLink from './components/TagLink.vue';
 
 const app = createApp(App);
 app.use(router);
+app.use(createPinia());
 app.component('PrefetchLink', PrefetchLink);
 app.component('CommentsSection', CommentsSection);
 app.component('TagLink', TagLink);

@@ -13,8 +13,10 @@ export const create = (
   const publishedAt = note.publishedAt.toISOString();
   return `<template>
   <div class="">
-    <router-link to="/" class="home-icon">
+    <router-link to="/" class="icon-top icon-home">
     </router-link>
+    <div v-if="displayBtnBack" class="icon-top icon-back" @click="onBack">
+    </div>
     <div class="w-full md:max-w-3xl mx-auto py-10">
       <div class="font-bold text-3xl">
         <h2 class="text-orange-600">{{ note.title }}</h2>
@@ -53,14 +55,16 @@ export default defineComponent({
     }
   },
   data(): {
-    note: any
+    note: any;
+    fromRouteName: '';
   } {
     return {
       note: {
         title: '${note.title}',
         tags: ${tags},
         publishedAt: '${publishedAt}'
-      }
+      },
+      fromRouteName: '',
     }
   },
 
@@ -70,12 +74,27 @@ export default defineComponent({
         return new Date(this.note.publishedAt).toLocaleDateString('vi-VN');
       }
       return '';
+    },
+    displayBtnBack() {
+      return this.fromRouteName === 'NotesTagView';
+    },
+  },
+
+  methods: {
+    onBack() {
+      this.$router.back();
     }
   },
 
   mounted() {
     document.querySelectorAll('pre[data-language]').forEach((el) => {
       hljs.highlightElement(el);
+    });
+  },
+
+  beforeRouteEnter(to, from, next) {
+    next((vm: any) => {
+      vm.fromRouteName = from.name;
     });
   }
 })

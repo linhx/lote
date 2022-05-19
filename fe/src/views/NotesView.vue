@@ -1,56 +1,34 @@
+<script setup lang="ts">
+import { onBeforeMount } from 'vue'
+import NotePreview from '../components/NotePreview.vue';
+import NoteRepository from '../repositories/NoteRepository';
+import { storeToRefs } from 'pinia';
+import { useNotesStore } from '../stores/notes';
+const noteStore = useNotesStore();
+const { notes } = storeToRefs(noteStore);
+const { getAllNotes } = noteStore;
+
+onBeforeMount(() => {
+  getAllNotes();
+});
+
+</script>
+
 <template>
   <div>
-    <div v-show="isNotesView" class="w-full md:max-w-4xl mx-auto pt-10">
+    <div class="w-full md:max-w-4xl mx-auto pt-10">
       <div class="font-bold logo-text">
         <h2 class="text-gray-800">Linhx's notes<span class="cursor-blinking">_</span></h2>
       </div>
       <note-preview
         class="py-3 border-b-1"
-        v-for="note in noteList?.items"
+        v-for="note in notes?.items"
         :key="note.id"
         :note="note"
       />
     </div>
-    <router-view />
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-import NotePreview from '../components/NotePreview.vue';
-import NoteRepository from '../repositories/NoteRepository';
-import PageDto from '../dtos/PageDto';
-import NotePreviewDto from '../dtos/NotePreviewDto';
-import ReqNoteFilterDto from '../dtos/ReqNoteFilterDto';
-
-export default defineComponent({
-  components: {
-    NotePreview
-  },
-  data (): {
-    noteList: PageDto<NotePreviewDto> | null,
-    filter: ReqNoteFilterDto
-  } {
-    return {
-      noteList: null,
-      filter: {
-        page: 1
-      }
-    }
-  },
-  computed: {
-    isNotesView() {
-      return this.$route.name === 'NotesView'
-    }
-  },
-
-  mounted() {
-    NoteRepository.getList(this.filter).then(res => {
-      this.noteList = res;
-    });
-  }
-})
-</script>
 
 <style scoped>
 .logo-text {
