@@ -4,9 +4,10 @@ services:
   mongo:
     build: ./db
     hostname: mongo
+    container_name: lote-mongo-1
     volumes:
-      - ./data/db:/data/db
-      - ./db/init:/docker-entrypoint-initdb.d/
+      - ./db/data:/data/db
+      - ./db/init/init.sh:/scripts/init.sh
     command: --bind_ip_all --replSet rs0 --keyFile /data/db.key
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -22,9 +23,6 @@ services:
       - mongo
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/admin-fe/node_modules
-      - /usr/src/app/fe/node_modules
-      - /usr/src/app/be/node_modules
     ports:
       - 3000:3000
       - 3001:3001

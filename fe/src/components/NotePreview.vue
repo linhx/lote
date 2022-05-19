@@ -2,7 +2,7 @@
   <div class="flex">
     <div class="body pl-5 text-left space-y-1 w-full">
       <div>
-        <prefetch-link tag="div" class="text-2xl font-semibold text-orange-600 inline-block" :to="note.permalink">{{ note.title }}</prefetch-link>
+        <prefetch-link class="text-2xl font-semibold text-orange-600 inline-block" :to="note.permalink">{{ note.title }}</prefetch-link>
       </div>
       <div class="font-light whitespace-pre-wrap w-full">
         <div class="line-clamp-2">{{ note.overview }}</div>

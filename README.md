@@ -20,16 +20,8 @@ IMPORTANT: can't view a note in development mode
 
 Setup replica set
 
-Access mongodb in docker
-
 ```shell
-sudo docker exec -it lote_mongo_1 mongo -u root -p root
-```
-
-Then run
-
-```javascript
-rs.initiate();
+sudo docker exec -it lote-mongo-1 sh /scripts/init.sh
 ```
 
 ## Run

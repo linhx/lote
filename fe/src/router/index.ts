@@ -2,6 +2,7 @@ import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 import { PATHS_NAME } from '../constants/paths';
 import NotesTagView from '../views/NotesTagView.vue';
 import NotesView from '../views/NotesView.vue';
+import View404 from '../views/404.vue';
 import { permalinkToFile } from './preFetch';
 
 const noteRoutes: RouteRecordRaw[] = []
