@@ -4,8 +4,9 @@ import NotesTagView from '../views/NotesTagView.vue';
 import NotesView from '../views/NotesView.vue';
 import View404 from '../views/404.vue';
 import { permalinkToFile } from './preFetch';
+import * as InternetUtils from '../utilities/InternetUtils';
 
-const noteRoutes: RouteRecordRaw[] = []
+const noteRoutes: RouteRecordRaw[] = [];
 
 if (import.meta.env.PROD) {
   for (const noteChunk in __VP_HASH_MAP__) {
@@ -15,8 +16,9 @@ if (import.meta.env.PROD) {
       noteRoutes.push({
         path,
         component() {
-          return import(component).catch(() => {
-            if(navigator.onLine) {
+          return import(component).catch(async () => {
+            const isOnline = await InternetUtils.check();
+            if(isOnline) {
               return import(component + '?v=' + new Date().toISOString());
             }
             alert('Please check your internet connection!');
