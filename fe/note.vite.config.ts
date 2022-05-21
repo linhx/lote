@@ -8,7 +8,6 @@ const OUT_DIR = './dist';
 const MODE_BUILD = 'build';
 const MODE_BUILD_NOTES = 'build-notes';
 const MODE_BUILD_SINGLE_NOTE = 'build-single-note';
-const NOTE_COMPONENT_PREFIX = 'note-';
 
 const getNotesRollupInput = (noteDir) => {
   const notes: { [name: string]: string } = {};
@@ -17,7 +16,7 @@ const getNotesRollupInput = (noteDir) => {
     fs.readdirSync(noteDir).forEach(file => {
       if (file.endsWith('.vue')) {
         const noteName = fileNameWithoutExtension(file);
-        notes[NOTE_COMPONENT_PREFIX + noteName] = resolve(__dirname, noteDir, file);
+        notes[noteName] = resolve(__dirname, noteDir, file);
       }
     });
   } catch (e) {
@@ -52,11 +51,8 @@ const vitePressPlugin = ({
       for (const name in bundle) {
         const chunk = bundle[name];
   
-        if (chunk.name.startsWith(NOTE_COMPONENT_PREFIX)) {
-          const hash = chunk.fileName.match(hashRE)![1];
-          chunk.fileName = chunk.fileName.replace(`/${NOTE_COMPONENT_PREFIX}`, '/');
-          pageToHashMap![chunk.name.toLowerCase().substring(NOTE_COMPONENT_PREFIX.length)] = hash;
-        }
+        const hash = chunk.fileName.match(hashRE)![1];
+        pageToHashMap![chunk.name] = hash;
       }
       if (!fs.existsSync(OUT_DIR)) {
         fs.mkdirSync(OUT_DIR);
@@ -114,10 +110,50 @@ const vueModuluesPlugin = ({ env }) => {
     name: 'vue-modules',
     renderChunk: (code: string, chunk, options) => {
       if (code) {
-        return code.replace('from \'vue\'', `from '/assets/${vueModulesFile}'`);
+        return code.replace('from \'vue\'', `from '/assets/${vueModulesFile}'`)
+        // .replace(`import _export_sfc from 'plugin-vue:export-helper'`, `export default (sfc,props)=>{for(const [key,val] of props){sfc[key]=val}return sfc;}`);
       }
     }
   }
+}
+
+/**
+ * modify edit so vue plugin doesn't split `plugin-vue:export-helper` into a separate chunk 
+ * to avoid crashing when internet connection is lost.
+ * 
+ * The problem is:
+ * 1. Loaded page (include prefetch Note's chunks)
+ * 2. Disconnect internet
+ * 3. Click to one Note, the Note chunk is able to load because it was prefetched.
+ * 4. The Note chunk imports `plugin-vue:export-helper` <-- error here because the internet is disconnected, the helper can't be loaded
+ * 
+ * DANGER!!!
+ * This treatment is temporary. Vue plugin can be updated at any time (e.g. change the helper name or change the helper code).
+ * Or maybe Vue plugin will adds another helper, who knows?
+ * I've been trying to figure out how to set Rollupjs to not split chunks. but it seems Rollupjs doesn't support it yet.
+ */
+const vuePluginDoesSplitExportHelper = () => {
+  // this code is from node_modules/@vitejs/plugin-vue/dist/index.js
+  var helperCode = `
+  const _export_sfc = (sfc, props) => {
+    for (const [key, val] of props) {
+      sfc[key] = val
+    }
+    return sfc
+  }
+  `;
+  const plugin = vue();
+  const transform = plugin.transform;
+  plugin.transform = function(code, id, ssr) {
+    return transform.apply(this, [code, id, ssr])?.then(res => {
+      const code =  res?.code.replace(`import _export_sfc from "plugin-vue:export-helper"`, helperCode);
+      return {
+        ...res,
+        code
+      }
+    });
+  }
+  return plugin;
 }
 
 export default ({ mode }) => {
@@ -136,7 +172,7 @@ export default ({ mode }) => {
 
   return defineConfig({
     plugins: [
-      vue(),
+      vuePluginDoesSplitExportHelper(),
       vueModuluesPlugin({ env: process.env }),
       vitePressPlugin({ env: process.env })
     ],
