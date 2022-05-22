@@ -1,4 +1,7 @@
 export const check = () => {
+  if (!navigator.onLine) {
+    return Promise.resolve(false);
+  }
   return new Promise((resolve) => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `/empty.js?v=${new Date().toISOString()}`);
