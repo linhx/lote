@@ -96,7 +96,6 @@ export class CommentController {
     return CommentDto.fromEntity(comment);
   }
 
-  @Public()
   @Get('/n/:noteId')
   async getAllByNoteId(@Param('noteId') noteId: string) {
     const comments = await this.commentService.getAllByNoteId(null, noteId);
