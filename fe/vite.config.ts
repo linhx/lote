@@ -2,6 +2,32 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 import fs from 'fs';
+import chokidar from 'chokidar';
+import { fileNameWithoutExtension } from './src/utilities/FileUtils';
+
+const NOTES_INDEX = './notes/index.ts';
+const updateNotesIndex = () => {
+  const files = fs.readdirSync(`./notes`);
+
+  const notes = files
+    .filter(f => f.endsWith('.vue'))
+    .map(file => ({
+        moduleName: file.replace(/-|\./g, '$'),
+        name: fileNameWithoutExtension(file),
+        file
+      }));
+
+  const imports = notes.map(n => `import ${n.moduleName} from './${n.file}'`).join('\n');
+  const exports = notes.map(n => `'${n.name}': ${n.moduleName}`).join(',\n');
+
+  const index = `${imports}\nexport default {\n${exports}\n}`;
+
+  fs.writeFileSync(NOTES_INDEX, index, {
+    encoding: 'utf8',
+    flag: 'w',
+  });
+}
+
 
 const BUILD_DIR = './dist'; // TODO
 const indexHtmlFilePath = `${BUILD_DIR}/index.html`;
@@ -43,23 +69,34 @@ function readingPlugin() {
   };
 }
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue(), readingPlugin()],
-  build: {
-    rollupOptions: {
-      input: {
-        app: resolve(__dirname, 'index.html'),
-        'vue-modules': resolve(__dirname, 'src/vue-modules.ts'),
+export default ({ mode }) => {
+  if (mode === 'development') {
+    chokidar.watch('./notes')
+    .on('add', () => {
+      updateNotesIndex();
+    })
+    .on('unlink', () => {
+      updateNotesIndex();
+    });
+  }
+
+  return {
+    plugins: [vue(), readingPlugin()],
+    build: {
+      rollupOptions: {
+        input: {
+          app: resolve(__dirname, 'index.html'),
+          'vue-modules': resolve(__dirname, 'src/vue-modules.ts'),
+        },
+        preserveEntrySignatures: 'allow-extension',
       },
-      preserveEntrySignatures: 'allow-extension',
     },
-  },
-  server: {
-    port: 3002,
-    host: '0.0.0.0',
-    watch: {
-      usePolling: true,
+    server: {
+      port: 3002,
+      host: '0.0.0.0',
+      watch: {
+        usePolling: true,
+      },
     },
-  },
-});
+  }
+}
