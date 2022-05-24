@@ -2,9 +2,22 @@
 
 Linhx's note
 
+## Features
+
+- CRUD note.
+- Publish a note as a Vuejs component for better SPA.
+- Only build the note when published, not entire project.
+- Emoji
+
 ## TODO
 
-- [ ] Notify after performing asynchronous processing
+- [ ] Notify after performing asynchronous processing (publish, unpublish, delete...)
+
+## Tech stack
+
+1. Backend: Nestjs + Mongodb
+2. Admin frontend: Vuejs + Quilljs + Tailwinds
+3. Frontend: Vuejs + Tailwinds + Highlightjs
 
 ## Prerequire
 
@@ -13,18 +26,18 @@ Linhx's note
 
 ## Development
 
-## Init mongo
-
-Setup replica set
-
-```shell
-sudo docker exec -it lote-mongo-1 sh /scripts/init.sh
-```
-
-## Run
+### Run
 
 ```shell
 sudo docker-compose up
+```
+
+### Init mongo
+
+Setup replica set after the mongo container has completly started.
+
+```shell
+sudo docker exec -it lote-mongo-1 sh /scripts/init.sh
 ```
 
 ## Deployment
