@@ -759,3 +759,8 @@
   white-space: pre;
   overflow-x: auto;
 }
+
+.ql-snow .ql-editor p {
+  @apply leading-relaxed;
+  text-indent: 1.5rem;
+}

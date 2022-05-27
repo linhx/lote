@@ -10,11 +10,6 @@
   color: rgba(234,88,12,1);
 }
 
-body .ql-editor p {
-  @apply leading-relaxed;
-  text-indent: 1.5rem;
-}
-
 .icon-top {
   @apply inline-block w-10 h-10 ml-3 my-3 rounded-full border-2 bg-contain cursor-pointer;
 }

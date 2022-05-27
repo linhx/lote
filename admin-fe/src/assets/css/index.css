@@ -36,8 +36,7 @@
 
 .ql-container {
   box-sizing: border-box;
-  font-family: "open sans", Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   height: 100%;
   margin: 0px;
   position: relative;
@@ -53,6 +52,16 @@
 }
 .ql-container > .ql-editor ol > li {
   word-break: break-all;
+}
+
+.ql-editor code {
+  font-size: 87%;
+  color: #777;
+}
+
+.ql-editor p {
+  @apply leading-relaxed;
+  text-indent: 1.5rem;
 }
 
 body .ap{

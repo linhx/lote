@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts}'],
   darkMode: false,
@@ -5,7 +7,11 @@ module.exports = {
     // preflight: false,
   },
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'sans': ['Inter', 'sans-serif', ...defaultTheme.fontFamily.sans],
+      }
+    },
   },
   variants: {
     extend: {
