@@ -10,15 +10,15 @@ import CommentsSection from './components/CommentsSection.vue';
 import i18n from './i18n';
 import TagLink from './components/TagLink.vue';
 
+const app = createApp(App);
+app.use(i18n);
+app.use(createPinia());
+app.component('PrefetchLink', PrefetchLink);
+app.component('CommentsSection', CommentsSection);
+app.component('TagLink', TagLink);
 
 createRouter().then(router => {
-  const app = createApp(App);
   app.use(router);
-  app.use(createPinia());
-  app.component('PrefetchLink', PrefetchLink);
-  app.component('CommentsSection', CommentsSection);
-  app.component('TagLink', TagLink);
-  
-  app.use(i18n);
+
   app.mount('#app');
 });

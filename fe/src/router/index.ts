@@ -5,6 +5,7 @@ import NotesView from '../views/NotesView.vue';
 import View404 from '../views/404.vue';
 import { permalinkToFile } from './preFetch';
 import * as InternetUtils from '../utilities/InternetUtils';
+import i18n from '../i18n';
 
 export async function create() {
   const noteRoutes: RouteRecordRaw[] = [];
@@ -18,11 +19,13 @@ export async function create() {
           path,
           component() {
             return import(/* @vite-ignore */component).catch(async () => {
-              const isOnline = await InternetUtils.check();
-              if(isOnline) {
-                return import(/* @vite-ignore */component + '?v=' + new Date().toISOString());
+              if (navigator.onLine) {
+                const isOnline = await InternetUtils.check();
+                if(isOnline) {
+                  return import(/* @vite-ignore */component + '?v=' + new Date().toISOString());
+                }
               }
-              alert('Please check your internet connection!');
+              alert(i18n.global.t('error.lostInternet'));
             });
           },
           props: { permalink: path }

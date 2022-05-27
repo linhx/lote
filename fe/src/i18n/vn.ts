@@ -14,7 +14,8 @@ export default {
     },
     captcha: {
       wrong: 'Sai captcha'
-    }
+    },
+    lostInternet: 'Vui lòng kiểm tra lại kết nối internet!'
   },
   message: {
     comment: {
