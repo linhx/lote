@@ -30,7 +30,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ["Open Sans", ...defaultTheme.fontFamily.sans],
+        'sans': ['Inter', 'sans-serif', ...defaultTheme.fontFamily.sans],
       }
     },
   },
