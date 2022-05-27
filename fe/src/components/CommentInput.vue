@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { nextTick, ref } from 'vue';
+import * as VueI18n from 'vue-i18n';
 import TextareaWithBtn from './TextareaWithBtn.vue';
 
 export type NewContent = {
   content: string;
   authorName: string;
 }
+
+const { t } = VueI18n.useI18n();
 
 const props = defineProps<{
   modelValue: NewContent
@@ -54,7 +57,7 @@ const onInputAuthorName = (e: Event) => {
   <div>
     <textarea-with-btn
       :model-value="modelValue.content"
-      placeholder="Comment không quá 500 ký tự. (Ctrl + Enter)"
+      :placeholder="t('comment.content.placeholder')"
       :maxlength="500"
       @update:model-value="onInputContent"
       @post="onSend"
@@ -63,7 +66,7 @@ const onInputAuthorName = (e: Event) => {
       <input type="text"
         ref="nameRef"
         :value="modelValue.authorName"
-        placeholder="Tên của bạn (tối thiểu 2 ký tự, default: Anonymous)"
+        :placeholder="t('comment.name.placeholder')"
         class="c-input comment-name"
         maxlength="30"
         @input="onInputAuthorName"

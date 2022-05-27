@@ -4,9 +4,11 @@ import NotePreview from '../components/NotePreview.vue';
 import NoteRepository from '../repositories/NoteRepository';
 import { storeToRefs } from 'pinia';
 import { useNotesStore } from '../stores/notes';
+import * as VueI18n from 'vue-i18n';
 const noteStore = useNotesStore();
 const { notes, fetched } = storeToRefs(noteStore);
 const { getAll } = noteStore;
+const { t } = VueI18n.useI18n();
 
 onBeforeMount(() => {
   getAll();
@@ -18,7 +20,7 @@ onBeforeMount(() => {
   <div>
     <div class="w-full md:max-w-4xl mx-auto pt-10">
       <div class="font-bold logo-text text-gray-800" :class="{ loading: !fetched }">
-        <h2>Linhx's notes<span class="cursor-blinking">_</span></h2>
+        <h2>{{ t('blogName') }}<span class="cursor-blinking">_</span></h2>
       </div>
       <note-preview
         class="py-3 border-b-1"

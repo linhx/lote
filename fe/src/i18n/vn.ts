@@ -1,4 +1,15 @@
 export default {
+  blogName: 'Linhx\'s notes',
+  tag: 'Tag',
+  notfound: 'Not found',
+  comment: {
+    content: {
+      placeholder: 'Comment không quá 500 ký tự. (Ctrl + Enter)'
+    },
+    name: {
+      placeholder: 'Tên của bạn (tối thiểu 2 ký tự, default: Anonymous)'
+    }
+  },
   error: {
     comment: {
       create: {
