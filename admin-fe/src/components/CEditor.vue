@@ -136,4 +136,7 @@ export default defineComponent({
 .ql-clipboard {
   position: fixed;
 }
+.c-editor .ql-editor {
+  white-space: unset; /* fixbug: firefox text-align justify doesn't work with pre-wrap */
+}
 </style>
