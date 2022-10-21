@@ -37,7 +37,6 @@ export async function create() {
       [name: string]: any
     }
     const notes = (await import('../../notes')).default;
-    console.log('notes', notes)
     for (const note in notes) {
       noteRoutes.push({
         path: '/' + note,
