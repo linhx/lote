@@ -1,11 +1,6 @@
-import { NOTE_FE_BASE_URL } from 'src/constants';
-import HtmlUtils from './HtmlUtils';
-
 export const create = (
-  note: { title: string; tags: string[]; publishedAt: Date; permalink: string },
-  delta: any,
+  note: { title: string; content: string; tags: string[]; publishedAt: Date; permalink: string },
 ) => {
-  const content = HtmlUtils.deltaToPublishedHtml(delta, note, NOTE_FE_BASE_URL);
   let tags = '[]';
   if (note.tags && note.tags.length) {
     tags = `['${note.tags.join("','")}']`;
@@ -27,7 +22,7 @@ export const create = (
       </div>
       <div class="ql-container ql-snow border-0">
         <div class="ql-editor">
-          ${content}
+          ${note.content}
         </div>
       </div>
       <div class="mt-5">

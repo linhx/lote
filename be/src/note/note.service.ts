@@ -8,29 +8,22 @@ import PageDto from '../dtos/response/PageDto';
 import NoteItemListDto from './dtos/response/NoteItemListDto';
 import PublicNoteItemListDto from './dtos/response/PublicNoteItemListDto';
 import NoteFilterListDto from './dtos/request/NoteFilterListDto';
-import * as fs from 'fs';
 import * as path from 'path';
 import { CSession, Db } from '../common/db';
 import {
-  NOTE_DATA_DRAFT_DIR,
-  NOTE_IMAGES_PUBLISH_DIR,
   NOTE_PUBLISH_DIR,
   DEPLOY_NOTE_SCRIPT,
   UNPULISH_NOTE_SCRIPT,
   SINGLE_NOTE_PUBLISH_DIR,
-  SINGLE_NOTE_IMAGES_PUBLISH_DIR,
   DEPLOY_NOTES_SCRIPT,
   DEPLOY_FE_SCRIPT,
 } from 'src/constants';
 import BusinessError from 'src/exceptions/BusinessError';
 import { FileService } from '../file/file.service';
-import HtmlUtils from './utilities/HtmlUtils';
 import * as NoteComponent from './utilities/NoteComponent';
 import * as ArrayUtils from '../utilites/ArrayUtils';
-import NoteDto from './dtos/response/NoteDto';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
 import * as FileUtils from '../utilites/FileUtils';
-import { CFileDocument } from 'src/file/entities/CFile';
 
 @Injectable()
 export class NoteService {
@@ -42,12 +35,8 @@ export class NoteService {
     private readonly fileService: FileService,
   ) {}
 
-  private createNoteDraftFolder(id: string) {
-    return path.join(NOTE_DATA_DRAFT_DIR, id);
-  }
-
   async create(session: CSession, dto: NoteCreateDto) {
-    const { content, ...rest } = dto;
+    const { images: imagesDto, ...rest } = dto;
     return this.db.withTransaction(session, async (_session) => {
       const existsByPermalink = await this.existsByPermalink(
         _session,
@@ -61,11 +50,7 @@ export class NoteService {
       if (rest.banner) {
         images.push(rest.banner);
       }
-      for (const op of content.ops) {
-        if (op.insert?.imagec) {
-          images.push(op.insert?.imagec.id);
-        }
-      }
+      images.push(...imagesDto);
 
       // make images not temporary files
       await this.fileService.permanentFile(_session, images);
@@ -76,14 +61,6 @@ export class NoteService {
       });
       const note = await newNote.save({ session: _session });
 
-      // create folder
-      const folder = this.createNoteDraftFolder(`${note._id}`);
-      const file = path.join(folder, 'index.json');
-      FileUtils.writeFileSync(file, JSON.stringify(content), {
-        recursive: true,
-      });
-
-      note.content = file;
       await note.save();
       return note;
     });
@@ -95,17 +72,13 @@ export class NoteService {
       if (!oldNote) {
         throw new BusinessError('error.note.notfound');
       }
-      const { content, ...rest } = dto;
+      const { images: imagesDto, ...rest } = dto;
 
       const images = [];
       if (rest.banner) {
         images.push(rest.banner);
       }
-      for (const op of content.ops) {
-        if (op.insert?.imagec) {
-          images.push(op.insert?.imagec.id);
-        }
-      }
+      images.push(...imagesDto);
 
       const diffImages = ArrayUtils.diffBoth(
         oldNote.images,
@@ -128,9 +101,8 @@ export class NoteService {
       oldNote.images = images;
       oldNote.tags = rest.tags;
       oldNote.category = rest.category;
+      oldNote.content = rest.content;
       oldNote.updatedAt = new Date();
-
-      FileUtils.writeFileSync(oldNote.content, JSON.stringify(content));
 
       return oldNote.save({ session: _session });
     });
@@ -232,8 +204,7 @@ export class NoteService {
   saveNoteComponentToPublishDir(note: NoteDocument) {
     const noteComponentName = `${note.permalink}.vue`;
     const file = path.join(NOTE_PUBLISH_DIR, noteComponentName);
-    const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
-    const noteComponent = NoteComponent.create(note, JSON.parse(contentJson));
+    const noteComponent = NoteComponent.create(note);
     FileUtils.writeFileSync(file, noteComponent, { recursive: true });
   }
 
@@ -243,8 +214,7 @@ export class NoteService {
     // save to the directory where all the notes are saved
     const noteComponentName = `${note.permalink}.vue`;
     const file = path.join(NOTE_PUBLISH_DIR, noteComponentName);
-    const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
-    const noteComponent = NoteComponent.create(note, JSON.parse(contentJson));
+    const noteComponent = NoteComponent.create(note);
     FileUtils.writeFileSync(file, noteComponent, { recursive: true });
 
     // save to the directory for one note
@@ -261,76 +231,13 @@ export class NoteService {
     });
   }
 
-  saveNoteImages(note: NoteDocument, imageFiles: CFileDocument[]) {
-    const imagesDir = path.join(NOTE_IMAGES_PUBLISH_DIR, note.permalink);
-    FileUtils.rmSyncSilentEnoent(imagesDir, { recursive: true });
-    fs.mkdirSync(imagesDir, {
-      recursive: true,
-    });
-
-    const singleNoteImagesDir = path.join(
-      SINGLE_NOTE_IMAGES_PUBLISH_DIR,
-      note.permalink,
-    );
-    fs.mkdirSync(singleNoteImagesDir, {
-      recursive: true,
-    });
-    for (const imageFile of imageFiles) {
-      // save to the directory where all the images are saved
-      fs.copyFileSync(
-        imageFile.path,
-        path.join(imagesDir, `${imageFile.publishName}`),
-      );
-
-      // save to the directory for one note
-      fs.copyFileSync(
-        imageFile.path,
-        path.join(singleNoteImagesDir, `${imageFile.publishName}`),
-      );
-    }
-  }
-
-  /**
-   * TODO avoid duplicated code
-   *
-   * @param note
-   * @param imageFiles
-   */
-  saveNoteImagesToPublishDir(note: NoteDocument, imageFiles: CFileDocument[]) {
-    const imagesDir = path.join(NOTE_IMAGES_PUBLISH_DIR, note.permalink);
-    FileUtils.rmSyncSilentEnoent(imagesDir, { recursive: true });
-    fs.mkdirSync(imagesDir, {
-      recursive: true,
-    });
-
-    for (const imageFile of imageFiles) {
-      // save to the directory where all the images are saved
-      fs.copyFileSync(
-        imageFile.path,
-        path.join(imagesDir, `${imageFile.publishName}`),
-      );
-    }
-  }
-
   recreateAndPublishNotes(session: CSession) {
     return this.db.withTransaction(session, async (ss) => {
-      FileUtils.rmSyncInsideSilentEnoent(NOTE_PUBLISH_DIR, { recursive: true });
-      FileUtils.rmSyncInsideSilentEnoent(NOTE_IMAGES_PUBLISH_DIR, {
-        recursive: true,
-      });
-
       const notes = await this.getAllPublishedListModel(ss);
       const recreate = notes.map((note) =>
         this.saveNoteComponentToPublishDir(note),
       );
-
-      // save images
-      const reSaveImages = notes.map(async (note) => {
-        const imageFiles = await this.fileService.findByIds(ss, note.images);
-        this.saveNoteImagesToPublishDir(note, imageFiles);
-      });
-
-      await Promise.all(recreate.concat(reSaveImages));
+      await Promise.all(recreate);
 
       this.publishNotes();
     });
@@ -354,12 +261,8 @@ export class NoteService {
       // save note component
       this.saveNoteComponent(note);
 
-      // save images
-      const imageFiles = await this.fileService.findByIds(
-        _session,
-        note.images,
-      );
-      this.saveNoteImages(note, imageFiles);
+      // TODO remove unused image
+
       await note.save();
 
       const publish = this.publishNote();
@@ -379,14 +282,10 @@ export class NoteService {
     });
   }
 
-  deleteDeloyedNote(note: NoteDocument) {
+  deletePublishedNote(note: NoteDocument) {
     // remove note component
     const file = path.join(NOTE_PUBLISH_DIR, `${note.permalink}.vue`);
     FileUtils.unlinkSyncSilentEnoent(file);
-
-    // remove note's images
-    const imagesFolder = path.join(NOTE_IMAGES_PUBLISH_DIR, note.permalink);
-    FileUtils.rmSyncSilentEnoent(imagesFolder, { recursive: true });
 
     return new Promise((resolve, reject) => {
       if (UNPULISH_NOTE_SCRIPT) {
@@ -420,7 +319,7 @@ export class NoteService {
       }
 
       // delete from `fe` deployed dir, and remove from note-chunk-map
-      const publish = this.deleteDeloyedNote(note);
+      const publish = this.deletePublishedNote(note);
       publish
         .then(() => {
           return this.noteModel.findByIdAndUpdate(note.id, {
@@ -439,15 +338,6 @@ export class NoteService {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel.findById(id).session(ss).exec();
     });
-  }
-
-  async findIncludeContentById(session: CSession, id: string) {
-    const note = await this.findById(session, id);
-    if (!note) {
-      throw new BusinessError('error.note.notfound');
-    }
-    const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
-    return NoteDto.fromEntity(note, contentJson);
   }
 
   async findPublisedByPermalink(session: CSession, permalink: string) {
@@ -596,11 +486,8 @@ export class NoteService {
 
       await this.fileService.deleteFileByIds(ss, note.images);
 
-      const draftFolder = this.createNoteDraftFolder(`${note._id}`);
-      FileUtils.rmSyncSilentEnoent(draftFolder, { recursive: true });
-
       // delete from `fe` deployed dir, and remove from note-chunk-map
-      return this.deleteDeloyedNote(note);
+      return this.deletePublishedNote(note);
     });
   }
 
@@ -612,7 +499,7 @@ export class NoteService {
       }
 
       // delete from `fe` deployed dir, and remove from note-chunk-map
-      const publish = this.deleteDeloyedNote(note);
+      const publish = this.deletePublishedNote(note);
       publish
         .then(() => {
           return this.noteModel.findByIdAndUpdate(note.id, {
@@ -635,8 +522,7 @@ export class NoteService {
         throw new Error('error.note.preview.notfound');
       }
 
-      const contentJson = fs.readFileSync(note.content, { encoding: 'utf8' });
-      return HtmlUtils.deltaToPreviewHtml(JSON.parse(contentJson));
+      return note.content;
     });
   }
 }

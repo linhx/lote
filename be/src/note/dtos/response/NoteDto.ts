@@ -17,7 +17,7 @@ export default class NoteDto {
   createdAt: Date;
   updatedAt: Date;
 
-  static fromEntity(entity: NoteDocument, content: any) {
+  static fromEntityWithoutContent(entity: NoteDocument) {
     const dto = new NoteDto();
     dto.id = entity.id;
     dto.permalink = entity.permalink;
@@ -27,13 +27,18 @@ export default class NoteDto {
     dto.tags = entity.tags;
     dto.category = entity.category;
     dto.images = entity.images;
-    dto.content = content;
     dto.isPublished = entity.isPublished;
     dto.isDeleted = entity.isDeleted;
     dto.publishedAt = entity.publishedAt;
     dto.updatePublicationAt = entity.updatePublicationAt;
     dto.createdAt = entity.createdAt;
     dto.updatedAt = entity.updatedAt;
+    return dto;
+  }
+
+  static fromEntity(entity: NoteDocument) {
+    const dto = NoteDto.fromEntityWithoutContent(entity);
+    dto.content = entity.content;
     return dto;
   }
 }

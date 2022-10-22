@@ -20,3 +20,7 @@ interface ImportMeta {
 declare module 'quill-blot-formatter/dist/BlotFormatter';
 
 declare module 'quill-emoji';
+
+declare module '@ckeditor/ckeditor5-vue';
+declare module '@linhx/ckeditor5-build';
+declare module '@ckeditor/ckeditor5-editor-classic/src/classiceditor';

@@ -61,3 +61,11 @@ export const rmSyncInsideSilentEnoent = (
     }
   }
 };
+
+export const mkdirSyncIfNotExist = (path: string, options: fs.MakeDirectoryOptions & {
+  recursive: true;
+}) => {
+  if (!fs.existsSync(path)) {
+    fs.mkdirSync(path, options)
+  }
+}

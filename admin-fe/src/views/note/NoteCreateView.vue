@@ -42,7 +42,7 @@
 import { defineComponent } from 'vue';
 import CInput from '../../components/CInput.vue';
 import CTextarea from '../../components/CTextarea.vue';
-import CEditor from '../../components/CEditor.vue';
+import CEditor from '../../components/CEditorNew.vue';
 import CField from '../../components/CField.vue';
 import CTagInput from '../../components/CTagInput.vue';
 import CButton from '../../components/CButton.vue';
@@ -52,6 +52,7 @@ import FileRepository from "../../repositories/FileRepository";
 import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
 import NoteDto from '../../dtos/NoteDto';
 import ROUTES_NAME from '../../constants/routes';
+import { Data } from '../../utilities/Editor';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -99,7 +100,7 @@ export default defineComponent({
     },
     async uploadNoteBanner() {
       if (this.noteBanner) {
-        const file = await FileRepository.uploadTempFile(this.noteBanner);
+        const file = await FileRepository.uploadFile(this.noteBanner);
         return file.id;
       }
     },
@@ -107,11 +108,12 @@ export default defineComponent({
       try {
         this.isLoading = true;
         const banner = await this.uploadNoteBanner();
-        const content = (<any>this.$refs.editor).getContents();
+        const data: Data = (<any>this.$refs.editor).getData();
+        console.log('data',data);
         await NoteRepository.create({
           ...this.note,
           banner,
-          content
+          ...data
         })
         .then((res: NoteDto) => {
           window.removeEventListener('beforeunload', warningUnsave);
