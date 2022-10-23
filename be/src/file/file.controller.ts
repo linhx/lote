@@ -40,7 +40,6 @@ export class FileController {
       }),
     }),
   )
-  @Public()
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
     const cFile = await this.fileService.saveTempFile(null, file);
     return FileDto.fromEntity(cFile);
