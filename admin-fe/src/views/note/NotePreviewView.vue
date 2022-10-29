@@ -7,8 +7,8 @@
     <div class="text-right text-gray-600 mr-2 text-sm">
       <span>{{ publishedDate }}</span>
     </div>
-    <div class="ql-container border-0">
-      <div ref="content" class="ql-editor"></div>
+    <div class="ck ck-editor border-0">
+      <div ref="content" class="ck ck-content"></div>
     </div>
   </div>
 </template>
@@ -50,9 +50,6 @@ export default defineComponent({
     });
     NoteRepository.getContentPreview(this.id).then(res => {
       (<HTMLElement>this.$refs.content).innerHTML = res;
-      document.querySelectorAll('pre[data-language]').forEach((el) => {
-        hljs.highlightElement(el);
-      });
     });
   }
 })

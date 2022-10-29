@@ -3,6 +3,8 @@ import App from './App.vue';
 import './assets/css/index.css';
 import router from './router';
 import IdMixin from './mixins/IdMixin';
+import './assets/css/fonts.css';
+import './assets/css/editor-theme.css';
 import './assets/css/emoji.css';
 
 declare module '@vue/runtime-core' {

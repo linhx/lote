@@ -21,9 +21,9 @@
           <c-textarea v-model="note.overview" name="overview" />
         </c-field>
       </div>
-      <div class="mt-5 md:mt-0 md:col-span-3">
+      <div class="mt-5 md:mt-0 md:col-span-3 w-full max-w-3xl mx-auto">
         <c-field label="Content">
-          <c-editor v-if="isFetched" ref="editor" :model-value="note.content" editor-class="h-32"></c-editor>
+          <c-editor v-if="isFetched" ref="editor" :model-value="note.content" class="-mx-4"></c-editor>
         </c-field>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">

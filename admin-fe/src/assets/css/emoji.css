@@ -6,13 +6,13 @@
 }
 
 .emoji.emoji-grid__tiles > .em,
-.ck-editor__main .em {
+.ck-editor .em {
 	background-image: url("/emojis.png");
 	background-repeat: no-repeat;
 	display: inline-block;
 }
 
-.ck-editor__main .em {
+.ck-editor .em {
 	width: var(--display-emoji-size);
 	height: var(--display-emoji-size);
 	background-size: calc(

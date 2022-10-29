@@ -34,3 +34,15 @@
   @apply animate-pulse text-red-900;
   animation-duration: 500ms;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #ccc;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border: 0;
+}
+::-webkit-scrollbar-track {
+  background-color: #eee;
+}

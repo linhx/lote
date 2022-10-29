@@ -1,3 +1,5 @@
+import { highlightCodeBlock } from './highlight-code-block';
+
 export const create = (
   note: { title: string; content: string; tags: string[]; publishedAt: Date; permalink: string },
 ) => {
@@ -8,7 +10,7 @@ export const create = (
   const publishedAt = note.publishedAt.toISOString();
   return `<template>
   <div class="">
-    <router-link to="/" class="icon-top icon-home">
+    <router-link to="/" class="icon-top icon-home sticky">
     </router-link>
     <div v-if="displayBtnBack" class="icon-top icon-back" @click="onBack">
     </div>
@@ -20,9 +22,9 @@ export const create = (
       <div class="text-right text-gray-600 mr-2 text-sm">
         <span>{{ publishedDate }}</span>
       </div>
-      <div class="ql-container ql-snow border-0">
-        <div class="ql-editor">
-          ${note.content}
+      <div class="ck ck-editor border-0">
+        <div class="ck ck-content">
+          ${highlightCodeBlock(note.content)}
         </div>
       </div>
       <div class="mt-5">

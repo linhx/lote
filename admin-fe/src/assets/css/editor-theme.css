@@ -1,0 +1,45 @@
+.ck.ck-content h1 {
+  @apply text-2xl;
+}
+.ck.ck-content h2 {
+  @apply text-xl;
+}
+.ck.ck-content h3 {
+  @apply text-lg;
+}
+
+.ck.ck-content ul {
+  margin: revert;
+  padding: revert;
+}
+
+.ck.ck-content a {
+  color: revert;
+}
+.ck.ck-content a:hover {
+  text-decoration: revert;
+}
+.ck.ck-content a {
+  color: #06c;
+}
+.ck.ck-content a[target="_blank"]::after {
+  content: url('../img/external-link.svg');
+  margin-left: 2px;
+}
+
+.ck.ck-content {
+  font-family: 'iA Writer Duospace', 'Courier New', Courier, monospace;
+}
+
+.ck.ck-content hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0),rgba(0,0,0,0));
+  margin: 30px auto;
+  width: 40%;
+  opacity: 0.3;
+}
+
+.ck.ck-content p {
+  margin: revert;
+}

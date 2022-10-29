@@ -34,42 +34,14 @@
   border-bottom-width: 1px;
 }
 
-.ql-container {
-  box-sizing: border-box;
-  font-size: 16px;
-  height: 100%;
-  margin: 0px;
-  position: relative;
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #ccc;
 }
-
-.ql-container a[target="_blank"]::after {
-  content: url('../img/external-link.svg');
-  margin-left: 2px;
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border: 0;
 }
-
-.ql-editor p {
-  @apply leading-relaxed;
-}
-.ql-container > .ql-editor ol > li {
-  word-break: break-all;
-}
-
-.ql-editor code {
-  font-size: 87%;
-  color: #777;
-}
-
-.ql-editor p {
-  @apply leading-relaxed;
-  text-indent: 1.5rem;
-}
-
-body .ap{
-  background-image:url('../img/sheet_messenger_64_indexed_128.png') !important;
-  vertical-align: middle;
-}
-
-body .ql-emojiblot {
-  vertical-align: middle;
-  display: inline;
+::-webkit-scrollbar-track {
+  background-color: #eee;
 }
