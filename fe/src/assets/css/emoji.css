@@ -1,1 +1,3571 @@
-.ap{background-image:url('../img/sheet_messenger_64_indexed_128.png');background-repeat:no-repeat;background-size:820px;box-sizing:border-box;display:inline-flex;font-size:20px;height:20px;line-height:1;margin-top:-3px;overflow:hidden;text-indent:-999px;width:20px;vertical-align: middle;}.ap-copyright{background-position:0 0}.ap-registered{background-position:0 -20px}.ap-bangbang{background-position:0 -40px}.ap-interrobang{background-position:0 -60px}.ap-tm{background-position:0 -80px}.ap-information_source{background-position:0 -100px}.ap-left_right_arrow{background-position:0 -120px}.ap-arrow_up_down{background-position:0 -140px}.ap-arrow_upper_left{background-position:0 -160px}.ap-arrow_upper_right{background-position:0 -180px}.ap-arrow_lower_right{background-position:0 -200px}.ap-arrow_lower_left{background-position:0 -220px}.ap-leftwards_arrow_with_hook{background-position:0 -240px}.ap-arrow_right_hook{background-position:0 -260px}.ap-watch{background-position:0 -280px}.ap-hourglass{background-position:0 -300px}.ap-keyboard{background-position:0 -320px}.ap-fast_forward{background-position:0 -360px}.ap-rewind{background-position:0 -380px}.ap-arrow_double_up{background-position:0 -400px}.ap-arrow_double_down{background-position:0 -420px}.ap-black_right_pointing_double_triangle_with_vertical_bar{background-position:0 -440px}.ap-black_left_pointing_double_triangle_with_vertical_bar{background-position:0 -460px}.ap-black_right_pointing_triangle_with_double_vertical_bar{background-position:0 -480px}.ap-alarm_clock{background-position:0 -500px}.ap-stopwatch{background-position:0 -520px}.ap-timer_clock{background-position:0 -540px}.ap-hourglass_flowing_sand{background-position:0 -560px}.ap-double_vertical_bar{background-position:0 -580px}.ap-black_square_for_stop{background-position:0 -600px}.ap-black_circle_for_record{background-position:0 -620px}.ap-m{background-position:0 -640px}.ap-black_small_square{background-position:0 -660px}.ap-white_small_square{background-position:0 -680px}.ap-arrow_forward{background-position:0 -700px}.ap-arrow_backward{background-position:0 -720px}.ap-white_medium_square{background-position:0 -740px}.ap-black_medium_square{background-position:0 -760px}.ap-white_medium_small_square{background-position:0 -780px}.ap-black_medium_small_square{background-position:0 -800px}.ap-sunny{background-position:-20px 0}.ap-cloud{background-position:-20px -20px}.ap-umbrella{background-position:-20px -40px}.ap-snowman{background-position:-20px -60px}.ap-comet{background-position:-20px -80px}.ap-phone,.ap-telephone{background-position:-20px -100px}.ap-ballot_box_with_check{background-position:-20px -120px}.ap-umbrella_with_rain_drops{background-position:-20px -140px}.ap-coffee{background-position:-20px -160px}.ap-shamrock{background-position:-20px -180px}.ap-point_up{background-position:-20px -200px}.ap-skull_and_crossbones{background-position:-20px -320px}.ap-radioactive_sign{background-position:-20px -340px}.ap-biohazard_sign{background-position:-20px -360px}.ap-orthodox_cross{background-position:-20px -380px}.ap-star_and_crescent{background-position:-20px -400px}.ap-peace_symbol{background-position:-20px -420px}.ap-yin_yang{background-position:-20px -440px}.ap-wheel_of_dharma{background-position:-20px -460px}.ap-white_frowning_face{background-position:-20px -480px}.ap-relaxed{background-position:-20px -500px}.ap-aries{background-position:-20px -520px}.ap-taurus{background-position:-20px -540px}.ap-gemini{background-position:-20px -560px}.ap-cancer{background-position:-20px -580px}.ap-leo{background-position:-20px -600px}.ap-virgo{background-position:-20px -620px}.ap-libra{background-position:-20px -640px}.ap-scorpius{background-position:-20px -660px}.ap-sagittarius{background-position:-20px -680px}.ap-capricorn{background-position:-20px -700px}.ap-aquarius{background-position:-20px -720px}.ap-pisces{background-position:-20px -740px}.ap-spades{background-position:-20px -760px}.ap-clubs{background-position:-20px -780px}.ap-hearts{background-position:-20px -800px}.ap-diamonds{background-position:-40px 0}.ap-hotsprings{background-position:-40px -20px}.ap-recycle{background-position:-40px -40px}.ap-wheelchair{background-position:-40px -60px}.ap-hammer_and_pick{background-position:-40px -80px}.ap-anchor{background-position:-40px -100px}.ap-crossed_swords{background-position:-40px -120px}.ap-scales{background-position:-40px -140px}.ap-alembic{background-position:-40px -160px}.ap-gear{background-position:-40px -180px}.ap-atom_symbol{background-position:-40px -200px}.ap-fleur_de_lis{background-position:-40px -220px}.ap-warning{background-position:-40px -240px}.ap-zap{background-position:-40px -260px}.ap-white_circle{background-position:-40px -280px}.ap-black_circle{background-position:-40px -300px}.ap-coffin{background-position:-40px -320px}.ap-funeral_urn{background-position:-40px -340px}.ap-soccer{background-position:-40px -360px}.ap-baseball{background-position:-40px -380px}.ap-snowman_without_snow{background-position:-40px -400px}.ap-partly_sunny{background-position:-40px -420px}.ap-thunder_cloud_and_rain{background-position:-40px -440px}.ap-ophiuchus{background-position:-40px -460px}.ap-pick{background-position:-40px -480px}.ap-helmet_with_white_cross{background-position:-40px -500px}.ap-chains{background-position:-40px -520px}.ap-no_entry{background-position:-40px -540px}.ap-shinto_shrine{background-position:-40px -560px}.ap-church{background-position:-40px -580px}.ap-mountain{background-position:-40px -600px}.ap-beach_umbrella,.ap-umbrella_on_ground{background-position:-40px -620px}.ap-fountain{background-position:-40px -640px}.ap-golf{background-position:-40px -660px}.ap-ferry{background-position:-40px -680px}.ap-boat{background-position:-40px -700px}.ap-skier{background-position:-40px -720px}.ap-ice_skate{background-position:-40px -740px}.ap-person_with_ball{background-position:-40px -760px}.ap-tent{background-position:-60px -60px}.ap-fuelpump{background-position:-60px -80px}.ap-scissors{background-position:-60px -100px}.ap-white_check_mark{background-position:-60px -120px}.ap-airplane{background-position:-60px -140px}.ap-email{background-position:-60px -160px}.ap-fist{background-position:-60px -180px}.ap-hand{background-position:-60px -300px}.ap-v{background-position:-60px -420px}.ap-writing_hand{background-position:-60px -540px}.ap-pencil2{background-position:-60px -660px}.ap-black_nib{background-position:-60px -680px}.ap-heavy_check_mark{background-position:-60px -700px}.ap-heavy_multiplication_x{background-position:-60px -720px}.ap-latin_cross{background-position:-60px -740px}.ap-star_of_david{background-position:-60px -760px}.ap-sparkles{background-position:-60px -780px}.ap-eight_spoked_asterisk{background-position:-60px -800px}.ap-eight_pointed_black_star{background-position:-80px 0}.ap-snowflake{background-position:-80px -20px}.ap-sparkle{background-position:-80px -40px}.ap-x{background-position:-80px -60px}.ap-negative_squared_cross_mark{background-position:-80px -80px}.ap-question{background-position:-80px -100px}.ap-grey_question{background-position:-80px -120px}.ap-grey_exclamation{background-position:-80px -140px}.ap-exclamation{background-position:-80px -160px}.ap-heavy_heart_exclamation_mark_ornament{background-position:-80px -180px}.ap-heart{background-position:-80px -200px}.ap-heavy_plus_sign{background-position:-80px -220px}.ap-heavy_minus_sign{background-position:-80px -240px}.ap-heavy_division_sign{background-position:-80px -260px}.ap-arrow_right{background-position:-80px -280px}.ap-curly_loop{background-position:-80px -300px}.ap-loop{background-position:-80px -320px}.ap-arrow_heading_up{background-position:-80px -340px}.ap-arrow_heading_down{background-position:-80px -360px}.ap-arrow_left{background-position:-80px -380px}.ap-arrow_up{background-position:-80px -400px}.ap-arrow_down{background-position:-80px -420px}.ap-black_large_square{background-position:-80px -440px}.ap-white_large_square{background-position:-80px -460px}.ap-star{background-position:-80px -480px}.ap-o{background-position:-80px -500px}.ap-wavy_dash{background-position:-80px -520px}.ap-part_alternation_mark{background-position:-80px -540px}.ap-congratulations{background-position:-80px -560px}.ap-secret{background-position:-80px -580px}.ap-mahjong{background-position:-80px -600px}.ap-black_joker{background-position:-80px -620px}.ap-a{background-position:-80px -640px}.ap-b{background-position:-80px -660px}.ap-o2{background-position:-80px -680px}.ap-parking{background-position:-80px -700px}.ap-ab{background-position:-80px -720px}.ap-cl{background-position:-80px -740px}.ap-cool{background-position:-80px -760px}.ap-free{background-position:-80px -780px}.ap-id{background-position:-80px -800px}.ap-new{background-position:-100px 0}.ap-ng{background-position:-100px -20px}.ap-ok{background-position:-100px -40px}.ap-sos{background-position:-100px -60px}.ap-up{background-position:-100px -80px}.ap-vs{background-position:-100px -100px}.ap-koko{background-position:-100px -120px}.ap-sa{background-position:-100px -140px}.ap-u7121{background-position:-100px -160px}.ap-u6307{background-position:-100px -180px}.ap-u7981{background-position:-100px -200px}.ap-u7a7a{background-position:-100px -220px}.ap-u5408{background-position:-100px -240px}.ap-u6e80{background-position:-100px -260px}.ap-u6709{background-position:-100px -280px}.ap-u6708{background-position:-100px -300px}.ap-u7533{background-position:-100px -320px}.ap-u5272{background-position:-100px -340px}.ap-u55b6{background-position:-100px -360px}.ap-ideograph_advantage{background-position:-100px -380px}.ap-accept{background-position:-100px -400px}.ap-cyclone{background-position:-100px -420px}.ap-foggy{background-position:-100px -440px}.ap-closed_umbrella{background-position:-100px -460px}.ap-night_with_stars{background-position:-100px -480px}.ap-sunrise_over_mountains{background-position:-100px -500px}.ap-sunrise{background-position:-100px -520px}.ap-city_sunset{background-position:-100px -540px}.ap-city_sunrise{background-position:-100px -560px}.ap-rainbow{background-position:-100px -580px}.ap-bridge_at_night{background-position:-100px -600px}.ap-ocean{background-position:-100px -620px}.ap-volcano{background-position:-100px -640px}.ap-milky_way{background-position:-100px -660px}.ap-earth_africa{background-position:-100px -680px}.ap-earth_americas{background-position:-100px -700px}.ap-earth_asia{background-position:-100px -720px}.ap-globe_with_meridians{background-position:-100px -740px}.ap-new_moon{background-position:-100px -760px}.ap-waxing_crescent_moon{background-position:-100px -780px}.ap-first_quarter_moon{background-position:-100px -800px}.ap-moon{background-position:-120px 0}.ap-full_moon{background-position:-120px -20px}.ap-waning_gibbous_moon{background-position:-120px -40px}.ap-last_quarter_moon{background-position:-120px -60px}.ap-waning_crescent_moon{background-position:-120px -80px}.ap-crescent_moon{background-position:-120px -100px}.ap-new_moon_with_face{background-position:-120px -120px}.ap-first_quarter_moon_with_face{background-position:-120px -140px}.ap-last_quarter_moon_with_face{background-position:-120px -160px}.ap-full_moon_with_face{background-position:-120px -180px}.ap-sun_with_face{background-position:-120px -200px}.ap-star2{background-position:-120px -220px}.ap-stars{background-position:-120px -240px}.ap-thermometer{background-position:-120px -260px}.ap-mostly_sunny{background-position:-120px -280px}.ap-barely_sunny{background-position:-120px -300px}.ap-partly_sunny_rain{background-position:-120px -320px}.ap-rain_cloud{background-position:-120px -340px}.ap-snow_cloud{background-position:-120px -360px}.ap-lightning{background-position:-120px -380px}.ap-tornado{background-position:-120px -400px}.ap-fog{background-position:-120px -420px}.ap-wind_blowing_face{background-position:-120px -440px}.ap-hotdog{background-position:-120px -460px}.ap-taco{background-position:-120px -480px}.ap-burrito{background-position:-120px -500px}.ap-chestnut{background-position:-120px -520px}.ap-seedling{background-position:-120px -540px}.ap-evergreen_tree{background-position:-120px -560px}.ap-deciduous_tree{background-position:-120px -580px}.ap-palm_tree{background-position:-120px -600px}.ap-cactus{background-position:-120px -620px}.ap-hot_pepper{background-position:-120px -640px}.ap-tulip{background-position:-120px -660px}.ap-cherry_blossom{background-position:-120px -680px}.ap-rose{background-position:-120px -700px}.ap-hibiscus{background-position:-120px -720px}.ap-sunflower{background-position:-120px -740px}.ap-blossom{background-position:-120px -760px}.ap-corn{background-position:-120px -780px}.ap-ear_of_rice{background-position:-120px -800px}.ap-herb{background-position:-140px 0}.ap-four_leaf_clover{background-position:-140px -20px}.ap-maple_leaf{background-position:-140px -40px}.ap-fallen_leaf{background-position:-140px -60px}.ap-leaves{background-position:-140px -80px}.ap-mushroom{background-position:-140px -100px}.ap-tomato{background-position:-140px -120px}.ap-eggplant{background-position:-140px -140px}.ap-grapes{background-position:-140px -160px}.ap-melon{background-position:-140px -180px}.ap-watermelon{background-position:-140px -200px}.ap-tangerine{background-position:-140px -220px}.ap-lemon{background-position:-140px -240px}.ap-banana{background-position:-140px -260px}.ap-pineapple{background-position:-140px -280px}.ap-apple{background-position:-140px -300px}.ap-green_apple{background-position:-140px -320px}.ap-pear{background-position:-140px -340px}.ap-peach{background-position:-140px -360px}.ap-cherries{background-position:-140px -380px}.ap-strawberry{background-position:-140px -400px}.ap-hamburger{background-position:-140px -420px}.ap-pizza{background-position:-140px -440px}.ap-meat_on_bone{background-position:-140px -460px}.ap-poultry_leg{background-position:-140px -480px}.ap-rice_cracker{background-position:-140px -500px}.ap-rice_ball{background-position:-140px -520px}.ap-rice{background-position:-140px -540px}.ap-curry{background-position:-140px -560px}.ap-ramen{background-position:-140px -580px}.ap-spaghetti{background-position:-140px -600px}.ap-bread{background-position:-140px -620px}.ap-fries{background-position:-140px -640px}.ap-sweet_potato{background-position:-140px -660px}.ap-dango{background-position:-140px -680px}.ap-oden{background-position:-140px -700px}.ap-sushi{background-position:-140px -720px}.ap-fried_shrimp{background-position:-140px -740px}.ap-fish_cake{background-position:-140px -760px}.ap-icecream{background-position:-140px -780px}.ap-shaved_ice{background-position:-140px -800px}.ap-ice_cream{background-position:-160px 0}.ap-doughnut{background-position:-160px -20px}.ap-cookie{background-position:-160px -40px}.ap-chocolate_bar{background-position:-160px -60px}.ap-candy{background-position:-160px -80px}.ap-lollipop{background-position:-160px -100px}.ap-custard{background-position:-160px -120px}.ap-honey_pot{background-position:-160px -140px}.ap-cake{background-position:-160px -160px}.ap-bento{background-position:-160px -180px}.ap-stew{background-position:-160px -200px}.ap-egg{background-position:-160px -220px}.ap-fork_and_knife{background-position:-160px -240px}.ap-tea{background-position:-160px -260px}.ap-sake{background-position:-160px -280px}.ap-wine_glass{background-position:-160px -300px}.ap-cocktail{background-position:-160px -320px}.ap-tropical_drink{background-position:-160px -340px}.ap-beer{background-position:-160px -360px}.ap-beers{background-position:-160px -380px}.ap-baby_bottle{background-position:-160px -400px}.ap-knife_fork_plate{background-position:-160px -420px}.ap-champagne{background-position:-160px -440px}.ap-popcorn{background-position:-160px -460px}.ap-ribbon{background-position:-160px -480px}.ap-gift{background-position:-160px -500px}.ap-birthday{background-position:-160px -520px}.ap-jack_o_lantern{background-position:-160px -540px}.ap-christmas_tree{background-position:-160px -560px}.ap-santa{background-position:-160px -580px}.ap-fireworks{background-position:-160px -700px}.ap-sparkler{background-position:-160px -720px}.ap-balloon{background-position:-160px -740px}.ap-tada{background-position:-160px -760px}.ap-confetti_ball{background-position:-160px -780px}.ap-tanabata_tree{background-position:-160px -800px}.ap-crossed_flags{background-position:-180px 0}.ap-bamboo{background-position:-180px -20px}.ap-dolls{background-position:-180px -40px}.ap-flags{background-position:-180px -60px}.ap-wind_chime{background-position:-180px -80px}.ap-rice_scene{background-position:-180px -100px}.ap-school_satchel{background-position:-180px -120px}.ap-mortar_board{background-position:-180px -140px}.ap-medal{background-position:-180px -160px}.ap-reminder_ribbon{background-position:-180px -180px}.ap-studio_microphone{background-position:-180px -200px}.ap-level_slider{background-position:-180px -220px}.ap-control_knobs{background-position:-180px -240px}.ap-film_frames{background-position:-180px -260px}.ap-admission_tickets{background-position:-180px -280px}.ap-carousel_horse{background-position:-180px -300px}.ap-ferris_wheel{background-position:-180px -320px}.ap-roller_coaster{background-position:-180px -340px}.ap-fishing_pole_and_fish{background-position:-180px -360px}.ap-microphone{background-position:-180px -380px}.ap-movie_camera{background-position:-180px -400px}.ap-cinema{background-position:-180px -420px}.ap-headphones{background-position:-180px -440px}.ap-art{background-position:-180px -460px}.ap-tophat{background-position:-180px -480px}.ap-circus_tent{background-position:-180px -500px}.ap-ticket{background-position:-180px -520px}.ap-clapper{background-position:-180px -540px}.ap-performing_arts{background-position:-180px -560px}.ap-video_game{background-position:-180px -580px}.ap-dart{background-position:-180px -600px}.ap-slot_machine{background-position:-180px -620px}.ap-8ball{background-position:-180px -640px}.ap-game_die{background-position:-180px -660px}.ap-bowling{background-position:-180px -680px}.ap-flower_playing_cards{background-position:-180px -700px}.ap-musical_note{background-position:-180px -720px}.ap-notes{background-position:-180px -740px}.ap-saxophone{background-position:-180px -760px}.ap-guitar{background-position:-180px -780px}.ap-musical_keyboard{background-position:-180px -800px}.ap-trumpet{background-position:-200px 0}.ap-violin{background-position:-200px -20px}.ap-musical_score{background-position:-200px -40px}.ap-running_shirt_with_sash{background-position:-200px -60px}.ap-tennis{background-position:-200px -80px}.ap-ski{background-position:-200px -100px}.ap-basketball{background-position:-200px -120px}.ap-checkered_flag{background-position:-200px -140px}.ap-snowboarder{background-position:-200px -160px}.ap-runner{background-position:-200px -180px}.ap-surfer{background-position:-200px -300px}.ap-sports_medal{background-position:-200px -420px}.ap-trophy{background-position:-200px -440px}.ap-horse_racing{background-position:-200px -460px}.ap-football{background-position:-200px -480px}.ap-rugby_football{background-position:-200px -500px}.ap-swimmer{background-position:-200px -520px}.ap-weight_lifter{background-position:-200px -640px}.ap-golfer{background-position:-200px -760px}.ap-racing_motorcycle{background-position:-200px -780px}.ap-racing_car{background-position:-200px -800px}.ap-cricket_bat_and_ball{background-position:-220px 0}.ap-volleyball{background-position:-220px -20px}.ap-field_hockey_stick_and_ball{background-position:-220px -40px}.ap-ice_hockey_stick_and_puck{background-position:-220px -60px}.ap-table_tennis_paddle_and_ball{background-position:-220px -80px}.ap-snow_capped_mountain{background-position:-220px -100px}.ap-camping{background-position:-220px -120px}.ap-beach_with_umbrella{background-position:-220px -140px}.ap-building_construction{background-position:-220px -160px}.ap-house_buildings{background-position:-220px -180px}.ap-cityscape{background-position:-220px -200px}.ap-derelict_house_building{background-position:-220px -220px}.ap-classical_building{background-position:-220px -240px}.ap-desert{background-position:-220px -260px}.ap-desert_island{background-position:-220px -280px}.ap-national_park{background-position:-220px -300px}.ap-stadium{background-position:-220px -320px}.ap-house{background-position:-220px -340px}.ap-house_with_garden{background-position:-220px -360px}.ap-office{background-position:-220px -380px}.ap-post_office{background-position:-220px -400px}.ap-european_post_office{background-position:-220px -420px}.ap-hospital{background-position:-220px -440px}.ap-bank{background-position:-220px -460px}.ap-atm{background-position:-220px -480px}.ap-hotel{background-position:-220px -500px}.ap-love_hotel{background-position:-220px -520px}.ap-convenience_store{background-position:-220px -540px}.ap-school{background-position:-220px -560px}.ap-department_store{background-position:-220px -580px}.ap-factory{background-position:-220px -600px}.ap-izakaya_lantern{background-position:-220px -620px}.ap-japanese_castle{background-position:-220px -640px}.ap-european_castle{background-position:-220px -660px}.ap-waving_white_flag{background-position:-220px -680px}.ap-waving_black_flag{background-position:-220px -700px}.ap-rosette{background-position:-220px -720px}.ap-label{background-position:-220px -740px}.ap-badminton_racquet_and_shuttlecock{background-position:-220px -760px}.ap-bow_and_arrow{background-position:-220px -780px}.ap-amphora{background-position:-220px -800px}.ap-skin-tone-2{background-position:-240px 0}.ap-skin-tone-3{background-position:-240px -20px}.ap-skin-tone-4{background-position:-240px -40px}.ap-skin-tone-5{background-position:-240px -60px}.ap-skin-tone-6{background-position:-240px -80px}.ap-rat{background-position:-240px -100px}.ap-mouse2{background-position:-240px -120px}.ap-ox{background-position:-240px -140px}.ap-water_buffalo{background-position:-240px -160px}.ap-cow2{background-position:-240px -180px}.ap-tiger2{background-position:-240px -200px}.ap-leopard{background-position:-240px -220px}.ap-rabbit2{background-position:-240px -240px}.ap-cat2{background-position:-240px -260px}.ap-dragon{background-position:-240px -280px}.ap-crocodile{background-position:-240px -300px}.ap-whale2{background-position:-240px -320px}.ap-snail{background-position:-240px -340px}.ap-snake{background-position:-240px -360px}.ap-racehorse{background-position:-240px -380px}.ap-ram{background-position:-240px -400px}.ap-goat{background-position:-240px -420px}.ap-sheep{background-position:-240px -440px}.ap-monkey{background-position:-240px -460px}.ap-rooster{background-position:-240px -480px}.ap-chicken{background-position:-240px -500px}.ap-dog2{background-position:-240px -520px}.ap-pig2{background-position:-240px -540px}.ap-boar{background-position:-240px -560px}.ap-elephant{background-position:-240px -580px}.ap-octopus{background-position:-240px -600px}.ap-shell{background-position:-240px -620px}.ap-bug{background-position:-240px -640px}.ap-ant{background-position:-240px -660px}.ap-bee{background-position:-240px -680px}.ap-beetle{background-position:-240px -700px}.ap-fish{background-position:-240px -720px}.ap-tropical_fish{background-position:-240px -740px}.ap-blowfish{background-position:-240px -760px}.ap-turtle{background-position:-240px -780px}.ap-hatching_chick{background-position:-240px -800px}.ap-baby_chick{background-position:-260px 0}.ap-hatched_chick{background-position:-260px -20px}.ap-bird{background-position:-260px -40px}.ap-penguin{background-position:-260px -60px}.ap-koala{background-position:-260px -80px}.ap-poodle{background-position:-260px -100px}.ap-dromedary_camel{background-position:-260px -120px}.ap-camel{background-position:-260px -140px}.ap-dolphin{background-position:-260px -160px}.ap-mouse{background-position:-260px -180px}.ap-cow{background-position:-260px -200px}.ap-tiger{background-position:-260px -220px}.ap-rabbit{background-position:-260px -240px}.ap-cat{background-position:-260px -260px}.ap-dragon_face{background-position:-260px -280px}.ap-whale{background-position:-260px -300px}.ap-horse{background-position:-260px -320px}.ap-monkey_face{background-position:-260px -340px}.ap-dog{background-position:-260px -360px}.ap-pig{background-position:-260px -380px}.ap-frog{background-position:-260px -400px}.ap-hamster{background-position:-260px -420px}.ap-wolf{background-position:-260px -440px}.ap-bear{background-position:-260px -460px}.ap-panda_face{background-position:-260px -480px}.ap-pig_nose{background-position:-260px -500px}.ap-feet{background-position:-260px -520px}.ap-chipmunk{background-position:-260px -540px}.ap-eyes{background-position:-260px -560px}.ap-eye{background-position:-260px -580px}.ap-ear{background-position:-260px -600px}.ap-nose{background-position:-260px -720px}.ap-lips{background-position:-280px -20px}.ap-tongue{background-position:-280px -40px}.ap-point_up_2{background-position:-280px -60px}.ap-point_down{background-position:-280px -180px}.ap-point_left{background-position:-280px -300px}.ap-point_right{background-position:-280px -420px}.ap-facepunch{background-position:-280px -540px}.ap-wave{background-position:-280px -660px}.ap-ok_hand{background-position:-280px -780px}.ap-thumbsup{background-position:-300px -80px}.ap--1,.ap-thumbsdown{background-position:-300px -200px}.ap-clap{background-position:-300px -320px}.ap-open_hands{background-position:-300px -440px}.ap-crown{background-position:-300px -560px}.ap-womans_hat{background-position:-300px -580px}.ap-eyeglasses{background-position:-300px -600px}.ap-necktie{background-position:-300px -620px}.ap-shirt{background-position:-300px -640px}.ap-jeans{background-position:-300px -660px}.ap-dress{background-position:-300px -680px}.ap-kimono{background-position:-300px -700px}.ap-bikini{background-position:-300px -720px}.ap-womans_clothes{background-position:-300px -740px}.ap-purse{background-position:-300px -760px}.ap-handbag{background-position:-300px -780px}.ap-pouch{background-position:-300px -800px}.ap-mans_shoe{background-position:-320px 0}.ap-athletic_shoe{background-position:-320px -20px}.ap-high_heel{background-position:-320px -40px}.ap-sandal{background-position:-320px -60px}.ap-boot{background-position:-320px -80px}.ap-footprints{background-position:-320px -100px}.ap-bust_in_silhouette{background-position:-320px -120px}.ap-busts_in_silhouette{background-position:-320px -140px}.ap-boy{background-position:-320px -160px}.ap-girl{background-position:-320px -280px}.ap-man{background-position:-320px -400px}.ap-woman{background-position:-320px -520px}.ap-family{background-position:-320px -640px}.ap-couple{background-position:-320px -660px}.ap-two_men_holding_hands{background-position:-320px -680px}.ap-two_women_holding_hands{background-position:-320px -700px}.ap-cop{background-position:-320px -720px}.ap-dancers{background-position:-340px -20px}.ap-bride_with_veil{background-position:-340px -40px}.ap-person_with_blond_hair{background-position:-340px -160px}.ap-man_with_gua_pi_mao{background-position:-340px -280px}.ap-man_with_turban{background-position:-340px -400px}.ap-older_man{background-position:-340px -520px}.ap-older_woman{background-position:-340px -640px}.ap-baby{background-position:-340px -760px}.ap-construction_worker{background-position:-360px -60px}.ap-princess{background-position:-360px -180px}.ap-japanese_ogre{background-position:-360px -300px}.ap-japanese_goblin{background-position:-360px -320px}.ap-ghost{background-position:-360px -340px}.ap-angel{background-position:-360px -360px}.ap-alien{background-position:-360px -480px}.ap-space_invader{background-position:-360px -500px}.ap-imp{background-position:-360px -520px}.ap-skull{background-position:-360px -540px}.ap-information_desk_person{background-position:-360px -560px}.ap-guardsman{background-position:-360px -680px}.ap-dancer{background-position:-360px -800px}.ap-lipstick{background-position:-380px -100px}.ap-nail_care{background-position:-380px -120px}.ap-massage{background-position:-380px -240px}.ap-haircut{background-position:-380px -360px}.ap-barber{background-position:-380px -480px}.ap-syringe{background-position:-380px -500px}.ap-pill{background-position:-380px -520px}.ap-kiss{background-position:-380px -540px}.ap-love_letter{background-position:-380px -560px}.ap-ring{background-position:-380px -580px}.ap-gem{background-position:-380px -600px}.ap-couplekiss{background-position:-380px -620px}.ap-bouquet{background-position:-380px -640px}.ap-couple_with_heart{background-position:-380px -660px}.ap-wedding{background-position:-380px -680px}.ap-heartbeat{background-position:-380px -700px}.ap-broken_heart{background-position:-380px -720px}.ap-two_hearts{background-position:-380px -740px}.ap-sparkling_heart{background-position:-380px -760px}.ap-heartpulse{background-position:-380px -780px}.ap-cupid{background-position:-380px -800px}.ap-blue_heart{background-position:-400px 0}.ap-green_heart{background-position:-400px -20px}.ap-yellow_heart{background-position:-400px -40px}.ap-purple_heart{background-position:-400px -60px}.ap-gift_heart{background-position:-400px -80px}.ap-revolving_hearts{background-position:-400px -100px}.ap-heart_decoration{background-position:-400px -120px}.ap-diamond_shape_with_a_dot_inside{background-position:-400px -140px}.ap-bulb{background-position:-400px -160px}.ap-anger{background-position:-400px -180px}.ap-bomb{background-position:-400px -200px}.ap-zzz{background-position:-400px -220px}.ap-boom{background-position:-400px -240px}.ap-sweat_drops{background-position:-400px -260px}.ap-droplet{background-position:-400px -280px}.ap-dash{background-position:-400px -300px}.ap-hankey{background-position:-400px -320px}.ap-muscle{background-position:-400px -340px}.ap-dizzy{background-position:-400px -460px}.ap-speech_balloon{background-position:-400px -480px}.ap-thought_balloon{background-position:-400px -500px}.ap-white_flower{background-position:-400px -520px}.ap-100{background-position:-400px -540px}.ap-moneybag{background-position:-400px -560px}.ap-currency_exchange{background-position:-400px -580px}.ap-heavy_dollar_sign{background-position:-400px -600px}.ap-credit_card{background-position:-400px -620px}.ap-yen{background-position:-400px -640px}.ap-dollar{background-position:-400px -660px}.ap-euro{background-position:-400px -680px}.ap-pound{background-position:-400px -700px}.ap-money_with_wings{background-position:-400px -720px}.ap-chart{background-position:-400px -740px}.ap-seat{background-position:-400px -760px}.ap-computer{background-position:-400px -780px}.ap-briefcase{background-position:-400px -800px}.ap-minidisc{background-position:-420px 0}.ap-floppy_disk{background-position:-420px -20px}.ap-cd{background-position:-420px -40px}.ap-dvd{background-position:-420px -60px}.ap-file_folder{background-position:-420px -80px}.ap-open_file_folder{background-position:-420px -100px}.ap-page_with_curl{background-position:-420px -120px}.ap-page_facing_up{background-position:-420px -140px}.ap-date{background-position:-420px -160px}.ap-calendar{background-position:-420px -180px}.ap-card_index{background-position:-420px -200px}.ap-chart_with_upwards_trend{background-position:-420px -220px}.ap-chart_with_downwards_trend{background-position:-420px -240px}.ap-bar_chart{background-position:-420px -260px}.ap-clipboard{background-position:-420px -280px}.ap-pushpin{background-position:-420px -300px}.ap-round_pushpin{background-position:-420px -320px}.ap-paperclip{background-position:-420px -340px}.ap-straight_ruler{background-position:-420px -360px}.ap-triangular_ruler{background-position:-420px -380px}.ap-bookmark_tabs{background-position:-420px -400px}.ap-ledger{background-position:-420px -420px}.ap-notebook{background-position:-420px -440px}.ap-notebook_with_decorative_cover{background-position:-420px -460px}.ap-closed_book{background-position:-420px -480px}.ap-book{background-position:-420px -500px}.ap-green_book{background-position:-420px -520px}.ap-blue_book{background-position:-420px -540px}.ap-orange_book{background-position:-420px -560px}.ap-books{background-position:-420px -580px}.ap-name_badge{background-position:-420px -600px}.ap-scroll{background-position:-420px -620px}.ap-memo{background-position:-420px -640px}.ap-telephone_receiver{background-position:-420px -660px}.ap-pager{background-position:-420px -680px}.ap-fax{background-position:-420px -700px}.ap-satellite_antenna{background-position:-420px -720px}.ap-loudspeaker{background-position:-420px -740px}.ap-mega{background-position:-420px -760px}.ap-outbox_tray{background-position:-420px -780px}.ap-inbox_tray{background-position:-420px -800px}.ap-package{background-position:-440px 0}.ap-e-mail{background-position:-440px -20px}.ap-incoming_envelope{background-position:-440px -40px}.ap-envelope_with_arrow{background-position:-440px -60px}.ap-mailbox_closed{background-position:-440px -80px}.ap-mailbox{background-position:-440px -100px}.ap-mailbox_with_mail{background-position:-440px -120px}.ap-mailbox_with_no_mail{background-position:-440px -140px}.ap-postbox{background-position:-440px -160px}.ap-postal_horn{background-position:-440px -180px}.ap-newspaper{background-position:-440px -200px}.ap-iphone{background-position:-440px -220px}.ap-calling{background-position:-440px -240px}.ap-vibration_mode{background-position:-440px -260px}.ap-mobile_phone_off{background-position:-440px -280px}.ap-no_mobile_phones{background-position:-440px -300px}.ap-signal_strength{background-position:-440px -320px}.ap-camera{background-position:-440px -340px}.ap-camera_with_flash{background-position:-440px -360px}.ap-video_camera{background-position:-440px -380px}.ap-tv{background-position:-440px -400px}.ap-radio{background-position:-440px -420px}.ap-vhs{background-position:-440px -440px}.ap-film_projector{background-position:-440px -460px}.ap-prayer_beads{background-position:-440px -480px}.ap-twisted_rightwards_arrows{background-position:-440px -500px}.ap-repeat{background-position:-440px -520px}.ap-repeat_one{background-position:-440px -540px}.ap-arrows_clockwise{background-position:-440px -560px}.ap-arrows_counterclockwise{background-position:-440px -580px}.ap-low_brightness{background-position:-440px -600px}.ap-high_brightness{background-position:-440px -620px}.ap-mute{background-position:-440px -640px}.ap-speaker{background-position:-440px -660px}.ap-sound{background-position:-440px -680px}.ap-loud_sound{background-position:-440px -700px}.ap-battery{background-position:-440px -720px}.ap-electric_plug{background-position:-440px -740px}.ap-mag{background-position:-440px -760px}.ap-mag_right{background-position:-440px -780px}.ap-lock_with_ink_pen{background-position:-440px -800px}.ap-closed_lock_with_key{background-position:-460px 0}.ap-key{background-position:-460px -20px}.ap-lock{background-position:-460px -40px}.ap-unlock{background-position:-460px -60px}.ap-bell{background-position:-460px -80px}.ap-no_bell{background-position:-460px -100px}.ap-bookmark{background-position:-460px -120px}.ap-link{background-position:-460px -140px}.ap-radio_button{background-position:-460px -160px}.ap-back{background-position:-460px -180px}.ap-end{background-position:-460px -200px}.ap-on{background-position:-460px -220px}.ap-soon{background-position:-460px -240px}.ap-top{background-position:-460px -260px}.ap-underage{background-position:-460px -280px}.ap-keycap_ten{background-position:-460px -300px}.ap-capital_abcd{background-position:-460px -320px}.ap-abcd{background-position:-460px -340px}.ap-1234{background-position:-460px -360px}.ap-symbols{background-position:-460px -380px}.ap-abc{background-position:-460px -400px}.ap-fire{background-position:-460px -420px}.ap-flashlight{background-position:-460px -440px}.ap-wrench{background-position:-460px -460px}.ap-hammer{background-position:-460px -480px}.ap-nut_and_bolt{background-position:-460px -500px}.ap-hocho{background-position:-460px -520px}.ap-gun{background-position:-460px -540px}.ap-microscope{background-position:-460px -560px}.ap-telescope{background-position:-460px -580px}.ap-crystal_ball{background-position:-460px -600px}.ap-six_pointed_star{background-position:-460px -620px}.ap-beginner{background-position:-460px -640px}.ap-trident{background-position:-460px -660px}.ap-black_square_button{background-position:-460px -680px}.ap-white_square_button{background-position:-460px -700px}.ap-red_circle{background-position:-460px -720px}.ap-large_blue_circle{background-position:-460px -740px}.ap-large_orange_diamond{background-position:-460px -760px}.ap-large_blue_diamond{background-position:-460px -780px}.ap-small_orange_diamond{background-position:-460px -800px}.ap-small_blue_diamond{background-position:-480px 0}.ap-small_red_triangle{background-position:-480px -20px}.ap-small_red_triangle_down{background-position:-480px -40px}.ap-arrow_up_small{background-position:-480px -60px}.ap-arrow_down_small{background-position:-480px -80px}.ap-om_symbol{background-position:-480px -100px}.ap-dove_of_peace{background-position:-480px -120px}.ap-kaaba{background-position:-480px -140px}.ap-mosque{background-position:-480px -160px}.ap-synagogue{background-position:-480px -180px}.ap-menorah_with_nine_branches{background-position:-480px -200px}.ap-clock1{background-position:-480px -220px}.ap-clock2{background-position:-480px -240px}.ap-clock3{background-position:-480px -260px}.ap-clock4{background-position:-480px -280px}.ap-clock5{background-position:-480px -300px}.ap-clock6{background-position:-480px -320px}.ap-clock7{background-position:-480px -340px}.ap-clock8{background-position:-480px -360px}.ap-clock9{background-position:-480px -380px}.ap-clock10{background-position:-480px -400px}.ap-clock11{background-position:-480px -420px}.ap-clock12{background-position:-480px -440px}.ap-clock130{background-position:-480px -460px}.ap-clock230{background-position:-480px -480px}.ap-clock330{background-position:-480px -500px}.ap-clock430{background-position:-480px -520px}.ap-clock530{background-position:-480px -540px}.ap-clock630{background-position:-480px -560px}.ap-clock730{background-position:-480px -580px}.ap-clock830{background-position:-480px -600px}.ap-clock930{background-position:-480px -620px}.ap-clock1030{background-position:-480px -640px}.ap-clock1130{background-position:-480px -660px}.ap-clock1230{background-position:-480px -680px}.ap-candle{background-position:-480px -700px}.ap-mantelpiece_clock{background-position:-480px -720px}.ap-hole{background-position:-480px -740px}.ap-man_in_business_suit_levitating{background-position:-480px -760px}.ap-sleuth_or_spy{background-position:-480px -780px}.ap-dark_sunglasses{background-position:-500px -80px}.ap-spider{background-position:-500px -100px}.ap-spider_web{background-position:-500px -120px}.ap-joystick{background-position:-500px -140px}.ap-linked_paperclips{background-position:-500px -160px}.ap-lower_left_ballpoint_pen{background-position:-500px -180px}.ap-lower_left_fountain_pen{background-position:-500px -200px}.ap-lower_left_paintbrush{background-position:-500px -220px}.ap-lower_left_crayon{background-position:-500px -240px}.ap-raised_hand_with_fingers_splayed{background-position:-500px -260px}.ap-middle_finger{background-position:-500px -380px}.ap-spock-hand{background-position:-500px -500px}.ap-desktop_computer{background-position:-500px -620px}.ap-printer{background-position:-500px -640px}.ap-three_button_mouse{background-position:-500px -660px}.ap-trackball{background-position:-500px -680px}.ap-frame_with_picture{background-position:-500px -700px}.ap-card_index_dividers{background-position:-500px -720px}.ap-card_file_box{background-position:-500px -740px}.ap-file_cabinet{background-position:-500px -760px}.ap-wastebasket{background-position:-500px -780px}.ap-spiral_note_pad{background-position:-500px -800px}.ap-spiral_calendar_pad{background-position:-520px 0}.ap-compression{background-position:-520px -20px}.ap-old_key{background-position:-520px -40px}.ap-rolled_up_newspaper{background-position:-520px -60px}.ap-dagger_knife{background-position:-520px -80px}.ap-speaking_head_in_silhouette{background-position:-520px -100px}.ap-left_speech_bubble{background-position:-520px -120px}.ap-right_anger_bubble{background-position:-520px -140px}.ap-ballot_box_with_ballot{background-position:-520px -160px}.ap-world_map{background-position:-520px -180px}.ap-mount_fuji{background-position:-520px -200px}.ap-tokyo_tower{background-position:-520px -220px}.ap-statue_of_liberty{background-position:-520px -240px}.ap-japan{background-position:-520px -260px}.ap-moyai{background-position:-520px -280px}.ap-grinning{background-position:-520px -300px}.ap-grin{background-position:-520px -320px}.ap-joy{background-position:-520px -340px}.ap-smiley{background-position:-520px -360px}.ap-smile{background-position:-520px -380px}.ap-sweat_smile{background-position:-520px -400px}.ap-laughing{background-position:-520px -420px}.ap-innocent{background-position:-520px -440px}.ap-smiling_imp{background-position:-520px -460px}.ap-wink{background-position:-520px -480px}.ap-blush{background-position:-520px -500px}.ap-yum{background-position:-520px -520px}.ap-relieved{background-position:-520px -540px}.ap-heart_eyes{background-position:-520px -560px}.ap-sunglasses{background-position:-520px -580px}.ap-smirk{background-position:-520px -600px}.ap-neutral_face{background-position:-520px -620px}.ap-expressionless{background-position:-520px -640px}.ap-unamused{background-position:-520px -660px}.ap-sweat{background-position:-520px -680px}.ap-pensive{background-position:-520px -700px}.ap-confused{background-position:-520px -720px}.ap-confounded{background-position:-520px -740px}.ap-kissing{background-position:-520px -760px}.ap-kissing_heart{background-position:-520px -780px}.ap-kissing_smiling_eyes{background-position:-520px -800px}.ap-kissing_closed_eyes{background-position:-540px 0}.ap-stuck_out_tongue{background-position:-540px -20px}.ap-stuck_out_tongue_winking_eye{background-position:-540px -40px}.ap-stuck_out_tongue_closed_eyes{background-position:-540px -60px}.ap-disappointed{background-position:-540px -80px}.ap-worried{background-position:-540px -100px}.ap-angry{background-position:-540px -120px}.ap-rage{background-position:-540px -140px}.ap-cry{background-position:-540px -160px}.ap-persevere{background-position:-540px -180px}.ap-triumph{background-position:-540px -200px}.ap-disappointed_relieved{background-position:-540px -220px}.ap-frowning{background-position:-540px -240px}.ap-anguished{background-position:-540px -260px}.ap-fearful{background-position:-540px -280px}.ap-weary{background-position:-540px -300px}.ap-sleepy{background-position:-540px -320px}.ap-tired_face{background-position:-540px -340px}.ap-grimacing{background-position:-540px -360px}.ap-sob{background-position:-540px -380px}.ap-open_mouth{background-position:-540px -400px}.ap-hushed{background-position:-540px -420px}.ap-cold_sweat{background-position:-540px -440px}.ap-scream{background-position:-540px -460px}.ap-astonished{background-position:-540px -480px}.ap-flushed{background-position:-540px -500px}.ap-sleeping{background-position:-540px -520px}.ap-dizzy_face{background-position:-540px -540px}.ap-no_mouth{background-position:-540px -560px}.ap-mask{background-position:-540px -580px}.ap-smile_cat{background-position:-540px -600px}.ap-joy_cat{background-position:-540px -620px}.ap-smiley_cat{background-position:-540px -640px}.ap-heart_eyes_cat{background-position:-540px -660px}.ap-smirk_cat{background-position:-540px -680px}.ap-kissing_cat{background-position:-540px -700px}.ap-pouting_cat{background-position:-540px -720px}.ap-crying_cat_face{background-position:-540px -740px}.ap-scream_cat{background-position:-540px -760px}.ap-slightly_frowning_face{background-position:-540px -780px}.ap-slightly_smiling_face{background-position:-540px -800px}.ap-upside_down_face{background-position:-560px 0}.ap-face_with_rolling_eyes{background-position:-560px -20px}.ap-no_good{background-position:-560px -40px}.ap-ok_woman{background-position:-560px -160px}.ap-bow{background-position:-560px -280px}.ap-see_no_evil{background-position:-560px -400px}.ap-hear_no_evil{background-position:-560px -420px}.ap-speak_no_evil{background-position:-560px -440px}.ap-raising_hand{background-position:-560px -460px}.ap-raised_hands{background-position:-560px -580px}.ap-person_frowning{background-position:-560px -700px}.ap-person_with_pouting_face{background-position:-580px 0}.ap-pray{background-position:-580px -120px}.ap-rocket{background-position:-580px -240px}.ap-helicopter{background-position:-580px -260px}.ap-steam_locomotive{background-position:-580px -280px}.ap-railway_car{background-position:-580px -300px}.ap-bullettrain_side{background-position:-580px -320px}.ap-bullettrain_front{background-position:-580px -340px}.ap-train2{background-position:-580px -360px}.ap-metro{background-position:-580px -380px}.ap-light_rail{background-position:-580px -400px}.ap-station{background-position:-580px -420px}.ap-tram{background-position:-580px -440px}.ap-train{background-position:-580px -460px}.ap-bus{background-position:-580px -480px}.ap-oncoming_bus{background-position:-580px -500px}.ap-trolleybus{background-position:-580px -520px}.ap-busstop{background-position:-580px -540px}.ap-minibus{background-position:-580px -560px}.ap-ambulance{background-position:-580px -580px}.ap-fire_engine{background-position:-580px -600px}.ap-police_car{background-position:-580px -620px}.ap-oncoming_police_car{background-position:-580px -640px}.ap-taxi{background-position:-580px -660px}.ap-oncoming_taxi{background-position:-580px -680px}.ap-car{background-position:-580px -700px}.ap-oncoming_automobile{background-position:-580px -720px}.ap-blue_car{background-position:-580px -740px}.ap-truck{background-position:-580px -760px}.ap-articulated_lorry{background-position:-580px -780px}.ap-tractor{background-position:-580px -800px}.ap-monorail{background-position:-600px 0}.ap-mountain_railway{background-position:-600px -20px}.ap-suspension_railway{background-position:-600px -40px}.ap-mountain_cableway{background-position:-600px -60px}.ap-aerial_tramway{background-position:-600px -80px}.ap-ship{background-position:-600px -100px}.ap-rowboat{background-position:-600px -120px}.ap-speedboat{background-position:-600px -240px}.ap-traffic_light{background-position:-600px -260px}.ap-vertical_traffic_light{background-position:-600px -280px}.ap-construction{background-position:-600px -300px}.ap-rotating_light{background-position:-600px -320px}.ap-triangular_flag_on_post{background-position:-600px -340px}.ap-door{background-position:-600px -360px}.ap-no_entry_sign{background-position:-600px -380px}.ap-smoking{background-position:-600px -400px}.ap-no_smoking{background-position:-600px -420px}.ap-put_litter_in_its_place{background-position:-600px -440px}.ap-do_not_litter{background-position:-600px -460px}.ap-potable_water{background-position:-600px -480px}.ap-non-potable_water{background-position:-600px -500px}.ap-bike{background-position:-600px -520px}.ap-no_bicycles{background-position:-600px -540px}.ap-bicyclist{background-position:-600px -560px}.ap-mountain_bicyclist{background-position:-600px -680px}.ap-walking{background-position:-600px -800px}.ap-no_pedestrians{background-position:-620px -100px}.ap-children_crossing{background-position:-620px -120px}.ap-mens{background-position:-620px -140px}.ap-womens{background-position:-620px -160px}.ap-restroom{background-position:-620px -180px}.ap-baby_symbol{background-position:-620px -200px}.ap-toilet{background-position:-620px -220px}.ap-wc{background-position:-620px -240px}.ap-shower{background-position:-620px -260px}.ap-bath{background-position:-620px -280px}.ap-bathtub{background-position:-620px -400px}.ap-passport_control{background-position:-620px -420px}.ap-customs{background-position:-620px -440px}.ap-baggage_claim{background-position:-620px -460px}.ap-left_luggage{background-position:-620px -480px}.ap-couch_and_lamp{background-position:-620px -500px}.ap-sleeping_accommodation{background-position:-620px -520px}.ap-shopping_bags{background-position:-620px -540px}.ap-bellhop_bell{background-position:-620px -560px}.ap-bed{background-position:-620px -580px}.ap-place_of_worship{background-position:-620px -600px}.ap-hammer_and_wrench{background-position:-620px -620px}.ap-shield{background-position:-620px -640px}.ap-oil_drum{background-position:-620px -660px}.ap-motorway{background-position:-620px -680px}.ap-railway_track{background-position:-620px -700px}.ap-motor_boat{background-position:-620px -720px}.ap-small_airplane{background-position:-620px -740px}.ap-airplane_departure{background-position:-620px -760px}.ap-airplane_arriving{background-position:-620px -780px}.ap-satellite{background-position:-620px -800px}.ap-passenger_ship{background-position:-640px 0}.ap-zipper_mouth_face{background-position:-640px -20px}.ap-money_mouth_face{background-position:-640px -40px}.ap-face_with_thermometer{background-position:-640px -60px}.ap-nerd_face{background-position:-640px -80px}.ap-thinking_face{background-position:-640px -100px}.ap-face_with_head_bandage{background-position:-640px -120px}.ap-robot_face{background-position:-640px -140px}.ap-hugging_face{background-position:-640px -160px}.ap-the_horns{background-position:-640px -180px}.ap-crab{background-position:-640px -300px}.ap-lion_face{background-position:-640px -320px}.ap-scorpion{background-position:-640px -340px}.ap-turkey{background-position:-640px -360px}.ap-unicorn_face{background-position:-640px -380px}.ap-cheese_wedge{background-position:-640px -400px}.ap-hash{background-position:-640px -420px}.ap-keycap_star{background-position:-640px -440px}.ap-zero{background-position:-640px -460px}.ap-one{background-position:-640px -480px}.ap-two{background-position:-640px -500px}.ap-three{background-position:-640px -520px}.ap-four{background-position:-640px -540px}.ap-five{background-position:-640px -560px}.ap-six{background-position:-640px -580px}.ap-seven{background-position:-640px -600px}.ap-eight{background-position:-640px -620px}.ap-nine{background-position:-640px -640px}.ap-flag-ac{background-position:-640px -660px}.ap-flag-ad{background-position:-640px -680px}.ap-flag-ae{background-position:-640px -700px}.ap-flag-af{background-position:-640px -720px}.ap-flag-ag{background-position:-640px -740px}.ap-flag-ai{background-position:-640px -760px}.ap-flag-al{background-position:-640px -780px}.ap-flag-am{background-position:-640px -800px}.ap-flag-ao{background-position:-660px 0}.ap-flag-aq{background-position:-660px -20px}.ap-flag-ar{background-position:-660px -40px}.ap-flag-as{background-position:-660px -60px}.ap-flag-at{background-position:-660px -80px}.ap-flag-au{background-position:-660px -100px}.ap-flag-aw{background-position:-660px -120px}.ap-flag-ax{background-position:-660px -140px}.ap-flag-az{background-position:-660px -160px}.ap-flag-ba{background-position:-660px -180px}.ap-flag-bb{background-position:-660px -200px}.ap-flag-bd{background-position:-660px -220px}.ap-flag-be{background-position:-660px -240px}.ap-flag-bf{background-position:-660px -260px}.ap-flag-bg{background-position:-660px -280px}.ap-flag-bh{background-position:-660px -300px}.ap-flag-bi{background-position:-660px -320px}.ap-flag-bj{background-position:-660px -340px}.ap-flag-bl{background-position:-660px -360px}.ap-flag-bm{background-position:-660px -380px}.ap-flag-bn{background-position:-660px -400px}.ap-flag-bo{background-position:-660px -420px}.ap-flag-bq{background-position:-660px -440px}.ap-flag-br{background-position:-660px -460px}.ap-flag-bs{background-position:-660px -480px}.ap-flag-bt{background-position:-660px -500px}.ap-flag-bv{background-position:-660px -520px}.ap-flag-bw{background-position:-660px -540px}.ap-flag-by{background-position:-660px -560px}.ap-flag-bz{background-position:-660px -580px}.ap-flag-ca{background-position:-660px -600px}.ap-flag-cc{background-position:-660px -620px}.ap-flag-cd{background-position:-660px -640px}.ap-flag-cf{background-position:-660px -660px}.ap-flag-cg{background-position:-660px -680px}.ap-flag-ch{background-position:-660px -700px}.ap-flag-ci{background-position:-660px -720px}.ap-flag-ck{background-position:-660px -740px}.ap-flag-cl{background-position:-660px -760px}.ap-flag-cm{background-position:-660px -780px}.ap-flag-cn{background-position:-660px -800px}.ap-flag-co{background-position:-680px 0}.ap-flag-cp{background-position:-680px -20px}.ap-flag-cr{background-position:-680px -40px}.ap-flag-cu{background-position:-680px -60px}.ap-flag-cv{background-position:-680px -80px}.ap-flag-cw{background-position:-680px -100px}.ap-flag-cx{background-position:-680px -120px}.ap-flag-cy{background-position:-680px -140px}.ap-flag-cz{background-position:-680px -160px}.ap-flag-de{background-position:-680px -180px}.ap-flag-dg{background-position:-680px -200px}.ap-flag-dj{background-position:-680px -220px}.ap-flag-dk{background-position:-680px -240px}.ap-flag-dm{background-position:-680px -260px}.ap-flag-do{background-position:-680px -280px}.ap-flag-dz{background-position:-680px -300px}.ap-flag-ea{background-position:-680px -320px}.ap-flag-ec{background-position:-680px -340px}.ap-flag-ee{background-position:-680px -360px}.ap-flag-eg{background-position:-680px -380px}.ap-flag-eh{background-position:-680px -400px}.ap-flag-er{background-position:-680px -420px}.ap-flag-es{background-position:-680px -440px}.ap-flag-et{background-position:-680px -460px}.ap-flag-eu{background-position:-680px -480px}.ap-flag-fi{background-position:-680px -500px}.ap-flag-fj{background-position:-680px -520px}.ap-flag-fk{background-position:-680px -540px}.ap-flag-fm{background-position:-680px -560px}.ap-flag-fo{background-position:-680px -580px}.ap-flag-fr{background-position:-680px -600px}.ap-flag-ga{background-position:-680px -620px}.ap-flag-gb{background-position:-680px -640px}.ap-flag-gd{background-position:-680px -660px}.ap-flag-ge{background-position:-680px -680px}.ap-flag-gf{background-position:-680px -700px}.ap-flag-gg{background-position:-680px -720px}.ap-flag-gh{background-position:-680px -740px}.ap-flag-gi{background-position:-680px -760px}.ap-flag-gl{background-position:-680px -780px}.ap-flag-gm{background-position:-680px -800px}.ap-flag-gn{background-position:-700px 0}.ap-flag-gp{background-position:-700px -20px}.ap-flag-gq{background-position:-700px -40px}.ap-flag-gr{background-position:-700px -60px}.ap-flag-gs{background-position:-700px -80px}.ap-flag-gt{background-position:-700px -100px}.ap-flag-gu{background-position:-700px -120px}.ap-flag-gw{background-position:-700px -140px}.ap-flag-gy{background-position:-700px -160px}.ap-flag-hk{background-position:-700px -180px}.ap-flag-hm{background-position:-700px -200px}.ap-flag-hn{background-position:-700px -220px}.ap-flag-hr{background-position:-700px -240px}.ap-flag-ht{background-position:-700px -260px}.ap-flag-hu{background-position:-700px -280px}.ap-flag-ic{background-position:-700px -300px}.ap-flag-id{background-position:-700px -320px}.ap-flag-ie{background-position:-700px -340px}.ap-flag-il{background-position:-700px -360px}.ap-flag-im{background-position:-700px -380px}.ap-flag-in{background-position:-700px -400px}.ap-flag-io{background-position:-700px -420px}.ap-flag-iq{background-position:-700px -440px}.ap-flag-ir{background-position:-700px -460px}.ap-flag-is{background-position:-700px -480px}.ap-flag-it{background-position:-700px -500px}.ap-flag-je{background-position:-700px -520px}.ap-flag-jm{background-position:-700px -540px}.ap-flag-jo{background-position:-700px -560px}.ap-flag-jp{background-position:-700px -580px}.ap-flag-ke{background-position:-700px -600px}.ap-flag-kg{background-position:-700px -620px}.ap-flag-kh{background-position:-700px -640px}.ap-flag-ki{background-position:-700px -660px}.ap-flag-km{background-position:-700px -680px}.ap-flag-kn{background-position:-700px -700px}.ap-flag-kp{background-position:-700px -720px}.ap-flag-kr{background-position:-700px -740px}.ap-flag-kw{background-position:-700px -760px}.ap-flag-ky{background-position:-700px -780px}.ap-flag-kz{background-position:-700px -800px}.ap-flag-la{background-position:-720px 0}.ap-flag-lb{background-position:-720px -20px}.ap-flag-lc{background-position:-720px -40px}.ap-flag-li{background-position:-720px -60px}.ap-flag-lk{background-position:-720px -80px}.ap-flag-lr{background-position:-720px -100px}.ap-flag-ls{background-position:-720px -120px}.ap-flag-lt{background-position:-720px -140px}.ap-flag-lu{background-position:-720px -160px}.ap-flag-lv{background-position:-720px -180px}.ap-flag-ly{background-position:-720px -200px}.ap-flag-ma{background-position:-720px -220px}.ap-flag-mc{background-position:-720px -240px}.ap-flag-md{background-position:-720px -260px}.ap-flag-me{background-position:-720px -280px}.ap-flag-mf{background-position:-720px -300px}.ap-flag-mg{background-position:-720px -320px}.ap-flag-mh{background-position:-720px -340px}.ap-flag-mk{background-position:-720px -360px}.ap-flag-ml{background-position:-720px -380px}.ap-flag-mm{background-position:-720px -400px}.ap-flag-mn{background-position:-720px -420px}.ap-flag-mo{background-position:-720px -440px}.ap-flag-mp{background-position:-720px -460px}.ap-flag-mq{background-position:-720px -480px}.ap-flag-mr{background-position:-720px -500px}.ap-flag-ms{background-position:-720px -520px}.ap-flag-mt{background-position:-720px -540px}.ap-flag-mu{background-position:-720px -560px}.ap-flag-mv{background-position:-720px -580px}.ap-flag-mw{background-position:-720px -600px}.ap-flag-mx{background-position:-720px -620px}.ap-flag-my{background-position:-720px -640px}.ap-flag-mz{background-position:-720px -660px}.ap-flag-na{background-position:-720px -680px}.ap-flag-nc{background-position:-720px -700px}.ap-flag-ne{background-position:-720px -720px}.ap-flag-nf{background-position:-720px -740px}.ap-flag-ng{background-position:-720px -760px}.ap-flag-ni{background-position:-720px -780px}.ap-flag-nl{background-position:-720px -800px}.ap-flag-no{background-position:-740px 0}.ap-flag-np{background-position:-740px -20px}.ap-flag-nr{background-position:-740px -40px}.ap-flag-nu{background-position:-740px -60px}.ap-flag-nz{background-position:-740px -80px}.ap-flag-om{background-position:-740px -100px}.ap-flag-pa{background-position:-740px -120px}.ap-flag-pe{background-position:-740px -140px}.ap-flag-pf{background-position:-740px -160px}.ap-flag-pg{background-position:-740px -180px}.ap-flag-ph{background-position:-740px -200px}.ap-flag-pk{background-position:-740px -220px}.ap-flag-pl{background-position:-740px -240px}.ap-flag-pm{background-position:-740px -260px}.ap-flag-pn{background-position:-740px -280px}.ap-flag-pr{background-position:-740px -300px}.ap-flag-ps{background-position:-740px -320px}.ap-flag-pt{background-position:-740px -340px}.ap-flag-pw{background-position:-740px -360px}.ap-flag-py{background-position:-740px -380px}.ap-flag-qa{background-position:-740px -400px}.ap-flag-re{background-position:-740px -420px}.ap-flag-ro{background-position:-740px -440px}.ap-flag-rs{background-position:-740px -460px}.ap-flag-ru{background-position:-740px -480px}.ap-flag-rw{background-position:-740px -500px}.ap-flag-sa{background-position:-740px -520px}.ap-flag-sb{background-position:-740px -540px}.ap-flag-sc{background-position:-740px -560px}.ap-flag-sd{background-position:-740px -580px}.ap-flag-se{background-position:-740px -600px}.ap-flag-sg{background-position:-740px -620px}.ap-flag-sh{background-position:-740px -640px}.ap-flag-si{background-position:-740px -660px}.ap-flag-sj{background-position:-740px -680px}.ap-flag-sk{background-position:-740px -700px}.ap-flag-sl{background-position:-740px -720px}.ap-flag-sm{background-position:-740px -740px}.ap-flag-sn{background-position:-740px -760px}.ap-flag-so{background-position:-740px -780px}.ap-flag-sr{background-position:-740px -800px}.ap-flag-ss{background-position:-760px 0}.ap-flag-st{background-position:-760px -20px}.ap-flag-sv{background-position:-760px -40px}.ap-flag-sx{background-position:-760px -60px}.ap-flag-sy{background-position:-760px -80px}.ap-flag-sz{background-position:-760px -100px}.ap-flag-ta{background-position:-760px -120px}.ap-flag-tc{background-position:-760px -140px}.ap-flag-td{background-position:-760px -160px}.ap-flag-tf{background-position:-760px -180px}.ap-flag-tg{background-position:-760px -200px}.ap-flag-th{background-position:-760px -220px}.ap-flag-tj{background-position:-760px -240px}.ap-flag-tk{background-position:-760px -260px}.ap-flag-tl{background-position:-760px -280px}.ap-flag-tm{background-position:-760px -300px}.ap-flag-tn{background-position:-760px -320px}.ap-flag-to{background-position:-760px -340px}.ap-flag-tr{background-position:-760px -360px}.ap-flag-tt{background-position:-760px -380px}.ap-flag-tv{background-position:-760px -400px}.ap-flag-tw{background-position:-760px -420px}.ap-flag-tz{background-position:-760px -440px}.ap-flag-ua{background-position:-760px -460px}.ap-flag-ug{background-position:-760px -480px}.ap-flag-um{background-position:-760px -500px}.ap-flag-us{background-position:-760px -520px}.ap-flag-uy{background-position:-760px -540px}.ap-flag-uz{background-position:-760px -560px}.ap-flag-va{background-position:-760px -580px}.ap-flag-vc{background-position:-760px -600px}.ap-flag-ve{background-position:-760px -620px}.ap-flag-vg{background-position:-760px -640px}.ap-flag-vi{background-position:-760px -660px}.ap-flag-vn{background-position:-760px -680px}.ap-flag-vu{background-position:-760px -700px}.ap-flag-wf{background-position:-760px -720px}.ap-flag-ws{background-position:-760px -740px}.ap-flag-xk{background-position:-760px -760px}.ap-flag-ye{background-position:-760px -780px}.ap-flag-yt{background-position:-760px -800px}.ap-flag-za{background-position:-780px 0}.ap-flag-zm{background-position:-780px -20px}.ap-flag-zw{background-position:-780px -40px}.ap-man-man-boy{background-position:-780px -60px}.ap-man-man-boy-boy{background-position:-780px -80px}.ap-man-man-girl{background-position:-780px -100px}.ap-man-man-girl-boy{background-position:-780px -120px}.ap-man-man-girl-girl{background-position:-780px -140px}.ap-man-woman-boy-boy{background-position:-780px -160px}.ap-man-woman-girl{background-position:-780px -180px}.ap-man-woman-girl-boy{background-position:-780px -200px}.ap-man-woman-girl-girl{background-position:-780px -220px}.ap-man-heart-man{background-position:-780px -240px}.ap-man-kiss-man{background-position:-780px -260px}.ap-woman-woman-boy{background-position:-780px -280px}.ap-woman-woman-boy-boy{background-position:-780px -300px}.ap-woman-woman-girl{background-position:-780px -320px}.ap-woman-woman-girl-boy{background-position:-780px -340px}.ap-woman-woman-girl-girl{background-position:-780px -360px}.ap-woman-heart-woman{background-position:-780px -380px}.ap-woman-kiss-woman{background-position:-780px -400px}
+:root {
+	--spritesheet-width: 2520;
+	--spritesheet-height: 2520;
+	--emoji-original-size: 72;
+	--display-emoji-size: 1.5em;
+}
+
+.ck-editor .em {
+	background-image: url("/emojis.png");
+	background-repeat: no-repeat;
+	display: inline-block;
+}
+
+.ck-editor .em {
+	width: var(--display-emoji-size);
+	height: var(--display-emoji-size);
+	background-size: calc(
+			var(--display-emoji-size) / var(--emoji-original-size) *
+				var(--spritesheet-width)
+		)
+		auto;
+	vertical-align: middle;
+	margin-top: -4px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.em.em-grinning-face {
+	background-position: 0 0;
+}
+.em.em-grinning-face-with-big-eyes {
+	background-position: calc(-1 * 1.5em) 0;
+}
+.em.em-grinning-face-with-smiling-eyes {
+	background-position: 0 calc(-1 * 1.5em);
+}
+.em.em-beaming-face-with-smiling-eyes {
+	background-position: calc(-1 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-grinning-squinting-face {
+	background-position: calc(-2 * 1.5em) 0;
+}
+.em.em-grinning-face-with-sweat {
+	background-position: calc(-2 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-face-with-tears-of-joy {
+	background-position: 0 calc(-2 * 1.5em);
+}
+.em.em-slightly-smiling-face {
+	background-position: calc(-1 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-winking-face {
+	background-position: calc(-2 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-smiling-face-with-smiling-eyes {
+	background-position: calc(-3 * 1.5em) 0;
+}
+.em.em-smiling-face-with-halo {
+	background-position: calc(-3 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-smiling-face-with-heart-eyes {
+	background-position: calc(-3 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-face-blowing-a-kiss {
+	background-position: 0 calc(-3 * 1.5em);
+}
+.em.em-kissing-face {
+	background-position: calc(-1 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-smiling-face {
+	background-position: calc(-2 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-kissing-face-with-closed-eyes {
+	background-position: calc(-3 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-kissing-face-with-smiling-eyes {
+	background-position: calc(-4 * 1.5em) 0;
+}
+.em.em-face-savoring-food {
+	background-position: calc(-4 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-face-with-tongue {
+	background-position: calc(-4 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-winking-face-with-tongue {
+	background-position: calc(-4 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-squinting-face-with-tongue {
+	background-position: 0 calc(-4 * 1.5em);
+}
+.em.em-neutral-face {
+	background-position: calc(-1 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-expressionless-face {
+	background-position: calc(-2 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-face-without-mouth {
+	background-position: calc(-3 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-smirking-face {
+	background-position: calc(-4 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-unamused-face {
+	background-position: calc(-5 * 1.5em) 0;
+}
+.em.em-grimacing-face {
+	background-position: calc(-5 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-relieved-face {
+	background-position: calc(-5 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-pensive-face {
+	background-position: calc(-5 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-sleepy-face {
+	background-position: calc(-5 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-sleeping-face {
+	background-position: 0 calc(-5 * 1.5em);
+}
+.em.em-face-with-medical-mask {
+	background-position: calc(-1 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-dizzy-face {
+	background-position: calc(-2 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-smiling-face-with-sunglasses {
+	background-position: calc(-3 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-confused-face {
+	background-position: calc(-4 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-worried-face {
+	background-position: calc(-5 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-face-with-open-mouth {
+	background-position: calc(-6 * 1.5em) 0;
+}
+.em.em-hushed-face {
+	background-position: calc(-6 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-astonished-face {
+	background-position: calc(-6 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-flushed-face {
+	background-position: calc(-6 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-frowning-face-with-open-mouth {
+	background-position: calc(-6 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-anguished-face {
+	background-position: calc(-6 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-fearful-face {
+	background-position: 0 calc(-6 * 1.5em);
+}
+.em.em-anxious-face-with-sweat {
+	background-position: calc(-1 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-sad-but-relieved-face {
+	background-position: calc(-2 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-crying-face {
+	background-position: calc(-3 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-loudly-crying-face {
+	background-position: calc(-4 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-face-screaming-in-fear {
+	background-position: calc(-5 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-confounded-face {
+	background-position: calc(-6 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-persevering-face {
+	background-position: calc(-7 * 1.5em) 0;
+}
+.em.em-disappointed-face {
+	background-position: calc(-7 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-downcast-face-with-sweat {
+	background-position: calc(-7 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-weary-face {
+	background-position: calc(-7 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-tired-face {
+	background-position: calc(-7 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-face-with-steam-from-nose {
+	background-position: calc(-7 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-pouting-face {
+	background-position: calc(-7 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-angry-face {
+	background-position: 0 calc(-7 * 1.5em);
+}
+.em.em-smiling-face-with-horns {
+	background-position: calc(-1 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-angry-face-with-horns {
+	background-position: calc(-2 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-skull {
+	background-position: calc(-3 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-pile-of-poo {
+	background-position: calc(-4 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-ogre {
+	background-position: calc(-5 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-goblin {
+	background-position: calc(-6 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-ghost {
+	background-position: calc(-7 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-alien {
+	background-position: calc(-8 * 1.5em) 0;
+}
+.em.em-alien-monster {
+	background-position: calc(-8 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-grinning-cat {
+	background-position: calc(-8 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-grinning-cat-with-smiling-eyes {
+	background-position: calc(-8 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-cat-with-tears-of-joy {
+	background-position: calc(-8 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-smiling-cat-with-heart-eyes {
+	background-position: calc(-8 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-cat-with-wry-smile {
+	background-position: calc(-8 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-kissing-cat {
+	background-position: calc(-8 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-weary-cat {
+	background-position: 0 calc(-8 * 1.5em);
+}
+.em.em-crying-cat {
+	background-position: calc(-1 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-pouting-cat {
+	background-position: calc(-2 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-see-no-evil-monkey {
+	background-position: calc(-3 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-hear-no-evil-monkey {
+	background-position: calc(-4 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-speak-no-evil-monkey {
+	background-position: calc(-5 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-kiss-mark {
+	background-position: calc(-6 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-love-letter {
+	background-position: calc(-7 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-heart-with-arrow {
+	background-position: calc(-8 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-heart-with-ribbon {
+	background-position: calc(-9 * 1.5em) 0;
+}
+.em.em-sparkling-heart {
+	background-position: calc(-9 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-growing-heart {
+	background-position: calc(-9 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-beating-heart {
+	background-position: calc(-9 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-revolving-hearts {
+	background-position: calc(-9 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-two-hearts {
+	background-position: calc(-9 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-heart-decoration {
+	background-position: calc(-9 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-broken-heart {
+	background-position: calc(-9 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-red-heart {
+	background-position: calc(-9 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-yellow-heart {
+	background-position: 0 calc(-9 * 1.5em);
+}
+.em.em-green-heart {
+	background-position: calc(-1 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-blue-heart {
+	background-position: calc(-2 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-purple-heart {
+	background-position: calc(-3 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-hundred-points {
+	background-position: calc(-4 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-anger-symbol {
+	background-position: calc(-5 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-collision {
+	background-position: calc(-6 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-dizzy {
+	background-position: calc(-7 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-sweat-droplets {
+	background-position: calc(-8 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-dashing-away {
+	background-position: calc(-9 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-bomb {
+	background-position: calc(-10 * 1.5em) 0;
+}
+.em.em-speech-balloon {
+	background-position: calc(-10 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-thought-balloon {
+	background-position: calc(-10 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-zzz {
+	background-position: calc(-10 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-waving-hand {
+	background-position: calc(-10 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-waving-hand-light-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-waving-hand-medium-light-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-waving-hand-medium-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-waving-hand-medium-dark-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-waving-hand-dark-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-raised-hand {
+	background-position: 0 calc(-10 * 1.5em);
+}
+.em.em-raised-hand-light-skin-tone {
+	background-position: calc(-1 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-raised-hand-medium-light-skin-tone {
+	background-position: calc(-2 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-raised-hand-medium-skin-tone {
+	background-position: calc(-3 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-raised-hand-medium-dark-skin-tone {
+	background-position: calc(-4 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-raised-hand-dark-skin-tone {
+	background-position: calc(-5 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-ok-hand {
+	background-position: calc(-6 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-ok-hand-light-skin-tone {
+	background-position: calc(-7 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-ok-hand-medium-light-skin-tone {
+	background-position: calc(-8 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-ok-hand-medium-skin-tone {
+	background-position: calc(-9 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-ok-hand-medium-dark-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-ok-hand-dark-skin-tone {
+	background-position: calc(-11 * 1.5em) 0;
+}
+.em.em-victory-hand {
+	background-position: calc(-11 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-victory-hand-light-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-victory-hand-medium-light-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-victory-hand-medium-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-victory-hand-medium-dark-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-victory-hand-dark-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-backhand-index-pointing-left {
+	background-position: calc(-11 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-backhand-index-pointing-left-light-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-backhand-index-pointing-left-medium-light-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-backhand-index-pointing-left-medium-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-backhand-index-pointing-left-medium-dark-skin-tone {
+	background-position: 0 calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-left-dark-skin-tone {
+	background-position: calc(-1 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-right {
+	background-position: calc(-2 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-right-light-skin-tone {
+	background-position: calc(-3 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-right-medium-light-skin-tone {
+	background-position: calc(-4 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-right-medium-skin-tone {
+	background-position: calc(-5 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-right-medium-dark-skin-tone {
+	background-position: calc(-6 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-right-dark-skin-tone {
+	background-position: calc(-7 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-up {
+	background-position: calc(-8 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-up-light-skin-tone {
+	background-position: calc(-9 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-up-medium-light-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-up-medium-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-backhand-index-pointing-up-medium-dark-skin-tone {
+	background-position: calc(-12 * 1.5em) 0;
+}
+.em.em-backhand-index-pointing-up-dark-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-backhand-index-pointing-down {
+	background-position: calc(-12 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-backhand-index-pointing-down-light-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-backhand-index-pointing-down-medium-light-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-backhand-index-pointing-down-medium-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-backhand-index-pointing-down-medium-dark-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-backhand-index-pointing-down-dark-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-index-pointing-up {
+	background-position: calc(-12 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-index-pointing-up-light-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-index-pointing-up-medium-light-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-index-pointing-up-medium-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-index-pointing-up-medium-dark-skin-tone {
+	background-position: 0 calc(-12 * 1.5em);
+}
+.em.em-index-pointing-up-dark-skin-tone {
+	background-position: calc(-1 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-up {
+	background-position: calc(-2 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-up-light-skin-tone {
+	background-position: calc(-3 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-up-medium-light-skin-tone {
+	background-position: calc(-4 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-up-medium-skin-tone {
+	background-position: calc(-5 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-up-medium-dark-skin-tone {
+	background-position: calc(-6 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-up-dark-skin-tone {
+	background-position: calc(-7 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-down {
+	background-position: calc(-8 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-down-light-skin-tone {
+	background-position: calc(-9 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-down-medium-light-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-down-medium-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-down-medium-dark-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-thumbs-down-dark-skin-tone {
+	background-position: calc(-13 * 1.5em) 0;
+}
+.em.em-raised-fist {
+	background-position: calc(-13 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-raised-fist-light-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-raised-fist-medium-light-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-raised-fist-medium-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-raised-fist-medium-dark-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-raised-fist-dark-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-oncoming-fist {
+	background-position: calc(-13 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-oncoming-fist-light-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-oncoming-fist-medium-light-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-oncoming-fist-medium-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-oncoming-fist-medium-dark-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-oncoming-fist-dark-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-clapping-hands {
+	background-position: 0 calc(-13 * 1.5em);
+}
+.em.em-clapping-hands-light-skin-tone {
+	background-position: calc(-1 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-clapping-hands-medium-light-skin-tone {
+	background-position: calc(-2 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-clapping-hands-medium-skin-tone {
+	background-position: calc(-3 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-clapping-hands-medium-dark-skin-tone {
+	background-position: calc(-4 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-clapping-hands-dark-skin-tone {
+	background-position: calc(-5 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-raising-hands {
+	background-position: calc(-6 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-raising-hands-light-skin-tone {
+	background-position: calc(-7 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-raising-hands-medium-light-skin-tone {
+	background-position: calc(-8 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-raising-hands-medium-skin-tone {
+	background-position: calc(-9 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-raising-hands-medium-dark-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-raising-hands-dark-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-open-hands {
+	background-position: calc(-12 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-open-hands-light-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-open-hands-medium-light-skin-tone {
+	background-position: calc(-14 * 1.5em) 0;
+}
+.em.em-open-hands-medium-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-open-hands-medium-dark-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-open-hands-dark-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-folded-hands {
+	background-position: calc(-14 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-folded-hands-light-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-folded-hands-medium-light-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-folded-hands-medium-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-folded-hands-medium-dark-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-folded-hands-dark-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-nail-polish {
+	background-position: calc(-14 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-nail-polish-light-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-nail-polish-medium-light-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-nail-polish-medium-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-nail-polish-medium-dark-skin-tone {
+	background-position: 0 calc(-14 * 1.5em);
+}
+.em.em-nail-polish-dark-skin-tone {
+	background-position: calc(-1 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-flexed-biceps {
+	background-position: calc(-2 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-flexed-biceps-light-skin-tone {
+	background-position: calc(-3 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-flexed-biceps-medium-light-skin-tone {
+	background-position: calc(-4 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-flexed-biceps-medium-skin-tone {
+	background-position: calc(-5 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-flexed-biceps-medium-dark-skin-tone {
+	background-position: calc(-6 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-flexed-biceps-dark-skin-tone {
+	background-position: calc(-7 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-ear {
+	background-position: calc(-8 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-ear-light-skin-tone {
+	background-position: calc(-9 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-ear-medium-light-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-ear-medium-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-ear-medium-dark-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-ear-dark-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-nose {
+	background-position: calc(-14 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-nose-light-skin-tone {
+	background-position: calc(-15 * 1.5em) 0;
+}
+.em.em-nose-medium-light-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-nose-medium-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-nose-medium-dark-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-nose-dark-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-eyes {
+	background-position: calc(-15 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-tongue {
+	background-position: calc(-15 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-mouth {
+	background-position: calc(-15 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-baby {
+	background-position: calc(-15 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-baby-light-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-baby-medium-light-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-baby-medium-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-baby-medium-dark-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-baby-dark-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-boy {
+	background-position: calc(-15 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-boy-light-skin-tone {
+	background-position: 0 calc(-15 * 1.5em);
+}
+.em.em-boy-medium-light-skin-tone {
+	background-position: calc(-1 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-boy-medium-skin-tone {
+	background-position: calc(-2 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-boy-medium-dark-skin-tone {
+	background-position: calc(-3 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-boy-dark-skin-tone {
+	background-position: calc(-4 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-girl {
+	background-position: calc(-5 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-girl-light-skin-tone {
+	background-position: calc(-6 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-girl-medium-light-skin-tone {
+	background-position: calc(-7 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-girl-medium-skin-tone {
+	background-position: calc(-8 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-girl-medium-dark-skin-tone {
+	background-position: calc(-9 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-girl-dark-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-person-blond-hair {
+	background-position: calc(-11 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-person-light-skin-tone-blond-hair {
+	background-position: calc(-12 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-person-medium-light-skin-tone-blond-hair {
+	background-position: calc(-13 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-person-medium-skin-tone-blond-hair {
+	background-position: calc(-14 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-person-medium-dark-skin-tone-blond-hair {
+	background-position: calc(-15 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-person-dark-skin-tone-blond-hair {
+	background-position: calc(-16 * 1.5em) 0;
+}
+.em.em-man {
+	background-position: calc(-16 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-man-light-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-man-medium-light-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-man-medium-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-man-medium-dark-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-man-dark-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-woman {
+	background-position: calc(-16 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-woman-light-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-woman-medium-light-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-woman-medium-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-woman-medium-dark-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-woman-dark-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-old-man {
+	background-position: calc(-16 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-old-man-light-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-old-man-medium-light-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-old-man-medium-skin-tone {
+	background-position: 0 calc(-16 * 1.5em);
+}
+.em.em-old-man-medium-dark-skin-tone {
+	background-position: calc(-1 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-old-man-dark-skin-tone {
+	background-position: calc(-2 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-old-woman {
+	background-position: calc(-3 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-old-woman-light-skin-tone {
+	background-position: calc(-4 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-old-woman-medium-light-skin-tone {
+	background-position: calc(-5 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-old-woman-medium-skin-tone {
+	background-position: calc(-6 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-old-woman-medium-dark-skin-tone {
+	background-position: calc(-7 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-old-woman-dark-skin-tone {
+	background-position: calc(-8 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-person-frowning {
+	background-position: calc(-9 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-person-frowning-light-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-person-frowning-medium-light-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-person-frowning-medium-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-person-frowning-medium-dark-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-person-frowning-dark-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-person-pouting {
+	background-position: calc(-15 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-person-pouting-light-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-person-pouting-medium-light-skin-tone {
+	background-position: calc(-17 * 1.5em) 0;
+}
+.em.em-person-pouting-medium-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-person-pouting-medium-dark-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-person-pouting-dark-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-person-gesturing-no {
+	background-position: calc(-17 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-person-gesturing-no-light-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-person-gesturing-no-medium-light-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-person-gesturing-no-medium-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-person-gesturing-no-medium-dark-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-person-gesturing-no-dark-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-person-gesturing-ok {
+	background-position: calc(-17 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-person-gesturing-ok-light-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-person-gesturing-ok-medium-light-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-person-gesturing-ok-medium-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-person-gesturing-ok-medium-dark-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-person-gesturing-ok-dark-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-person-tipping-hand {
+	background-position: calc(-17 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-person-tipping-hand-light-skin-tone {
+	background-position: 0 calc(-17 * 1.5em);
+}
+.em.em-person-tipping-hand-medium-light-skin-tone {
+	background-position: calc(-1 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-tipping-hand-medium-skin-tone {
+	background-position: calc(-2 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-tipping-hand-medium-dark-skin-tone {
+	background-position: calc(-3 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-tipping-hand-dark-skin-tone {
+	background-position: calc(-4 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-raising-hand {
+	background-position: calc(-5 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-raising-hand-light-skin-tone {
+	background-position: calc(-6 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-raising-hand-medium-light-skin-tone {
+	background-position: calc(-7 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-raising-hand-medium-skin-tone {
+	background-position: calc(-8 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-raising-hand-medium-dark-skin-tone {
+	background-position: calc(-9 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-raising-hand-dark-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-bowing {
+	background-position: calc(-11 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-bowing-light-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-bowing-medium-light-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-bowing-medium-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-bowing-medium-dark-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-bowing-dark-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-police-officer {
+	background-position: calc(-17 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-police-officer-light-skin-tone {
+	background-position: calc(-18 * 1.5em) 0;
+}
+.em.em-police-officer-medium-light-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-police-officer-medium-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-police-officer-medium-dark-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-police-officer-dark-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-guard {
+	background-position: calc(-18 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-guard-light-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-guard-medium-light-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-guard-medium-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-guard-medium-dark-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-guard-dark-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-construction-worker {
+	background-position: calc(-18 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-construction-worker-light-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-construction-worker-medium-light-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-construction-worker-medium-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-construction-worker-medium-dark-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-construction-worker-dark-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-princess {
+	background-position: calc(-18 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-princess-light-skin-tone {
+	background-position: 0 calc(-18 * 1.5em);
+}
+.em.em-princess-medium-light-skin-tone {
+	background-position: calc(-1 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-princess-medium-skin-tone {
+	background-position: calc(-2 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-princess-medium-dark-skin-tone {
+	background-position: calc(-3 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-princess-dark-skin-tone {
+	background-position: calc(-4 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-wearing-turban {
+	background-position: calc(-5 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-wearing-turban-light-skin-tone {
+	background-position: calc(-6 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-wearing-turban-medium-light-skin-tone {
+	background-position: calc(-7 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-wearing-turban-medium-skin-tone {
+	background-position: calc(-8 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-wearing-turban-medium-dark-skin-tone {
+	background-position: calc(-9 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-wearing-turban-dark-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-with-skullcap {
+	background-position: calc(-11 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-with-skullcap-light-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-with-skullcap-medium-light-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-with-skullcap-medium-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-with-skullcap-medium-dark-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-with-skullcap-dark-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-with-veil {
+	background-position: calc(-17 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-with-veil-light-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-with-veil-medium-light-skin-tone {
+	background-position: calc(-19 * 1.5em) 0;
+}
+.em.em-person-with-veil-medium-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-person-with-veil-medium-dark-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-person-with-veil-dark-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-baby-angel {
+	background-position: calc(-19 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-baby-angel-light-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-baby-angel-medium-light-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-baby-angel-medium-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-baby-angel-medium-dark-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-baby-angel-dark-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-santa-claus {
+	background-position: calc(-19 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-santa-claus-light-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-santa-claus-medium-light-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-santa-claus-medium-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-santa-claus-medium-dark-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-santa-claus-dark-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-person-getting-massage {
+	background-position: calc(-19 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-person-getting-massage-light-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-person-getting-massage-medium-light-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-person-getting-massage-medium-skin-tone {
+	background-position: 0 calc(-19 * 1.5em);
+}
+.em.em-person-getting-massage-medium-dark-skin-tone {
+	background-position: calc(-1 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-getting-massage-dark-skin-tone {
+	background-position: calc(-2 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-getting-haircut {
+	background-position: calc(-3 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-getting-haircut-light-skin-tone {
+	background-position: calc(-4 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-getting-haircut-medium-light-skin-tone {
+	background-position: calc(-5 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-getting-haircut-medium-skin-tone {
+	background-position: calc(-6 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-getting-haircut-medium-dark-skin-tone {
+	background-position: calc(-7 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-getting-haircut-dark-skin-tone {
+	background-position: calc(-8 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-walking {
+	background-position: calc(-9 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-walking-light-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-walking-medium-light-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-walking-medium-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-walking-medium-dark-skin-tone {
+	background-position: calc(-13 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-walking-dark-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-running {
+	background-position: calc(-15 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-running-light-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-running-medium-light-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-running-medium-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-running-medium-dark-skin-tone {
+	background-position: calc(-19 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-running-dark-skin-tone {
+	background-position: calc(-20 * 1.5em) 0;
+}
+.em.em-woman-dancing {
+	background-position: calc(-20 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-woman-dancing-light-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-woman-dancing-medium-light-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-woman-dancing-medium-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-woman-dancing-medium-dark-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-woman-dancing-dark-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-people-with-bunny-ears {
+	background-position: calc(-20 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-horse-racing {
+	background-position: calc(-20 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-horse-racing-light-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-horse-racing-medium-light-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-horse-racing-medium-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-horse-racing-medium-dark-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-horse-racing-dark-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-snowboarder {
+	background-position: calc(-20 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-snowboarder-light-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-snowboarder-medium-light-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-snowboarder-medium-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-snowboarder-medium-dark-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-snowboarder-dark-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-person-surfing {
+	background-position: 0 calc(-20 * 1.5em);
+}
+.em.em-person-surfing-light-skin-tone {
+	background-position: calc(-1 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-surfing-medium-light-skin-tone {
+	background-position: calc(-2 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-surfing-medium-skin-tone {
+	background-position: calc(-3 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-surfing-medium-dark-skin-tone {
+	background-position: calc(-4 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-surfing-dark-skin-tone {
+	background-position: calc(-5 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-rowing-boat {
+	background-position: calc(-6 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-swimming {
+	background-position: calc(-7 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-swimming-light-skin-tone {
+	background-position: calc(-8 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-swimming-medium-light-skin-tone {
+	background-position: calc(-9 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-swimming-medium-skin-tone {
+	background-position: calc(-10 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-swimming-medium-dark-skin-tone {
+	background-position: calc(-11 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-swimming-dark-skin-tone {
+	background-position: calc(-12 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-biking {
+	background-position: calc(-13 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-biking-light-skin-tone {
+	background-position: calc(-14 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-biking-medium-light-skin-tone {
+	background-position: calc(-15 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-biking-medium-skin-tone {
+	background-position: calc(-16 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-biking-medium-dark-skin-tone {
+	background-position: calc(-17 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-biking-dark-skin-tone {
+	background-position: calc(-18 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-mountain-biking {
+	background-position: calc(-19 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-mountain-biking-light-skin-tone {
+	background-position: calc(-20 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-person-mountain-biking-medium-light-skin-tone {
+	background-position: calc(-21 * 1.5em) 0;
+}
+.em.em-person-mountain-biking-medium-skin-tone {
+	background-position: calc(-21 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-person-mountain-biking-medium-dark-skin-tone {
+	background-position: calc(-21 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-person-mountain-biking-dark-skin-tone {
+	background-position: calc(-21 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-person-taking-bath {
+	background-position: calc(-21 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-person-taking-bath-light-skin-tone {
+	background-position: calc(-21 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-person-taking-bath-medium-light-skin-tone {
+	background-position: calc(-21 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-person-taking-bath-medium-skin-tone {
+	background-position: calc(-21 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-person-taking-bath-medium-dark-skin-tone {
+	background-position: calc(-21 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-person-taking-bath-dark-skin-tone {
+	background-position: calc(-21 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-women-holding-hands {
+	background-position: calc(-21 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-woman-and-man-holding-hands {
+	background-position: calc(-21 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-men-holding-hands {
+	background-position: calc(-21 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-kiss {
+	background-position: calc(-21 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-kiss-man-man {
+	background-position: calc(-21 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-kiss-woman-woman {
+	background-position: calc(-21 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-couple-with-heart {
+	background-position: calc(-21 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-couple-with-heart-man-man {
+	background-position: calc(-21 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-couple-with-heart-woman-woman {
+	background-position: calc(-21 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-family {
+	background-position: calc(-21 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-family-man-woman-girl {
+	background-position: calc(-21 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-family-man-woman-girl-boy {
+	background-position: 0 calc(-21 * 1.5em);
+}
+.em.em-family-man-woman-boy-boy {
+	background-position: calc(-1 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-family-man-woman-girl-girl {
+	background-position: calc(-2 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-family-man-man-boy {
+	background-position: calc(-3 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-family-man-man-girl {
+	background-position: calc(-4 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-family-man-man-girl-boy {
+	background-position: calc(-5 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-family-man-man-boy-boy {
+	background-position: calc(-6 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-family-man-man-girl-girl {
+	background-position: calc(-7 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-family-woman-woman-boy {
+	background-position: calc(-8 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-family-woman-woman-girl {
+	background-position: calc(-9 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-family-woman-woman-girl-boy {
+	background-position: calc(-10 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-family-woman-woman-boy-boy {
+	background-position: calc(-11 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-family-woman-woman-girl-girl {
+	background-position: calc(-12 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-bust-in-silhouette {
+	background-position: calc(-13 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-busts-in-silhouette {
+	background-position: calc(-14 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-footprints {
+	background-position: calc(-15 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-monkey-face {
+	background-position: calc(-16 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-monkey {
+	background-position: calc(-17 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-dog-face {
+	background-position: calc(-18 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-dog {
+	background-position: calc(-19 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-poodle {
+	background-position: calc(-20 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-wolf {
+	background-position: calc(-21 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-cat-face {
+	background-position: calc(-22 * 1.5em) 0;
+}
+.em.em-cat {
+	background-position: calc(-22 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-tiger-face {
+	background-position: calc(-22 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-tiger {
+	background-position: calc(-22 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-leopard {
+	background-position: calc(-22 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-horse-face {
+	background-position: calc(-22 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-horse {
+	background-position: calc(-22 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-cow-face {
+	background-position: calc(-22 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-ox {
+	background-position: calc(-22 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-water-buffalo {
+	background-position: calc(-22 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-cow {
+	background-position: calc(-22 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-pig-face {
+	background-position: calc(-22 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-pig {
+	background-position: calc(-22 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-boar {
+	background-position: calc(-22 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-pig-nose {
+	background-position: calc(-22 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-ram {
+	background-position: calc(-22 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-ewe {
+	background-position: calc(-22 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-goat {
+	background-position: calc(-22 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-camel {
+	background-position: calc(-22 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-two-hump-camel {
+	background-position: calc(-22 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-elephant {
+	background-position: calc(-22 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-mouse-face {
+	background-position: calc(-22 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-mouse {
+	background-position: 0 calc(-22 * 1.5em);
+}
+.em.em-rat {
+	background-position: calc(-1 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-hamster {
+	background-position: calc(-2 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-rabbit-face {
+	background-position: calc(-3 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-rabbit {
+	background-position: calc(-4 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-bear {
+	background-position: calc(-5 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-koala {
+	background-position: calc(-6 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-panda {
+	background-position: calc(-7 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-paw-prints {
+	background-position: calc(-8 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-chicken {
+	background-position: calc(-9 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-rooster {
+	background-position: calc(-10 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-hatching-chick {
+	background-position: calc(-11 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-baby-chick {
+	background-position: calc(-12 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-front-facing-baby-chick {
+	background-position: calc(-13 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-bird {
+	background-position: calc(-14 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-penguin {
+	background-position: calc(-15 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-frog {
+	background-position: calc(-16 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-crocodile {
+	background-position: calc(-17 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-turtle {
+	background-position: calc(-18 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-snake {
+	background-position: calc(-19 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-dragon-face {
+	background-position: calc(-20 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-dragon {
+	background-position: calc(-21 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-spouting-whale {
+	background-position: calc(-22 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-whale {
+	background-position: calc(-23 * 1.5em) 0;
+}
+.em.em-dolphin {
+	background-position: calc(-23 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-fish {
+	background-position: calc(-23 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-tropical-fish {
+	background-position: calc(-23 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-blowfish {
+	background-position: calc(-23 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-octopus {
+	background-position: calc(-23 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-spiral-shell {
+	background-position: calc(-23 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-snail {
+	background-position: calc(-23 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-bug {
+	background-position: calc(-23 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-ant {
+	background-position: calc(-23 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-honeybee {
+	background-position: calc(-23 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-lady-beetle {
+	background-position: calc(-23 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-bouquet {
+	background-position: calc(-23 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-cherry-blossom {
+	background-position: calc(-23 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-white-flower {
+	background-position: calc(-23 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-rose {
+	background-position: calc(-23 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-hibiscus {
+	background-position: calc(-23 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-sunflower {
+	background-position: calc(-23 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-blossom {
+	background-position: calc(-23 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-tulip {
+	background-position: calc(-23 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-seedling {
+	background-position: calc(-23 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-evergreen-tree {
+	background-position: calc(-23 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-deciduous-tree {
+	background-position: calc(-23 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-palm-tree {
+	background-position: 0 calc(-23 * 1.5em);
+}
+.em.em-cactus {
+	background-position: calc(-1 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-sheaf-of-rice {
+	background-position: calc(-2 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-herb {
+	background-position: calc(-3 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-four-leaf-clover {
+	background-position: calc(-4 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-maple-leaf {
+	background-position: calc(-5 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-fallen-leaf {
+	background-position: calc(-6 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-leaf-fluttering-in-wind {
+	background-position: calc(-7 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-grapes {
+	background-position: calc(-8 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-melon {
+	background-position: calc(-9 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-watermelon {
+	background-position: calc(-10 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-tangerine {
+	background-position: calc(-11 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-lemon {
+	background-position: calc(-12 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-banana {
+	background-position: calc(-13 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-pineapple {
+	background-position: calc(-14 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-red-apple {
+	background-position: calc(-15 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-green-apple {
+	background-position: calc(-16 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-pear {
+	background-position: calc(-17 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-peach {
+	background-position: calc(-18 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-cherries {
+	background-position: calc(-19 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-strawberry {
+	background-position: calc(-20 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-tomato {
+	background-position: calc(-21 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-eggplant {
+	background-position: calc(-22 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-ear-of-corn {
+	background-position: calc(-23 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-mushroom {
+	background-position: calc(-24 * 1.5em) 0;
+}
+.em.em-chestnut {
+	background-position: calc(-24 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-bread {
+	background-position: calc(-24 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-meat-on-bone {
+	background-position: calc(-24 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-poultry-leg {
+	background-position: calc(-24 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-hamburger {
+	background-position: calc(-24 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-french-fries {
+	background-position: calc(-24 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-pizza {
+	background-position: calc(-24 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-cooking {
+	background-position: calc(-24 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-pot-of-food {
+	background-position: calc(-24 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-bento-box {
+	background-position: calc(-24 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-rice-cracker {
+	background-position: calc(-24 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-rice-ball {
+	background-position: calc(-24 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-cooked-rice {
+	background-position: calc(-24 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-curry-rice {
+	background-position: calc(-24 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-steaming-bowl {
+	background-position: calc(-24 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-spaghetti {
+	background-position: calc(-24 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-roasted-sweet-potato {
+	background-position: calc(-24 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-oden {
+	background-position: calc(-24 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-sushi {
+	background-position: calc(-24 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-fried-shrimp {
+	background-position: calc(-24 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-fish-cake-with-swirl {
+	background-position: calc(-24 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-dango {
+	background-position: calc(-24 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-soft-ice-cream {
+	background-position: calc(-24 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-shaved-ice {
+	background-position: 0 calc(-24 * 1.5em);
+}
+.em.em-ice-cream {
+	background-position: calc(-1 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-doughnut {
+	background-position: calc(-2 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-cookie {
+	background-position: calc(-3 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-birthday-cake {
+	background-position: calc(-4 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-shortcake {
+	background-position: calc(-5 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-chocolate-bar {
+	background-position: calc(-6 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-candy {
+	background-position: calc(-7 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-lollipop {
+	background-position: calc(-8 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-custard {
+	background-position: calc(-9 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-honey-pot {
+	background-position: calc(-10 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-baby-bottle {
+	background-position: calc(-11 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-hot-beverage {
+	background-position: calc(-12 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-teacup-without-handle {
+	background-position: calc(-13 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-sake {
+	background-position: calc(-14 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-wine-glass {
+	background-position: calc(-15 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-cocktail-glass {
+	background-position: calc(-16 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-tropical-drink {
+	background-position: calc(-17 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-beer-mug {
+	background-position: calc(-18 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-clinking-beer-mugs {
+	background-position: calc(-19 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-fork-and-knife {
+	background-position: calc(-20 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-kitchen-knife {
+	background-position: calc(-21 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-globe-showing-europe-africa {
+	background-position: calc(-22 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-globe-showing-americas {
+	background-position: calc(-23 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-globe-showing-asia-australia {
+	background-position: calc(-24 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-globe-with-meridians {
+	background-position: calc(-25 * 1.5em) 0;
+}
+.em.em-map-of-japan {
+	background-position: calc(-25 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-volcano {
+	background-position: calc(-25 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-mount-fuji {
+	background-position: calc(-25 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-house {
+	background-position: calc(-25 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-house-with-garden {
+	background-position: calc(-25 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-office-building {
+	background-position: calc(-25 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-japanese-post-office {
+	background-position: calc(-25 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-post-office {
+	background-position: calc(-25 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-hospital {
+	background-position: calc(-25 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-bank {
+	background-position: calc(-25 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-hotel {
+	background-position: calc(-25 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-love-hotel {
+	background-position: calc(-25 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-convenience-store {
+	background-position: calc(-25 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-school {
+	background-position: calc(-25 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-department-store {
+	background-position: calc(-25 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-factory {
+	background-position: calc(-25 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-japanese-castle {
+	background-position: calc(-25 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-castle {
+	background-position: calc(-25 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-wedding {
+	background-position: calc(-25 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-tokyo-tower {
+	background-position: calc(-25 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-statue-of-liberty {
+	background-position: calc(-25 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-church {
+	background-position: calc(-25 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-fountain {
+	background-position: calc(-25 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-tent {
+	background-position: calc(-25 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-foggy {
+	background-position: 0 calc(-25 * 1.5em);
+}
+.em.em-night-with-stars {
+	background-position: calc(-1 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-sunrise-over-mountains {
+	background-position: calc(-2 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-sunrise {
+	background-position: calc(-3 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-cityscape-at-dusk {
+	background-position: calc(-4 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-sunset {
+	background-position: calc(-5 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-bridge-at-night {
+	background-position: calc(-6 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-hot-springs {
+	background-position: calc(-7 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-carousel-horse {
+	background-position: calc(-8 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-ferris-wheel {
+	background-position: calc(-9 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-roller-coaster {
+	background-position: calc(-10 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-barber-pole {
+	background-position: calc(-11 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-circus-tent {
+	background-position: calc(-12 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-locomotive {
+	background-position: calc(-13 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-railway-car {
+	background-position: calc(-14 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-high-speed-train {
+	background-position: calc(-15 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-bullet-train {
+	background-position: calc(-16 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-train {
+	background-position: calc(-17 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-metro {
+	background-position: calc(-18 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-light-rail {
+	background-position: calc(-19 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-station {
+	background-position: calc(-20 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-tram {
+	background-position: calc(-21 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-monorail {
+	background-position: calc(-22 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-mountain-railway {
+	background-position: calc(-23 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-tram-car {
+	background-position: calc(-24 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-bus {
+	background-position: calc(-25 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-oncoming-bus {
+	background-position: calc(-26 * 1.5em) 0;
+}
+.em.em-trolleybus {
+	background-position: calc(-26 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-minibus {
+	background-position: calc(-26 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-ambulance {
+	background-position: calc(-26 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-fire-engine {
+	background-position: calc(-26 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-police-car {
+	background-position: calc(-26 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-oncoming-police-car {
+	background-position: calc(-26 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-taxi {
+	background-position: calc(-26 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-oncoming-taxi {
+	background-position: calc(-26 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-automobile {
+	background-position: calc(-26 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-oncoming-automobile {
+	background-position: calc(-26 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-sport-utility-vehicle {
+	background-position: calc(-26 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-delivery-truck {
+	background-position: calc(-26 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-articulated-lorry {
+	background-position: calc(-26 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-tractor {
+	background-position: calc(-26 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-bicycle {
+	background-position: calc(-26 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-bus-stop {
+	background-position: calc(-26 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-fuel-pump {
+	background-position: calc(-26 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-police-car-light {
+	background-position: calc(-26 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-horizontal-traffic-light {
+	background-position: calc(-26 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-vertical-traffic-light {
+	background-position: calc(-26 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-construction {
+	background-position: calc(-26 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-anchor {
+	background-position: calc(-26 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-sailboat {
+	background-position: calc(-26 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-speedboat {
+	background-position: calc(-26 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-ship {
+	background-position: calc(-26 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-airplane {
+	background-position: 0 calc(-26 * 1.5em);
+}
+.em.em-seat {
+	background-position: calc(-1 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-helicopter {
+	background-position: calc(-2 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-suspension-railway {
+	background-position: calc(-3 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-mountain-cableway {
+	background-position: calc(-4 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-aerial-tramway {
+	background-position: calc(-5 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-rocket {
+	background-position: calc(-6 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-hourglass-done {
+	background-position: calc(-7 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-hourglass-not-done {
+	background-position: calc(-8 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-watch {
+	background-position: calc(-9 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-alarm-clock {
+	background-position: calc(-10 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-twelve-oclock {
+	background-position: calc(-11 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-twelve-thirty {
+	background-position: calc(-12 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-one-oclock {
+	background-position: calc(-13 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-one-thirty {
+	background-position: calc(-14 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-two-oclocktime {
+	background-position: calc(-15 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-two-thirty {
+	background-position: calc(-16 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-three-oclock {
+	background-position: calc(-17 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-three-thirty {
+	background-position: calc(-18 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-four-oclock {
+	background-position: calc(-19 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-four-thirty {
+	background-position: calc(-20 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-five-oclock {
+	background-position: calc(-21 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-five-thirty {
+	background-position: calc(-22 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-six-oclock {
+	background-position: calc(-23 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-six-thirty {
+	background-position: calc(-24 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-seven-oclock {
+	background-position: calc(-25 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-seven-thirty {
+	background-position: calc(-26 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-eight-oclock {
+	background-position: calc(-27 * 1.5em) 0;
+}
+.em.em-eight-thirty {
+	background-position: calc(-27 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-nine-oclock {
+	background-position: calc(-27 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-nine-thirty {
+	background-position: calc(-27 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-ten-oclock {
+	background-position: calc(-27 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-ten-thirty {
+	background-position: calc(-27 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-eleven-oclock {
+	background-position: calc(-27 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-eleven-thirty {
+	background-position: calc(-27 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-new-moon {
+	background-position: calc(-27 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-waxing-crescent-moon {
+	background-position: calc(-27 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-first-quarter-moon {
+	background-position: calc(-27 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-waxing-gibbous-moon {
+	background-position: calc(-27 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-full-moon {
+	background-position: calc(-27 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-waning-gibbous-moon {
+	background-position: calc(-27 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-last-quarter-moon {
+	background-position: calc(-27 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-waning-crescent-moon {
+	background-position: calc(-27 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-crescent-moon {
+	background-position: calc(-27 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-new-moon-face {
+	background-position: calc(-27 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-first-quarter-moon-face {
+	background-position: calc(-27 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-last-quarter-moon-face {
+	background-position: calc(-27 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-sun {
+	background-position: calc(-27 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-full-moon-face {
+	background-position: calc(-27 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-sun-with-face {
+	background-position: calc(-27 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-star {
+	background-position: calc(-27 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-glowing-star {
+	background-position: calc(-27 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-shooting-star {
+	background-position: calc(-27 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-milky-way {
+	background-position: calc(-27 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-cloud {
+	background-position: 0 calc(-27 * 1.5em);
+}
+.em.em-sun-behind-cloud {
+	background-position: calc(-1 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-cyclone {
+	background-position: calc(-2 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-rainbow {
+	background-position: calc(-3 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-closed-umbrella {
+	background-position: calc(-4 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-umbrella-with-rain-drops {
+	background-position: calc(-5 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-high-voltage {
+	background-position: calc(-6 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-snowflake {
+	background-position: calc(-7 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-snowman-without-snow {
+	background-position: calc(-8 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-fire {
+	background-position: calc(-9 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-droplet {
+	background-position: calc(-10 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-water-wave {
+	background-position: calc(-11 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-jack-o-lantern {
+	background-position: calc(-12 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-christmas-tree {
+	background-position: calc(-13 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-fireworks {
+	background-position: calc(-14 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-sparkler {
+	background-position: calc(-15 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-sparkles {
+	background-position: calc(-16 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-balloon {
+	background-position: calc(-17 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-party-popper {
+	background-position: calc(-18 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-confetti-ball {
+	background-position: calc(-19 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-tanabata-tree {
+	background-position: calc(-20 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-pine-decoration {
+	background-position: calc(-21 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-japanese-dolls {
+	background-position: calc(-22 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-carp-streamer {
+	background-position: calc(-23 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-wind-chime {
+	background-position: calc(-24 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-moon-viewing-ceremony {
+	background-position: calc(-25 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-ribbon {
+	background-position: calc(-26 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-wrapped-gift {
+	background-position: calc(-27 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-ticket {
+	background-position: calc(-28 * 1.5em) 0;
+}
+.em.em-trophy {
+	background-position: calc(-28 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-soccer-ball {
+	background-position: calc(-28 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-baseball {
+	background-position: calc(-28 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-basketball {
+	background-position: calc(-28 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-american-football {
+	background-position: calc(-28 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-rugby-football {
+	background-position: calc(-28 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-tennis {
+	background-position: calc(-28 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-bowling {
+	background-position: calc(-28 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-flag-in-hole {
+	background-position: calc(-28 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-fishing-pole {
+	background-position: calc(-28 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-running-shirt {
+	background-position: calc(-28 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-skis {
+	background-position: calc(-28 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-direct-hit {
+	background-position: calc(-28 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-pool-8-ball {
+	background-position: calc(-28 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-crystal-ball {
+	background-position: calc(-28 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-video-game {
+	background-position: calc(-28 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-slot-machine {
+	background-position: calc(-28 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-game-die {
+	background-position: calc(-28 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-spade-suit {
+	background-position: calc(-28 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-heart-suit {
+	background-position: calc(-28 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-diamond-suit {
+	background-position: calc(-28 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-club-suit {
+	background-position: calc(-28 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-joker {
+	background-position: calc(-28 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-mahjong-red-dragon {
+	background-position: calc(-28 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-flower-playing-cards {
+	background-position: calc(-28 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-performing-arts {
+	background-position: calc(-28 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-artist-palette {
+	background-position: calc(-28 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-glasses {
+	background-position: 0 calc(-28 * 1.5em);
+}
+.em.em-necktie {
+	background-position: calc(-1 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-t-shirt {
+	background-position: calc(-2 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-jeans {
+	background-position: calc(-3 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-dress {
+	background-position: calc(-4 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-kimono {
+	background-position: calc(-5 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-bikini {
+	background-position: calc(-6 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-womans-clothes {
+	background-position: calc(-7 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-purse {
+	background-position: calc(-8 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-handbag {
+	background-position: calc(-9 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-clutch-bag {
+	background-position: calc(-10 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-backpack {
+	background-position: calc(-11 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-mans-shoe {
+	background-position: calc(-12 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-running-shoe {
+	background-position: calc(-13 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-high-heeled-shoe {
+	background-position: calc(-14 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-womans-sandal {
+	background-position: calc(-15 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-womans-boot {
+	background-position: calc(-16 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-crown {
+	background-position: calc(-17 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-womans-hat {
+	background-position: calc(-18 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-top-hat {
+	background-position: calc(-19 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-graduation-cap {
+	background-position: calc(-20 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-lipstick {
+	background-position: calc(-21 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-ring {
+	background-position: calc(-22 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-gem-stone {
+	background-position: calc(-23 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-muted-speaker {
+	background-position: calc(-24 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-speaker-low-volume {
+	background-position: calc(-25 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-speaker-medium-volume {
+	background-position: calc(-26 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-speaker-high-volume {
+	background-position: calc(-27 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-loudspeaker {
+	background-position: calc(-28 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-megaphone {
+	background-position: calc(-29 * 1.5em) 0;
+}
+.em.em-postal-horn {
+	background-position: calc(-29 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-bell {
+	background-position: calc(-29 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-bell-with-slash {
+	background-position: calc(-29 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-musical-score {
+	background-position: calc(-29 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-musical-note {
+	background-position: calc(-29 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-musical-notes {
+	background-position: calc(-29 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-microphone {
+	background-position: calc(-29 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-headphone {
+	background-position: calc(-29 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-radio {
+	background-position: calc(-29 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-saxophone {
+	background-position: calc(-29 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-guitar {
+	background-position: calc(-29 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-musical-keyboard {
+	background-position: calc(-29 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-trumpet {
+	background-position: calc(-29 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-violin {
+	background-position: calc(-29 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-mobile-phone {
+	background-position: calc(-29 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-mobile-phone-with-arrow {
+	background-position: calc(-29 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-telephone {
+	background-position: calc(-29 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-telephone-receiver {
+	background-position: calc(-29 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-pager {
+	background-position: calc(-29 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-fax-machine {
+	background-position: calc(-29 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-battery {
+	background-position: calc(-29 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-electric-plug {
+	background-position: calc(-29 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-laptop {
+	background-position: calc(-29 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-computer-disk {
+	background-position: calc(-29 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-floppy-disk {
+	background-position: calc(-29 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-optical-disk {
+	background-position: calc(-29 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-dvd {
+	background-position: calc(-29 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-movie-camera {
+	background-position: calc(-29 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-clapper-board {
+	background-position: 0 calc(-29 * 1.5em);
+}
+.em.em-television {
+	background-position: calc(-1 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-camera {
+	background-position: calc(-2 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-video-camera {
+	background-position: calc(-3 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-videocassette {
+	background-position: calc(-4 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-magnifying-glass-tilted-left {
+	background-position: calc(-5 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-magnifying-glass-tilted-right {
+	background-position: calc(-6 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-light-bulb {
+	background-position: calc(-7 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-flashlight {
+	background-position: calc(-8 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-red-paper-lantern {
+	background-position: calc(-9 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-notebook-with-decorative-cover {
+	background-position: calc(-10 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-closed-book {
+	background-position: calc(-11 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-open-book {
+	background-position: calc(-12 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-green-book {
+	background-position: calc(-13 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-blue-book {
+	background-position: calc(-14 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-orange-book {
+	background-position: calc(-15 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-books {
+	background-position: calc(-16 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-notebook {
+	background-position: calc(-17 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-ledger {
+	background-position: calc(-18 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-page-with-curl {
+	background-position: calc(-19 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-scroll {
+	background-position: calc(-20 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-page-facing-up {
+	background-position: calc(-21 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-newspaper {
+	background-position: calc(-22 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-bookmark-tabs {
+	background-position: calc(-23 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-bookmark {
+	background-position: calc(-24 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-money-bag {
+	background-position: calc(-25 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-yen-banknote {
+	background-position: calc(-26 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-dollar-banknote {
+	background-position: calc(-27 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-euro-banknote {
+	background-position: calc(-28 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-pound-banknote {
+	background-position: calc(-29 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-money-with-wings {
+	background-position: calc(-30 * 1.5em) 0;
+}
+.em.em-credit-card {
+	background-position: calc(-30 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-chart-increasing-with-yen {
+	background-position: calc(-30 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-envelope {
+	background-position: calc(-30 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-e-mail {
+	background-position: calc(-30 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-incoming-envelope {
+	background-position: calc(-30 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-envelope-with-arrow {
+	background-position: calc(-30 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-outbox-tray {
+	background-position: calc(-30 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-inbox-tray {
+	background-position: calc(-30 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-package {
+	background-position: calc(-30 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-closed-mailbox-with-raised-flag {
+	background-position: calc(-30 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-closed-mailbox-with-lowered-flag {
+	background-position: calc(-30 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-open-mailbox-with-raised-flag {
+	background-position: calc(-30 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-open-mailbox-with-lowered-flag {
+	background-position: calc(-30 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-postbox {
+	background-position: calc(-30 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-pencil {
+	background-position: calc(-30 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-black-nib {
+	background-position: calc(-30 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-memo {
+	background-position: calc(-30 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-briefcase {
+	background-position: calc(-30 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-file-folder {
+	background-position: calc(-30 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-open-file-folder {
+	background-position: calc(-30 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-calendar {
+	background-position: calc(-30 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-tear-off-calendar {
+	background-position: calc(-30 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-card-index {
+	background-position: calc(-30 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-chart-increasing {
+	background-position: calc(-30 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-chart-decreasing {
+	background-position: calc(-30 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-bar-chart {
+	background-position: calc(-30 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-clipboard {
+	background-position: calc(-30 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-pushpin {
+	background-position: calc(-30 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-round-pushpin {
+	background-position: calc(-30 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-paperclip {
+	background-position: 0 calc(-30 * 1.5em);
+}
+.em.em-straight-ruler {
+	background-position: calc(-1 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-triangular-ruler {
+	background-position: calc(-2 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-scissors {
+	background-position: calc(-3 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-locked {
+	background-position: calc(-4 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-unlocked {
+	background-position: calc(-5 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-locked-with-pen {
+	background-position: calc(-6 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-locked-with-key {
+	background-position: calc(-7 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-key {
+	background-position: calc(-8 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-hammer {
+	background-position: calc(-9 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-pistol {
+	background-position: calc(-10 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-wrench {
+	background-position: calc(-11 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-nut-and-bolt {
+	background-position: calc(-12 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-link {
+	background-position: calc(-13 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-microscope {
+	background-position: calc(-14 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-telescope {
+	background-position: calc(-15 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-satellite-antenna {
+	background-position: calc(-16 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-syringe {
+	background-position: calc(-17 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-pill {
+	background-position: calc(-18 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-door {
+	background-position: calc(-19 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-toilet {
+	background-position: calc(-20 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-shower {
+	background-position: calc(-21 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-bathtub {
+	background-position: calc(-22 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-cigarette {
+	background-position: calc(-23 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-moai {
+	background-position: calc(-24 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-atm-sign {
+	background-position: calc(-25 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-litter-in-bin-sign {
+	background-position: calc(-26 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-potable-water {
+	background-position: calc(-27 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-wheelchair-symbol {
+	background-position: calc(-28 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-mens-room {
+	background-position: calc(-29 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-womens-room {
+	background-position: calc(-30 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-restroom {
+	background-position: calc(-31 * 1.5em) 0;
+}
+.em.em-baby-symbol {
+	background-position: calc(-31 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-water-closet {
+	background-position: calc(-31 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-passport-control {
+	background-position: calc(-31 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-customs {
+	background-position: calc(-31 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-baggage-claim {
+	background-position: calc(-31 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-left-luggage {
+	background-position: calc(-31 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-warning {
+	background-position: calc(-31 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-children-crossing {
+	background-position: calc(-31 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-no-entry {
+	background-position: calc(-31 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-prohibited {
+	background-position: calc(-31 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-no-bicycles {
+	background-position: calc(-31 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-no-smoking {
+	background-position: calc(-31 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-no-littering {
+	background-position: calc(-31 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-non-potable-water {
+	background-position: calc(-31 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-no-pedestrians {
+	background-position: calc(-31 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-no-mobile-phones {
+	background-position: calc(-31 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-no-one-under-eighteen {
+	background-position: calc(-31 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-up-arrow {
+	background-position: calc(-31 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-up-right-arrow {
+	background-position: calc(-31 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-right-arrow {
+	background-position: calc(-31 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-down-right-arrow {
+	background-position: calc(-31 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-down-arrow {
+	background-position: calc(-31 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-down-left-arrow {
+	background-position: calc(-31 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-left-arrow {
+	background-position: calc(-31 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-up-left-arrow {
+	background-position: calc(-31 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-up-down-arrow {
+	background-position: calc(-31 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-left-right-arrow {
+	background-position: calc(-31 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-right-arrow-curving-left {
+	background-position: calc(-31 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-left-arrow-curving-right {
+	background-position: calc(-31 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-right-arrow-curving-up {
+	background-position: calc(-31 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-right-arrow-curving-down {
+	background-position: 0 calc(-31 * 1.5em);
+}
+.em.em-clockwise-vertical-arrows {
+	background-position: calc(-1 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-counterclockwise-arrows-button {
+	background-position: calc(-2 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-back-arrow {
+	background-position: calc(-3 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-end-arrow {
+	background-position: calc(-4 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-on-arrow {
+	background-position: calc(-5 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-soon-arrow {
+	background-position: calc(-6 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-top-arrow {
+	background-position: calc(-7 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-dotted-six-pointed-star {
+	background-position: calc(-8 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-aries {
+	background-position: calc(-9 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-taurus {
+	background-position: calc(-10 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-gemini {
+	background-position: calc(-11 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-cancer {
+	background-position: calc(-12 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-leo {
+	background-position: calc(-13 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-virgo {
+	background-position: calc(-14 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-libra {
+	background-position: calc(-15 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-scorpio {
+	background-position: calc(-16 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-sagittarius {
+	background-position: calc(-17 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-capricorn {
+	background-position: calc(-18 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-aquarius {
+	background-position: calc(-19 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-pisces {
+	background-position: calc(-20 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-ophiuchus {
+	background-position: calc(-21 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-shuffle-tracks-button {
+	background-position: calc(-22 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-repeat-button {
+	background-position: calc(-23 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-repeat-single-button {
+	background-position: calc(-24 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-play-button {
+	background-position: calc(-25 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-fast-forward-button {
+	background-position: calc(-26 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-reverse-button {
+	background-position: calc(-27 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-fast-reverse-button {
+	background-position: calc(-28 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-upwards-button {
+	background-position: calc(-29 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-fast-up-button {
+	background-position: calc(-30 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-downwards-button {
+	background-position: calc(-31 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-fast-down-button {
+	background-position: calc(-32 * 1.5em) 0;
+}
+.em.em-cinema {
+	background-position: calc(-32 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-dim-button {
+	background-position: calc(-32 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-bright-button {
+	background-position: calc(-32 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-antenna-bars {
+	background-position: calc(-32 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-vibration-mode {
+	background-position: calc(-32 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-mobile-phone-off {
+	background-position: calc(-32 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-multiply {
+	background-position: calc(-32 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-plus {
+	background-position: calc(-32 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-minus {
+	background-position: calc(-32 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-divide {
+	background-position: calc(-32 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-double-exclamation-mark {
+	background-position: calc(-32 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-exclamation-question-mark {
+	background-position: calc(-32 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-question-mark {
+	background-position: calc(-32 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-white-question-mark {
+	background-position: calc(-32 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-white-exclamation-mark {
+	background-position: calc(-32 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-exclamation-mark {
+	background-position: calc(-32 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-wavy-dash {
+	background-position: calc(-32 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-currency-exchange {
+	background-position: calc(-32 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-heavy-dollar-sign {
+	background-position: calc(-32 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-recycling-symbol {
+	background-position: calc(-32 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-trident-emblem {
+	background-position: calc(-32 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-name-badge {
+	background-position: calc(-32 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-japanese-symbol-for-beginner {
+	background-position: calc(-32 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-hollow-red-circle {
+	background-position: calc(-32 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-check-mark-button {
+	background-position: calc(-32 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-check-box-with-check {
+	background-position: calc(-32 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-check-mark {
+	background-position: calc(-32 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-cross-mark {
+	background-position: calc(-32 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-cross-mark-button {
+	background-position: calc(-32 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-curly-loop {
+	background-position: calc(-32 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-double-curly-loop {
+	background-position: calc(-32 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-part-alternation-mark {
+	background-position: 0 calc(-32 * 1.5em);
+}
+.em.em-eight-spoked-asterisk {
+	background-position: calc(-1 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-eight-pointed-star {
+	background-position: calc(-2 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-sparkle {
+	background-position: calc(-3 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-copyright {
+	background-position: calc(-4 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-registered {
+	background-position: calc(-5 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-trade-mark {
+	background-position: calc(-6 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-number-sign {
+	background-position: calc(-7 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-digit-zero {
+	background-position: calc(-8 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-digit-one {
+	background-position: calc(-9 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-digit-two {
+	background-position: calc(-10 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-digit-three {
+	background-position: calc(-11 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-digit-four {
+	background-position: calc(-12 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-digit-five {
+	background-position: calc(-13 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-digit-six {
+	background-position: calc(-14 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-digit-seven {
+	background-position: calc(-15 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-digit-eight {
+	background-position: calc(-16 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-digit-nine {
+	background-position: calc(-17 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-keycap-10 {
+	background-position: calc(-18 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-input-latin-uppercase {
+	background-position: calc(-19 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-input-latin-lowercase {
+	background-position: calc(-20 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-input-numbers {
+	background-position: calc(-21 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-input-symbols {
+	background-position: calc(-22 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-input-latin-letters {
+	background-position: calc(-23 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-a-button-blood-type {
+	background-position: calc(-24 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-ab-button-blood-type {
+	background-position: calc(-25 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-b-button-blood-type {
+	background-position: calc(-26 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-cl-button {
+	background-position: calc(-27 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-cool-button {
+	background-position: calc(-28 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-free-button {
+	background-position: calc(-29 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-information {
+	background-position: calc(-30 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-id-button {
+	background-position: calc(-31 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-circled-m {
+	background-position: calc(-32 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-new-button {
+	background-position: calc(-33 * 1.5em) 0;
+}
+.em.em-ng-button {
+	background-position: calc(-33 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-o-button-blood-type {
+	background-position: calc(-33 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-ok-button {
+	background-position: calc(-33 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-p-button {
+	background-position: calc(-33 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-sos-button {
+	background-position: calc(-33 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-up-button {
+	background-position: calc(-33 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-vs-button {
+	background-position: calc(-33 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-japanese-here-button {
+	background-position: calc(-33 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-japanese-service-charge-button {
+	background-position: calc(-33 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-japanese-monthly-amount-button {
+	background-position: calc(-33 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-japanese-not-free-of-charge-button {
+	background-position: calc(-33 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-japanese-reserved-button {
+	background-position: calc(-33 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-japanese-bargain-button {
+	background-position: calc(-33 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-japanese-discount-button {
+	background-position: calc(-33 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-japanese-free-of-charge-button {
+	background-position: calc(-33 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-japanese-prohibited-button {
+	background-position: calc(-33 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-japanese-acceptable-button {
+	background-position: calc(-33 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-japanese-application-button {
+	background-position: calc(-33 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-japanese-passing-grade-button {
+	background-position: calc(-33 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-japanese-vacancy-button {
+	background-position: calc(-33 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-japanese-congratulations-button {
+	background-position: calc(-33 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-japanese-secret-button {
+	background-position: calc(-33 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-japanese-open-for-business-button {
+	background-position: calc(-33 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-japanese-no-vacancy-button {
+	background-position: calc(-33 * 1.5em) calc(-24 * 1.5em);
+}
+.em.em-large-red-circle {
+	background-position: calc(-33 * 1.5em) calc(-25 * 1.5em);
+}
+.em.em-large-blue-circle {
+	background-position: calc(-33 * 1.5em) calc(-26 * 1.5em);
+}
+.em.em-black-circle {
+	background-position: calc(-33 * 1.5em) calc(-27 * 1.5em);
+}
+.em.em-white-circle {
+	background-position: calc(-33 * 1.5em) calc(-28 * 1.5em);
+}
+.em.em-black-large-square {
+	background-position: calc(-33 * 1.5em) calc(-29 * 1.5em);
+}
+.em.em-white-large-square {
+	background-position: calc(-33 * 1.5em) calc(-30 * 1.5em);
+}
+.em.em-black-medium-square {
+	background-position: calc(-33 * 1.5em) calc(-31 * 1.5em);
+}
+.em.em-white-medium-square {
+	background-position: calc(-33 * 1.5em) calc(-32 * 1.5em);
+}
+.em.em-black-medium-small-square {
+	background-position: 0 calc(-33 * 1.5em);
+}
+.em.em-white-medium-small-square {
+	background-position: calc(-1 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-black-small-square {
+	background-position: calc(-2 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-white-small-square {
+	background-position: calc(-3 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-large-orange-diamond {
+	background-position: calc(-4 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-large-blue-diamond {
+	background-position: calc(-5 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-small-orange-diamond {
+	background-position: calc(-6 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-small-blue-diamond {
+	background-position: calc(-7 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-red-triangle-pointed-up {
+	background-position: calc(-8 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-red-triangle-pointed-down {
+	background-position: calc(-9 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-diamond-with-a-dot {
+	background-position: calc(-10 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-radio-button {
+	background-position: calc(-11 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-white-square-button {
+	background-position: calc(-12 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-black-square-button {
+	background-position: calc(-13 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-chequered-flag {
+	background-position: calc(-14 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-triangular-flag {
+	background-position: calc(-15 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-crossed-flags {
+	background-position: calc(-16 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-united-arab-emirates {
+	background-position: calc(-17 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-austria {
+	background-position: calc(-18 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-australia {
+	background-position: calc(-19 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-belgium {
+	background-position: calc(-20 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-brazil {
+	background-position: calc(-21 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-canada {
+	background-position: calc(-22 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-switzerland {
+	background-position: calc(-23 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-chile {
+	background-position: calc(-24 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-china {
+	background-position: calc(-25 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-colombia {
+	background-position: calc(-26 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-germany {
+	background-position: calc(-27 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-denmark {
+	background-position: calc(-28 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-spain {
+	background-position: calc(-29 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-finland {
+	background-position: calc(-30 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-france {
+	background-position: calc(-31 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-united-kingdom {
+	background-position: calc(-32 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-hong-kong-sar-china {
+	background-position: calc(-33 * 1.5em) calc(-33 * 1.5em);
+}
+.em.em-flag-indonesia {
+	background-position: calc(-34 * 1.5em) 0;
+}
+.em.em-flag-ireland {
+	background-position: calc(-34 * 1.5em) calc(-1 * 1.5em);
+}
+.em.em-flag-israel {
+	background-position: calc(-34 * 1.5em) calc(-2 * 1.5em);
+}
+.em.em-flag-india {
+	background-position: calc(-34 * 1.5em) calc(-3 * 1.5em);
+}
+.em.em-flag-italy {
+	background-position: calc(-34 * 1.5em) calc(-4 * 1.5em);
+}
+.em.em-flag-japan {
+	background-position: calc(-34 * 1.5em) calc(-5 * 1.5em);
+}
+.em.em-flag-south-korea {
+	background-position: calc(-34 * 1.5em) calc(-6 * 1.5em);
+}
+.em.em-flag-macao-sar-china {
+	background-position: calc(-34 * 1.5em) calc(-7 * 1.5em);
+}
+.em.em-flag-mexico {
+	background-position: calc(-34 * 1.5em) calc(-8 * 1.5em);
+}
+.em.em-flag-malaysia {
+	background-position: calc(-34 * 1.5em) calc(-9 * 1.5em);
+}
+.em.em-flag-netherlands {
+	background-position: calc(-34 * 1.5em) calc(-10 * 1.5em);
+}
+.em.em-flag-norway {
+	background-position: calc(-34 * 1.5em) calc(-11 * 1.5em);
+}
+.em.em-flag-new-zealand {
+	background-position: calc(-34 * 1.5em) calc(-12 * 1.5em);
+}
+.em.em-flag-philippines {
+	background-position: calc(-34 * 1.5em) calc(-13 * 1.5em);
+}
+.em.em-flag-poland {
+	background-position: calc(-34 * 1.5em) calc(-14 * 1.5em);
+}
+.em.em-flag-puerto-rico {
+	background-position: calc(-34 * 1.5em) calc(-15 * 1.5em);
+}
+.em.em-flag-portugal {
+	background-position: calc(-34 * 1.5em) calc(-16 * 1.5em);
+}
+.em.em-flag-russia {
+	background-position: calc(-34 * 1.5em) calc(-17 * 1.5em);
+}
+.em.em-flag-saudi-arabia {
+	background-position: calc(-34 * 1.5em) calc(-18 * 1.5em);
+}
+.em.em-flag-sweden {
+	background-position: calc(-34 * 1.5em) calc(-19 * 1.5em);
+}
+.em.em-flag-singapore {
+	background-position: calc(-34 * 1.5em) calc(-20 * 1.5em);
+}
+.em.em-flag-turkey {
+	background-position: calc(-34 * 1.5em) calc(-21 * 1.5em);
+}
+.em.em-flag-united-states {
+	background-position: calc(-34 * 1.5em) calc(-22 * 1.5em);
+}
+.em.em-flag-vietnam {
+	background-position: calc(-34 * 1.5em) calc(-23 * 1.5em);
+}
+.em.em-flag-south-africa {
+	background-position: calc(-34 * 1.5em) calc(-24 * 1.5em);
+}

@@ -9,7 +9,8 @@ export default class NoteCreateDto {
   @IsNotEmpty()
   overview: string;
   @IsNotEmpty()
-  content: any;
+  content: string;
+  images?: string[];
   tags: string[];
   category: number;
 }

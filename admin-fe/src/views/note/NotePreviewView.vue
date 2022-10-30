@@ -1,14 +1,14 @@
 <template>
   <div class="w-full md:max-w-3xl mx-auto">
     <div class="font-bold text-3xl">
-      <h2 class="text-orange-600">{{ note?.title }}</h2>
+      <h2 class="text-sky-500">{{ note?.title }}</h2>
       <hr/>
     </div>
     <div class="text-right text-gray-600 mr-2 text-sm">
       <span>{{ publishedDate }}</span>
     </div>
-    <div class="ql-container border-0">
-      <div ref="content" class="ql-editor"></div>
+    <div class="ck ck-editor border-0">
+      <div ref="content" class="ck ck-content"></div>
     </div>
   </div>
 </template>
@@ -17,8 +17,6 @@
 import { defineComponent } from 'vue';
 import NoteDto from '../../dtos/NoteDto';
 import NoteRepository from '../../repositories/NoteRepository';
-
-declare var hljs: any;
 
 export default defineComponent({
   props: {
@@ -50,9 +48,6 @@ export default defineComponent({
     });
     NoteRepository.getContentPreview(this.id).then(res => {
       (<HTMLElement>this.$refs.content).innerHTML = res;
-      document.querySelectorAll('pre[data-language]').forEach((el) => {
-        hljs.highlightElement(el);
-      });
     });
   }
 })

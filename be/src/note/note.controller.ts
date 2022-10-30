@@ -22,6 +22,7 @@ import { Response } from 'express';
 import { NOTE_PUBLISH_DIR, PATH_NOTES, PATH_NOTES_FILE } from 'src/constants';
 import { Cache } from 'cache-manager';
 import NoteDto from './dtos/response/NoteDto';
+import { Note } from './entities/Note';
 
 @SkipThrottle()
 @Controller(PATH_NOTES)
@@ -55,7 +56,7 @@ export class NoteController {
   @Post()
   async create(@Body() dto: NoteCreateDto) {
     const newNote = await this.noteService.create(null, dto);
-    return NoteDto.fromEntity(newNote, null);
+    return NoteDto.fromEntityWithoutContent(newNote);
   }
 
   @Post('redeploy-fe')
@@ -75,7 +76,8 @@ export class NoteController {
 
   @Get('/:id')
   async getById(@Param('id') id: string) {
-    return this.noteService.findIncludeContentById(null, id);
+    const note = await this.noteService.findById(null, id);
+    return NoteDto.fromEntity(note);
   }
 
   @Post('/:id')

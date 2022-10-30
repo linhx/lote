@@ -7,7 +7,7 @@ import { Cron } from '@nestjs/schedule';
 import * as DateTimeUtils from '../utilites/DateTimeUtils';
 import * as FileUtils from '../utilites/FileUtils';
 import * as path from 'path';
-import { FILE_TEMP_URL_PREFIX } from 'src/constants';
+import { FILE_DIR, FILE_URL_PREFIX } from 'src/constants';
 
 @Injectable()
 export class FileService {
@@ -97,7 +97,7 @@ export class FileService {
         type: file.mimetype,
         size: file.size,
         path: file.path,
-        url: path.join(FILE_TEMP_URL_PREFIX, file.filename),
+        url: path.join(FILE_URL_PREFIX, file.destination.replace(FILE_DIR, ''), file.filename),
         isTemp: true,
       });
 

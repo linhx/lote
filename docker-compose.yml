@@ -31,7 +31,7 @@ services:
       CORS_ORIGINS: http://localhost:3001,http://localhost:3002
       MONGO_DB_URL: mongodb://root:root@mongo:27017
       MONGO_DB_REPLICA: rs0
-      FILE_TEMP_DIR: /usr/src/app/data/temp
+      FILE_DIR: /usr/src/app/data/files
       FILE_TEMP_DELETE_SCHEDULER: 0 0 0 * * 6
-      FILE_TEMP_URL_PREFIX: /files/temp
+      FILE_URL_PREFIX: /files
       BASE_URL: http://localhost:3000/

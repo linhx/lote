@@ -2,7 +2,6 @@
 import { onBeforeMount, ref } from 'vue';
 import { onBeforeRouteUpdate } from 'vue-router';
 import NotePreview from '../components/NotePreview.vue';
-import NoteRepository from '../repositories/NoteRepository';
 import { storeToRefs } from 'pinia';
 import { useNotesStore } from '../stores/notes';
 import * as VueI18n from 'vue-i18n';
@@ -32,20 +31,16 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div>
-    <router-link to="/" class="icon-top icon-home">
-    </router-link>
-    <div class="w-full md:max-w-4xl mx-auto pt-10">
-      <div class="font-bold logo-text text-gray-800" :class="{ loading: isLoading }">
-        <h2 class="">{{ t('tag') }}: {{ tag }}<span class="cursor-blinking">_</span></h2>
-      </div>
-      <note-preview
-        class="py-3 border-b-1"
-        v-for="note in tagNotes?.items"
-        :key="note.id"
-        :note="note"
-      />
+  <div class="w-full mx-auto">
+    <div class="font-bold logo-text text-gray-800" :class="{ loading: isLoading }">
+      <h2 class="text-xl sm:text-2xl md:text-3xl my-2">{{ t('tag') }}: {{ tag }}<span class="cursor-blinking">_</span></h2>
     </div>
+    <note-preview
+      class="py-4 border-b-1 border-slate-200"
+      v-for="note in tagNotes?.items"
+      :key="note.id"
+      :note="note"
+    />
   </div>
 </template>
 

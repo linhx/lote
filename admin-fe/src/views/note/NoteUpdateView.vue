@@ -21,9 +21,9 @@
           <c-textarea v-model="note.overview" name="overview" />
         </c-field>
       </div>
-      <div class="mt-5 md:mt-0 md:col-span-3">
+      <div class="mt-5 md:mt-0 md:col-span-3 w-full max-w-3xl mx-auto">
         <c-field label="Content">
-          <c-editor ref="editor" editor-class="h-32"></c-editor>
+          <c-editor v-if="isFetched" ref="editor" :model-value="note.content" class="-mx-4"></c-editor>
         </c-field>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">
@@ -46,7 +46,7 @@
 import { defineComponent } from 'vue';
 import CInput from '../../components/CInput.vue';
 import CTextarea from '../../components/CTextarea.vue';
-import CEditor from '../../components/CEditor.vue';
+import CEditor from '../../components/CEditorNew.vue';
 import CField from '../../components/CField.vue';
 import CTagInput from '../../components/CTagInput.vue';
 import CButton from '../../components/CButton.vue';
@@ -56,6 +56,7 @@ import FileRepository from "../../repositories/FileRepository";
 import NoteDto from '../../dtos/NoteDto';
 import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
 import ROUTES_NAME from '../../constants/routes';
+import { Data } from '../../utilities/Editor';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -82,11 +83,13 @@ export default defineComponent({
   },
   data (): {
     isLoading: boolean,
+    isFetched: boolean,
     note: NoteDto,
     noteBanner?: File
   } {
     return {
       isLoading: false,
+      isFetched: false,
       note: {
         id: '',
         title: '',
@@ -106,7 +109,7 @@ export default defineComponent({
     },
     async uploadNoteBanner() {
       if (this.noteBanner) {
-        const file = await FileRepository.uploadTempFile(this.noteBanner);
+        const file = await FileRepository.uploadFile(this.noteBanner);
         return file.id;
       } else {
         return this.note.banner;
@@ -116,7 +119,7 @@ export default defineComponent({
       try {
         this.isLoading = true;
         const banner = await this.uploadNoteBanner();
-        const content = (<any>this.$refs.editor).getContents();
+        const data: Data = (<any>this.$refs.editor).getData();
         const {
           id,
           ...dto
@@ -125,7 +128,7 @@ export default defineComponent({
           id, {
             ...dto,
             banner,
-            content
+            ...data
           });
       } finally {
         this.isLoading = false;
@@ -202,16 +205,10 @@ export default defineComponent({
 
   beforeMount() {
     NoteRepository.findById(this.id).then(res => {
-      const {
-        content,
-        ...rest
-      } = res;
-      this.note = {
-        ...rest,
-        content: JSON.parse(content)
-      };
-      (<any>this.$refs.editor).setContents(this.note.content);
+      this.note = res;
+      this.isFetched = true;
     }).catch((e: Error) => {
+      this.isFetched = true;
       alert(e.message);
     });
   },
