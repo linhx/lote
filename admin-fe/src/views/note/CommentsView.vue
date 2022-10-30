@@ -111,7 +111,7 @@ const deleteComment = (comment: Comment) => {
 <template>
   <div class="mt-10 sm:mt-0 w-full md:max-w-3xl mx-auto">
     <div class="font-bold text-3xl py-3">
-      <h2 class="text-orange-600">{{ noteTitle }}</h2>
+      <h2 class="text-sky-500">{{ noteTitle }}</h2>
       <hr/>
     </div>
     <comments-section

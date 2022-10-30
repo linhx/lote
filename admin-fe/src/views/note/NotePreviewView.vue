@@ -1,7 +1,7 @@
 <template>
   <div class="w-full md:max-w-3xl mx-auto">
     <div class="font-bold text-3xl">
-      <h2 class="text-orange-600">{{ note?.title }}</h2>
+      <h2 class="text-sky-500">{{ note?.title }}</h2>
       <hr/>
     </div>
     <div class="text-right text-gray-600 mr-2 text-sm">
@@ -17,8 +17,6 @@
 import { defineComponent } from 'vue';
 import NoteDto from '../../dtos/NoteDto';
 import NoteRepository from '../../repositories/NoteRepository';
-
-declare var hljs: any;
 
 export default defineComponent({
   props: {

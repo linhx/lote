@@ -22,6 +22,11 @@
   --ck-todo-list-checkmark-size: 16px;
 }
 
+.ck-content {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 /* ckeditor5-basic-styles/theme/code.css */
 .ck-content code {
   background-color: hsla(0, 0%, 78%, 0.3);
@@ -392,20 +397,12 @@
   tab-size: 4;
   white-space: pre-wrap;
   font-style: normal;
-  min-width: 200px;
 }
 /* ckeditor5-code-block/theme/codeblock.css */
 .ck-content pre code {
   background: unset;
   padding: 0;
   border-radius: 0;
-}
-/* ckeditor5-horizontal-line/theme/horizontalline.css */
-.ck-content hr {
-  margin: 15px 0;
-  height: 4px;
-  background: hsl(0, 0%, 87%);
-  border: 0;
 }
 /* ckeditor5-list/theme/liststyles.css */
 .ck-content ol {
@@ -495,7 +492,7 @@
 .ck.ck-content hr {
   border: 0;
   height: 1px;
-  background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0),rgba(0,0,0,0));
+  background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(50 50 50),rgba(0,0,0,0));
   margin: 30px auto;
   width: 40%;
   opacity: 0.3;
@@ -503,4 +500,8 @@
 
 .ck.ck-content p {
   margin: revert;
+}
+
+.ck.ck-content pre {
+  font-size: 0.94rem;
 }

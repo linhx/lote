@@ -1,0 +1,28 @@
+.note {
+  @apply w-full;
+}
+
+.note__header__title {
+  @apply text-sky-500 mb-0 text-xl sm:text-2xl md:text-3xl
+}
+.note__header__hr {
+  border-top-width: 1px;
+  @apply m-0 border-gray-300;
+}
+.note__published_date {
+  @apply text-right text-gray-600 text-sm;
+}
+
+.note__content_wrapper {
+  @apply border-0;
+}
+
+.note__tags {
+  @apply mt-5;
+}
+.note__tags_label {
+  @apply font-bold text-xl;
+}
+.note__comment_wrapper {
+  @apply mt-4;
+}

@@ -9,40 +9,32 @@ export const create = (
   }
   const publishedAt = note.publishedAt.toISOString();
   return `<template>
-  <div class="">
-    <router-link to="/" class="icon-top icon-home sticky">
-    </router-link>
-    <div v-if="displayBtnBack" class="icon-top icon-back" @click="onBack">
+  <div class="note">
+    <div class="note__header">
+      <h2 class="note__header__title">{{ note.title }}</h2>
+      <hr class="note__header__hr"/>
     </div>
-    <div class="w-full md:max-w-3xl mx-auto py-10">
-      <div class="font-bold text-3xl">
-        <h2 class="text-orange-600">{{ note.title }}</h2>
-        <hr/>
+    <div class="note__published_date">
+      <span>{{ publishedDate }}</span>
+    </div>
+    <div class="note__content_wrapper ck ck-editor">
+      <div class="ck ck-content">
+        ${highlightCodeBlock(note.content)}
       </div>
-      <div class="text-right text-gray-600 mr-2 text-sm">
-        <span>{{ publishedDate }}</span>
-      </div>
-      <div class="ck ck-editor border-0">
-        <div class="ck ck-content">
-          ${highlightCodeBlock(note.content)}
-        </div>
-      </div>
-      <div class="mt-5">
-        <span class="font-bold text-xl">Tags </span>
-        <tag-link v-for="tag in note.tags" :key="tag" :tag="tag" />
-      </div>
+    </div>
+    <div class="note__tags">
+      <span class="note__tags_label">Tags </span>
+      <tag-link v-for="tag in note.tags" :key="tag" :tag="tag" />
+    </div>
 
-      <div class="mt-4">
-        <comments-section :permalink="permalink" />
-      </div>
+    <div class="note__comment_wrapper">
+      <comments-section :permalink="permalink" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
-declare var hljs: any;
 
 export default defineComponent({
   props: {
@@ -53,15 +45,13 @@ export default defineComponent({
   },
   data(): {
     note: any;
-    fromRouteName: '';
   } {
     return {
       note: {
         title: '${note.title}',
         tags: ${tags},
         publishedAt: '${publishedAt}'
-      },
-      fromRouteName: '',
+      }
     }
   },
 
@@ -72,28 +62,7 @@ export default defineComponent({
       }
       return '';
     },
-    displayBtnBack() {
-      return this.fromRouteName === 'NotesTagView';
-    },
   },
-
-  methods: {
-    onBack() {
-      this.$router.back();
-    }
-  },
-
-  mounted() {
-    document.querySelectorAll('pre[data-language]').forEach((el) => {
-      hljs.highlightElement(el);
-    });
-  },
-
-  beforeRouteEnter(to, from, next) {
-    next((vm: any) => {
-      vm.fromRouteName = from.name;
-    });
-  }
 })
 </script>`;
 };

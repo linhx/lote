@@ -2,10 +2,10 @@
   <div class="flex">
     <div class="body pl-5 text-left space-y-1 w-full">
       <div>
-        <prefetch-link class="text-2xl font-semibold text-orange-600 inline-block" :to="'/' + note.permalink">{{ note.title }}</prefetch-link>
+        <prefetch-link class="text-lg sm:text-xl md:text-2xl font-semibold text-sky-500 inline-block" :to="'/' + note.permalink">{{ note.title }}</prefetch-link>
       </div>
       <div class="font-light whitespace-pre-wrap w-full">
-        <div class="line-clamp-2">{{ note.overview }}</div>
+        <div class="text-sm md:text-base line-clamp-2">{{ note.overview }}</div>
         <div class="mt-2.5">
           <span class="text-gray-600 mr-2 text-sm">{{ publishedDate }}</span>
           <tag-link v-for="tag in note.tags" :key="tag" :tag="tag" />
