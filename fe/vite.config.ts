@@ -1,4 +1,3 @@
-import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 import fs from 'fs';
@@ -35,7 +34,7 @@ const indexHtmlFilePath = `${BUILD_DIR}/index.html`;
 /**
  * add vue-modules to index.html to load vue-modules chunk at first
  */
-function readingPlugin() {
+function addVueModulesToIndexPlugin() {
   return {
     name: 'add-vue-modules-to-index',
     closeBundle() {
@@ -81,7 +80,7 @@ export default ({ mode }) => {
   }
 
   return {
-    plugins: [vue(), readingPlugin()],
+    plugins: [vue(), addVueModulesToIndexPlugin()],
     build: {
       rollupOptions: {
         input: {
