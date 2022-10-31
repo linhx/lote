@@ -40,12 +40,14 @@ export async function create() {
         });
       }
     }
-  } else {
+  } else 
+  if (import.meta.env.DEV) {
     // development mode
     type Note = {
       [name: string]: any;
     };
-    const notes = (await import('../../notes')).default;
+    const notesDir = '../../notes';
+    const notes = (await import(/* @vite-ignore */ notesDir)).default;
     for (const note in notes) {
       noteRoutes.push({
         path: '/' + note,

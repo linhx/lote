@@ -5,6 +5,9 @@ import chokidar from 'chokidar';
 import { fileNameWithoutExtension } from './src/utilities/FileUtils';
 
 const NOTES_INDEX = './notes/index.ts';
+/**
+ * create this module for dev mode. check fe/src/router/index.ts
+ */
 const updateNotesIndex = () => {
   const files = fs.readdirSync(`./notes`);
 
@@ -70,6 +73,7 @@ function addVueModulesToIndexPlugin() {
 
 export default ({ mode }) => {
   if (mode === 'development') {
+    updateNotesIndex();
     chokidar.watch('./notes')
     .on('add', () => {
       updateNotesIndex();
