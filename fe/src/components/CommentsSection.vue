@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeMount, ref } from 'vue';
+import { computed, onBeforeMount, ref } from 'vue';
 import CommentDto from '../dtos/CommentDto';
 import Comment from './comment/Comment';
 import CommentItem from './comment/CommentItem.vue';
-import TextareaWithBtn from './TextareaWithBtn.vue';
 import CommentInput, { NewContent } from './CommentInput.vue';
 import CommentRepository from '../repositories/CommentRepository';
 import * as VueI18n from 'vue-i18n';

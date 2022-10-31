@@ -46,7 +46,7 @@
 import { defineComponent } from 'vue';
 import CInput from '../../components/CInput.vue';
 import CTextarea from '../../components/CTextarea.vue';
-import CEditor from '../../components/CEditorNew.vue';
+import CEditor from '../../components/CEditor.vue';
 import CField from '../../components/CField.vue';
 import CTagInput from '../../components/CTagInput.vue';
 import CButton from '../../components/CButton.vue';

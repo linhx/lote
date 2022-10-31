@@ -6,8 +6,9 @@ import CommentInput from '../CommentInput.vue';
 const props = defineProps<{
   comment: Comment;
 }>();
+type NewCommentEventData = { authorName: string, content: string };
 const emit = defineEmits<{
-  (e: 'post', value: { authorName: string, content: string }): void,
+  (e: 'post', value: NewCommentEventData): void,
   (e: 'activate', value: Comment): void,
   (e: 'delete', value: Comment): void,
 }>();
@@ -61,9 +62,9 @@ const onDelete = () => {
           v-for="subComment in comment.subs"
           :key="subComment.id"
           :comment="subComment"
-          @post="(newComment) => emit('post', newComment)"
-          @activate="(comment) => emit('activate', comment)"
-          @delete="(comment) => emit('delete', comment)"
+          @post="(newComment: NewCommentEventData) => emit('post', newComment)"
+          @activate="(comment: Comment) => emit('activate', comment)"
+          @delete="(comment: Comment) => emit('delete', comment)"
         ></comment-item>
       </div>
       <comment-input v-if="showReply" class="mt-2" @post="onPost" />
