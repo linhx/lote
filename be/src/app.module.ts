@@ -5,9 +5,7 @@ import { NoteModule } from './note/note.module';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
-import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
-import { SsoAuthGuard } from './auth/sso.strategy';
 
 @Module({
   imports: [
@@ -25,17 +23,12 @@ import { SsoAuthGuard } from './auth/sso.strategy';
     }),
     FileModule,
     NoteModule,
-    AuthModule,
   ],
   controllers: [],
   providers: [
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
-    },
-    {
-      provide: APP_GUARD,
-      useClass: SsoAuthGuard,
     },
   ],
 })
