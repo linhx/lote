@@ -2,6 +2,8 @@ export default {
   blogName: 'Linhx\'s notes',
   tag: 'Tag',
   notfound: 'Not found',
+  home: 'Home',
+  back: 'Back',
   comment: {
     content: {
       placeholder: 'Comment không quá 500 ký tự. (Ctrl + Enter)'

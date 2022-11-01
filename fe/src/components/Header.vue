@@ -43,11 +43,11 @@ onUnmounted(() => {
         <h2 class="title m-0 text-3xl">{{ t('blogName') }}<span class="cursor-blinking">_</span></h2>
       </div>
       <div v-else class="h-full flex items-center" :class="innerClass">
-        <router-link to="/">
-          <img class="logo transition-all w-auto" src="../assets/img/icon-home.png" />
+        <router-link to="/" class="lowercase text-lg text-gray-800 hover:underline hover:text-gray-700">
+          /{{ t('home') }}
         </router-link>
-        <a v-if="showButtonBack" class="inline-block ml-2 cursor-pointer" @click="back">
-          <img class="logo transition-all w-auto" src="../assets/img/icon-back.png" />
+        <a v-if="showButtonBack" class="inline-block ml-4 cursor-pointer lowercase text-lg text-gray-800 hover:underline hover:text-gray-700" @click="back">
+          {{ t('back') }}
         </a>
       </div>
     </div>
@@ -70,12 +70,6 @@ onUnmounted(() => {
 }
 .fixed-header .title {
   @apply text-2xl;
-}
-.logo {
-  max-height: calc(var(--header-height) * 0.55);
-}
-.fixed-header .logo {
-  max-height: calc(var(--header-height-small) * 0.65);
 }
 .cursor-blinking {
   animation: ping 1s cubic-bezier(0.79,-0.26, 0.65,-0.13) infinite;
