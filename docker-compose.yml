@@ -61,6 +61,5 @@ services:
     volumes:
       - ./data-deploy/fe/dist:/apps/fe:ro
       - ./data-deploy/fe/nginx:/etc/nginx/conf.d
-      - ./data-deploy/fe1:/apps/fe
     ports:
       - 80:80

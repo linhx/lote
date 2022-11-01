@@ -47,11 +47,11 @@ const onPost = (_newComment: any) => {
     </div>
 
     <div class="ml-2 flex-1">
-      <h6 class="font-bold">
+      <h6 class="font-bold text-base p-0 m-0">
         {{ comment.author.name }}
-        <span class="text-gray-400 ml-2 font-normal">{{ comment.postedAt.toLocaleString() }}</span>
+        <span class="text-gray-400 ml-2 font-normal text-xs">{{ comment.postedAt.toLocaleString() }}</span>
       </h6>
-      <p class="font-normal tracking-wide leading-6 whitespace-pre-wrap break-all">
+      <p class="text-sm md:text-base font-normal tracking-wide leading-6 whitespace-pre-wrap break-all p-0 m-0">
         {{ comment.content }}
       </p>
       <div class="flex items-center">
@@ -60,7 +60,7 @@ const onPost = (_newComment: any) => {
         <!-- <span class="mx-1 inline-block font-semibold">5</span> -->
         <!-- <span class="inline-block"><svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 1L6.5 7L12 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span> -->
-        <span v-if="!comment.parentId" class="inline-block cursor-pointer text-blue-500 text-sm" @click="onClickReply">Reply</span>
+        <span v-if="!comment.parentId" class="inline-block cursor-pointer text-blue-500 text-sx" @click="onClickReply">Reply</span>
       </div>
       <div v-if="comment.subs && comment.subs.length" class="mt-2">
         <comment-item v-for="subComment in comment.subs" :key="subComment.id" :comment="subComment" ></comment-item>
