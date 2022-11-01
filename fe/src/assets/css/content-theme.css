@@ -25,6 +25,7 @@
 .ck-content {
   white-space: pre-wrap;
   word-break: break-word;
+  line-height: 1.75;
 }
 
 /* ckeditor5-basic-styles/theme/code.css */
@@ -32,6 +33,7 @@
   background-color: hsla(0, 0%, 78%, 0.3);
   padding: .15em;
   border-radius: 2px;
+  line-height: 1.5;
 }
 /* ckeditor5-block-quote/theme/blockquote.css */
 .ck-content blockquote {
