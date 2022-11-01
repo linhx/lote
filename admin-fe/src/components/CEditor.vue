@@ -13,6 +13,7 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 import ClassicEditor from '@linhx/ckeditor5-build';
 import { defineComponent } from 'vue';
 import { Data } from '../utilities/Editor';
+import { PATH as UPLOAD_URL } from '../repositories/FileRepository';
 
 const ATTR_DATA_ID = 'data-id';
 const IMG_SELECTOR = `img[${ATTR_DATA_ID}]`;
@@ -24,41 +25,46 @@ export default defineComponent({
   },
   props: {
     modelValue: String,
+    uploadUrl: String
   },
   data(): any {
     return {
       editor: ClassicEditor,
       editorConfig: {
         filemanager: {
-          // Upload the images to the server using the CKFinder QuickUpload command.
-          uploadUrl: 'http://localhost:3000/files',
-        },
-        image: {
-          resizeOptions: [
-            {
-              name: 'resizeImage:original',
-              value: null,
-              icon: 'original',
-            },
-            {
-              name: 'resizeImage:50',
-              value: '50',
-              icon: 'medium',
-            },
-            {
-              name: 'resizeImage:75',
-              value: '75',
-              icon: 'large',
-            },
-          ],
-          toolbar: [
-            // ...,
-            'resizeImage:50',
-            'resizeImage:75',
-            'resizeImage:original',
-          ],
+          uploadUrl: this.uploadUrl || UPLOAD_URL,
+	        createImageData: (responseData: any) => {
+            return {
+              ...responseData,
+              urls: { default: new URL(responseData.url, import.meta.env.VITE_APP_API_URL).href}
+            }
+          },
         },
       },
+      image: {
+        resizeOptions: [
+          {
+            name: 'resizeImage:original',
+            label: 'Original',
+            value: null
+          },
+          {
+            name: 'resizeImage:50',
+            label: '50%',
+            value: '50'
+          },
+          {
+            name: 'resizeImage:75',
+            label: '75%',
+            value: '75'
+          },
+          {
+            name: 'resizeImage:100',
+            label: '100%',
+            value: '100'
+          }
+        ],
+      }
     };
   },
   methods: {

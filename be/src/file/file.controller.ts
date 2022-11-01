@@ -16,6 +16,7 @@ import FileDto from './dtos/response/FileDto';
 import * as path from 'path';
 import { Response } from 'express';
 import { Public } from 'src/auth/sso.strategy';
+import { SkipThrottle, Throttle } from '@nestjs/throttler';
 
 const getYYYMM = () => {
   return new Date().toISOString().substring(0, 7);
@@ -47,6 +48,7 @@ export class FileController {
 
   @Get(':path(*)')
   @Public()
+  @SkipThrottle()
   temp(@Param('path') filePath: string, @Res() res: Response) {
     res.sendFile(path.join(FILE_DIR, filePath), (err: any) => {
       if (err) {

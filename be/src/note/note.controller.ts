@@ -22,7 +22,6 @@ import { Response } from 'express';
 import { NOTE_PUBLISH_DIR, PATH_NOTES, PATH_NOTES_FILE } from 'src/constants';
 import { Cache } from 'cache-manager';
 import NoteDto from './dtos/response/NoteDto';
-import { Note } from './entities/Note';
 
 @SkipThrottle()
 @Controller(PATH_NOTES)
