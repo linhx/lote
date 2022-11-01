@@ -3,6 +3,7 @@ nohup.out
 # data dev
 data
 
+data-deploy
 
 # webstorm
 .idea

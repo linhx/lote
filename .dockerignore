@@ -1,3 +1,6 @@
 admin-fe/node_modules
+admin-fe/dist
 fe/node_modules
+fe/dist
 be/node_modules
+be/dist

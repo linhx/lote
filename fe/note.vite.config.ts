@@ -88,7 +88,7 @@ const getVueModulesFile = (deployDir) => {
  * @param config config
  * @returns 
  */
-const vueModuluesPlugin = ({ env }) => {
+const vueModulesPlugin = ({ env }) => {
   let distDir;
   switch(process.env.BUILD_MODE) {
     case MODE_BUILD_NOTES:
@@ -173,7 +173,7 @@ export default ({ mode }) => {
   return defineConfig({
     plugins: [
       vuePluginDoesSplitExportHelper(),
-      vueModuluesPlugin({ env: process.env }),
+      vueModulesPlugin({ env: process.env }),
       vitePressPlugin({ env: process.env })
     ],
     publicDir, // take the advantage of publicDir to copy the static images

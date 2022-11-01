@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  mongo:
+    build: ./db
+    hostname: mongo
+    container_name: lote-mongo-1
+    volumes:
+      - ./db/data:/data/db
+      - ./db/init/init.sh:/scripts/init.sh
+    command: --bind_ip_all --replSet rs0 --keyFile /data/db.key
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: note
+      MONGO_REPLICA_SET_NAME: rs0
+    ports:
+      - 27017:27017
+
+  note:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - mongo
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 3000:3000
+      - 3001:3001
+      - 3002:3002
+    environment:
+      CORS_ORIGINS: http://localhost:3001,http://localhost:3002
+      MONGO_DB_URL: mongodb://root:root@mongo:27017
+      MONGO_DB_REPLICA: rs0
+      FILE_DIR: /usr/src/app/data/files
+      FILE_TEMP_DELETE_SCHEDULER: 0 0 0 * * 6
+      BASE_URL: http://localhost:3000/
