@@ -32,9 +32,10 @@ services:
     restart: unless-stopped
     volumes:
       - ./data-deploy/fe/dist:/apps/fe-deploy:rw
-      - ./data-deploy/be/files:/usr/src/app/data/files
+      - ./data-deploy/be/files:/apps/data/be-files
       - ./data-deploy/be/logs:/apps/be/logs
     environment:
+      - BE_FILE_DIR=/apps/data/be-files
       - VITE_APP_API_URL=${BE_API_URL}
       - VITE_APP_RECAPTCHA_SITE_KEY=${RECAPTCHA_SITE_KEY}
       - VITE_APP_DEPLOY_DIR=/apps/fe-deploy
