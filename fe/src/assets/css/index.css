@@ -33,16 +33,6 @@ html, input, textarea {
   @apply inline-block h-full rounded-full border-2 bg-contain cursor-pointer;
 }
 
-.icon-home {
-  background-image: url('../img/icon-home.png');
-  background-repeat: no-repeat;
-}
-
-.icon-back {
-  background-image: url('../img/icon-back.png');
-  background-repeat: no-repeat;
-}
-
 .c-input {
   @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md;
 }

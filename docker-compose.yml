@@ -27,11 +27,12 @@ services:
       dockerfile: Dockerfile.be
       args:
         - FE_DIR=/apps/fe
+        - START_MODE=${START_MODE}
     depends_on:
       - mongo
     restart: unless-stopped
     volumes:
-      - ./data-deploy/fe/dist:/apps/fe-deploy:rw
+      - ./data-deploy/fe/dist:/apps/fe-deploy
       - ./data-deploy/be/files:/apps/data/be-files
       - ./data-deploy/be/logs:/apps/be/logs
       - ./data-deploy/fe/published-notes:/apps/fe/notes
