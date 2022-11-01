@@ -54,8 +54,6 @@ services:
         - ADMIN_FE_DOMAIN=${ADMIN_FE_DOMAIN}
         - BE_DOMAIN=${BE_DOMAIN}
         - BE_API_URL=${BE_API_URL}
-        - AUTH_URL=${AUTH_URL}
-        - AUTH_LOGIN_URL=${AUTH_LOGIN_URL}
     depends_on:
       - note-be
     volumes:
