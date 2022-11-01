@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia'
 import App from './App.vue';
 import './assets/css/preflight.css';
+import './assets/css/fonts.css';
 import './assets/css/index.css';
 import './assets/css/content-theme.css';
 import './assets/css/emoji.css';

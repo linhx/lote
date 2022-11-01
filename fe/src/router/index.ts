@@ -17,7 +17,7 @@ export async function create() {
       const component = permalinkToFile(path);
       if (component) {
         noteRoutes.push({
-          path,
+          path: '/' + path,
           component() {
             return import(/* @vite-ignore */ component).catch(async () => {
               if (navigator.onLine) {
