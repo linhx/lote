@@ -16,8 +16,8 @@ Linhx's note
 ## Tech stack
 
 1. Backend: Nestjs + Mongodb
-2. Admin frontend: Vuejs + Quilljs + Tailwinds
-3. Frontend: Vuejs + Tailwinds + Highlightjs
+2. Admin frontend: Vuejs + Ckeditor5 + Tailwinds + Highlightjs
+3. Frontend: Vuejs + Tailwinds
 
 ## Prerequire
 
@@ -42,7 +42,21 @@ sudo docker exec -it lote-mongo-1 sh /scripts/init.sh
 
 ## Deployment
 
-### Backend (be)
+### Docker
+
+```shell
+docker compose up -d
+```
+
+Setup replica set after the mongo container has completly started.
+
+```shell
+docker compose exec mongo sh /scripts/init.sh
+```
+
+### Manually
+
+#### Backend (be)
 
 1. Update .env: base on .prod.env
 
@@ -59,7 +73,7 @@ sudo docker exec -it lote-mongo-1 sh /scripts/init.sh
 NOTE: for authentication, I'm using an authentication server to validate the access token from cookie.
 You should change the strategy to your.
 
-### Admin frontend (admin-fe)
+#### Admin frontend (admin-fe)
 
 1. Update .env
 
@@ -76,10 +90,10 @@ You should change the strategy to your.
 NOTE: for authentication, I'm using an authentication server to validate the access token from cookie.
 You should change the strategy to your.
 
-### Frontend (fe)
+#### Frontend (fe)
 
 1. Update .env
-    VITE_APP_DEPLOY_DIR: the deploy directory
+    VITE_APP_DEPLOY_DIR: the deploy directory. e.g. `/var/www/note.com`
 
 2. Run
 
