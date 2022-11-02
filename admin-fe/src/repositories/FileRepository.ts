@@ -4,9 +4,12 @@ import api from './Api';
 export const PATH = '/files';
 
 export default {
-  uploadFile(file: File): Promise<ResFileDto> {
+  uploadFile(file: File, onUploadProgress?: (event: ProgressEvent) => void): Promise<ResFileDto> {
     const formData = new FormData();
     formData.append('file', file);
-    return api.post(PATH, formData);
+    const config = {
+      ...(onUploadProgress && { onUploadProgress } )
+    }
+    return api.post(PATH, formData, config);
   }
 }

@@ -13,7 +13,7 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 import ClassicEditor from '@linhx/ckeditor5-build';
 import { defineComponent } from 'vue';
 import { Data } from '../utilities/Editor';
-import { PATH as UPLOAD_URL } from '../repositories/FileRepository';
+import FileRepository from '../repositories/FileRepository';
 
 const ATTR_DATA_ID = 'data-id';
 const IMG_SELECTOR = `img[${ATTR_DATA_ID}]`;
@@ -32,13 +32,23 @@ export default defineComponent({
       editor: ClassicEditor,
       editorConfig: {
         filemanager: {
-          uploadUrl: this.uploadUrl || UPLOAD_URL,
-	        createImageData: (responseData: any) => {
-            return {
-              ...responseData,
-              urls: { default: new URL(responseData.url, import.meta.env.VITE_APP_API_URL).href}
-            }
-          },
+          upload({ file, setProgress }: { file: File, setProgress: ({ total, loaded }: { total: number, loaded: number }) => void }) {
+            return FileRepository.uploadFile(file, (event) => {
+              if (event.lengthComputable) {
+                setProgress({
+                  total: event.total,
+                  loaded: event.loaded
+                });
+              }
+            }).then(res => {
+              return {
+                ...res,
+                urls: { default: new URL(res.url, import.meta.env.VITE_APP_API_URL).href}
+              }
+            }).catch(() => {
+              throw `Cannot upload file: ${ file.name }.`;
+            });
+          }
         },
       },
       image: {

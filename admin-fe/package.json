@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-vue": "^4.0.1",
-    "@linhx/ckeditor5-build": "^0.0.5",
+    "@linhx/ckeditor5-build": "^0.0.7",
     "axios": "^0.23.0",
     "lodash.debounce": "^4.0.8",
     "nanoid": "^3.1.30",

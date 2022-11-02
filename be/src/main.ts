@@ -1,6 +1,10 @@
 import { config } from 'dotenv';
 import * as dotenvExpand from 'dotenv-expand';
-dotenvExpand(config());
+dotenvExpand(config(
+  {
+    path: process.env.NODE_ENV === 'development' ? '.env.dev' : undefined
+  }
+));
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
