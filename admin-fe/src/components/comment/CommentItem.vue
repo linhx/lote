@@ -45,11 +45,11 @@ const onDelete = () => {
     </div>
 
     <div class="ml-2 flex-1">
-      <h6 class="font-bold">
+      <h6 class="font-bold text-base p-0 m-0">
         {{ comment.author.name }}
         <span class="text-gray-400 ml-2 font-normal">{{ comment.postedAt.toLocaleString() }}</span>
       </h6>
-      <p class="font-normal tracking-wide leading-6 whitespace-pre-wrap break-all">
+      <p class="font-normal tracking-wide leading-6 whitespace-pre-wrap break-all p-0 m-0">
         {{ comment.content }}
       </p>
       <div class="flex items-center">
