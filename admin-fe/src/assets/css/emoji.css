@@ -12,6 +12,10 @@
 	display: inline-block;
 }
 
+.ck-editor .ck-content .em {
+	margin-top: -4px;
+}
+
 .ck-editor .em {
 	width: var(--display-emoji-size);
 	height: var(--display-emoji-size);
@@ -21,7 +25,6 @@
 		)
 		auto;
 	vertical-align: middle;
-	margin-top: -4px;
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
