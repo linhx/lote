@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import fs from 'fs';
 import chokidar from 'chokidar';
 import { fileNameWithoutExtension } from './src/utilities/FileUtils';
+import { loadEnv } from 'vite';
 
 const NOTES_INDEX = './notes/index.ts';
 /**
@@ -71,6 +72,25 @@ function addVueModulesToIndexPlugin() {
   };
 }
 
+/**
+ * Replace env variables in index.html
+ * @see https://github.com/vitejs/vite/issues/3105#issuecomment-939703781
+ * @see https://vitejs.dev/guide/api-plugin.html#transformindexhtml
+ */
+ function htmlPlugin(env: ReturnType<typeof loadEnv>) {
+  env.CURRENT_TIMESTAMP = '' + new Date().getTime();
+  return {
+    name: 'html-transform',
+    transformIndexHtml: {
+      enforce: 'pre' as const,
+      transform: (html: string): string =>
+        html.replace(/<%=(.*?)%>/g, (match, p1) =>
+          env[p1] ?? match
+        ),
+    }
+  }
+}
+
 export default ({ mode }) => {
   if (mode === 'development') {
     updateNotesIndex();
@@ -84,7 +104,7 @@ export default ({ mode }) => {
   }
 
   return {
-    plugins: [vue(), addVueModulesToIndexPlugin()],
+    plugins: [vue(), htmlPlugin(loadEnv(mode, process.cwd())), addVueModulesToIndexPlugin()],
     build: {
       rollupOptions: {
         input: {
