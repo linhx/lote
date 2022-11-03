@@ -50,6 +50,13 @@
   border-left: 0;
   border-right: solid 5px hsl(0, 0%, 80%);
 }
+.ck-content blockquote > *:first-child {
+  margin-top: 0;
+}
+.ck-content blockquote > *:last-child {
+  margin-bottom: 0;
+}
+
 /* ckeditor5-highlight/theme/highlight.css */
 .ck-content .marker-yellow {
   background-color: var(--ck-highlight-marker-yellow);
