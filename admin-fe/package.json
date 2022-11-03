@@ -11,9 +11,11 @@
     "@linhx/ckeditor5-build": "^0.0.7",
     "axios": "^1.1.3",
     "lodash.debounce": "^4.0.8",
+    "mosha-vue-toastify": "^1.0.23",
     "nanoid": "^3.1.30",
     "postcss-import": "^14.0.2",
     "vue": "^3.2.41",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {

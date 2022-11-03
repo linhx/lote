@@ -25,6 +25,7 @@ import * as ArrayUtils from '../utilites/ArrayUtils';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
 import * as FileUtils from '../utilites/FileUtils';
 import { highlightCodeBlock } from './utilities/highlight-code-block';
+import { EventsService, NotificationType } from 'src/common/events.service';
 
 @Injectable()
 export class NoteService {
@@ -34,6 +35,7 @@ export class NoteService {
     @InjectModel(Note.name) private noteModel: Model<NoteDocument>,
     private readonly db: Db,
     private readonly fileService: FileService,
+    private readonly eventsService: EventsService,
   ) {}
 
   async create(session: CSession, dto: NoteCreateDto) {
@@ -164,7 +166,19 @@ export class NoteService {
         resolve(true);
       }
     });
-    deploy.catch((e: Error) => {
+    deploy
+    .then(() => {
+      this.eventsService.emitNotification({
+        type: NotificationType.success,
+        message: 'note.publishAll.succeed'
+      });
+    })
+    .catch((e: Error) => {
+      this.eventsService.emitNotification({
+        type: NotificationType.error,
+        message: 'note.publishAll.failed',
+        error: e.message,
+      });
       this.logger.error('error.publishNotes.cantDeploy', e.message);
     });
   }
@@ -192,7 +206,19 @@ export class NoteService {
         resolve(true);
       }
     });
-    deploy.catch((e: Error) => {
+    deploy
+    .then(() => {
+      this.eventsService.emitNotification({
+        type: NotificationType.success,
+        message: 'note.deployFe.succeed'
+      });
+    })
+    .catch((e: Error) => {
+      this.eventsService.emitNotification({
+        type: NotificationType.error,
+        message: 'note.deployFe.failed',
+        error: e.message,
+      });
       this.logger.error('error.deployFe.cantDeploy', e.message);
     });
   }
@@ -275,7 +301,18 @@ export class NoteService {
             updatePublicationAt: new Date(),
           }).exec();
         })
+        .then(() => {
+          this.eventsService.emitNotification({
+            type: NotificationType.success,
+            message: 'note.publish.succeed'
+          });
+        })
         .catch((e: Error) => {
+          this.eventsService.emitNotification({
+            type: NotificationType.error,
+            message: 'note.publish.failed',
+            error: e.message,
+          });
           this.logger.error('error.publish.cantDeploy', e.message);
         });
 
@@ -327,7 +364,18 @@ export class NoteService {
             isPublished: false,
           }).exec();
         })
+        .then(() => {
+          this.eventsService.emitNotification({
+            type: NotificationType.success,
+            message: 'note.unpublish.succeed'
+          });
+        })
         .catch((e: Error) => {
+          this.eventsService.emitNotification({
+            type: NotificationType.error,
+            message: 'note.unpublish.failed',
+            error: e.message,
+          });
           this.logger.error('error.unpublish.cantDeleteNote', e.message);
         });
 
@@ -341,7 +389,7 @@ export class NoteService {
     });
   }
 
-  async findPublisedByPermalink(session: CSession, permalink: string) {
+  async findPublishedByPermalink(session: CSession, permalink: string) {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel
         .findOne({
@@ -441,6 +489,11 @@ export class NoteService {
       const items = await this.noteModel
         .aggregate([
           {
+            $match: {
+              isDeleted: { $ne: true }
+            }
+          },
+          {
             $project: {
               _id: '$_id',
               title: '$title',
@@ -505,11 +558,22 @@ export class NoteService {
         .then(() => {
           return this.noteModel.findByIdAndUpdate(note.id, {
             isDeleted: true,
-            isPublished: true,
+            isPublished: false,
           }).exec();
         })
+        .then(() => {
+          this.eventsService.emitNotification({
+            type: NotificationType.success,
+            message: 'note.softDelete.succeed'
+          });
+        })
         .catch((e: Error) => {
-          this.logger.error('error.soltDelete.cantDeleteNote', e.message);
+          this.eventsService.emitNotification({
+            type: NotificationType.error,
+            message: 'note.softDelete.failed',
+            error: e.message,
+          });
+          this.logger.error('error.softDelete.cantDeleteNote', e.message);
         });
 
       return note;

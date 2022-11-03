@@ -14,6 +14,7 @@ import ClassicEditor from '@linhx/ckeditor5-build';
 import { defineComponent } from 'vue';
 import { Data } from '../utilities/Editor';
 import FileRepository from '../repositories/FileRepository';
+import { API_URL } from '../constants';
 
 const ATTR_DATA_ID = 'data-id';
 const IMG_SELECTOR = `img[${ATTR_DATA_ID}]`;
@@ -43,7 +44,7 @@ export default defineComponent({
             }).then(res => {
               return {
                 ...res,
-                urls: { default: new URL(res.url, import.meta.env.VITE_APP_API_URL).href}
+                urls: { default: new URL(res.url, API_URL).href}
               }
             }).catch(() => {
               throw `Cannot upload file: ${ file.name }.`;

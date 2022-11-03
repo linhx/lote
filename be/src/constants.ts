@@ -4,6 +4,7 @@ import * as StringUtils from './utilites/StringUtils';
 export const PATH_NOTES = 'notes';
 export const PATH_NOTES_FILE = 'f';
 export const PATH_COMMENTS = 'comments';
+export const PATH_NOTIFICATION = 'notification';
 
 export const NOTE_FE_BASE_URL = process.env.NOTE_FE_BASE_URL;
 export const NOTE_FE_SOURCE_DIR = process.env.NOTE_FE_SOURCE_DIR;

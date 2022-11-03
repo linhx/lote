@@ -36,6 +36,7 @@
         <c-button variant="blue" class="ml-2" @click="preview" :disabled="isLoading">Preview</c-button>
         <c-button variant="green" class="ml-2" @click="publish" :disabled="isLoading">Publish</c-button>
         <c-button variant="red" class="ml-2" @click="unpublish" :disabled="isLoading">Unpublish</c-button>
+        <c-button variant="red" class="ml-2" @click="softDelete" :disabled="isLoading">Delete (soft)</c-button>
         <c-button variant="red" class="ml-2" @click="hardDelete" :disabled="isLoading">Delete</c-button>
       </div>
     </div>
@@ -194,7 +195,7 @@ export default defineComponent({
         .then(() => {
           this.isLoading = false;
           window.removeEventListener('beforeunload', warningUnsave);
-          this.$router.push(ROUTES_NAME.NOTES);
+          this.$router.push({ name: ROUTES_NAME.NOTES });
         }).catch((e: Error) => {
           this.isLoading = false;
           alert(e.message);

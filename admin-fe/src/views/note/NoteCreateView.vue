@@ -109,7 +109,6 @@ export default defineComponent({
         this.isLoading = true;
         const banner = await this.uploadNoteBanner();
         const data: Data = (<any>this.$refs.editor).getData();
-        console.log('data',data);
         await NoteRepository.create({
           ...this.note,
           banner,

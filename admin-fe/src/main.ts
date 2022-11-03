@@ -1,12 +1,13 @@
 import { createApp } from 'vue';
 import App from './App.vue';
+import router from './router';
+import IdMixin from './mixins/IdMixin';
+import i18n from './i18n';
 import './assets/css/preflight.css';
 import './assets/css/index.css';
 import './assets/css/fonts.css';
 import './assets/css/editor-theme.css';
 import './assets/css/emoji.css';
-import router from './router';
-import IdMixin from './mixins/IdMixin';
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
@@ -18,4 +19,5 @@ declare module '@vue/runtime-core' {
 const app = createApp(App);
 app.use(router);
 app.mixin(IdMixin);
+app.use(i18n);
 app.mount('#app');

@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <div class="body pl-5 text-left space-y-1 w-full">
+    <div class="body text-left space-y-1 w-full">
       <div>
         <prefetch-link class="text-lg sm:text-xl md:text-2xl font-semibold text-sky-500 inline-block" :to="'/' + note.permalink">{{ note.title }}</prefetch-link>
       </div>

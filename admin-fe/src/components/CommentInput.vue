@@ -6,7 +6,6 @@ const emit = defineEmits<{
   (e: 'post', value: { content: string; }): void,
 }>();
 const content = ref('');
-const nameRef = ref<HTMLElement>();
 const onSend = () => {
   emit('post', {
     content: content.value
