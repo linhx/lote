@@ -51,30 +51,30 @@ export default defineComponent({
             });
           }
         },
-      },
-      image: {
-        resizeOptions: [
-          {
-            name: 'resizeImage:original',
-            label: 'Original',
-            value: null
-          },
-          {
-            name: 'resizeImage:50',
-            label: '50%',
-            value: '50'
-          },
-          {
-            name: 'resizeImage:75',
-            label: '75%',
-            value: '75'
-          },
-          {
-            name: 'resizeImage:100',
-            label: '100%',
-            value: '100'
-          }
-        ],
+        image: {
+          resizeOptions: [
+            {
+              name: 'resizeImage:original',
+              label: 'Original',
+              value: null
+            },
+            {
+              name: 'resizeImage:50',
+              label: '50%',
+              value: '50'
+            },
+            {
+              name: 'resizeImage:75',
+              label: '75%',
+              value: '75'
+            },
+            {
+              name: 'resizeImage:100',
+              label: '100%',
+              value: '100'
+            }
+          ],
+        },
       }
     };
   },
