@@ -29,7 +29,7 @@ Linhx's note
 ### Run
 
 ```shell
-sudo docker-compose up
+sudo docker compose -f ./docker-compose.dev.yml up
 ```
 
 ### Init mongo

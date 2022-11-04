@@ -47,7 +47,7 @@ export default defineComponent({
       this.note = res;
     });
     NoteRepository.getContentPreview(this.id).then(res => {
-      (<HTMLElement>this.$refs.content).innerHTML = res;
+      (<HTMLElement>this.$refs.content).innerHTML = res.content;
     });
   }
 })
