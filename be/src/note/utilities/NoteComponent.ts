@@ -118,6 +118,9 @@ export default defineComponent({
   $tocLinks: null,
   $headerLinks: null,
   mounted() {
+    setTimeout(() => {
+      document.getElementById(this.$route.hash?.substring(1))?.scrollIntoView();
+    }, 100);
     const $headings = this.$refs.content.querySelectorAll('.heading');
     this.$tocLinks = this.$refs.toc.querySelectorAll('a');
     this.$headerLinks = this.$refs.content.querySelectorAll('.heading > a.heading-lnk');
@@ -175,7 +178,7 @@ export default defineComponent({
     }
     window.addEventListener('scroll', this.$activateToc);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener('scroll', this.$activateToc);
   },
 })
