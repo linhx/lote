@@ -18,15 +18,31 @@
 }
 
 .note__toc {
+  word-wrap: break-word;
   position: sticky;
   top: 200px;
-  width: 360px;
   float: right;
-  margin-right: -420px;
   height: 65vh;
   display: flex;
   flex-direction: column;
+  display: none;
 }
+@media (min-width: 1366px) {
+  .note__toc {
+    display: block;
+    width: 200px;
+    margin-right: -250px;
+    word-wrap: break-word;
+  }
+}
+@media (min-width: 1536px) {
+  .note__toc {
+    display: block;
+    width: 360px;
+    margin-right: -420px;
+  }
+}
+
 .note__toc > div {
   max-height: 65vh;
   overflow-y: auto;
