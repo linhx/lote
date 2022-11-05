@@ -24,7 +24,7 @@ import * as NoteComponent from './utilities/NoteComponent';
 import * as ArrayUtils from '../utilites/ArrayUtils';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
 import * as FileUtils from '../utilites/FileUtils';
-import { highlightCodeBlock } from './utilities/highlight-code-block';
+import { formatContent } from './utilities/NoteComponent';
 
 @Injectable()
 export class NoteService {
@@ -523,7 +523,7 @@ export class NoteService {
         throw new Error('error.note.preview.notfound');
       }
 
-      return highlightCodeBlock(note.content);
+      return formatContent(note.content);
     });
   }
 }

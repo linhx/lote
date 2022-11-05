@@ -1,10 +1,6 @@
 <template>
   <div ref="editor" class="c-editor border border-gray-300 rounded-md">
-    <ckeditor
-      :editor="editor"
-      :config="editorConfig"
-      @ready="onEditorReady"
-    ></ckeditor>
+    <ckeditor :editor="editor" :config="editorConfig" @ready="onEditorReady"></ckeditor>
   </div>
 </template>
 
@@ -43,37 +39,90 @@ export default defineComponent({
             }).then(res => {
               return {
                 ...res,
-                urls: { default: new URL(res.url, import.meta.env.VITE_APP_API_URL).href}
+                urls: { default: new URL(res.url, import.meta.env.VITE_APP_API_URL).href }
               }
             }).catch(() => {
-              throw `Cannot upload file: ${ file.name }.`;
+              throw `Cannot upload file: ${file.name}.`;
             });
           }
         },
-      },
-      image: {
-        resizeOptions: [
-          {
-            name: 'resizeImage:original',
-            label: 'Original',
-            value: null
-          },
-          {
-            name: 'resizeImage:50',
-            label: '50%',
-            value: '50'
-          },
-          {
-            name: 'resizeImage:75',
-            label: '75%',
-            value: '75'
-          },
-          {
-            name: 'resizeImage:100',
-            label: '100%',
-            value: '100'
-          }
-        ],
+        image: {
+          resizeOptions: [
+            {
+              name: 'resizeImage:original',
+              label: 'Original',
+              value: null
+            },
+            {
+              name: 'resizeImage:50',
+              label: '50%',
+              value: '50'
+            },
+            {
+              name: 'resizeImage:75',
+              label: '75%',
+              value: '75'
+            },
+            {
+              name: 'resizeImage:100',
+              label: '100%',
+              value: '100'
+            }
+          ],
+        },
+        heading: {
+          options: [
+            { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+            {
+              model: 'heading1', view: {
+                name: 'h1',
+                attributes: {
+                  class: 'heading',
+                }
+              }, title: 'Heading 1', class: 'ck-heading_heading1'
+            },
+            {
+              model: 'heading2', view: {
+                name: 'h2',
+                attributes: {
+                  class: 'heading',
+                }
+              }, title: 'Heading 2', class: 'ck-heading_heading2'
+            },
+            {
+              model: 'heading3', view: {
+                name: 'h3',
+                attributes: {
+                  class: 'heading',
+                }
+              }, title: 'Heading 3', class: 'ck-heading_heading3'
+            },
+            {
+              model: 'heading4', view: {
+                name: 'h4',
+                attributes: {
+                  class: 'heading',
+                }
+              }, title: 'Heading 4', class: 'ck-heading_heading4'
+            },
+            {
+              model: 'heading5', view: {
+                name: 'h5',
+                attributes: {
+                  class: 'heading',
+                }
+              }, title: 'Heading 5', class: 'ck-heading_heading5'
+            },
+            {
+              model: 'heading6', view: {
+                name: 'h6',
+                attributes: {
+                  class: 'heading',
+                }
+              }, title: 'Heading 6', class: 'ck-heading_heading6'
+            },
+          ]
+        },
       }
     };
   },
@@ -189,9 +238,7 @@ export default defineComponent({
   margin-top: 0;
 }
 
-.c-editor
-  ::v-deep(.ck.ck-content > p, .ck.ck-content > ul, .ck.ck-content
-    > ol, .ck.ck-content > blockquote, .ck.ck-content > pre) {
+.c-editor ::v-deep(.ck.ck-content > p, .ck.ck-content > ul, .ck.ck-content > ol, .ck.ck-content > blockquote, .ck.ck-content > pre) {
   margin-bottom: var(--ck-spacing-large);
 }
 </style>

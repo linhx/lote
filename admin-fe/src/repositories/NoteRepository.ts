@@ -31,7 +31,7 @@ export default {
   delete(id: string) {
     return api.delete('notes/h/' + id);
   },
-  getContentPreview(id: string): Promise<string> {
+  getContentPreview(id: string): Promise<{ content: string; tableOfContents: string }> {
     return api.get(`notes/${id}/preview`);
   },
   redeployFe() {

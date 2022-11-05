@@ -474,6 +474,23 @@
 .ck.ck-content h3 {
   @apply text-lg;
 }
+.ck.ck-content .heading > a {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  opacity: 0;
+  @apply text-sky-500;
+}
+.ck.ck-content .heading:hover > a {
+  opacity: 1;
+  text-decoration: none;
+}
+.ck.ck-content .anchor {
+  display: block;
+  position: relative;
+  top: -85px;
+  visibility: hidden;
+}
 
 .ck.ck-content ul {
   margin: revert;

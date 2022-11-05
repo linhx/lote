@@ -9,20 +9,73 @@
   border-top-width: 1px;
   @apply m-0 border-gray-300;
 }
-.note__published_date {
+.note__published-date {
   @apply text-right text-gray-600 text-sm;
 }
 
-.note__content_wrapper {
+.note__content-wrapper {
   @apply border-0;
+}
+
+.note__toc {
+  position: sticky;
+  top: 200px;
+  width: 360px;
+  float: right;
+  margin-right: -420px;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+}
+.note__toc > div {
+  max-height: 65vh;
+  overflow-y: auto;
+  border-left: 2px solid gray;
+  padding-left: 16px;
+
+}
+.note__toc > div:hover a {
+  opacity: 1;
+}
+.note__toc > div::-webkit-scrollbar {
+  width: 4px;
+  background-color: #ccc;
+}
+.note__toc a {
+  line-height: 1.5em;
+  opacity: .25;
+  transition: opacity .24s ease;
+  @apply text-slate-800;
+}
+.note__toc a.active {
+  font-weight: bold;
+  opacity: 1;
+}
+.note__toc a.note__toc__item {
+  display: block;
+}
+.note__toc a.note__toc__level_2 {
+  @apply ml-4;
+}
+.note__toc a.note__toc__level_3 {
+  @apply ml-8;
+}
+.note__toc a.note__toc__level_4 {
+  @apply ml-12;
+}
+.note__toc a.note__toc__level_5 {
+  @apply ml-16;
+}
+.note__toc a.note__toc__level_6 {
+  @apply ml-20;
 }
 
 .note__tags {
   @apply mt-5;
 }
-.note__tags_label {
+.note__tags-label {
   @apply font-bold text-xl;
 }
-.note__comment_wrapper {
+.note__comment-wrapper {
   @apply mt-4;
 }
