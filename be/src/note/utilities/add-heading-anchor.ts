@@ -29,7 +29,7 @@ export type TableOfContentItem = {
 export const addHeadingAnchor = (contentStr: string) => {
   const tableOfContents: Array<TableOfContentItem> = [];
   const headings = new Map<string, number>();
-  const content = contentStr.replace(HEADING_BLOCK, (match, otherAttrs, headingLevel, content) => {
+  const content = contentStr.replace(HEADING_BLOCK, (match, headingLevel, otherAttrs, content) => {
     const dom = JSDOM.fragment(match);
 
     const contentText = naiveInnerText(dom);
