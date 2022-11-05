@@ -99,6 +99,9 @@ export default defineComponent({
   },
 
   methods: {
+    getTocItemById(id) {
+      return this.$refs.toc.querySelector(\`a[href="#\${id}"]\`);
+    },
     clearSelectedTocItems() {
       this.$tocLinks.forEach(a => this.clearSelectedTocItem(a));
     },
@@ -111,6 +114,11 @@ export default defineComponent({
     selectTocItem(item) {
       this.clearSelectedTocItems();
       this.setActiveTocItem(item);
+    },
+    selectTocItemById(id) {
+      const item = this.getTocItemById(id);
+      this.selectTocItem(item);
+      return item;
     }
   },
 
@@ -119,14 +127,18 @@ export default defineComponent({
   $headerLinks: null,
   mounted() {
     setTimeout(() => {
-      document.getElementById(this.$route.hash?.substring(1))?.scrollIntoView();
+      const id = this.$route.hash?.substring(1);
+      if (id) {
+        document.getElementById(id)?.scrollIntoView();
+        this.clickedTocItem = this.getTocItemById(id);
+      }
     }, 100);
     const $headings = this.$refs.content.querySelectorAll('.heading');
     this.$tocLinks = this.$refs.toc.querySelectorAll('a');
     this.$headerLinks = this.$refs.content.querySelectorAll('.heading > a.heading-lnk');
     this.$headerLinks.forEach($headerLink => $headerLink.addEventListener('click', (evt) => {
       const id = evt.target.nextSibling.getAttribute('id');
-      const $clickedTocItem = this.$refs.toc.querySelector(\`a[href="#\${id}"]\`);
+      const $clickedTocItem = this.getTocItemById(id);
       $clickedTocItem.click();
     }));
     this.$tocLinks.forEach($tocLink => $tocLink.addEventListener('click', (evt) => {
@@ -139,7 +151,6 @@ export default defineComponent({
     }));
 
     let timer: number | null = null;
-    let $activeTocItem;
     this.$activateToc = () => {
       if (!this.$refs.toc) {
         return;
@@ -148,30 +159,26 @@ export default defineComponent({
       if(timer !== null) {
         clearTimeout(timer);
       }
+      // this is for auto set active class when scrolling
       for (let i = 0; i < $headings.length; i++) {
         const $heading = $headings[i];
         if ($heading.getBoundingClientRect().top > 100) {
           if (i > 0) {
             const id = $headings[i - 1].children[1].getAttribute('id');
-            $activeTocItem = this.$refs.toc.querySelector(\`a[href="#\${id}"]\`);
-            this.selectTocItem($activeTocItem);
+            this.selectTocItemById(id);
             break;
           }
-        } else 
+        } else
         if (i === $headings.length - 1) {
           const id = $heading.children[1].getAttribute('id');
-          $activeTocItem = this.$refs.toc.querySelector(\`a[href="#\${id}"]\`);
-          this.selectTocItem($activeTocItem);
+          this.selectTocItemById(id);
         }
       }
-      // when scrolling has stopped
-      timer = setTimeout(() => {
+      // this is for setting active class when click TOC item
+      timer = setTimeout(() => { // when scrolling has stopped
         this.hasScrolled = false;
         if (this.clickedTocItem) {
-          if ($activeTocItem) {
-            this.clearSelectedTocItem($activeTocItem);
-          }
-          this.setActiveTocItem(this.clickedTocItem);
+          this.selectTocItem(this.clickedTocItem);
           this.clickedTocItem = undefined;
         }
       }, 150);
