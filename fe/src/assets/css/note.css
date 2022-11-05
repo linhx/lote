@@ -1,3 +1,7 @@
+:root {
+  --toc-height: 65vh;
+}
+
 .note {
   @apply w-full;
 }
@@ -16,43 +20,39 @@
 .note__content-wrapper {
   @apply border-0;
 }
-.note__content-wrapper .ck.ck-content {
-  overflow: hidden; /* avoid image has clearboth */
-}
 
 .note__toc {
   word-wrap: break-word;
   position: sticky;
   top: 200px;
-  float: right;
-  height: 65vh;
   display: flex;
   flex-direction: column;
   display: none;
 }
 @media (min-width: 1366px) {
+  .note__toc > div {
+    max-height: var(--toc-height);
+    overflow-y: auto;
+    border-left: 2px solid gray;
+    padding-left: 16px;
+  }
+  .note__content-wrapper .ck.ck-content {
+    margin-top: calc(var(--toc-height) * -1);
+  }
   .note__toc {
     display: block;
     width: 200px;
-    margin-right: -250px;
-    word-wrap: break-word;
+    height: var(--toc-height);
+    margin-left: calc(100% + 40px);
   }
 }
 @media (min-width: 1536px) {
   .note__toc {
-    display: block;
     width: 360px;
-    margin-right: -420px;
+    margin-left: calc(100% + 50px);
   }
 }
 
-.note__toc > div {
-  max-height: 65vh;
-  overflow-y: auto;
-  border-left: 2px solid gray;
-  padding-left: 16px;
-
-}
 .note__toc > div:hover a {
   opacity: 1;
 }
