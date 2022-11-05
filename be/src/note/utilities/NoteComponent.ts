@@ -138,10 +138,13 @@ export default defineComponent({
     let timer: number | null = null;
     let $activeTocItem;
     this.$activateToc = () => {
+      if (!this.$refs.toc) {
+        return;
+      }
+      this.hasScrolled = true;
       if(timer !== null) {
         clearTimeout(timer);
       }
-      this.hasScrolled = true;
       for (let i = 0; i < $headings.length; i++) {
         const $heading = $headings[i];
         if ($heading.getBoundingClientRect().top > 100) {

@@ -16,6 +16,9 @@
 .note__content-wrapper {
   @apply border-0;
 }
+.note__content-wrapper .ck.ck-content {
+  overflow: hidden; /* avoid image has clearboth */
+}
 
 .note__toc {
   word-wrap: break-word;
