@@ -108,6 +108,10 @@ export default defineComponent({
     setActiveTocItem(item) {
       item.classList.add('active');
     },
+    selectTocItem(item) {
+      this.clearSelectedTocItems();
+      this.setActiveTocItem(item);
+    }
   },
 
   $activateToc: null,
@@ -126,8 +130,7 @@ export default defineComponent({
       this.clickedTocItem = evt.target;
       setTimeout(() => {
         if (!this.hasScrolled) {
-          this.clearSelectedTocItems();
-          this.setActiveTocItem(evt.target);
+          this.selectTocItem(evt.target);
         }
       }, 145);
     }));
@@ -143,12 +146,16 @@ export default defineComponent({
         const $heading = $headings[i];
         if ($heading.getBoundingClientRect().top > 100) {
           if (i > 0) {
-            this.clearSelectedTocItems();
             const id = $headings[i - 1].children[1].getAttribute('id');
             $activeTocItem = this.$refs.toc.querySelector(\`a[href="#\${id}"]\`);
-            this.setActiveTocItem($activeTocItem);
+            this.selectTocItem($activeTocItem);
             break;
           }
+        } else 
+        if (i === $headings.length - 1) {
+          const id = $heading.children[1].getAttribute('id');
+          $activeTocItem = this.$refs.toc.querySelector(\`a[href="#\${id}"]\`);
+          this.selectTocItem($activeTocItem);
         }
       }
       // when scrolling has stopped
