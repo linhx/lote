@@ -179,6 +179,7 @@ export default defineComponent({
     window.addEventListener('scroll', this.$activateToc);
   },
   beforeUnmount() {
+    this.clearSelectedTocItems(); // vue cache the pure element
     window.removeEventListener('scroll', this.$activateToc);
   },
 })
