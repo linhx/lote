@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { convertFreeTextToKebabCase } from './string-utils';
 
-const HEADING_BLOCK = /<h(\d{1}) class=\"heading\">(.+?)<\/h\d{1}>/gs;
+const HEADING_BLOCK = /<h(\d{1}) class=\"heading\"(.*?)>(.+?)<\/h\d{1}>/gs;
 const LINK_ICON = '#';
 
 function naiveInnerText(node: Node) {
@@ -29,7 +29,7 @@ export type TableOfContentItem = {
 export const addHeadingAnchor = (contentStr: string) => {
   const tableOfContents: Array<TableOfContentItem> = [];
   const headings = new Map<string, number>();
-  const content = contentStr.replace(HEADING_BLOCK, (match, headingLevel, content) => {
+  const content = contentStr.replace(HEADING_BLOCK, (match, otherAttrs, headingLevel, content) => {
     const dom = JSDOM.fragment(match);
 
     const contentText = naiveInnerText(dom);
@@ -50,7 +50,7 @@ export const addHeadingAnchor = (contentStr: string) => {
       id: id,
       content,
     });
-    return `<h${headingLevel} class="heading"><a class="heading-lnk" href="#${id}">${LINK_ICON}</a><span id="${id}" class="anchor"></span>${content}</h${headingLevel}>`;
+    return `<h${headingLevel} class="heading"${otherAttrs}><a class="heading-lnk" href="#${id}">${LINK_ICON}</a><span id="${id}" class="anchor"></span>${content}</h${headingLevel}>`;
   });
 
   return {
