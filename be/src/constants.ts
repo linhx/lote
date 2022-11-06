@@ -11,7 +11,7 @@ export const NOTE_PUBLISH_DIR = process.env.NOTE_PUBLISH_DIR;
 export const SINGLE_NOTE_PUBLISH_DIR = process.env.SINGLE_NOTE_PUBLISH_DIR;
 export const PUBLISH_SCRIPT = process.env.PUBLISH_SCRIPT;
 export const DEPLOY_NOTE_SCRIPT = process.env.DEPLOY_NOTE_SCRIPT;
-export const UNPULISH_NOTE_SCRIPT = process.env.UNPULISH_NOTE_SCRIPT;
+export const UNPUBLISH_NOTE_SCRIPT = process.env.UNPULISH_NOTE_SCRIPT;
 export const DEPLOY_FE_SCRIPT = process.env.DEPLOY_FE_SCRIPT;
 export const DEPLOY_NOTES_SCRIPT = process.env.DEPLOY_NOTES_SCRIPT;
 

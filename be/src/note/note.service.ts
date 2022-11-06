@@ -13,7 +13,7 @@ import { CSession, Db } from '../common/db';
 import {
   NOTE_PUBLISH_DIR,
   DEPLOY_NOTE_SCRIPT,
-  UNPULISH_NOTE_SCRIPT,
+  UNPUBLISH_NOTE_SCRIPT,
   SINGLE_NOTE_PUBLISH_DIR,
   DEPLOY_NOTES_SCRIPT,
   DEPLOY_FE_SCRIPT,
@@ -245,7 +245,7 @@ export class NoteService {
   }
 
   /**
-   * create Vue component file to the frontend project. and copy images to the frontend project
+   * create Vue component file to the frontend project.
    */
   async publish(session: CSession, note: NoteDocument) {
     return this.db.withTransaction(session, async (_session) => {
@@ -261,8 +261,6 @@ export class NoteService {
 
       // save note component
       this.saveNoteComponent(note);
-
-      // TODO remove unused image
 
       await note.save();
 
@@ -289,9 +287,9 @@ export class NoteService {
     FileUtils.unlinkSyncSilentEnoent(file);
 
     return new Promise((resolve, reject) => {
-      if (UNPULISH_NOTE_SCRIPT) {
+      if (UNPUBLISH_NOTE_SCRIPT) {
         exec(
-          `${UNPULISH_NOTE_SCRIPT} "${note.permalink}"`,
+          `${UNPUBLISH_NOTE_SCRIPT} "${note.permalink}"`,
           (error, stdout, stderr) => {
             if (error) {
               this.logger.error(`error: ${error.message}`);
@@ -341,7 +339,7 @@ export class NoteService {
     });
   }
 
-  async findPublisedByPermalink(session: CSession, permalink: string) {
+  async findPublishedByPermalink(session: CSession, permalink: string) {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel
         .findOne({
@@ -509,7 +507,7 @@ export class NoteService {
           }).exec();
         })
         .catch((e: Error) => {
-          this.logger.error('error.soltDelete.cantDeleteNote', e.message);
+          this.logger.error('error.softDelete.cantDeleteNote', e.message);
         });
 
       return note;

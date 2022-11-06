@@ -73,7 +73,7 @@ export class CommentService {
     dto: CommentCreateDto,
   ) {
     return this.db.withTransaction(session, async (_session) => {
-      const note = await this.noteService.findPublisedByPermalink(
+      const note = await this.noteService.findPublishedByPermalink(
         _session,
         permalink,
       );

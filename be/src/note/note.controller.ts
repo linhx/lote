@@ -45,7 +45,7 @@ export class NoteController {
   @Public()
   @Get('l/:permalink')
   async getPublisedByPermalink(@Param('permalink') permalink: string) {
-    const entity = await this.noteService.findPublisedByPermalink(
+    const entity = await this.noteService.findPublishedByPermalink(
       null,
       permalink,
     );
