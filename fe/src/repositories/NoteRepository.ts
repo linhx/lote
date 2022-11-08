@@ -3,6 +3,7 @@ import NotePreviewDto from '../dtos/NotePreviewDto';
 import api from './Api'
 import ReqNoteFilterDto from '../dtos/ReqNoteFilterDto';
 import NoteDto from '../dtos/NoteDto';
+import axios from 'axios';
 
 export default {
   getList(filter: ReqNoteFilterDto): Promise<PageDto<NotePreviewDto>> {
@@ -15,7 +16,7 @@ export default {
     return api.get('notes/l/' + permalink);
   },
 
-  getContent(permalink: string): Promise<string> {
-    return api.get(`notes/f/${permalink}/index.html`)
+  getContentHTMLByPermalink(permalink: string): Promise<string> {
+    return axios.get(`/notes/${permalink}`).then(res => res.data as string);
   }
 }

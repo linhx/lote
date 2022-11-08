@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { removeObserver } from './router/preFetch';
 import Header from './components/Header.vue';
-
-removeObserver();
 </script>
 
 <template>

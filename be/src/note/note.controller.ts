@@ -8,7 +8,6 @@ import {
   Param,
   Post,
   Query,
-  Res,
 } from '@nestjs/common';
 import { SkipThrottle } from '@nestjs/throttler';
 import { Public } from 'src/auth/sso.strategy';
@@ -17,9 +16,7 @@ import NoteFilterListDto from './dtos/request/NoteFilterListDto';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
 import PublicNoteDto from './dtos/response/PublicNoteDto';
 import { NoteService } from './note.service';
-import * as path from 'path';
-import { Response } from 'express';
-import { NOTE_PUBLISH_DIR, PATH_NOTES, PATH_NOTES_FILE } from 'src/constants';
+import { PATH_NOTES } from 'src/constants';
 import { Cache } from 'cache-manager';
 import NoteDto from './dtos/response/NoteDto';
 
@@ -58,19 +55,9 @@ export class NoteController {
     return NoteDto.fromEntityWithoutContent(newNote);
   }
 
-  @Post('redeploy-fe')
-  async redeployFe() {
-    return this.noteService.deployFe();
-  }
-
-  @Post('redeploy-notes')
-  async redeployNotes() {
-    return this.noteService.publishNotes();
-  }
-
-  @Post('recreate-and-deploy-notes')
-  async recreateAndDeployNotes() {
-    this.noteService.recreateAndPublishNotes(null);
+  @Post('republish-notes')
+  async republishAllNotes() {
+    return this.noteService.republishAllNotes(null);
   }
 
   @Get('/:id')
@@ -92,35 +79,6 @@ export class NoteController {
   @Post('unpublish/:id')
   async unpublish(@Param('id') id: string) {
     return this.noteService.unpublishById(null, id);
-  }
-
-  @Public()
-  @Get(`${PATH_NOTES_FILE}/:permalink/:file(*)`)
-  async static(
-    @Param('permalink') permalink: string,
-    @Param('file') filePath: string,
-    @Res() res: Response,
-  ) {
-    let isPublished = await this.cacheManager.get<boolean>(permalink);
-    if (isPublished === null || isPublished === undefined) {
-      isPublished = await this.noteService.existsPublishedByPermalink(
-        null,
-        permalink,
-      );
-      await this.cacheManager.set(permalink, isPublished, { ttl: 20 });
-    }
-    if (!isPublished) {
-      res.sendStatus(404);
-    } else {
-      res.sendFile(
-        path.join(NOTE_PUBLISH_DIR, permalink, filePath),
-        (err: any) => {
-          if (err) {
-            res.sendStatus(404);
-          }
-        },
-      );
-    }
   }
 
   @Delete('h/:id')

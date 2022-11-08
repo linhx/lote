@@ -3,15 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build-fe": "BUILD_MODE=build vue-tsc --noEmit && vite build",
-    "build": "npm run build-fe && vite --config note.vite.config.ts build --emptyOutDir=false",
-    "build-notes": "BUILD_MODE=build-notes vite --config note.vite.config.ts build",
-    "build-single-note": "BUILD_MODE=build-single-note vite --config note.vite.config.ts build",
-    "deploy": "npm run build && node ./bin/deploy",
-    "deploy-fe": "npm run build-fe && node ./bin/deploy-fe",
-    "deploy-notes": "npm run build-notes && node ./bin/deploy-notes",
-    "deploy-single-note": "npm run build-single-note && node ./bin/deploy-note",
-    "delete-note": "node ./bin/delete-note",
+    "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
   "dependencies": {
@@ -28,8 +20,6 @@
     "@types/node": "^16.11.4",
     "@vitejs/plugin-vue": "^3.2.0",
     "autoprefixer": "^10.4.13",
-    "chokidar": "^3.5.3",
-    "fs-extra": "^10.1.0",
     "postcss": "^8.4.18",
     "tailwindcss": "^3.2.1",
     "typescript": "^4.6.4",

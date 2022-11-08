@@ -34,13 +34,7 @@ export default {
   getContentPreview(id: string): Promise<{ content: string; tableOfContents: string }> {
     return api.get(`notes/${id}/preview`);
   },
-  redeployFe() {
-    return api.post(`notes/redeploy-fe`);
+  republishAllNotes() {
+    return api.post(`notes/republish-notes`);
   },
-  redeployOnlyNotes() {
-    return api.post(`notes/redeploy-notes`);
-  },
-  recreateAndDeployNotes() {
-    return api.post(`notes/recreate-and-deploy-notes`);
-  }
 }

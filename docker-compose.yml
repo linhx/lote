@@ -38,6 +38,7 @@ services:
       - ./data-deploy/fe/published-notes:/apps/fe/notes
     environment:
       - BE_FILE_DIR=/apps/data/be-files
+      - FE_DEPLOY_DIR=/apps/fe-deploy
       - VITE_APP_API_URL=${BE_API_URL}
       - VITE_APP_RECAPTCHA_SITE_KEY=${RECAPTCHA_SITE_KEY}
       - VITE_APP_DEPLOY_DIR=/apps/fe-deploy

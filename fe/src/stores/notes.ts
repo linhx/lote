@@ -7,6 +7,8 @@ export type NoteStore = {
   notes?: PageDto<NotePreviewDto>;
   fetched: boolean;
   tagNotes?: PageDto<NotePreviewDto> & { tag?: string };
+  cacheNotesContentHTML: Map<string, string>;
+  cacheNotesContentArray: Array<string>;
 };
 
 const defaultNotes = {
@@ -21,7 +23,9 @@ export const useNotesStore = defineStore('notes', {
       notes: defaultNotes,
       fetched: false,
 
-      tagNotes: defaultNotes
+      tagNotes: defaultNotes,
+      cacheNotesContentHTML: new Map(),
+      cacheNotesContentArray: [],
     };
   },
   actions: {
@@ -52,6 +56,23 @@ export const useNotesStore = defineStore('notes', {
         this.tagNotes = res;
         this.tagNotes.tag = tag;
       });
+    },
+
+    async getContentHTMLByPermalink(permalink: string) {
+      const contentHTML = this.cacheNotesContentHTML.get(permalink);
+      if (contentHTML) {
+        return contentHTML;
+      }
+
+      const newContentHTML = await NoteRepository.getContentHTMLByPermalink(permalink + '.html');
+      if (this.cacheNotesContentArray.length >= 10) {
+        const shiftItem = this.cacheNotesContentArray.shift();
+        if (shiftItem) {
+          this.cacheNotesContentHTML.delete(shiftItem);
+        }
+      }
+      this.cacheNotesContentArray.push(permalink);
+      this.cacheNotesContentHTML.set(permalink, newContentHTML);
     }
   },
 });

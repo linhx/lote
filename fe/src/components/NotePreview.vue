@@ -1,8 +1,32 @@
+<script setup lang="ts">
+import TagLink from './TagLink.vue';
+import NotePreviewDto from '../dtos/NotePreviewDto';
+import { computed } from 'vue';
+import { useNotesStore } from '../stores/notes';
+const noteStore = useNotesStore();
+const {
+  note,
+} = defineProps<{
+  note: NotePreviewDto,
+}>();
+
+const publishedDate = computed(() => new Date(note.publishedAt).toLocaleDateString('vi-VN'));
+
+const prefetchNoteContent = () => {
+  noteStore.getContentHTMLByPermalink(note.permalink);
+}
+</script>
+
 <template>
   <div class="flex">
     <div class="body pl-5 text-left space-y-1 w-full">
       <div>
-        <prefetch-link class="text-lg sm:text-xl md:text-2xl font-semibold text-sky-500 inline-block" :to="'/' + note.permalink">{{ note.title }}</prefetch-link>
+        <router-link
+          class="text-lg sm:text-xl md:text-2xl font-semibold text-sky-500 inline-block"
+          :to="{ name: 'NoteView', params: { permalink: note.permalink } }"
+          @mouseover="prefetchNoteContent"
+          @focusin="prefetchNoteContent"
+        >{{ note.title }}</router-link>
       </div>
       <div class="font-light whitespace-pre-wrap w-full">
         <div class="text-sm md:text-base line-clamp-2">{{ note.overview }}</div>
@@ -14,26 +38,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import NotePreviewDto from '../dtos/NotePreviewDto';
-import TagLink from './TagLink.vue';
-
-export default defineComponent({
-  components: {
-    TagLink
-  },
-  props: {
-    note: {
-      type: Object as PropType<NotePreviewDto>,
-      required: true
-    },
-  },
-  computed: {
-    publishedDate() {
-      return new Date(this.note.publishedAt).toLocaleDateString('vi-VN');
-    }
-  }
-});
-</script>
