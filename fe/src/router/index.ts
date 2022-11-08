@@ -3,70 +3,16 @@ import { PATHS_NAME } from '../constants/paths';
 import NotesTagView from '../views/NotesTagView.vue';
 import NotesView from '../views/NotesView.vue';
 import View404 from '../views/404.vue';
-import { permalinkToFile } from './preFetch';
-import * as InternetUtils from '../utilities/InternetUtils';
-import i18n from '../i18n';
 import { useStore } from '../stores';
+import NoteView from '../views/NoteView.vue';
 
 export async function create() {
-  const noteRoutes: RouteRecordRaw[] = [];
-
-  if (import.meta.env.PROD) {
-    for (const noteChunk in __VP_HASH_MAP__) {
-      const path = noteChunk;
-      const component = permalinkToFile(path);
-      if (component) {
-        noteRoutes.push({
-          path: '/' + path,
-          component() {
-            return import(/* @vite-ignore */ component).catch(async () => {
-              if (navigator.onLine) {
-                const isOnline = await InternetUtils.check();
-                if (isOnline) {
-                  return import(
-                    /* @vite-ignore */ component +
-                      '?v=' +
-                      new Date().toISOString()
-                  );
-                }
-              }
-              alert(i18n.global.t('error.lostInternet'));
-            });
-          },
-          props: { permalink: path },
-          meta: {
-            page: PATHS_NAME.NOTE,
-          },
-        });
-      }
-    }
-  } else 
-  if (import.meta.env.DEV) {
-    // development mode
-    type Note = {
-      [name: string]: any;
-    };
-    const notesDir = '../../notes';
-    const notes = (await import(/* @vite-ignore */ notesDir)).default;
-    for (const note in notes) {
-      noteRoutes.push({
-        path: '/' + note,
-        component: (<Note>notes)[note],
-        props: { permalink: note },
-        meta: {
-          page: PATHS_NAME.NOTE,
-        },
-      });
-    }
-  }
-
   const routes: RouteRecordRaw[] = [
     {
       path: '/',
       name: PATHS_NAME.NOTES,
       component: NotesView,
     },
-    ...noteRoutes,
     {
       path: '/tag/:tag',
       name: PATHS_NAME.NOTES_TAG,
@@ -74,7 +20,14 @@ export async function create() {
       props: (route) => ({ tag: route.params.tag }),
     },
     {
+      path: '/note/:permalink',
+      name: PATHS_NAME.NOTE,
+      component: NoteView,
+      props: (route) => ({ permalink: route.params.permalink }),
+    },
+    {
       path: '/:pathMatch(.*)*',
+      name: PATHS_NAME.VIEW_404,
       component: View404,
     },
   ];

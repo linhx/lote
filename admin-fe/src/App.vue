@@ -17,39 +17,17 @@ import NoteRepository from './repositories/NoteRepository';
 
 export default defineComponent({
   methods: {
-    redeployFe() {
-      var result = confirm("DANGER: Re-deploy the whole app?");
+    republishAllNotes() {
+      var result = confirm("DANGER: Re-publish all of the notes?");
       if (!result) {
         return;
       }
       // TODO show result
-      return NoteRepository.redeployFe();
-    },
-    redeployOnlyNotes() {
-      var result = confirm("DANGER: Re-deploy all of the notes?");
-      if (!result) {
-        return;
-      }
-      // TODO show result
-      return NoteRepository.redeployOnlyNotes();
-    },
-    recreateAndDeployNotes() {
-      var result = confirm("DANGER: Re-create and deploy all notes?");
-      if (!result) {
-        return;
-      }
-      // TODO show result
-      return NoteRepository.recreateAndDeployNotes();
+      return NoteRepository.republishAllNotes();
     },
     onClickMenu(item: string) {
-      if (item === 'redeploy') {
-        return this.redeployFe();
-      }
-      if (item === 'redeployNotes') {
-        return this.redeployOnlyNotes();
-      }
-      if (item === 'recreateAndDeployNotes') {
-        return this.recreateAndDeployNotes();
+      if (item === 'republishNotes') {
+        return this.republishAllNotes();
       }
     }
   }

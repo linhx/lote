@@ -95,6 +95,9 @@
 .note__tags-label {
   @apply font-bold text-xl;
 }
+.note__tags .tag {
+  @apply cursor-pointer;
+}
 .note__comment-wrapper {
   @apply mt-4;
 }

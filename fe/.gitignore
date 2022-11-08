@@ -8,4 +8,4 @@ dist-note
 # VS Code
 .vscode
 
-notes/index.ts
+public/notes
