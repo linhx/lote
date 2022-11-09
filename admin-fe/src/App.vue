@@ -1,5 +1,20 @@
 <script setup lang="ts">
 import NavBar from './components/NavBar.vue';
+import NoteRepository from './repositories/NoteRepository';
+
+const republishAllNotes = () => {
+  var result = confirm("DANGER: Re-publish all of the notes?");
+  if (!result) {
+    return;
+  }
+  // TODO show result
+  return NoteRepository.republishAllNotes();
+}
+const onClickMenu = (item: string) => {
+  if (item === 'republishNotes') {
+    return republishAllNotes();
+  }
+}
 </script>
 
 <template>
@@ -10,30 +25,6 @@ import NavBar from './components/NavBar.vue';
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-import NoteRepository from './repositories/NoteRepository';
-
-export default defineComponent({
-  methods: {
-    republishAllNotes() {
-      var result = confirm("DANGER: Re-publish all of the notes?");
-      if (!result) {
-        return;
-      }
-      // TODO show result
-      return NoteRepository.republishAllNotes();
-    },
-    onClickMenu(item: string) {
-      if (item === 'republishNotes') {
-        return this.republishAllNotes();
-      }
-    }
-  }
-})
-</script>
-
 
 <style>
 #app {
