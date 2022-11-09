@@ -23,7 +23,6 @@ ENV BE_DIR=/apps/be
 
 COPY --from=build-stage /apps/be/dist ${BE_DIR}/dist
 COPY --from=build-stage /apps/be/.env ${BE_DIR}/.env
-COPY --from=build-stage /apps/be/bin ${BE_DIR}/bin
 COPY --from=build-stage /apps/be/node_modules ${BE_DIR}/node_modules
 
 COPY ./fe ${FE_DIR}
