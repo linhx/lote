@@ -18,6 +18,7 @@ import * as NoteContentUtil from './utilities/note-content';
 import * as ArrayUtils from '../utilites/ArrayUtils';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
 import * as FileUtils from '../utilites/FileUtils';
+import { nanoid } from 'nanoid';
 @Injectable()
 export class NoteService {
   private readonly logger = new Logger(NoteService.name);
@@ -134,6 +135,7 @@ export class NoteService {
 
       note.isPublished = true;
       note.updatePublicationAt = new Date();
+      note.publishedVersion = nanoid(6);
       await note.save();
       return note;
     })

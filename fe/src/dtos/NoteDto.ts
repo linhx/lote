@@ -4,5 +4,4 @@ export default interface NoteDto {
   title: string;
   tags: string[];
   publishedAt: Date;
-  updatePublicationAt: Date;
 }

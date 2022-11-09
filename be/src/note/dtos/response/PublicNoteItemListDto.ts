@@ -7,7 +7,7 @@ export default class PublicNoteItemListDto {
   tags: string[];
   category: number;
   publishedAt: Date;
-  updatePublicationAt: Date;
+  publishedVersion: string;
 
   static fromEntity(entity: Note) {
     const dto = new PublicNoteItemListDto();
@@ -17,7 +17,7 @@ export default class PublicNoteItemListDto {
     dto.tags = entity.tags;
     dto.category = entity.category;
     dto.publishedAt = entity.publishedAt;
-    dto.updatePublicationAt = entity.updatePublicationAt;
+    dto.publishedVersion = entity.publishedVersion;
     return dto;
   }
 }

@@ -8,5 +8,5 @@ export default interface NotePreviewDto {
   category?: number;
   newCommentsCount: number;
   publishedAt: Date;
-  updatePublicationAt: Date;
+  publishedVersion?: string;
 }

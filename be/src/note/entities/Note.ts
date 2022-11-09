@@ -37,6 +37,9 @@ export class Note {
   publishedAt: Date;
 
   @Prop()
+  publishedVersion: string;
+
+  @Prop()
   updatePublicationAt: Date;
 
   @Prop({ default: false })

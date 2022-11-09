@@ -58,13 +58,13 @@ export const useNotesStore = defineStore('notes', {
       });
     },
 
-    async getContentHTMLByPermalink(permalink: string) {
+    async getContentHTMLByPermalink(permalink: string, v?: string) {
       const contentHTML = this.cacheNotesContentHTML.get(permalink);
       if (contentHTML) {
         return contentHTML;
       }
 
-      const newContentHTML = await NoteRepository.getContentHTMLByPermalink(permalink + '.html');
+      const newContentHTML = await NoteRepository.getContentHTMLByPermalink(permalink + '.html?v=' + (v || new Date().getTime()));
       if (this.cacheNotesContentArray.length >= 10) {
         const shiftItem = this.cacheNotesContentArray.shift();
         if (shiftItem) {

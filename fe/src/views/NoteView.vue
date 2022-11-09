@@ -117,7 +117,7 @@ const onClickTags = () => {
 
 const contentHTML = ref('');
 onBeforeMount(async () => {
-  await noteStore.getContentHTMLByPermalink(props.permalink).catch(e => {
+  await noteStore.getContentHTMLByPermalink(props.permalink, history.state.v).catch(e => {
     router.replace({
       name: PATHS_NAME.VIEW_404,
     });

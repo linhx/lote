@@ -13,7 +13,7 @@ const {
 const publishedDate = computed(() => new Date(note.publishedAt).toLocaleDateString('vi-VN'));
 
 const prefetchNoteContent = () => {
-  noteStore.getContentHTMLByPermalink(note.permalink);
+  noteStore.getContentHTMLByPermalink(note.permalink, note.publishedVersion);
 }
 </script>
 
@@ -23,7 +23,7 @@ const prefetchNoteContent = () => {
       <div>
         <router-link
           class="text-lg sm:text-xl md:text-2xl font-semibold text-sky-500 inline-block"
-          :to="{ name: 'NoteView', params: { permalink: note.permalink } }"
+          :to="{ name: 'NoteView', params: { permalink: note.permalink }, state: { v: note.publishedVersion } }"
           @mouseover="prefetchNoteContent"
           @focusin="prefetchNoteContent"
         >{{ note.title }}</router-link>
