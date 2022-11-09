@@ -403,7 +403,7 @@
   text-align: left;
   direction: ltr;
   tab-size: 4;
-  white-space: pre-wrap;
+  overflow-y: auto;
   font-style: normal;
 }
 /* ckeditor5-code-block/theme/codeblock.css */
