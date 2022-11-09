@@ -4,8 +4,8 @@ import { Model } from 'mongoose';
 import { CSession, Db } from '../common/db';
 import { CFile, CFileDocument } from './entities/CFile';
 import { Cron } from '@nestjs/schedule';
-import * as DateTimeUtils from '../utilites/DateTimeUtils';
-import * as FileUtils from '../utilites/FileUtils';
+import * as DateTimeUtils from '../utilities/DateTimeUtils';
+import * as FileUtils from '../utilities/FileUtils';
 import * as path from 'path';
 import { FILE_DIR, FILE_URL_PREFIX } from 'src/constants';
 

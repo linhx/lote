@@ -2,7 +2,7 @@ import PageDto from '../dtos/PageDto';
 import NoteItemListDto from '../dtos/NoteItemListDto';
 import api from './Api'
 import NoteCreateDto from '../dtos/NoteCreateDto';
-import ReqNoteFilterDto from '../dtos/ReqNoteFilterDto';
+import ReqNoteFilterDto from '../dtos/ReqTodayILearnedFilterDto';
 import NoteDto from '../dtos/NoteDto';
 import NoteUpdateDto from '../dtos/NoteUpdateDto';
 

@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import { convertFreeTextToKebabCase } from './string-utils';
+import { convertFreeTextToKebabCase } from '../StringUtils';
 
 const HEADING_BLOCK = /<h(\d{1}) class=\"heading\"(.*?)>(.+?)<\/h\d{1}>/gs;
 const LINK_ICON = '#';

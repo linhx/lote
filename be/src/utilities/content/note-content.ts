@@ -23,7 +23,7 @@ export const create = (
   note: { title: string; content: string; tags: string[]; publishedAt: Date; permalink: string },
 ) => {
   const tagsHTML = note.tags?.reduce((tags, tag) => tags + `<span class="tag">${tag}</span>`, '');
-  const publishedAt = note.publishedAt.toLocaleDateString();
+  const publishedAt = note.publishedAt.toLocaleDateString('vi-VN');
   const {
     content,
     tableOfContents,

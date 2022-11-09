@@ -12,11 +12,7 @@ export default {
     });
   },
 
-  getByPermalink(permalink: string): Promise<NoteDto> {
-    return api.get('notes/l/' + permalink);
-  },
-
   getContentHTMLByPermalink(permalink: string): Promise<string> {
-    return axios.get(`/notes/${permalink}`).then(res => res.data as string);
+    return axios.get(`${import.meta.env.VITE_APP_NOTES_HTML_PATH}/${permalink}`).then(res => res.data as string);
   }
 }

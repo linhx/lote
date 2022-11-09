@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import NavBar from './components/NavBar.vue';
 import NoteRepository from './repositories/NoteRepository';
+import TodayILearnedRepository from './repositories/TodayILearnedRepository';
 
 const republishAllNotes = () => {
   var result = confirm("DANGER: Re-publish all of the notes?");
@@ -10,9 +11,19 @@ const republishAllNotes = () => {
   // TODO show result
   return NoteRepository.republishAllNotes();
 }
+const republishAllTils = () => {
+  var result = confirm("DANGER: Re-publish all of the today-I-learneds?");
+  if (!result) {
+    return;
+  }
+  return TodayILearnedRepository.republishAll();
+}
 const onClickMenu = (item: string) => {
   if (item === 'republishNotes') {
     return republishAllNotes();
+  }
+  if (item === 'republishAllTodayILearneds') {
+    return republishAllTils();
   }
 }
 </script>
