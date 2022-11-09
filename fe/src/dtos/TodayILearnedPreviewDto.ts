@@ -5,5 +5,5 @@ export default interface ReqTodayILearnedFilterDto {
   tags: string[];
   category?: number;
   publishedAt: Date;
-  updatePublicationAt: Date;
+  publishedVersion: string;
 }

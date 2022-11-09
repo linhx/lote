@@ -6,19 +6,19 @@
           <c-input v-model="todayILearned.title" name="title" @change="onChangeTitle" />
         </c-field>
       </div>
-      <div class="mt-5 md:mt-0 md:col-span-1">
+      <div class="mt-5 md:mt-0 md:col-span-2">
         <c-field label="Permalink">
           <c-input v-model="todayILearned.permalink" name="permalink" />
+        </c-field>
+      </div>
+      <div class="mt-5 md:mt-0 md:col-span-1">
+        <c-field label="Tags">
+          <c-tag-input v-model="todayILearned.tags"></c-tag-input>
         </c-field>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-3 w-full max-w-3xl mx-auto">
         <c-field label="Content">
           <c-editor v-if="isFetched" ref="editor" :model-value="todayILearned.content" class="-mx-4"></c-editor>
-        </c-field>
-      </div>
-      <div class="mt-5 md:mt-0 md:col-span-2">
-        <c-field label="Tags">
-          <c-tag-input v-model="todayILearned.tags"></c-tag-input>
         </c-field>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-3 items-center">

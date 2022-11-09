@@ -14,7 +14,7 @@ import {
 } from 'src/constants';
 import BusinessError from 'src/exceptions/BusinessError';
 import { FileService } from '../file/file.service';
-import * as NoteContentUtil from './utilities/note-content';
+import * as NoteContentUtil from '../utilities/content/note-content';
 import * as ArrayUtils from '../utilities/ArrayUtils';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
 import * as FileUtils from '../utilities/FileUtils';

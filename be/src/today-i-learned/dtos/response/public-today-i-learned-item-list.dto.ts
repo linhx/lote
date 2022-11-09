@@ -6,7 +6,7 @@ export default class PublicTodayILearnedItemListDto {
   tags: string[];
   category: number;
   publishedAt: Date;
-  updatePublicationAt: Date;
+  publishedVersion: string;
 
   static fromEntity(entity: TodayILearned) {
     const dto = new PublicTodayILearnedItemListDto();
@@ -15,7 +15,7 @@ export default class PublicTodayILearnedItemListDto {
     dto.tags = entity.tags;
     dto.category = entity.category;
     dto.publishedAt = entity.publishedAt;
-    dto.updatePublicationAt = entity.updatePublicationAt;
+    dto.publishedVersion = entity.publishedVersion;
     return dto;
   }
 }

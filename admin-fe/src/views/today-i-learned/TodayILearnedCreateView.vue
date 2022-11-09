@@ -6,7 +6,7 @@
           <c-input v-model="todayILearned.title" name="title" @change="onChangeTitle" />
         </c-field>
       </div>
-      <div class="mt-5 md:mt-0 md:col-span-1">
+      <div class="mt-5 md:mt-0 md:col-span-2">
         <c-field label="Permalink">
           <c-input v-model="todayILearned.permalink" name="permalink" />
         </c-field>

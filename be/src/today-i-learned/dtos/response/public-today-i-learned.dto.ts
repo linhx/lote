@@ -6,7 +6,7 @@ export default class PublicTodayILearnedDto {
   tags: string[];
   category: number;
   publishedAt: Date;
-  updatePublicationAt: Date;
+  publishedVersion: string;
 
   static fromEntity(entity: TodayILearnedDocument) {
     const dto = new PublicTodayILearnedDto();
@@ -15,7 +15,7 @@ export default class PublicTodayILearnedDto {
     dto.tags = entity.tags;
     dto.category = entity.category;
     dto.publishedAt = entity.publishedAt;
-    dto.updatePublicationAt = entity.updatePublicationAt;
+    dto.publishedVersion = entity.publishedVersion;
     return dto;
   }
 }

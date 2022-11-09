@@ -12,7 +12,7 @@ const {
 const publishedDate = computed(() => new Date(todayILearned.publishedAt).toLocaleDateString('vi-VN'));
 
 const prefetchContent = () => {
-  todayILearnedStore.getContentHTMLByPermalink(todayILearned.permalink);
+  todayILearnedStore.getContentHTMLByPermalink(todayILearned.permalink, todayILearned.publishedVersion);
 }
 </script>
 
@@ -24,7 +24,7 @@ const prefetchContent = () => {
         <router-link
           class="font-semibold text-sky-500 inline-block truncate"
           :title="todayILearned.title"
-          :to="{ name: 'TodayILearnedView', params: { permalink: todayILearned.permalink } }"
+          :to="{ name: 'TodayILearnedView', params: { permalink: todayILearned.permalink }, state: { v: todayILearned.publishedVersion } }"
           @mouseover="prefetchContent"
           @focusin="prefetchContent"
         >{{ todayILearned.title }}</router-link>
