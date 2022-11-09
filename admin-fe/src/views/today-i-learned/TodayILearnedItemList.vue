@@ -43,7 +43,7 @@ export default defineComponent({
   },
   computed: {
     dateFormat() {
-      return new Date(this.todayILearned.createdAt).toLocaleDateString();
+      return new Date(this.todayILearned.createdAt).toLocaleDateString('vi-VN');
     },
     state() {
       if (!this.todayILearned.isPublished) {
