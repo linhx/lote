@@ -161,10 +161,19 @@ export class CommentService {
 
   delete(session: CSession, noteId: string, id: string) {
     return this.db.withTransaction(session, async (_session) => {
-      return this.noteModel
+      await this.noteModel
         .findByIdAndUpdate(noteId, {
           $pull: {
             comments: { _id: new mongoose.Types.ObjectId(id) },
+          },
+        })
+        .session(_session)
+        .exec();
+
+      await this.noteModel
+        .findByIdAndUpdate(noteId, {
+          $pull: {
+            comments: { parent: new mongoose.Types.ObjectId(id) },
           },
         })
         .session(_session)
