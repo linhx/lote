@@ -22,8 +22,44 @@
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
-            <router-link to="/note/create" class="menu-item">Create</router-link>
-            <button class="menu-item" @click="clickMenu('republishNotes')">Re-publish all notes</button>
+            <Menu as="div" class="relative ml-3">
+              <div>
+                <MenuButton class="menu-item flex">
+                  <span>Note</span>
+                </MenuButton>
+              </div>
+              <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                <MenuItems class="absolute z-10 mt-2 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <MenuItem v-slot="{ active }">
+                    <button class="block px-4 py-2 text-sm text-gray-700 focus:outline-none w-full text-left" @click="$router.push('/note/create')">Create</button>
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <button class="block px-4 py-2 text-sm text-gray-700 focus:outline-none w-full text-left" @click="clickMenu('republishNotes')">Re-publish all notes</button>
+                  </MenuItem>
+                </MenuItems>
+              </transition>
+            </Menu>
+
+            <Menu as="div" class="relative ml-3">
+              <div>
+                <MenuButton class="menu-item flex">
+                  <span>Today I learned</span>
+                </MenuButton>
+              </div>
+              <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                <MenuItems class="absolute z-10 mt-2 w-60 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <MenuItem v-slot="{ active }">
+                    <button class="block px-4 py-2 text-sm text-gray-700 focus:outline-none w-full text-left" @click="$router.push('/today-i-learned')">List</button>
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <button class="block px-4 py-2 text-sm text-gray-700 focus:outline-none w-full text-left" @click="$router.push('/today-i-learned/create')">Create</button>
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <button class="block px-4 py-2 text-sm text-gray-700 focus:outline-none w-full text-left" @click="clickMenu('republishAllTodayILearneds')">Re-publish all today-id-learn</button>
+                  </MenuItem>
+                </MenuItems>
+              </transition>
+            </Menu>
           </div>
         </div>
       </div>
@@ -41,8 +77,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 
 export default defineComponent({
+  components: {
+    Menu, MenuButton, MenuItem, MenuItems
+  },
   data() {
     return {
       isOpenMenu: false

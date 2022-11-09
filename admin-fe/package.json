@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-vue": "^4.0.1",
+    "@headlessui/vue": "^1.7.4",
     "@linhx/ckeditor5-build": "^0.0.7",
     "axios": "^0.23.0",
     "lodash.debounce": "^4.0.8",

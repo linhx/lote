@@ -6,6 +6,7 @@ import { PATHS_NAME } from '../constants/paths';
 const noteStore = useNotesStore();
 const props = defineProps<{
   permalink: string;
+  v?: string;
 }>();
 
 let $tocLinks: NodeListOf<Element> | undefined;
@@ -117,7 +118,7 @@ const onClickTags = () => {
 
 const contentHTML = ref('');
 onBeforeMount(async () => {
-  await noteStore.getContentHTMLByPermalink(props.permalink, history.state.v).catch(e => {
+  await noteStore.getContentHTMLByPermalink(props.permalink, props.v).catch(e => {
     router.replace({
       name: PATHS_NAME.VIEW_404,
     });

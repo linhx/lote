@@ -4,6 +4,7 @@ export default {
   notfound: 'Not found',
   home: 'Home',
   back: 'Back',
+  todayILearned: 'Today I learned',
   comment: {
     content: {
       placeholder: 'Comment không quá 500 ký tự. (Ctrl + Enter)'

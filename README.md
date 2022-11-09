@@ -2,21 +2,10 @@
 
 Linhx's note
 
-## Features
-
-- CRUD note.
-- Publish a note as a Vuejs component for better SPA.
-- Only build the note when published, not entire project.
-- Emoji
-
-## TODO
-
-- [ ] Notify after performing asynchronous processing (publish, unpublish, delete...)
-
 ## Tech stack
 
 1. Backend: Nestjs + Mongodb
-2. Admin frontend: Vuejs + Ckeditor5 + Tailwinds + Highlightjs
+2. Admin frontend: Vuejs + Ckeditor5 + Tailwinds
 3. Frontend: Vuejs + Tailwinds
 
 ## Prerequire
@@ -87,13 +76,9 @@ You should change the strategy to your.
 
 3. Deploy the `dist` using a Web server like: nginx or apache2
 
-NOTE: for authentication, I'm using an authentication server to validate the access token from cookie.
-You should change the strategy to your.
-
 #### Frontend (fe)
 
 1. Update .env
-    VITE_APP_DEPLOY_DIR: the deploy directory. e.g. `/var/www/note.com`
 
 2. Run
 

@@ -45,11 +45,6 @@ html, input, textarea {
   visibility: hidden;
 }
 
-.loading {
-  @apply animate-pulse text-red-900;
-  animation-duration: 500ms;
-}
-
 ::-webkit-scrollbar {
   width: 8px;
   background-color: #ccc;

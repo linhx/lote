@@ -15,10 +15,11 @@ import {
 import BusinessError from 'src/exceptions/BusinessError';
 import { FileService } from '../file/file.service';
 import * as NoteContentUtil from './utilities/note-content';
-import * as ArrayUtils from '../utilites/ArrayUtils';
+import * as ArrayUtils from '../utilities/ArrayUtils';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
-import * as FileUtils from '../utilites/FileUtils';
+import * as FileUtils from '../utilities/FileUtils';
 import { nanoid } from 'nanoid';
+
 @Injectable()
 export class NoteService {
   private readonly logger = new Logger(NoteService.name);
@@ -90,7 +91,6 @@ export class NoteService {
       oldNote.title = rest.title;
       oldNote.permalink = rest.permalink;
       oldNote.banner = rest.banner;
-      oldNote.overview = rest.overview;
       oldNote.overview = rest.overview;
       oldNote.images = images;
       oldNote.tags = rest.tags;

@@ -42,8 +42,8 @@ services:
       - VITE_APP_API_URL=${BE_API_URL}
       - VITE_APP_RECAPTCHA_SITE_KEY=${RECAPTCHA_SITE_KEY}
       - VITE_APP_DEPLOY_DIR=/apps/fe-deploy
-      - VITE_APP_NOTE_DIR=/apps/fe-deploy/notes
-      - VITE_APP_NOTE_IMG_DIR=/apps/fe-deploy/note-img
+      - VITE_APP_NOTES_HTML_PATH=${FE_PUBLISHED_NOTES_DIR}
+      - VITE_APP_TILS_HTML_PATH=${FE_PUBLISHED_TILS_DIR}
 
   note-fe:
     env_file:

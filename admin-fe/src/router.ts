@@ -5,6 +5,10 @@ import NotesView from './views/note/NotesView.vue';
 import NoteUpdateView from './views/note/NoteUpdateView.vue';
 import ROUTES_NAME from './constants/routes';
 import CommentsView from './views/note/CommentsView.vue';
+import TodayILearnedsView from './views/today-i-learned/TodayILearnedsView.vue';
+import TodayILearnedCreateView from './views/today-i-learned/TodayILearnedCreateView.vue';
+import TodayILearnedUpdateView from './views/today-i-learned/TodayILearnedUpdateView.vue';
+import TodayILearnedPreviewView from './views/today-i-learned/TodayILearnedPreviewView.vue';
 
 const routes: RouteRecordRaw[] = [
   { path: '/', name: ROUTES_NAME.NOTES, component: NotesView },
@@ -25,7 +29,21 @@ const routes: RouteRecordRaw[] = [
     path: '/note/:id/preview',
     component: NotePreviewView,
     props: route => ({ id: route.params.id })
-  }
+  },
+
+  { path: '/today-i-learned', name: ROUTES_NAME.TODAY_I_LEARNEDS, component: TodayILearnedsView },
+  { path: '/today-i-learned/create', component: TodayILearnedCreateView },
+  {
+    path: '/today-i-learned/:id',
+    name: ROUTES_NAME.TODAY_I_LEARNED_UPDATE,
+    component: TodayILearnedUpdateView,
+    props: route => ({ id: route.params.id })
+  },
+  {
+    path: '/today-i-learned/:id/preview',
+    component: TodayILearnedPreviewView,
+    props: route => ({ id: route.params.id })
+  },
 ];
 
 const router = createRouter({

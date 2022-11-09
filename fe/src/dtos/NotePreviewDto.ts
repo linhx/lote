@@ -3,7 +3,6 @@ export default interface NotePreviewDto {
   permalink: string;
   title: string;
   overview: string;
-  image: string;
   tags: string[];
   category?: number;
   newCommentsCount: number;
