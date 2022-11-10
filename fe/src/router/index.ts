@@ -34,14 +34,6 @@ export async function create() {
       name: PATHS_NAME.NOTE,
       component: NoteView,
       props: (route) => ({ permalink: route.params.permalink, v: history.state.v }),
-      beforeEnter(to, from, next) {
-        if (from.name === PATHS_NAME.NOTES_TAG) {
-          to.meta.breadcrumbs = [BREADCRUMBS.HOME, { label: '/tag', path: `/tag/${from.params.tag}` }];
-        } else {
-          to.meta.breadcrumbs = [BREADCRUMBS.HOME];
-        }
-        next();
-      },
     },
     {
       path: '/today-i-learned',
@@ -65,14 +57,6 @@ export async function create() {
       name: PATHS_NAME.TODAY_I_LEARNED,
       component: TodayILearnedView,
       props: (route) => ({ permalink: route.params.permalink, v: history.state.v }),
-      beforeEnter(to, from, next) {
-        if (from.name === PATHS_NAME.TODAY_I_LEARNEDS_TAG) {
-          to.meta.breadcrumbs = [BREADCRUMBS.HOME, BREADCRUMBS.TIL, { label: '/tag', path: `/today-i-learned/tag/${from.params.tag}` }]
-        } else {
-          to.meta.breadcrumbs = [BREADCRUMBS.HOME, BREADCRUMBS.TIL];
-        }
-        next();
-      },
     },
     {
       path: '/:pathMatch(.*)*',
@@ -88,6 +72,30 @@ export async function create() {
     history: createWebHistory(),
     routes,
   });
+
+  const createNoteViewBreadcrumbs = (to: any, from: any) => {
+    if (from.name === PATHS_NAME.NOTES_TAG) {
+      return [BREADCRUMBS.HOME, { label: '/tag', path: `/tag/${from.params.tag}` }];
+    } else {
+      return [BREADCRUMBS.HOME];
+    }
+  }
+  const createTilViewBreadcrumbs = (to: any, from: any) => {
+    if (from.name === PATHS_NAME.TODAY_I_LEARNEDS_TAG) {
+      return [BREADCRUMBS.HOME, BREADCRUMBS.TIL, { label: '/tag', path: `/today-i-learned/tag/${from.params.tag}` }]
+    } else {
+      return [BREADCRUMBS.HOME, BREADCRUMBS.TIL];
+    }
+  }
+  router.beforeEach((to, from, next) => {
+    if (to.name === PATHS_NAME.NOTE) {
+      to.meta.breadcrumbs = createNoteViewBreadcrumbs(to, from);
+    } else
+    if (to.name === PATHS_NAME.TODAY_I_LEARNEDS_TAG) {
+      to.meta.breadcrumbs = createTilViewBreadcrumbs(to, from);
+    }
+    next();
+  })
 
   return router;
 }
