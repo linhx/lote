@@ -89,6 +89,9 @@
   text-align: center;
   margin: 0.9em auto;
   min-width: 50px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  overflow: hidden;
+  border-radius: 8px;
 }
 /* ckeditor5-image/theme/image.css */
 .ck-content .image img {
@@ -397,14 +400,24 @@
 .ck-content pre {
   padding: 1em;
   color: hsl(0, 0%, 20.8%);
-  background: hsla(0, 0%, 78%, 0.3);
-  border: 1px solid hsl(0, 0%, 77%);
+  border: 2px solid #555;
   border-radius: 2px;
   text-align: left;
   direction: ltr;
   tab-size: 4;
   overflow-y: auto;
   font-style: normal;
+  font-size: 0.94rem;
+  border-radius: var(--scrollbar-width);
+  background-color: #fbfbfb;
+}
+.ck-content pre::-webkit-scrollbar-track {
+  background-color: #fbfbfb;
+}
+.ck-content pre::-webkit-scrollbar {
+  background-color: #fbfbfb;
+  border-bottom-left-radius: var(--scrollbar-width);
+  border-bottom-right-radius: var(--scrollbar-width);
 }
 /* ckeditor5-code-block/theme/codeblock.css */
 .ck-content pre code {
@@ -525,8 +538,4 @@
 
 .ck.ck-content p {
   margin: revert;
-}
-
-.ck.ck-content pre {
-  font-size: 0.94rem;
 }
