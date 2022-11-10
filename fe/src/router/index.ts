@@ -75,14 +75,14 @@ export async function create() {
 
   const createNoteViewBreadcrumbs = (to: any, from: any) => {
     if (from.name === PATHS_NAME.NOTES_TAG) {
-      return [BREADCRUMBS.HOME, { label: '/tag', path: `/tag/${from.params.tag}` }];
+      return [BREADCRUMBS.HOME, { label: `/${from.params.tag}`, path: `/tag/${from.params.tag}` }];
     } else {
       return [BREADCRUMBS.HOME];
     }
   }
   const createTilViewBreadcrumbs = (to: any, from: any) => {
     if (from.name === PATHS_NAME.TODAY_I_LEARNEDS_TAG) {
-      return [BREADCRUMBS.HOME, BREADCRUMBS.TIL, { label: '/tag', path: `/today-i-learned/tag/${from.params.tag}` }]
+      return [BREADCRUMBS.HOME, BREADCRUMBS.TIL, { label: `/${from.params.tag}`, path: `/today-i-learned/tag/${from.params.tag}` }]
     } else {
       return [BREADCRUMBS.HOME, BREADCRUMBS.TIL];
     }
@@ -91,7 +91,7 @@ export async function create() {
     if (to.name === PATHS_NAME.NOTE) {
       to.meta.breadcrumbs = createNoteViewBreadcrumbs(to, from);
     } else
-    if (to.name === PATHS_NAME.TODAY_I_LEARNEDS_TAG) {
+    if (to.name === PATHS_NAME.TODAY_I_LEARNED) {
       to.meta.breadcrumbs = createTilViewBreadcrumbs(to, from);
     }
     next();
