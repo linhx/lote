@@ -55,7 +55,7 @@
                     <button class="block px-4 py-2 text-sm text-gray-700 focus:outline-none w-full text-left" @click="$router.push('/today-i-learned/create')">Create</button>
                   </MenuItem>
                   <MenuItem v-slot="{ active }">
-                    <button class="block px-4 py-2 text-sm text-gray-700 focus:outline-none w-full text-left" @click="clickMenu('republishAllTodayILearneds')">Re-publish all today-id-learn</button>
+                    <button class="block px-4 py-2 text-sm text-gray-700 focus:outline-none w-full text-left" @click="clickMenu('republishAllTodayILearneds')">Re-publish all today-id-learneds</button>
                   </MenuItem>
                 </MenuItems>
               </transition>
@@ -68,8 +68,11 @@
 
   <div class="sm:hidden" :class="{ hidden: !isOpenMenu }">
     <div class="px-2 pt-2 pb-3 space-y-1">
-      <router-link to="/note/create" class="menu-item-mobile" @click="closeMenu">Create</router-link>
+      <router-link to="/note/create" class="menu-item-mobile" @click="closeMenu">Create note</router-link>
       <button class="menu-item-mobile" @click="clickMenu('republishNotes')">Re-publish all notes</button>
+      <router-link to="/today-i-learned" class="menu-item-mobile" @click="closeMenu">List today-i-learned</router-link>
+      <router-link to="/today-i-learned/create" class="menu-item-mobile" @click="closeMenu">Create today-i-learned</router-link>
+      <button class="menu-item-mobile" @click="clickMenu('republishAllTodayILearneds')">Re-publish all today-id-learneds</button>
     </div>
   </div>
 </nav>
@@ -77,7 +80,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 
 export default defineComponent({
   components: {

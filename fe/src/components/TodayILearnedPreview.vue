@@ -19,10 +19,10 @@ const prefetchContent = () => {
 <template>
   <div class="flex">
     <div class="body text-left space-y-1 w-full">
-      <div class="flex items-baseline">
-        <span class="text-gray-600 mr-6 text-sm">{{ publishedDate }}</span>
+      <div class="flex flex-col md:flex-row items-baseline">
+        <span class="text-gray-600 mr-5 w-24 text-sm">{{ publishedDate }}</span>
         <router-link
-          class="font-semibold text-sky-500 inline-block truncate"
+          class="text-sky-500 inline-block text-sm sm:text-base hover:underline"
           :title="todayILearned.title"
           :to="{ name: 'TodayILearnedView', params: { permalink: todayILearned.permalink }, state: { v: todayILearned.publishedVersion } }"
           @mouseover="prefetchContent"

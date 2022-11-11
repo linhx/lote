@@ -29,10 +29,11 @@
 
 /* ckeditor5-basic-styles/theme/code.css */
 .ck-content code {
-  background-color: hsla(0, 0%, 78%, 0.3);
   padding: .15em;
   border-radius: 2px;
   line-height: 1.5;
+  color: #777;
+  font-size: 1.125em;
 }
 /* ckeditor5-block-quote/theme/blockquote.css */
 .ck-content blockquote {
@@ -424,6 +425,7 @@
   background: unset;
   padding: 0;
   border-radius: 0;
+  color: hsl(0, 0%, 20.8%);
 }
 /* ckeditor5-list/theme/liststyles.css */
 .ck-content ol {
