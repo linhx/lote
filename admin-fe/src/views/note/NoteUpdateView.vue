@@ -57,6 +57,7 @@ import NoteDto from '../../dtos/NoteDto';
 import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
 import ROUTES_NAME from '../../constants/routes';
 import { Data } from '../../utilities/Editor';
+import { getResponseError } from '../../utilities/ErrorUtils';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -129,6 +130,8 @@ export default defineComponent({
             ...dto,
             banner,
             ...data
+          }).catch(e => {
+            alert(getResponseError(e));
           });
       } finally {
         this.isLoading = false;
@@ -153,7 +156,7 @@ export default defineComponent({
         this.isLoading = false;
       }).catch((e: Error) => {
         this.isLoading = false;
-        alert(e.message);
+        alert(getResponseError(e));
       });
     },
     unpublish() {
@@ -167,7 +170,7 @@ export default defineComponent({
         this.isLoading = false;
       }).catch((e: Error) => {
         this.isLoading = false;
-        alert(e.message);
+        alert(getResponseError(e));
       });
     },
     preview() {
@@ -182,7 +185,7 @@ export default defineComponent({
           this.isLoading = false;
         }).catch((e: Error) => {
           this.isLoading = false;
-          alert(e.message);
+          alert(getResponseError(e));
         });
       }
     },
@@ -197,7 +200,7 @@ export default defineComponent({
           this.$router.push(ROUTES_NAME.NOTES);
         }).catch((e: Error) => {
           this.isLoading = false;
-          alert(e.message);
+          alert(getResponseError(e));
         });
       }
     }
@@ -209,7 +212,7 @@ export default defineComponent({
       this.isFetched = true;
     }).catch((e: Error) => {
       this.isFetched = true;
-      alert(e.message);
+      alert(getResponseError(e));
     });
   },
   beforeRouteEnter() {

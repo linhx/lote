@@ -53,6 +53,7 @@ import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
 import NoteDto from '../../dtos/NoteDto';
 import ROUTES_NAME from '../../constants/routes';
 import { Data } from '../../utilities/Editor';
+import { getResponseError } from '../../utilities/ErrorUtils';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -123,7 +124,7 @@ export default defineComponent({
           });
         })
         .catch(e => {
-          alert(e.response?.message);
+          alert(getResponseError(e));
         });
       } catch(e: any) {
         alert(e.message);

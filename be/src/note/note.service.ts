@@ -67,6 +67,12 @@ export class NoteService {
       if (!oldNote) {
         throw new BusinessError('error.note.notfound');
       }
+      if (oldNote.permalink != dto.permalink) {
+        if (await this.existsByPermalink(_session, dto.permalink)) {
+          throw new BusinessError('error.note.duplicate-permalink');
+        }
+      }
+
       const { images: imagesDto, ...rest } = dto;
 
       const images = [];

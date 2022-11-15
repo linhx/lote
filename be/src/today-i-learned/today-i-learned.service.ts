@@ -62,6 +62,11 @@ export class TodayILearnedService {
       if (!oldTodayILearned) {
         throw new BusinessError('error.til.notfound');
       }
+      if (oldTodayILearned.permalink != dto.permalink) {
+        if (await this.existsByPermalink(_session, dto.permalink)) {
+          throw new BusinessError('error.til.duplicate-permalink');
+        }
+      }
       const { images: imagesDto, ...rest } = dto;
 
       const images = [...imagesDto];

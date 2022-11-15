@@ -42,11 +42,11 @@ import CTagInput from '../../components/CTagInput.vue';
 import CButton from '../../components/CButton.vue';
 import CFileInput from '../../components/CFileInput.vue';
 import TodayILearnedRepository from '../../repositories/TodayILearnedRepository';
-import FileRepository from "../../repositories/FileRepository";
 import TodayILearnedDto from '../../dtos/TodayILearnedDto';
 import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
 import ROUTES_NAME from '../../constants/routes';
 import { Data } from '../../utilities/Editor';
+import { getResponseError } from '../../utilities/ErrorUtils';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -106,6 +106,8 @@ export default defineComponent({
           id, {
             ...dto,
             ...data
+          }).catch(e => {
+            alert(getResponseError(e));
           });
       } finally {
         this.isLoading = false;
@@ -122,7 +124,7 @@ export default defineComponent({
         this.isLoading = false;
       }).catch((e: Error) => {
         this.isLoading = false;
-        alert(e.message);
+        alert(getResponseError(e));
       });
     },
     unpublish() {
@@ -136,7 +138,7 @@ export default defineComponent({
         this.isLoading = false;
       }).catch((e: Error) => {
         this.isLoading = false;
-        alert(e.message);
+        alert(getResponseError(e));
       });
     },
     preview() {
@@ -151,7 +153,7 @@ export default defineComponent({
           this.isLoading = false;
         }).catch((e: Error) => {
           this.isLoading = false;
-          alert(e.message);
+          alert(getResponseError(e));
         });
       }
     },
@@ -166,7 +168,7 @@ export default defineComponent({
           this.$router.push(ROUTES_NAME.TODAY_I_LEARNEDS);
         }).catch((e: Error) => {
           this.isLoading = false;
-          alert(e.message);
+          alert(getResponseError(e));
         });
       }
     }
@@ -178,7 +180,7 @@ export default defineComponent({
       this.isFetched = true;
     }).catch((e: Error) => {
       this.isFetched = true;
-      alert(e.message);
+      alert(getResponseError(e));
     });
   },
   beforeRouteEnter() {

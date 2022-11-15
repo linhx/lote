@@ -4,6 +4,7 @@ import CommentsSection from '../../components/CommentsSection.vue';
 import CommentDto from '../../dtos/CommentDto';
 import CommentRepository from '../../repositories/CommentRepository';
 import Comment from '../../components/comment/Comment';
+import { getResponseError } from '../../utilities/ErrorUtils';
 
 const props = defineProps<{
   noteId: string;
@@ -59,7 +60,7 @@ const onComment = (comment: any) => {
     }
   })
   .catch(e => {
-    alert(e.response?.message);
+    alert(getResponseError(e));
   });
 }
 
@@ -81,13 +82,12 @@ const activate = (comment: Comment) => {
       c.isActive = true;
     }
   }).catch(e => {
-    alert(e.message);
+    alert(getResponseError(e));
   });
 }
 
 const deleteComment = (comment: Comment) => {
   CommentRepository.delete(props.noteId, comment.id).then(() => {
-    debugger
     if (comment.parentId) {
       const parent = commentsNested.value.find(c => c.id === comment.parentId);
       if (parent) {
@@ -103,7 +103,7 @@ const deleteComment = (comment: Comment) => {
       }
     }
   }).catch(e => {
-    alert(e.message);
+    alert(getResponseError(e));
   });
 }
 </script>
