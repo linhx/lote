@@ -26,24 +26,19 @@ services:
       context: ./
       dockerfile: Dockerfile.be
       args:
-        - FE_DIR=/apps/fe
         - START_MODE=${START_MODE}
     depends_on:
       - mongo
     restart: unless-stopped
     volumes:
-      - ./data-deploy/notes:/apps/fe-deploy/notes
-      - ./data-deploy/today-i-learneds:/apps/fe-deploy/today-i-learneds
+      - ./data-deploy/notes:/apps/fe/notes
+      - ./data-deploy/today-i-learneds:/apps/fe/today-i-learneds
       - ./data-deploy/be/files:/apps/data/be-files
       - ./data-deploy/be/logs:/apps/be/logs
     environment:
       - BE_FILE_DIR=/apps/data/be-files
-      - FE_DEPLOY_DIR=/apps/fe-deploy
-      - VITE_APP_API_URL=${BE_API_URL}
-      - VITE_APP_RECAPTCHA_SITE_KEY=${RECAPTCHA_SITE_KEY}
-      - VITE_APP_DEPLOY_DIR=/apps/fe-deploy
-      - VITE_APP_NOTES_HTML_PATH=/${FE_PUBLISHED_NOTES_DIR}
-      - VITE_APP_TILS_HTML_PATH=/${FE_PUBLISHED_TILS_DIR}
+      - NOTES_PUBLISHED_DIR=/apps/fe/notes
+      - TILS_PUBLISHED_DIR=/apps/fe/today-i-learneds
 
   note-fe:
     env_file:
@@ -57,10 +52,14 @@ services:
         - ADMIN_FE_DOMAIN=${ADMIN_FE_DOMAIN}
         - BE_DOMAIN=${BE_DOMAIN}
         - BE_API_URL=${BE_API_URL}
+        - RECAPTCHA_SITE_KEY=${RECAPTCHA_SITE_KEY}
+        - FE_NOTES_HTML_PATH=/${FE_PUBLISHED_NOTES_DIR}
+        - FE_TILS_HTML_PATH=/${FE_PUBLISHED_TILS_DIR}
     depends_on:
       - note-be
     volumes:
-      - ./data-deploy/fe/dist:/apps/fe:ro
+      - ./data-deploy/notes:/apps/fe/notes
+      - ./data-deploy/today-i-learneds:/apps/fe/today-i-learneds
       - ./data-deploy/fe/nginx:/etc/nginx/conf.d
     ports:
       - 80:80

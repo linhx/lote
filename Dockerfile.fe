@@ -1,19 +1,27 @@
 FROM node:16-alpine as build-stage
 
-ARG FE_DIR
-ARG FE_DOMAIN
-ARG BE_DOMAIN
 ARG BE_API_URL
+ARG RECAPTCHA_SITE_KEY
+ARG FE_NOTES_HTML_PATH
+ARG FE_TILS_HTML_PATH
 
 ENV VITE_APP_API_URL=${BE_API_URL}
+ENV VITE_APP_NOTES_HTML_PATH=${FE_NOTES_HTML_PATH}
+ENV VITE_APP_TILS_HTML_PATH=${FE_TILS_HTML_PATH}
+ENV VITE_APP_RECAPTCHA_SITE_KEY=${RECAPTCHA_SITE_KEY}
 
 WORKDIR /apps
 COPY ./admin-fe/package.json ./admin-fe/package-lock.json ./admin-fe/
 RUN npm install --prefix ./admin-fe
 
+COPY ./fe/package.json ./fe/package-lock.json ./fe/
+RUN npm install --prefix ./fe
+
 COPY ./admin-fe ./admin-fe
 RUN npm run build --prefix ./admin-fe
 
+COPY ./fe ./fe
+RUN npm run build --prefix ./fe
 
 # production
 FROM nginx:stable-alpine as production-stage
@@ -31,6 +39,7 @@ ENV ADMIN_FE_DOMAIN=${ADMIN_FE_DOMAIN}
 ENV BE_DOMAIN=${BE_DOMAIN}
 
 COPY --from=build-stage /apps/admin-fe/dist/. ${ADMIN_FE_DIR}
+COPY --from=build-stage /apps/fe/dist/. ${FE_DIR}
 
 # TODO use template for setting env: Domain, directory
 COPY ./nginx-templates /etc/nginx/templates
