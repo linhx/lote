@@ -427,6 +427,7 @@
   padding: 0;
   border-radius: 0;
   color: hsl(0, 0%, 20.8%);
+  font-size: 1em;
 }
 /* ckeditor5-list/theme/liststyles.css */
 .ck-content ol {

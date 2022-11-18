@@ -133,6 +133,7 @@ export default defineComponent({
           }).catch(e => {
             alert(getResponseError(e));
           });
+        alert(this.$t('message.succeed'));
       } finally {
         this.isLoading = false;
       }
@@ -154,6 +155,7 @@ export default defineComponent({
       NoteRepository.publish(this.id)
       .then(() => {
         this.isLoading = false;
+        alert(this.$t('message.succeed'));
       }).catch((e: Error) => {
         this.isLoading = false;
         alert(getResponseError(e));
@@ -168,6 +170,7 @@ export default defineComponent({
       NoteRepository.unpublish(this.id)
       .then(() => {
         this.isLoading = false;
+        alert(this.$t('message.succeed'));
       }).catch((e: Error) => {
         this.isLoading = false;
         alert(getResponseError(e));
@@ -183,6 +186,7 @@ export default defineComponent({
         NoteRepository.softDelete(this.id)
         .then(() => {
           this.isLoading = false;
+          alert(this.$t('message.succeed'));
         }).catch((e: Error) => {
           this.isLoading = false;
           alert(getResponseError(e));

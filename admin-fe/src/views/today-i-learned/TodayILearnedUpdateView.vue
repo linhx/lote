@@ -109,6 +109,7 @@ export default defineComponent({
           }).catch(e => {
             alert(getResponseError(e));
           });
+        alert(this.$t('message.succeed'));
       } finally {
         this.isLoading = false;
       }
@@ -122,6 +123,7 @@ export default defineComponent({
       TodayILearnedRepository.publish(this.id)
       .then(() => {
         this.isLoading = false;
+        alert(this.$t('message.succeed'));
       }).catch((e: Error) => {
         this.isLoading = false;
         alert(getResponseError(e));
@@ -136,6 +138,7 @@ export default defineComponent({
       TodayILearnedRepository.unpublish(this.id)
       .then(() => {
         this.isLoading = false;
+        alert(this.$t('message.succeed'));
       }).catch((e: Error) => {
         this.isLoading = false;
         alert(getResponseError(e));
@@ -151,6 +154,7 @@ export default defineComponent({
         TodayILearnedRepository.softDelete(this.id)
         .then(() => {
           this.isLoading = false;
+          alert(this.$t('message.succeed'));
         }).catch((e: Error) => {
           this.isLoading = false;
           alert(getResponseError(e));
