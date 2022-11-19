@@ -10,13 +10,13 @@ import {
   Query,
 } from '@nestjs/common';
 import { SkipThrottle } from '@nestjs/throttler';
-import { Public } from 'src/auth/sso.strategy';
-import NoteCreateDto from 'src/note/dtos/request/NoteCreateDto';
+import { Public } from '../auth/sso.strategy';
+import NoteCreateDto from './dtos/request/NoteCreateDto';
 import NoteFilterListDto from './dtos/request/NoteFilterListDto';
 import NoteUpdateDto from './dtos/request/NoteUpdateDto';
 import PublicNoteDto from './dtos/response/PublicNoteDto';
 import { NoteService } from './note.service';
-import { PATH_NOTES } from 'src/constants';
+import { PATH_NOTES } from '../constants';
 import { Cache } from 'cache-manager';
 import NoteDto from './dtos/response/NoteDto';
 

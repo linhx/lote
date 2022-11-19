@@ -2,11 +2,11 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Model } from 'mongoose';
-import { CSession, Db } from 'src/common/db';
-import BusinessError from 'src/exceptions/BusinessError';
-import { NoteService } from 'src/note/note.service';
+import { CSession, Db } from '../common/db';
+import BusinessError from '../exceptions/BusinessError';
+import { NoteService } from './note.service';
 import CommentCreateDto from './dtos/request/CommentCreateDto';
-import { NoteDocument, Note } from './entities/Note';
+import { NoteDocument, Note } from './entities/note.entity';
 import { Comment } from './entities/Comment';
 
 @Injectable()

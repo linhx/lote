@@ -1,4 +1,4 @@
-import { Note } from 'src/note/entities/Note';
+import { Note } from '../../entities/note.entity';
 
 export default class PublicNoteItemListDto {
   permalink: string;

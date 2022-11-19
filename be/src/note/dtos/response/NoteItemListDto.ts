@@ -1,4 +1,4 @@
-import { NoteDocument } from 'src/note/entities/Note';
+import { NoteDocument } from '../../entities/note.entity';
 
 export default class NoteItemListDto {
   id: string;

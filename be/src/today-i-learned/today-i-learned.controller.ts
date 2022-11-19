@@ -10,13 +10,13 @@ import {
   Query,
 } from '@nestjs/common';
 import { SkipThrottle } from '@nestjs/throttler';
-import { Public } from 'src/auth/sso.strategy';
-import TodayILearnedCreateDto from 'src/today-i-learned/dtos/request/today-i-learn-create.dto';
+import { Public } from '../auth/sso.strategy';
+import TodayILearnedCreateDto from './dtos/request/today-i-learn-create.dto';
 import TodayILearnedFilterListDto from './dtos/request/today-i-learn-create-filter-list.dto';
 import TodayILearnedUpdateDto from './dtos/request/today-i-learn-update.dto';
 import PublicTodayILearnedDto from './dtos/response/public-today-i-learned.dto';
 import { TodayILearnedService } from './today-i-learned.service';
-import { PATH_TIL } from 'src/constants';
+import { PATH_TIL } from '../constants';
 import { Cache } from 'cache-manager';
 import TodayILearnedDto from './dtos/response/today-i-learned.dto';
 

@@ -9,14 +9,14 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { FILE_DIR } from 'src/constants';
+import { FILE_DIR } from '../constants';
 import { FileService } from './file.service';
 import * as FileUtils from '../utilities/FileUtils';
 import FileDto from './dtos/response/FileDto';
 import * as path from 'path';
 import { Response } from 'express';
-import { Public } from 'src/auth/sso.strategy';
-import { SkipThrottle, Throttle } from '@nestjs/throttler';
+import { Public } from '../auth/sso.strategy';
+import { SkipThrottle } from '@nestjs/throttler';
 
 const getYYYMM = () => {
   return new Date().toISOString().substring(0, 7);

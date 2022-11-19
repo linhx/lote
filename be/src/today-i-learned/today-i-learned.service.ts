@@ -11,8 +11,9 @@ import * as path from 'path';
 import { CSession, Db } from '../common/db';
 import {
   TILS_PUBLISHED_DIR,
-} from 'src/constants';
-import BusinessError from 'src/exceptions/BusinessError';
+  TILS_PUBLISHED_SEO_DIR,
+} from '../constants';
+import BusinessError from '../exceptions/BusinessError';
 import { FileService } from '../file/file.service';
 import * as TodayILearnedContentUtil from '../utilities/content/note-content';
 import * as ArrayUtils from '../utilities/ArrayUtils';

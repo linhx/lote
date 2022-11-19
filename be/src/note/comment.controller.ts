@@ -10,10 +10,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Throttle } from '@nestjs/throttler';
-import { Public } from 'src/auth/sso.strategy';
-import { PATH_COMMENTS } from 'src/constants';
-import BusinessError from 'src/exceptions/BusinessError';
-import { RecaptchaGuard } from 'src/guards/recaptcha.guard';
+import { Public } from '../auth/sso.strategy';
+import { PATH_COMMENTS } from '../constants';
+import BusinessError from '../exceptions/BusinessError';
+import { RecaptchaGuard } from '../guards/recaptcha.guard';
 import { CommentService } from './comment.service';
 import CommentCreateDto from './dtos/request/CommentCreateDto';
 import CommentDto from './dtos/response/CommentDto';

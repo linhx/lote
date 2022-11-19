@@ -1,5 +1,4 @@
-import { CFileDocument } from 'src/file/entities/CFile';
-import { URL } from 'url';
+import { CFileDocument } from '../../entities/CFile';
 
 export default class FileDto {
   id: string;

@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Note, NoteDocument } from './entities/Note';
+import { Note, NoteDocument } from './entities/note.entity';
 import NoteCreateDto from './dtos/request/NoteCreateDto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -10,9 +10,9 @@ import NoteFilterListDto from './dtos/request/NoteFilterListDto';
 import * as path from 'path';
 import { CSession, Db } from '../common/db';
 import {
-  NOTES_PUBLISHED_DIR,
-} from 'src/constants';
-import BusinessError from 'src/exceptions/BusinessError';
+  NOTES_PUBLISHED_DIR, NOTES_PUBLISHED_SEO_DIR,
+} from '../constants';
+import BusinessError from '../exceptions/BusinessError';
 import { FileService } from '../file/file.service';
 import * as NoteContentUtil from '../utilities/content/note-content';
 import * as ArrayUtils from '../utilities/ArrayUtils';
