@@ -36,7 +36,7 @@
         <c-button variant="blue" class="ml-2" @click="preview" :disabled="isLoading">Preview</c-button>
         <c-button variant="green" class="ml-2" @click="publish" :disabled="isLoading">Publish</c-button>
         <c-button variant="red" class="ml-2" @click="unpublish" :disabled="isLoading">Unpublish</c-button>
-        <c-button variant="red" class="ml-2" @click="hardDelete" :disabled="isLoading">Delete</c-button>
+        <c-button variant="red" class="ml-2" @click="softDelete" :disabled="isLoading">Delete</c-button>
       </div>
     </div>
   </div>
@@ -58,6 +58,7 @@ import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
 import ROUTES_NAME from '../../constants/routes';
 import { Data } from '../../utilities/Editor';
 import { getResponseError } from '../../utilities/ErrorUtils';
+import { ActiveLoader } from 'vue-loading-overlay';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -116,9 +117,17 @@ export default defineComponent({
         return this.note.banner;
       }
     },
+    showLoading() {
+      this.isLoading = true;
+      return this.$loading.show();
+    },
+    hideLoading(loader: ActiveLoader) {
+      this.isLoading = false;
+      loader.hide();
+    },
     async onSave() {
+      const loader = this.showLoading();
       try {
-        this.isLoading = true;
         const banner = await this.uploadNoteBanner();
         const data: Data = (<any>this.$refs.editor).getData();
         const {
@@ -135,7 +144,7 @@ export default defineComponent({
           });
         alert(this.$t('message.succeed'));
       } finally {
-        this.isLoading = false;
+        this.hideLoading(loader);
       }
     },
     onChangeBanner(e: Event) {
@@ -151,14 +160,14 @@ export default defineComponent({
       if (!result) {
         return;
       }
-      this.isLoading = true;
+      const loader = this.showLoading();
       NoteRepository.publish(this.id)
       .then(() => {
-        this.isLoading = false;
         alert(this.$t('message.succeed'));
       }).catch((e: Error) => {
-        this.isLoading = false;
         alert(getResponseError(e));
+      }).finally(() => {
+        this.hideLoading(loader);
       });
     },
     unpublish() {
@@ -166,14 +175,14 @@ export default defineComponent({
       if (!result) {
         return;
       }
-      this.isLoading = true;
+      const loader = this.showLoading();
       NoteRepository.unpublish(this.id)
       .then(() => {
-        this.isLoading = false;
         alert(this.$t('message.succeed'));
       }).catch((e: Error) => {
-        this.isLoading = false;
         alert(getResponseError(e));
+      }).finally(() => {
+        this.hideLoading(loader);
       });
     },
     preview() {
@@ -182,41 +191,48 @@ export default defineComponent({
     softDelete() {
       var result = confirm("Xóa?");
       if (result) {
-        this.isLoading = true;
+        const loader = this.showLoading();
         NoteRepository.softDelete(this.id)
         .then(() => {
-          this.isLoading = false;
           alert(this.$t('message.succeed'));
+          window.removeEventListener('beforeunload', warningUnsave);
+          this.$router.push({ name: ROUTES_NAME.NOTES });
         }).catch((e: Error) => {
-          this.isLoading = false;
           alert(getResponseError(e));
+        }).finally(() => {
+          this.hideLoading(loader);
         });
       }
     },
     hardDelete() {
       var result = confirm("Xóa hoàn toàn?");
       if (result) {
-        this.isLoading = true;
+        const loader = this.showLoading();
         NoteRepository.delete(this.id)
         .then(() => {
           this.isLoading = false;
           window.removeEventListener('beforeunload', warningUnsave);
-          this.$router.push(ROUTES_NAME.NOTES);
+          this.$router.push({ name: ROUTES_NAME.NOTES });
         }).catch((e: Error) => {
           this.isLoading = false;
           alert(getResponseError(e));
+        }).finally(() => {
+          this.hideLoading(loader);
         });
       }
     }
   },
 
   beforeMount() {
+    const loader = this.showLoading();
     NoteRepository.findById(this.id).then(res => {
       this.note = res;
       this.isFetched = true;
     }).catch((e: Error) => {
       this.isFetched = true;
       alert(getResponseError(e));
+    }).finally(() => {
+      this.hideLoading(loader);
     });
   },
   beforeRouteEnter() {

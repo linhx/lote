@@ -16,6 +16,7 @@ import TodayILearnedRepository from '../../repositories/TodayILearnedRepository'
 import PageDto from '../../dtos/PageDto';
 import TodayILearnedItemListDto from '../../dtos/TodayILearnedItemListDto';
 import ReqNoteFilterDto from '../../dtos/ReqTodayILearnedFilterDto';
+import { ActiveLoader } from 'vue-loading-overlay';
 
 export default defineComponent({
   components: {
@@ -33,9 +34,21 @@ export default defineComponent({
     };
   },
 
+  methods: {
+    showLoading() {
+      return this.$loading.show();
+    },
+    hideLoading(loader: ActiveLoader) {
+      loader.hide();
+    },
+  },
+
   mounted() {
+    const loader = this.showLoading();
     TodayILearnedRepository.getList(this.filter).then((res) => {
       this.todayILearnedList = res;
+    }).finally(() => {
+      this.hideLoading(loader);
     });
   },
 });

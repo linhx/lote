@@ -121,6 +121,9 @@ export class TodayILearnedService {
    */
   async publish(session: CSession, til: TodayILearnedDocument) {
     return this.db.withTransaction(session, async (_session) => {
+      if (til.isDeleted) {
+        throw new BusinessError('error.publish.wasDeleted');
+      }
       if (!til.publishedAt) {
         til.publishedAt = new Date();
       }

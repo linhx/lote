@@ -16,6 +16,7 @@ import NoteRepository from '../../repositories/NoteRepository';
 import PageDto from '../../dtos/PageDto';
 import NoteItemListDto from '../../dtos/NoteItemListDto';
 import ReqNoteFilterDto from '../../dtos/ReqNoteFilterDto';
+import { ActiveLoader } from 'vue-loading-overlay';
 
 export default defineComponent({
   components: {
@@ -33,9 +34,21 @@ export default defineComponent({
     };
   },
 
+  methods: {
+    showLoading() {
+      return this.$loading.show();
+    },
+    hideLoading(loader: ActiveLoader) {
+      loader.hide();
+    },
+  },
+
   mounted() {
+    const loader = this.showLoading();
     NoteRepository.getList(this.filter).then((res) => {
       this.noteList = res;
+    }).finally(() => {
+      this.hideLoading(loader);
     });
   },
 });

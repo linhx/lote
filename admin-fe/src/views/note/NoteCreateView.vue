@@ -54,6 +54,7 @@ import NoteDto from '../../dtos/NoteDto';
 import ROUTES_NAME from '../../constants/routes';
 import { Data } from '../../utilities/Editor';
 import { getResponseError } from '../../utilities/ErrorUtils';
+import { ActiveLoader } from 'vue-loading-overlay';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -105,12 +106,19 @@ export default defineComponent({
         return file.id;
       }
     },
+    showLoading() {
+      this.isLoading = true;
+      return this.$loading.show();
+    },
+    hideLoading(loader: ActiveLoader) {
+      this.isLoading = false;
+      loader.hide();
+    },
     async onSave() {
+      const loader = this.showLoading();
       try {
-        this.isLoading = true;
         const banner = await this.uploadNoteBanner();
         const data: Data = (<any>this.$refs.editor).getData();
-        console.log('data',data);
         await NoteRepository.create({
           ...this.note,
           banner,
@@ -129,7 +137,7 @@ export default defineComponent({
       } catch(e: any) {
         alert(e.message);
       } finally {
-        this.isLoading = false;
+        this.hideLoading(loader);
       }
     },
     onChangeBanner(e: Event) {

@@ -26,7 +26,7 @@
         <c-button variant="blue" class="ml-2" @click="preview" :disabled="isLoading">Preview</c-button>
         <c-button variant="green" class="ml-2" @click="publish" :disabled="isLoading">Publish</c-button>
         <c-button variant="red" class="ml-2" @click="unpublish" :disabled="isLoading">Unpublish</c-button>
-        <c-button variant="red" class="ml-2" @click="hardDelete" :disabled="isLoading">Delete</c-button>
+        <c-button variant="red" class="ml-2" @click="softDelete" :disabled="isLoading">Delete</c-button>
       </div>
     </div>
   </div>
@@ -47,6 +47,7 @@ import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
 import ROUTES_NAME from '../../constants/routes';
 import { Data } from '../../utilities/Editor';
 import { getResponseError } from '../../utilities/ErrorUtils';
+import { ActiveLoader } from 'vue-loading-overlay';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -94,9 +95,17 @@ export default defineComponent({
     onChangeTitle() {
       this.todayILearned.permalink = convertFreeTextToKebabCase(this.todayILearned.title) || '';
     },
+    showLoading() {
+      this.isLoading = true;
+      return this.$loading.show();
+    },
+    hideLoading(loader: ActiveLoader) {
+      this.isLoading = false;
+      loader.hide();
+    },
     async onSave() {
+      const loader = this.showLoading();
       try {
-        this.isLoading = true;
         const data: Data = (<any>this.$refs.editor).getData();
         const {
           id,
@@ -111,7 +120,7 @@ export default defineComponent({
           });
         alert(this.$t('message.succeed'));
       } finally {
-        this.isLoading = false;
+        this.hideLoading(loader);
       }
     },
     publish() {
@@ -119,14 +128,14 @@ export default defineComponent({
       if (!result) {
         return;
       }
-      this.isLoading = true;
+      const loader = this.showLoading();
       TodayILearnedRepository.publish(this.id)
       .then(() => {
-        this.isLoading = false;
         alert(this.$t('message.succeed'));
       }).catch((e: Error) => {
-        this.isLoading = false;
         alert(getResponseError(e));
+      }).finally(() => {
+        this.hideLoading(loader);
       });
     },
     unpublish() {
@@ -134,14 +143,14 @@ export default defineComponent({
       if (!result) {
         return;
       }
-      this.isLoading = true;
+      const loader = this.showLoading();
       TodayILearnedRepository.unpublish(this.id)
       .then(() => {
-        this.isLoading = false;
         alert(this.$t('message.succeed'));
       }).catch((e: Error) => {
-        this.isLoading = false;
         alert(getResponseError(e));
+      }).finally(() => {
+        this.hideLoading(loader);
       });
     },
     preview() {
@@ -150,41 +159,45 @@ export default defineComponent({
     softDelete() {
       var result = confirm("Xóa?");
       if (result) {
-        this.isLoading = true;
+        const loader = this.showLoading();
         TodayILearnedRepository.softDelete(this.id)
         .then(() => {
-          this.isLoading = false;
           alert(this.$t('message.succeed'));
+          this.$router.push({ name: ROUTES_NAME.TODAY_I_LEARNEDS });
         }).catch((e: Error) => {
-          this.isLoading = false;
           alert(getResponseError(e));
+        }).finally(() => {
+          this.hideLoading(loader);
         });
       }
     },
     hardDelete() {
       var result = confirm("Xóa hoàn toàn?");
       if (result) {
-        this.isLoading = true;
+        const loader = this.showLoading();
         TodayILearnedRepository.delete(this.id)
         .then(() => {
-          this.isLoading = false;
           window.removeEventListener('beforeunload', warningUnsave);
-          this.$router.push(ROUTES_NAME.TODAY_I_LEARNEDS);
+          this.$router.push({ name: ROUTES_NAME.TODAY_I_LEARNEDS });
         }).catch((e: Error) => {
-          this.isLoading = false;
           alert(getResponseError(e));
+        }).finally(() => {
+          this.hideLoading(loader);
         });
       }
     }
   },
 
   beforeMount() {
+    const loader = this.showLoading();
     TodayILearnedRepository.findById(this.id).then(res => {
       this.todayILearned = res;
       this.isFetched = true;
     }).catch((e: Error) => {
       this.isFetched = true;
       alert(getResponseError(e));
+    }).finally(() => {
+      this.hideLoading(loader);
     });
   },
   beforeRouteEnter() {

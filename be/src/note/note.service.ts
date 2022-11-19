@@ -133,6 +133,9 @@ export class NoteService {
    */
   async publish(session: CSession, note: NoteDocument) {
     return this.db.withTransaction(session, async (_session) => {
+      if (note.isDeleted) {
+        throw new BusinessError('error.publish.wasDeleted');
+      }
       if (!note.publishedAt) {
         note.publishedAt = new Date();
       }

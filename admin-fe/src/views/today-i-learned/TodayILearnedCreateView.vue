@@ -38,12 +38,12 @@ import CTagInput from '../../components/CTagInput.vue';
 import CButton from '../../components/CButton.vue';
 import CFileInput from '../../components/CFileInput.vue';
 import TodayILearnedRepository from '../../repositories/TodayILearnedRepository';
-import FileRepository from "../../repositories/FileRepository";
 import { convertFreeTextToKebabCase } from '../../utilities/StringUtils';
 import TodayILearnedDto from '../../dtos/TodayILearnedDto';
 import ROUTES_NAME from '../../constants/routes';
 import { Data } from '../../utilities/Editor';
 import { getResponseError } from '../../utilities/ErrorUtils';
+import { ActiveLoader } from 'vue-loading-overlay';
 
 const confirmationMessage = 'Warning unsaved changes'; // TODO message source
 
@@ -85,7 +85,16 @@ export default defineComponent({
     onChangeTitle() {
       this.todayILearned.permalink = convertFreeTextToKebabCase(this.todayILearned.title) || '';
     },
+    showLoading() {
+      this.isLoading = true;
+      return this.$loading.show();
+    },
+    hideLoading(loader: ActiveLoader) {
+      this.isLoading = false;
+      loader.hide();
+    },
     async onSave() {
+      const loader = this.showLoading();
       try {
         this.isLoading = true;
         const data: Data = (<any>this.$refs.editor).getData();
@@ -106,7 +115,7 @@ export default defineComponent({
       } catch(e: any) {
         alert(e.message);
       } finally {
-        this.isLoading = false;
+        this.hideLoading(loader);
       }
     },
   },
