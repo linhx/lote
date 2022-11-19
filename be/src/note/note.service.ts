@@ -1,22 +1,22 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Note, NoteDocument } from './entities/note.entity';
-import NoteCreateDto from './dtos/request/NoteCreateDto';
+import NoteCreateDto from './dtos/request/note-create.dto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import PageDto from '../dtos/response/PageDto';
-import NoteItemListDto from './dtos/response/NoteItemListDto';
-import PublicNoteItemListDto from './dtos/response/PublicNoteItemListDto';
-import NoteFilterListDto from './dtos/request/NoteFilterListDto';
+import PageDto from '../dtos/response/page.dto';
+import NoteItemListDto from './dtos/response/note-item-list.dto';
+import PublicNoteItemListDto from './dtos/response/public-note-item-list.dto';
+import NoteFilterListDto from './dtos/request/note-filter-list.dto';
 import * as path from 'path';
 import { CSession, Db } from '../common/db';
 import {
-  NOTES_PUBLISHED_DIR, NOTES_PUBLISHED_SEO_DIR,
+  NOTES_PUBLISHED_DIR,
 } from '../constants';
-import BusinessError from '../exceptions/BusinessError';
+import BusinessError from '../exceptions/business.error';
 import { FileService } from '../file/file.service';
 import * as NoteContentUtil from '../utilities/content/note-content';
 import * as ArrayUtils from '../utilities/ArrayUtils';
-import NoteUpdateDto from './dtos/request/NoteUpdateDto';
+import NoteUpdateDto from './dtos/request/note-update.dto';
 import * as FileUtils from '../utilities/FileUtils';
 import { nanoid } from 'nanoid';
 
@@ -116,7 +116,7 @@ export class NoteService {
   }
 
   /**
-   * TODO avoid duplicated code
+   * TODO avoid duplicate code
    *
    * @param note
    */

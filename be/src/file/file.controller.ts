@@ -12,7 +12,7 @@ import { diskStorage } from 'multer';
 import { FILE_DIR } from '../constants';
 import { FileService } from './file.service';
 import * as FileUtils from '../utilities/FileUtils';
-import FileDto from './dtos/response/FileDto';
+import FileDto from './dtos/response/file.dto';
 import * as path from 'path';
 import { Response } from 'express';
 import { Public } from '../auth/sso.strategy';

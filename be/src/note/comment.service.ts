@@ -3,11 +3,11 @@ import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Model } from 'mongoose';
 import { CSession, Db } from '../common/db';
-import BusinessError from '../exceptions/BusinessError';
+import BusinessError from '../exceptions/business.error';
 import { NoteService } from './note.service';
-import CommentCreateDto from './dtos/request/CommentCreateDto';
+import CommentCreateDto from './dtos/request/comment-create.dto';
 import { NoteDocument, Note } from './entities/note.entity';
-import { Comment } from './entities/Comment';
+import { Comment } from './entities/comment.entity';
 
 @Injectable()
 export class CommentService {

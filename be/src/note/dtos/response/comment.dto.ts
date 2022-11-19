@@ -1,4 +1,4 @@
-import { Comment } from '../../entities/Comment';
+import { Comment } from '../../entities/comment.entity';
 
 export default class CommentDto {
   id: string;

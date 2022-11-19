@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { CommentSchema, Comment } from './Comment';
+import { CommentSchema, Comment } from './comment.entity';
 
 export type NoteDocument = Note & Document;
 

@@ -11,14 +11,14 @@ import {
 } from '@nestjs/common';
 import { SkipThrottle } from '@nestjs/throttler';
 import { Public } from '../auth/sso.strategy';
-import NoteCreateDto from './dtos/request/NoteCreateDto';
-import NoteFilterListDto from './dtos/request/NoteFilterListDto';
-import NoteUpdateDto from './dtos/request/NoteUpdateDto';
-import PublicNoteDto from './dtos/response/PublicNoteDto';
+import NoteCreateDto from './dtos/request/note-create.dto';
+import NoteFilterListDto from './dtos/request/note-filter-list.dto';
+import NoteUpdateDto from './dtos/request/note-update.dto';
+import PublicNoteDto from './dtos/response/public-note.dto';
 import { NoteService } from './note.service';
 import { PATH_NOTES } from '../constants';
 import { Cache } from 'cache-manager';
-import NoteDto from './dtos/response/NoteDto';
+import NoteDto from './dtos/response/note.dto';
 
 @SkipThrottle()
 @Controller(PATH_NOTES)

@@ -1,4 +1,4 @@
-import CommentDto from './CommentDto';
+import CommentDto from './comment.dto';
 
 export default class CommentsDto {
   items: CommentDto[];

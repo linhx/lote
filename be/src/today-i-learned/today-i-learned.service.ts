@@ -3,7 +3,7 @@ import { TodayILearned, TodayILearnedDocument } from './entities/today-i-learned
 import TodayILearnedCreateDto from './dtos/request/today-i-learn-create.dto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import PageDto from '../dtos/response/PageDto';
+import PageDto from '../dtos/response/page.dto';
 import TodayILearnedItemListDto from './dtos/response/today-i-learned-item-list.dto';
 import PublicTodayILearnedItemListDto from './dtos/response/public-today-i-learned-item-list.dto';
 import TodayILearnedFilterListDto from './dtos/request/today-i-learn-create-filter-list.dto';
@@ -11,9 +11,8 @@ import * as path from 'path';
 import { CSession, Db } from '../common/db';
 import {
   TILS_PUBLISHED_DIR,
-  TILS_PUBLISHED_SEO_DIR,
 } from '../constants';
-import BusinessError from '../exceptions/BusinessError';
+import BusinessError from '../exceptions/business.error';
 import { FileService } from '../file/file.service';
 import * as TodayILearnedContentUtil from '../utilities/content/note-content';
 import * as ArrayUtils from '../utilities/ArrayUtils';

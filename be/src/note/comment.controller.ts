@@ -12,12 +12,12 @@ import {
 import { Throttle } from '@nestjs/throttler';
 import { Public } from '../auth/sso.strategy';
 import { PATH_COMMENTS } from '../constants';
-import BusinessError from '../exceptions/BusinessError';
+import BusinessError from '../exceptions/business.error';
 import { RecaptchaGuard } from '../guards/recaptcha.guard';
 import { CommentService } from './comment.service';
-import CommentCreateDto from './dtos/request/CommentCreateDto';
-import CommentDto from './dtos/response/CommentDto';
-import CommentsDto from './dtos/response/CommentsDto';
+import CommentCreateDto from './dtos/request/comment-create.dto';
+import CommentDto from './dtos/response/comment.dto';
+import CommentsDto from './dtos/response/comments.dto';
 import * as md5 from 'blueimp-md5';
 import * as RequestIp from 'request-ip';
 import ROLES from '../constants/roles';
