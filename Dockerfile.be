@@ -11,9 +11,6 @@ RUN npm run build --prefix ./be
 FROM node:16-alpine as production-stage
 WORKDIR /apps
 
-ARG START_MODE
-
-ENV START_MODE=${START_MODE}
 ENV BE_DIR=/apps/be
 
 COPY --from=build-stage /apps/be/dist ${BE_DIR}/dist

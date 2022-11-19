@@ -25,8 +25,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.be
-      args:
-        - START_MODE=${START_MODE}
     depends_on:
       - mongo
     restart: unless-stopped
