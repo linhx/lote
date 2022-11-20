@@ -9,9 +9,10 @@
   "dependencies": {
     "@ckeditor/ckeditor5-vue": "^4.0.1",
     "@headlessui/vue": "^1.7.4",
-    "@linhx/ckeditor5-build": "^0.0.7",
+    "@linhx/ckeditor5-build": "^2.0.0",
     "axios": "^0.23.0",
     "lodash.debounce": "^4.0.8",
+    "messenger-emojis": "^1.0.1",
     "nanoid": "^3.1.30",
     "postcss-import": "^14.0.2",
     "vue": "^3.2.41",

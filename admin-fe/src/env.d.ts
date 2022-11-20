@@ -22,3 +22,4 @@ declare module 'quill-emoji';
 declare module '@ckeditor/ckeditor5-vue';
 declare module '@linhx/ckeditor5-build';
 declare module '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+declare module 'messenger-emojis';

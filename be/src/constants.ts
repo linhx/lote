@@ -5,6 +5,7 @@ export const PATH_NOTES = 'notes';
 export const PATH_TIL = 'today-i-learned';
 export const PATH_NOTES_FILE = 'f';
 export const PATH_COMMENTS = 'comments';
+export const PATH_EMOJIS = 'emojis';
 
 export const NOTE_FE_BASE_URL = process.env.NOTE_FE_BASE_URL;
 export const NOTES_PUBLISHED_DIR = process.env.NOTES_PUBLISHED_DIR;

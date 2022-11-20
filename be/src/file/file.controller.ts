@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Get,
   Param,
@@ -9,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { FILE_DIR } from '../constants';
+import { FILE_DIR, FILE_URL_PREFIX } from '../constants';
 import { FileService } from './file.service';
 import * as FileUtils from '../utilities/FileUtils';
 import FileDto from './dtos/response/file.dto';
@@ -20,9 +21,9 @@ import { SkipThrottle } from '@nestjs/throttler';
 
 const getYYYMM = () => {
   return new Date().toISOString().substring(0, 7);
-}
+};
 
-@Controller('files')
+@Controller(FILE_URL_PREFIX)
 export class FileController {
   constructor(private readonly fileService: FileService) {}
 

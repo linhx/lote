@@ -1,6 +1,6 @@
 <template>
   <div ref="editor" class="c-editor border border-gray-300 rounded-md">
-    <ckeditor :editor="editor" :config="editorConfig" @ready="onEditorReady"></ckeditor>
+    <ckeditor v-if="isShow" :editor="editor" :config="editorConfig" @ready="onEditorReady"></ckeditor>
   </div>
 </template>
 
@@ -10,6 +10,8 @@ import ClassicEditor from '@linhx/ckeditor5-build';
 import { defineComponent } from 'vue';
 import { Data } from '../utilities/Editor';
 import FileRepository from '../repositories/FileRepository';
+import { emojiGroups } from 'messenger-emojis';
+import EmojiRepository from '../repositories/EmojiRepository';
 
 const ATTR_DATA_ID = 'data-id';
 const IMG_SELECTOR = `img[${ATTR_DATA_ID}]`;
@@ -21,10 +23,15 @@ export default defineComponent({
   },
   props: {
     modelValue: String,
-    uploadUrl: String
+    uploadUrl: String,
+    customEmojis: {
+      type: Array
+    }
   },
   data(): any {
+    emojiGroups.set('custom', this.customEmojis)
     return {
+      isShow: false,
       editor: ClassicEditor,
       editorConfig: {
         filemanager: {
@@ -174,6 +181,10 @@ export default defineComponent({
             { language: 'vim', label: 'Vim Script' },
             { language: 'x86asm', label: 'x86 Assembly' },
           ],
+        },
+        emoji2: {
+          defaultGroup: 'p',
+          groups: emojiGroups
         }
       }
     };
@@ -278,6 +289,25 @@ export default defineComponent({
       };
     },
   },
+  beforeCreate() {
+    EmojiRepository.getAll()
+      .then(data => {
+        data.items.forEach((item) => {
+          let groupEmojis = emojiGroups.get(item.group);
+          if (!groupEmojis) {
+            groupEmojis = [];
+            emojiGroups.set(item.group, groupEmojis);
+          }
+          groupEmojis.push({
+            key: item.key,
+            name: item.name,
+            imgUrl: item.url
+          });
+        });
+        this.editorConfig.emoji2.groups = emojiGroups;
+        this.isShow = true;
+      })
+  }
 });
 </script>
 

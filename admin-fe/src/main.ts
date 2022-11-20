@@ -9,6 +9,7 @@ import './assets/css/index.css';
 import './assets/css/fonts.css';
 import './assets/css/editor-theme.css';
 import './assets/css/emoji.css';
+import './assets/css/emoji-group-icons.css';
 import 'vue-loading-overlay/dist/css/index.css';
 
 declare module '@vue/runtime-core' {
