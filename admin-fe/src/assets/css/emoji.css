@@ -2,7 +2,8 @@
 	--display-emoji-size: 1.25em;
 }
 
-.ck-editor__main .em {
+.ck-editor__main img.em,
+.ck.ck-content img.em {
 	display: inline-block;
 	width: var(--display-emoji-size);
 	height: var(--display-emoji-size);
