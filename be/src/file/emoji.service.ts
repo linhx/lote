@@ -26,7 +26,7 @@ export class EmojiService {
           group: dto.group,
           groupName: dto.groupName,
           name: dto.name,
-          key: dto.name,
+          key: dto.key,
           url: path.join(
             FILE_URL_PREFIX,
             file.destination.replace(FILE_DIR, ''),
@@ -66,18 +66,21 @@ export class EmojiService {
         if (!emoji) {
           throw new BusinessError('emoji.update.notFound');
         }
-        const oldPath = emoji.path;
 
         emoji.group = dto.group;
         emoji.key = dto.key;
         emoji.name = emoji.name;
-        emoji.url = path.join(
-          `/${PATH_EMOJIS}`,
-          file.destination.replace(FILE_DIR, ''),
-          file.filename,
-        );
-        emoji.type = file.mimetype;
-        emoji.path = file.path;
+        let oldPath;
+        if (!!file) {
+          oldPath = emoji.path;
+          emoji.url = path.join(
+            `/${PATH_EMOJIS}`,
+            file.destination.replace(FILE_DIR, ''),
+            file.filename,
+          );
+          emoji.type = file.mimetype;
+          emoji.path = file.path;
+        }
         await emoji.save({ session: _session });
         return {
           emoji,
@@ -85,10 +88,14 @@ export class EmojiService {
         };
       })
       .catch((e) => {
-        FileUtils.unlinkSyncSilentEnoent(file.path);
+        if (file) {
+          FileUtils.unlinkSyncSilentEnoent(file.path);
+        }
         throw e;
       });
-    FileUtils.unlinkSyncSilentEnoent(oldPath);
+    if (oldPath) {
+      FileUtils.unlinkSyncSilentEnoent(oldPath);
+    }
     return emoji;
   }
 
