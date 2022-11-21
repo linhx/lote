@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
-import * as dotenvExpand from 'dotenv-expand';
-dotenvExpand(config(
+import { expand } from 'dotenv-expand';
+expand(config(
   {
     path: process.env.NODE_ENV === 'development' ? '.env.dev' : undefined
   }
