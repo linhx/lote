@@ -32,7 +32,7 @@ onBeforeMount(() => {
 
 <template>
   <div class="w-full mx-auto">
-    <div class="font-bold logo-text text-gray-800" :class="{ loading: isLoading }">
+    <div class="font-bold logo-text text-gray-800 dark:text-slate-200" :class="{ loading: isLoading }">
       <h2 class="text-xl sm:text-2xl md:text-3xl my-2">{{ t('tag') }}: {{ tag }}<span class="cursor-blinking">_</span></h2>
     </div>
     <note-preview

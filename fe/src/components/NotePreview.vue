@@ -31,7 +31,7 @@ const prefetchNoteContent = () => {
       <div class="font-light whitespace-pre-wrap w-full">
         <div class="text-sm md:text-base line-clamp-2">{{ note.overview }}</div>
         <div class="mt-2.5">
-          <span class="text-gray-600 mr-2 text-sm">{{ publishedDate }}</span>
+          <span class="text-gray-600 dark:text-slate-400 mr-2 text-sm">{{ publishedDate }}</span>
           <tag-link v-for="tag in note.tags" :key="tag" :tag="tag" />
         </div>
       </div>

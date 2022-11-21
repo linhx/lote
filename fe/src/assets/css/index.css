@@ -50,18 +50,18 @@ html, input, textarea {
 ::-webkit-scrollbar {
   width: var(--scrollbar-width);
   height: var(--scrollbar-height);
-  background-color: #ccc;
+  @apply bg-slate-300 dark:bg-slate-700;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #ccc;
+  @apply bg-slate-300 dark:bg-slate-700;
   border-radius: calc(var(--scrollbar-width) / 2);
 }
 ::-webkit-scrollbar-track {
-  background-color: #eee;
+  @apply bg-slate-100 dark:bg-slate-800;
   border-radius: calc(var(--scrollbar-width) / 2);
 }
 
 .tag {
   padding: 0.175rem;
-  @apply hover:shadow-md rounded-sm transition-colors duration-150 text-gray-600 hover:bg-gray-700 hover:text-white text-sm bg-gray-200 mx-1;
+  @apply hover:shadow-md rounded-sm transition-colors duration-150 text-gray-600 hover:bg-gray-700 hover:text-white bg-gray-200 dark:text-slate-100 dark:hover:bg-gray-200 dark:hover:text-gray-600 dark:bg-gray-700 text-sm mx-1;
 }

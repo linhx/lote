@@ -6,11 +6,17 @@
 
  :root {
   --ck-color-image-caption-background: hsl(0, 0%, 97%);
+  --ck-color-image-caption-background-dark: rgb(30 41 59);
   --ck-color-image-caption-text: hsl(0, 0%, 20%);
+  --ck-color-image-caption-text-dark: rgb(148 163 184);
   --ck-color-mention-background: hsla(341, 100%, 30%, 0.1);
+  --ck-color-mention-background-dark: rgb(51,65,85);
   --ck-color-mention-text: hsl(341, 100%, 30%);
+  --ck-color-mention-text-dark: hsl(340, 25%, 81%);
   --ck-color-table-caption-background: hsl(0, 0%, 97%);
+  --ck-color-table-caption-background-dark: rgb(30 41 59);
   --ck-color-table-caption-text: hsl(0, 0%, 20%);
+  --ck-color-table-caption-text-dark: rgb(148 163 184);
   --ck-highlight-marker-blue: hsl(201, 97%, 72%);
   --ck-highlight-marker-green: hsl(120, 93%, 68%);
   --ck-highlight-marker-pink: hsl(345, 96%, 73%);
@@ -164,6 +170,10 @@
   padding: .6em;
   font-size: .75em;
   outline-offset: -1px;
+}
+.dark .ck-content .image > figcaption {
+  color: var(--ck-color-image-caption-text-dark);
+  background-color: var(--ck-color-image-caption-background-dark);
 }
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-style-block-align-left,
@@ -398,6 +408,10 @@
   font-size: .75em;
   outline-offset: -1px;
 }
+.dark .ck-content .table > figcaption {
+  color: var(--ck-color-table-caption-text-dark);
+  background-color: var(--ck-color-table-caption-background-dark);
+}
 /* ckeditor5-code-block/theme/codeblock.css */
 .ck-content pre {
   padding: 1em;
@@ -412,6 +426,9 @@
   font-size: 0.94rem;
   border-radius: var(--scrollbar-width);
   background-color: #fbfbfb;
+}
+.dark .ck-content pre {
+  background-color: #282c34;
 }
 .ck-content pre::-webkit-scrollbar-track {
   background-color: #fbfbfb;
@@ -469,6 +486,10 @@
 .ck-content .mention {
   background: var(--ck-color-mention-background);
   color: var(--ck-color-mention-text);
+}
+.dark .ck-content .mention {
+  background: var(--ck-color-mention-background-dark);
+  color: var(--ck-color-mention-text-dark);
 }
 @media print {
   /* ckeditor5-page-break/theme/pagebreak.css */

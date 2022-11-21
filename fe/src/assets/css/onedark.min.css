@@ -1,0 +1,98 @@
+/*!
+  Theme: OneDark
+  Author: Lalit Magant (http://github.com/tilal6991)
+  License: ~ MIT (or more permissive) [via base16-schemes-source]
+  Maintainer: @highlightjs/core-team
+  Version: 2021.09.0
+*/
+.dark .ck-content pre code {
+  display: block;
+  overflow-x: auto;
+}
+.dark .ck-content pre code {
+  color: #abb2bf;
+  background: #282c34;
+}
+.dark .ck-content pre ::selection,
+.dark .ck-content pre::selection {
+  background-color: #3e4451;
+  color: #abb2bf;
+}
+.dark .ck-content .hljs-comment {
+  color: #545862;
+}
+.dark .ck-content .hljs-tag {
+  color: #565c64;
+}
+.dark .ck-content .hljs-operator,
+.dark .ck-content .hljs-punctuation,
+.dark .ck-content .hljs-subst {
+  color: #abb2bf;
+}
+.dark .ck-content .hljs-operator {
+  opacity: 0.7;
+}
+.dark .ck-content .hljs-bullet,
+.dark .ck-content .hljs-deletion,
+.dark .ck-content .hljs-name,
+.dark .ck-content .hljs-selector-tag,
+.dark .ck-content .hljs-template-variable,
+.dark .ck-content .hljs-variable {
+  color: #e06c75;
+}
+.dark .ck-content .hljs-attr,
+.dark .ck-content .hljs-link,
+.dark .ck-content .hljs-literal,
+.dark .ck-content .hljs-number,
+.dark .ck-content .hljs-symbol,
+.dark .ck-content .hljs-variable.constant_ {
+  color: #d19a66;
+}
+.dark .ck-content .hljs-class .hljs-title,
+.dark .ck-content .hljs-title,
+.dark .ck-content .hljs-title.class_ {
+  color: #e5c07b;
+}
+.dark .ck-content .hljs-strong {
+  font-weight: 700;
+  color: #e5c07b;
+}
+.dark .ck-content .hljs-addition,
+.dark .ck-content .hljs-code,
+.dark .ck-content .hljs-string,
+.dark .ck-content .hljs-title.class_.inherited__ {
+  color: #98c379;
+}
+.dark .ck-content .hljs-built_in,
+.dark .ck-content .hljs-doctag,
+.dark .ck-content .hljs-keyword.hljs-atrule,
+.dark .ck-content .hljs-quote,
+.dark .ck-content .hljs-regexp {
+  color: #56b6c2;
+}
+.dark .ck-content .hljs-attribute,
+.dark .ck-content .hljs-function .hljs-title,
+.dark .ck-content .hljs-section,
+.dark .ck-content .hljs-title.function_,
+.dark .ck-content .ruby .hljs-property {
+  color: #61afef;
+}
+.dark .ck-content .diff .hljs-meta,
+.dark .ck-content .hljs-keyword,
+.dark .ck-content .hljs-template-tag,
+.dark .ck-content .hljs-type {
+  color: #c678dd;
+}
+.dark .ck-content .hljs-emphasis {
+  color: #c678dd;
+  font-style: italic;
+}
+.dark .ck-content .hljs-meta,
+.dark .ck-content .hljs-meta .hljs-keyword,
+.dark .ck-content .hljs-meta .hljs-string {
+  color: #be5046;
+}
+.dark .ck-content .hljs-meta .hljs-keyword,
+.dark .ck-content .hljs-meta-keyword {
+  font-weight: 700;
+}

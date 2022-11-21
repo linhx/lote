@@ -7,6 +7,7 @@ import './assets/css/index.css';
 import './assets/css/content-theme.css';
 import './assets/css/emoji.css';
 import './assets/css/note.css';
+import './assets/css/onedark.min.css';
 import { create as createRouter } from './router';
 import CommentsSection from './components/CommentsSection.vue';
 import i18n from './i18n';

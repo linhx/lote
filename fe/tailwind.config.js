@@ -1,7 +1,12 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{vue,js,ts}', './notes/*.{vue,js,ts}'],
+  safelist: [
+    'bg-white',
+    'dark:bg-slate-900'
+  ],
   corePlugins: {
     preflight: false,
   },
