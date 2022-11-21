@@ -78,7 +78,7 @@ export class EmojiService {
     dto: EmojiUpdateDto,
     file: Express.Multer.File,
   ) {
-    const { emoji, oldPath } = await this.db
+    return this.db
       .withTransaction(session, async (_session) => {
         const emoji = await this.emojiModel
           .findById(dto.id)
@@ -92,9 +92,7 @@ export class EmojiService {
         emoji.category = dto.category;
         emoji.key = dto.key;
         emoji.name = emoji.name;
-        let oldPath;
         if (!!file) {
-          oldPath = emoji.path;
           emoji.url = path.join(
             `/${PATH_EMOJIS}`,
             file.destination.replace(FILE_DIR, ''),
@@ -103,11 +101,7 @@ export class EmojiService {
           emoji.type = file.mimetype;
           emoji.path = file.path;
         }
-        await emoji.save({ session: _session });
-        return {
-          emoji,
-          oldPath,
-        };
+        return emoji.save({ session: _session });
       })
       .catch((e) => {
         if (file) {
@@ -115,10 +109,6 @@ export class EmojiService {
         }
         throw e;
       });
-    if (oldPath) {
-      FileUtils.unlinkSyncSilentEnoent(oldPath);
-    }
-    return emoji;
   }
 
   async deleteById(session: CSession, id: string) {
