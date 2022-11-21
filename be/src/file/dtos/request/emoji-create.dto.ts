@@ -5,6 +5,7 @@ export default class EmojiCreateDto {
   group: string;
   @IsNotEmpty()
   groupName: string;
+  category: string;
   name: string;
   @IsNotEmpty()
   key: string;

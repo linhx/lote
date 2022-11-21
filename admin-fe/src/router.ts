@@ -12,6 +12,7 @@ import TodayILearnedPreviewView from './views/today-i-learned/TodayILearnedPrevi
 import EmojisView from './views/emoji/EmojisView.vue';
 import EmojiCreateView from './views/emoji/EmojiCreateView.vue';
 import EmojiUpdateView from './views/emoji/EmojiUpdateView.vue';
+import EmojiImportView from './views/emoji/EmojiImportView.vue';
 
 const routes: RouteRecordRaw[] = [
   { path: '/', component: NotesView },
@@ -66,6 +67,11 @@ const routes: RouteRecordRaw[] = [
     path: '/emoji/create',
     name: ROUTES_NAME.EMOJI_CREATE,
     component: EmojiCreateView,
+  },
+  {
+    path: '/emoji/import',
+    name: ROUTES_NAME.EMOJI_IMPORT,
+    component: EmojiImportView,
   },
   {
     path: '/emoji/:id',

@@ -16,6 +16,7 @@ const { t } = useI18n();
 const $loading = useLoading();
 const emoji = ref<EmojiCreateDto>({
   group: 'custom',
+  category: '',
   key: '',
   name: '',
 });
@@ -56,6 +57,11 @@ const onSave = () => {
       <div class="mt-5 md:mt-0 md:col-span-1">
         <c-field label="Group">
           <c-input v-model="emoji.group" name="group" disabled />
+        </c-field>
+      </div>
+      <div class="mt-5 md:mt-0 md:col-span-1">
+        <c-field label="Category">
+          <c-input v-model="emoji.category" name="category" />
         </c-field>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-1">

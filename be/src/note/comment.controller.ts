@@ -69,6 +69,7 @@ export class CommentController {
   }
 
   @Public()
+  @Throttle(5, 5)
   @Get('/:permalink')
   async getAllActiveByPermalink(@Param('permalink') permalink: string) {
     const comments = await this.commentService.getAllActiveByPermalink(

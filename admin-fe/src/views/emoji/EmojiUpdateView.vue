@@ -21,6 +21,7 @@ const $loading = useLoading();
 const emoji = ref<EmojiUpdateDto>({
   id: props.id,
   group: 'custom',
+  category: '',
   key: '',
   name: '',
   url: ''
@@ -32,10 +33,7 @@ onBeforeMount(() => {
   isLoading.value = true;
   EmojiRepository.getById(props.id)
   .then(data => {
-    emoji.value.group = data.group;
-    emoji.value.key = data.key;
-    emoji.value.name = data.name;
-    emoji.value.url = data.url;
+    emoji.value = data
   })
   .catch((e) => {
     alert(getResponseError(e));
@@ -97,6 +95,11 @@ const onDelete = () => {
       <div class="mt-5 md:mt-0 md:col-span-1">
         <c-field label="Group">
           <c-input v-model="emoji.group" name="group" disabled />
+        </c-field>
+      </div>
+      <div class="mt-5 md:mt-0 md:col-span-1">
+        <c-field label="Category">
+          <c-input v-model="emoji.category" name="category" />
         </c-field>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-1">

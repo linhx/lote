@@ -11,6 +11,9 @@ export class Emoji {
   @Prop({ required: true })
   groupName: string;
 
+  @Prop()
+  category: string;
+
   @Prop({ required: true })
   name: string;
 

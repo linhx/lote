@@ -9,7 +9,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { SkipThrottle } from '@nestjs/throttler';
+import { SkipThrottle, Throttle } from '@nestjs/throttler';
 import { Public } from '../auth/sso.strategy';
 import NoteCreateDto from './dtos/request/note-create.dto';
 import NoteFilterListDto from './dtos/request/note-filter-list.dto';
@@ -29,6 +29,7 @@ export class NoteController {
   ) {}
 
   @Public()
+  @Throttle(5, 5)
   @Get()
   getPublishedList(@Query() dto: NoteFilterListDto) {
     return this.noteService.getPublishedList(null, new NoteFilterListDto(dto));
@@ -40,6 +41,7 @@ export class NoteController {
   }
 
   @Public()
+  @Throttle(5, 5)
   @Get('l/:permalink')
   async getPublisedByPermalink(@Param('permalink') permalink: string) {
     const entity = await this.noteService.findPublishedByPermalink(

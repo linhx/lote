@@ -49,7 +49,6 @@ export class FileController {
 
   @Get(':path(*)')
   @Public()
-  @SkipThrottle()
   temp(@Param('path') filePath: string, @Res() res: Response) {
     res.sendFile(path.join(FILE_DIR, filePath), (err: any) => {
       if (err) {

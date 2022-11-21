@@ -9,7 +9,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { SkipThrottle } from '@nestjs/throttler';
+import { SkipThrottle, Throttle } from '@nestjs/throttler';
 import { Public } from '../auth/sso.strategy';
 import TodayILearnedCreateDto from './dtos/request/today-i-learn-create.dto';
 import TodayILearnedFilterListDto from './dtos/request/today-i-learn-create-filter-list.dto';
@@ -29,6 +29,7 @@ export class TodayILearnedController {
   ) {}
 
   @Public()
+  @Throttle(5, 5)
   @Get()
   getPublishedList(@Query() dto: TodayILearnedFilterListDto) {
     return this.todayILearnedService.getPublishedList(null, new TodayILearnedFilterListDto(dto));
@@ -40,6 +41,7 @@ export class TodayILearnedController {
   }
 
   @Public()
+  @Throttle(5, 5)
   @Get('l/:permalink')
   async getPublisedByPermalink(@Param('permalink') permalink: string) {
     const entity = await this.todayILearnedService.findPublishedByPermalink(

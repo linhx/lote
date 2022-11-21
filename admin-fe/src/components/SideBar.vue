@@ -141,6 +141,12 @@ const show = () => {
         >
           {{ $t('create') }}
         </router-link>
+        <router-link
+          :to="{ name: routes.EMOJI_IMPORT }"
+          class="py-2.5 px-4 hover:bg-blue-600 rounded-md mt-1 block text-white"
+        >
+          {{ $t('import') }}
+        </router-link>
       </div>
     </div>
   </div>

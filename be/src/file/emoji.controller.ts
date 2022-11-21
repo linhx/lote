@@ -6,10 +6,12 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UploadedFile,
+  UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { FILE_DIR, PATH_EMOJIS } from '../constants';
 import * as FileUtils from '../utilities/FileUtils';
@@ -20,7 +22,7 @@ import { EmojiService } from './emoji.service';
 import EmojiDto from './dtos/response/emoji.dto';
 import PageDto from '../dtos/response/page.dto';
 import EmojiUpdateDto from './dtos/request/emoji-update.dto';
-import { Public } from 'src/auth/sso.strategy';
+import EmojiFilterListDto from './dtos/request/emoji-filter-list.dto';
 
 @Controller(PATH_EMOJIS)
 export class EmojiController {
@@ -45,14 +47,22 @@ export class EmojiController {
   }
 
   @Get()
+  async getAllPaging(@Query() dto: EmojiFilterListDto) {
+    const { items, total } = await this.emojiService.findAllPaging(new EmojiFilterListDto(dto));
+    return PageDto.create(
+      items.map((emoji) => EmojiDto.fromEntity(emoji)),
+      dto.page,
+      dto.limit,
+      total,
+    ); // TODO paging if needed
+  }
+
+  @Get('all')
   async getAll() {
     const emojis = await this.emojiService.findAll();
-    return PageDto.create(
-      emojis.map((emoji) => EmojiDto.fromEntity(emoji)),
-      1,
-      emojis.length,
-      emojis.length,
-    ); // TODO paging if needed
+    return {
+      items: emojis.map((emoji) => EmojiDto.fromEntity(emoji))
+    }
   }
 
   @Get('/:id')
@@ -68,7 +78,7 @@ export class EmojiController {
       storage: diskStorage({
         destination: path.join(FILE_DIR, PATH_EMOJIS),
         filename: (req, file, cb) => {
-          cb(null, `${req.body.key}.${FileUtils.getExt(file.originalname)}`);
+          cb(null, FileUtils.randomFileName(file.originalname));
         },
       }),
     }),
@@ -84,5 +94,21 @@ export class EmojiController {
   @Delete('/:id')
   deleteById(@Param('id') id: string) {
     return this.emojiService.deleteById(null, id);
+  }
+
+  @Post('import')
+  @UseInterceptors(FilesInterceptor('files', 100, {
+    storage: diskStorage({
+      destination: path.join(FILE_DIR, PATH_EMOJIS),
+      filename: (req, file, cb) => {
+        cb(null, FileUtils.randomFileName(file.originalname));
+      },
+    }),
+  }))
+  async import(
+    @UploadedFiles() files: Array<Express.Multer.File>,
+    @Body() dto: { emojis: string },
+  ) {
+    return this.emojiService.import(null, JSON.parse(dto.emojis), files);
   }
 }

@@ -9,4 +9,7 @@ export default {
   list: "Danh sách",
   create: "Tạo mới",
   rePublishAll: "Publish lại tất cả",
+  import: "Import",
+  edit: "Sửa",
+  clear: "Xóa",
 }

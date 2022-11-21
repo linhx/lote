@@ -5,6 +5,7 @@ export default class EmojiUpdateDto {
   id: string;
   @IsNotEmpty()
   group: string;
+  category: string;
   @IsNotEmpty()
   key: string;
   name: string;

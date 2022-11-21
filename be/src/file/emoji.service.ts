@@ -9,6 +9,7 @@ import * as path from 'path';
 import BusinessError from 'src/exceptions/business.error';
 import EmojiUpdateDto from './dtos/request/emoji-update.dto';
 import * as FileUtils from '../utilities/FileUtils';
+import EmojiFilterListDto from './dtos/request/emoji-filter-list.dto';
 
 @Injectable()
 export class EmojiService {
@@ -25,6 +26,7 @@ export class EmojiService {
         const emojiModel = new this.emojiModel({
           group: dto.group,
           groupName: dto.groupName,
+          category: dto.category,
           name: dto.name,
           key: dto.key,
           url: path.join(
@@ -44,8 +46,27 @@ export class EmojiService {
       });
   }
 
+  async findAllPaging(dto: EmojiFilterListDto) {
+    const items = await this.emojiModel.find({
+      ...(!!dto.name && { name: dto.name })
+    })
+    .sort({ name: 1 })
+    .skip(dto.getSkip())
+    .limit(dto.limit)
+    .exec();
+
+    const total = await this.emojiModel.countDocuments({
+      ...(!!dto.name && { name: dto.name })
+    });
+
+    return {
+      items,
+      total
+    }
+  }
+  
   findAll() {
-    return this.emojiModel.find();
+    return this.emojiModel.find().sort({ name: 1 });
   }
 
   findById(session: CSession, id: string) {
@@ -68,6 +89,7 @@ export class EmojiService {
         }
 
         emoji.group = dto.group;
+        emoji.category = dto.category;
         emoji.key = dto.key;
         emoji.name = emoji.name;
         let oldPath;
@@ -106,6 +128,38 @@ export class EmojiService {
         .exec();
       FileUtils.unlinkSyncSilentEnoent(emoji.path);
       return emoji;
+    });
+  }
+
+  async import(session: CSession, emojis: EmojiCreateDto[], files: Array<Express.Multer.File>) {
+    return this.db.withTransaction(session, async (_session) => {
+      const emojiModels = []
+      for(let i = 0; i < emojis.length; i++) {
+        const dto = emojis[i];
+        const file = files[i];
+        const emojiModel = new this.emojiModel({
+          group: dto.group,
+          groupName: dto.groupName,
+          category: dto.category,
+          name: dto.name,
+          key: dto.key,
+          url: path.join(
+            FILE_URL_PREFIX,
+            file.destination.replace(FILE_DIR, ''),
+            file.filename,
+          ),
+          type: file.mimetype,
+          path: file.path,
+        });
+        emojiModels.push(emojiModel);
+      }
+
+      return this.emojiModel.bulkSave(emojiModels, { session: _session });
+    }).catch(e => {
+      files.forEach(file => {
+        FileUtils.unlinkSyncSilentEnoent(file.path);
+        throw e;
+      });
     });
   }
 }

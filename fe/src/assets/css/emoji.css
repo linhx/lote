@@ -4,7 +4,7 @@
 
 .ck.ck-content img.em {
 	display: inline-block;
-	width: var(--display-emoji-size);
+	width: auto;
 	height: var(--display-emoji-size);
 	vertical-align: middle;
 	margin-top: -4px;

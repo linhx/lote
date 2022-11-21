@@ -18,10 +18,7 @@ import { TodayILearnedModule } from './today-i-learned/today-i-learned.module';
       replicaSet: process.env.MONGO_DB_REPLICA,
     }),
     ScheduleModule.forRoot(),
-    ThrottlerModule.forRoot({
-      ttl: 60,
-      limit: 10,
-    }),
+    ThrottlerModule.forRoot(),
     FileModule,
     NoteModule,
     TodayILearnedModule,
