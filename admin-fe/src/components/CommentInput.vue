@@ -17,7 +17,7 @@ const onSend = () => {
 
 <template>
   <div>
-    <textarea-with-btn v-model="content" placeholder="Comment không quá 500 ký tự. (Ctrl + Enter)" :maxlength="500" @post="onSend" />
+    <textarea-with-btn v-model="content" placeholder="Comment không quá 500 ký tự." :maxlength="500" @post="onSend" />
   </div>
 </template>
 

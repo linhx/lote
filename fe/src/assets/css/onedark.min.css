@@ -7,6 +7,7 @@
 */
 .dark .ck-content pre {
   background-color: #282c34;
+  border: 2px solid rgb(71 85 105);
 }
 .dark .ck-content pre code {
   color: #abb2bf;

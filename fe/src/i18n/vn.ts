@@ -7,7 +7,7 @@ export default {
   todayILearned: 'Today I learned',
   comment: {
     content: {
-      placeholder: 'Comment không quá 500 ký tự. (Ctrl + Enter)'
+      placeholder: 'Comment không quá 500 ký tự.'
     },
     name: {
       placeholder: 'Tên của bạn (tối thiểu 2 ký tự, default: Anonymous)'

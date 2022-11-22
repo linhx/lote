@@ -67,7 +67,7 @@ const onInputAuthorName = (e: Event) => {
         ref="nameRef"
         :value="modelValue.authorName"
         :placeholder="t('comment.name.placeholder')"
-        class="c-input comment-name dark:bg-slate-800"
+        class="c-input comment-name border-slate-600 dark:bg-slate-800"
         maxlength="30"
         @input="onInputAuthorName"
         @keydown="onEnterName">

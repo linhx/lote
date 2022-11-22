@@ -424,7 +424,6 @@
 /* ckeditor5-code-block/theme/codeblock.css */
 .ck-content pre {
   padding: 1em;
-  border: 2px solid #555;
   border-radius: 2px;
   text-align: left;
   direction: ltr;
@@ -563,6 +562,9 @@
   margin: 30px auto;
   width: 40%;
   opacity: 0.3;
+}
+.dark .ck.ck-content hr {
+  background-image: linear-gradient(to right,rgba(225,225,225,0),rgb(226, 226, 226),rgba(225,225,225,0));
 }
 
 .ck.ck-content p {

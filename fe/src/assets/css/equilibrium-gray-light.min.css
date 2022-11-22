@@ -6,6 +6,7 @@
   Version: 2021.09.0
 */
 .ck-content pre {
+  border: 2px solid #ccc;
   color: hsl(0, 0%, 20.8%);
   background-color: #fbfbfb;
 }
