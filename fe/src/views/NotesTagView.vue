@@ -2,6 +2,7 @@
 import { onBeforeMount, ref } from 'vue';
 import { onBeforeRouteUpdate } from 'vue-router';
 import NotePreview from '../components/NotePreview.vue';
+import LoadingInline from '../components/LoadingInline.vue';
 import { storeToRefs } from 'pinia';
 import { useNotesStore } from '../stores/notes';
 import * as VueI18n from 'vue-i18n';
@@ -32,11 +33,11 @@ onBeforeMount(() => {
 
 <template>
   <div class="w-full mx-auto">
-    <div class="font-bold logo-text text-gray-800 dark:text-slate-200" :class="{ loading: isLoading }">
-      <h2 class="text-xl sm:text-2xl md:text-3xl my-2">{{ t('tag') }}: {{ tag }}<span class="cursor-blinking">_</span></h2>
+    <div class="font-bold logo-text text-gray-800 dark:text-slate-200">
+      <h2 class="text-xl sm:text-2xl md:text-3xl my-2">{{ t('tag') }}: {{ tag }}<loading-inline :is-loading="isLoading" /></h2>
     </div>
     <note-preview
-      class="py-4 border-b-1 border-slate-200"
+      class="py-4 border-b-1 border-slate-200 dark:border-slate-700"
       v-for="note in tagNotes?.items"
       :key="note.id"
       :note="note"
@@ -48,9 +49,5 @@ onBeforeMount(() => {
 .logo-text {
   font-size: 2rem;
   line-height: 2.25rem;
-}
-
-.cursor-blinking {
-animation: ping 1s cubic-bezier(0.79,-0.26, 0.65,-0.13) infinite;
 }
 </style>

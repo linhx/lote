@@ -20,7 +20,7 @@ const prefetchContent = () => {
   <div class="flex">
     <div class="body text-left space-y-1 w-full">
       <div class="flex flex-col md:flex-row items-baseline">
-        <span class="text-gray-600 mr-5 w-24 text-sm">{{ publishedDate }}</span>
+        <span class="text-gray-600 dark:text-slate-400 mr-5 w-24 text-sm">{{ publishedDate }}</span>
         <router-link
           class="text-sky-500 inline-block text-sm sm:text-base hover:underline"
           :title="todayILearned.title"

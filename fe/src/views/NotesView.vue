@@ -19,7 +19,7 @@ onBeforeMount(() => {
   <div>
     <div class="w-full md:max-w-3xl mx-auto">
       <note-preview
-        class="py-4 border-b-1 border-slate-200"
+        class="py-4 border-b-1 border-slate-200 dark:border-slate-700"
         v-for="note in notes?.items"
         :key="note.id"
         :note="note"

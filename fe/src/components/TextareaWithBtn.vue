@@ -35,7 +35,7 @@ const onClickEnter = () => {
     <textarea
       :rows="rows"
       :placeholder="placeholder"
-      class="resize-y comment-textarea"
+      class="resize-y comment-textarea dark:bg-slate-800"
       :value="modelValue"
       :maxlength="maxlength"
       @change="onChange"

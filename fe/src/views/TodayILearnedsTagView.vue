@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import LoadingInline from '../components/LoadingInline.vue';
+import TodayILearnedPreview from '../components/TodayILearnedPreview.vue';
 import { onBeforeMount, ref } from 'vue';
 import { onBeforeRouteUpdate } from 'vue-router';
-import TodayILearnedPreview from '../components/TodayILearnedPreview.vue';
 import { storeToRefs } from 'pinia';
 import { useTodayILearnedsStore } from '../stores/today-i-learneds';
 import * as VueI18n from 'vue-i18n';
@@ -32,11 +33,11 @@ onBeforeMount(() => {
 
 <template>
   <div class="w-full mx-auto">
-    <div class="font-bold logo-text text-gray-800" :class="{ loading: isLoading }">
-      <h2 class="text-xl sm:text-2xl md:text-3xl my-2">{{ t('tag') }}: {{ tag }}<span class="cursor-blinking">_</span></h2>
+    <div class="font-bold logo-text text-gray-800 dark:text-slate-200">
+      <h2 class="text-xl sm:text-2xl md:text-3xl my-2">{{ t('tag') }}: {{ tag }}<loading-inline :is-loading="isLoading" /></h2>
     </div>
     <today-i-learned-preview
-      class="py-4 border-b-1 border-slate-200"
+      class="py-2"
       v-for="todayILearned in tagTodayILearneds?.items"
       :key="todayILearned.id"
       :today-i-learned="todayILearned"
@@ -48,9 +49,5 @@ onBeforeMount(() => {
 .logo-text {
   font-size: 2rem;
   line-height: 2.25rem;
-}
-
-.cursor-blinking {
-animation: ping 1s cubic-bezier(0.79,-0.26, 0.65,-0.13) infinite;
 }
 </style>

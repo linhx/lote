@@ -5,9 +5,8 @@
   Maintainer: @highlightjs/core-team
   Version: 2021.09.0
 */
-.dark .ck-content pre code {
-  display: block;
-  overflow-x: auto;
+.dark .ck-content pre {
+  background-color: #282c34;
 }
 .dark .ck-content pre code {
   color: #abb2bf;
