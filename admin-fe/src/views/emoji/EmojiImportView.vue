@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import CField from '../../components/CField.vue';
 import CFileInput from '../../components/CFileInput.vue';
 import CInput from '../../components/CInput.vue';
 import FileImageViewer from '../../components/FileImageViewer.vue';

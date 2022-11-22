@@ -12,4 +12,5 @@ export default {
   import: "Import",
   edit: "Sửa",
   clear: "Xóa",
+  remove: "Xóa",
 }
