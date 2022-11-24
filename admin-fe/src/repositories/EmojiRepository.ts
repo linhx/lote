@@ -14,12 +14,12 @@ export default {
     if (!dto.file) {
       throw new Error('Missing emoji file');
     }
-    formData.append('file', dto.file);
     formData.append('group', dto.group);
     formData.append('groupName', dto.group);
     formData.append('category', dto.category);
     formData.append('key', dto.key);
     formData.append('name', dto.name);
+    formData.append('file', dto.file);
     return api.post(PATH, formData);
   },
 
@@ -37,14 +37,14 @@ export default {
 
   async update(dto: EmojiUpdateDto) {
     const formData = new FormData();
-    if (dto.file) {
-      formData.append('file', dto.file);
-    }
     formData.append('id', dto.id);
     formData.append('group', dto.group);
     formData.append('category', dto.category);
     formData.append('key', dto.key);
     formData.append('name', dto.name);
+    if (dto.file) {
+      formData.append('file', dto.file);
+    }
     return api.put(PATH, formData);
   },
 

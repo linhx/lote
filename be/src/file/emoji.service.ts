@@ -31,8 +31,7 @@ export class EmojiService {
           key: dto.key,
           url: path.join(
             FILE_URL_PREFIX,
-            file.destination.replace(FILE_DIR, ''),
-            file.filename,
+            file.path.replace(FILE_DIR, ''),
           ),
           type: file.mimetype,
           path: file.path,
@@ -94,9 +93,8 @@ export class EmojiService {
         emoji.name = emoji.name;
         if (!!file) {
           emoji.url = path.join(
-            `/${PATH_EMOJIS}`,
-            file.destination.replace(FILE_DIR, ''),
-            file.filename,
+            FILE_URL_PREFIX,
+            file.path.replace(FILE_DIR, ''),
           );
           emoji.type = file.mimetype;
           emoji.path = file.path;
@@ -122,11 +120,17 @@ export class EmojiService {
   }
 
   async import(session: CSession, emojis: EmojiCreateDto[], files: Array<Express.Multer.File>) {
+    const _files = files.map(f => f.path);
     return this.db.withTransaction(session, async (_session) => {
       const emojiModels = []
       for(let i = 0; i < emojis.length; i++) {
         const dto = emojis[i];
         const file = files[i];
+        const newDest = path.join(FILE_DIR, PATH_EMOJIS, FileUtils.createValidPath(dto.key));
+        FileUtils.mkdirSyncIfNotExist(newDest, { recursive: true });
+        const newPath = path.join(newDest, file.filename);
+        FileUtils.mvSync(file.path, newPath); // move file to under file-dir/emojis/<key>/filename
+        _files[i] = newPath;
         const emojiModel = new this.emojiModel({
           group: dto.group,
           groupName: dto.groupName,
@@ -135,8 +139,7 @@ export class EmojiService {
           key: dto.key,
           url: path.join(
             FILE_URL_PREFIX,
-            file.destination.replace(FILE_DIR, ''),
-            file.filename,
+            newPath.replace(FILE_DIR, ''),
           ),
           type: file.mimetype,
           path: file.path,
@@ -146,10 +149,10 @@ export class EmojiService {
 
       return this.emojiModel.bulkSave(emojiModels, { session: _session });
     }).catch(e => {
-      files.forEach(file => {
-        FileUtils.unlinkSyncSilentEnoent(file.path);
-        throw e;
+      _files.forEach(file => {
+        FileUtils.unlinkSyncSilentEnoent(file);
       });
+      throw e;
     });
   }
 }

@@ -6,6 +6,19 @@ export const getExt = (name: string) => {
   return name?.substring(name?.lastIndexOf('.') + 1);
 };
 
+export const fileNameWithoutExtension = (fileName: string) => {
+  if (!fileName) return fileName;
+  const lastIndexOfDot = fileName.lastIndexOf('.');
+  if (lastIndexOfDot === -1) {
+    return fileName;
+  }
+  return fileName.substring(0, lastIndexOfDot);
+}
+
+export const createValidPath = (str: string) => {
+  return str?.replace(/[^a-zA-Z0-9_]/g, '-');
+}
+
 export const randomFileName = (fileName: string) => {
   return nanoid() + '.' + getExt(fileName);
 };
@@ -68,4 +81,8 @@ export const mkdirSyncIfNotExist = (path: string, options: fs.MakeDirectoryOptio
   if (!fs.existsSync(path)) {
     fs.mkdirSync(path, options)
   }
+}
+
+export const mvSync = (source: string, dest: string) => {
+  fs.renameSync(source, dest);
 }
