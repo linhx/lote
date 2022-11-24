@@ -62,7 +62,8 @@ export class TodayILearnedService {
       if (!oldTodayILearned) {
         throw new BusinessError('error.til.notfound');
       }
-      if (oldTodayILearned.permalink != dto.permalink) {
+      const oldPermalink = oldTodayILearned.permalink;
+      if (oldPermalink != dto.permalink) {
         if (await this.existsByPermalink(_session, dto.permalink)) {
           throw new BusinessError('error.til.duplicate-permalink');
         }
@@ -92,7 +93,11 @@ export class TodayILearnedService {
       oldTodayILearned.content = rest.content;
       oldTodayILearned.updatedAt = new Date();
 
-      return oldTodayILearned.save({ session: _session });
+      const til = await oldTodayILearned.save({ session: _session });
+      if (til.permalink != oldPermalink) {
+        this.deleteTodayILearnedHTMLInPublishedDir({ permalink: oldPermalink });
+      }
+      return til;
     });
   }
 
@@ -152,7 +157,7 @@ export class TodayILearnedService {
     });
   }
 
-  deleteTodayILearnedHTMLInPublishedDir(til: TodayILearnedDocument) {
+  deleteTodayILearnedHTMLInPublishedDir(til: Pick<TodayILearnedDocument, 'permalink'>) {
     // remove til HTML
     const file = path.join(TILS_PUBLISHED_DIR, `${til.permalink}.html`);
     FileUtils.unlinkSyncSilentEnoent(file);

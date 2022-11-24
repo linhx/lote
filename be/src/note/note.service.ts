@@ -67,7 +67,8 @@ export class NoteService {
       if (!oldNote) {
         throw new BusinessError('error.note.notfound');
       }
-      if (oldNote.permalink != dto.permalink) {
+      const oldPermalink = oldNote.permalink;
+      if (oldPermalink != dto.permalink) {
         if (await this.existsByPermalink(_session, dto.permalink)) {
           throw new BusinessError('error.note.duplicate-permalink');
         }
@@ -104,7 +105,12 @@ export class NoteService {
       oldNote.content = rest.content;
       oldNote.updatedAt = new Date();
 
-      return oldNote.save({ session: _session });
+      const note = await oldNote.save({ session: _session });
+
+      if (note.permalink != oldPermalink) {
+        this.deleteNoteHTMLInPublishedDir({ permalink: oldPermalink });
+      }
+      return note;
     });
   }
 
@@ -164,7 +170,7 @@ export class NoteService {
     });
   }
 
-  deleteNoteHTMLInPublishedDir(note: NoteDocument) {
+  deleteNoteHTMLInPublishedDir(note: Pick<NoteDocument, 'permalink'>) {
     // remove note HTML
     const file = path.join(NOTES_PUBLISHED_DIR, `${note.permalink}.html`);
     FileUtils.unlinkSyncSilentEnoent(file);
