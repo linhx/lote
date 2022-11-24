@@ -24,14 +24,22 @@ import PageDto from '../dtos/response/page.dto';
 import EmojiUpdateDto from './dtos/request/emoji-update.dto';
 import EmojiFilterListDto from './dtos/request/emoji-filter-list.dto';
 
+const EMOJIS_PATH_TEMP = path.join(FILE_DIR, PATH_EMOJIS, 'temp');
+
 @Controller(PATH_EMOJIS)
 export class EmojiController {
-  constructor(private readonly emojiService: EmojiService) {}
+  constructor(private readonly emojiService: EmojiService) {
+    FileUtils.mkdirSyncIfNotExist(EMOJIS_PATH_TEMP, { recursive: true });
+  }
   @Post()
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: path.join(FILE_DIR, PATH_EMOJIS),
+        destination: (req, file, cb) => {
+          const dir = path.join(FILE_DIR, PATH_EMOJIS, FileUtils.createValidPath(req.body.key));
+          FileUtils.mkdirSyncIfNotExist(dir, { recursive: true });
+          cb(null, dir);
+        },
         filename: (req, file, cb) => {
           cb(null, FileUtils.randomFileName(file.originalname));
         },
@@ -76,7 +84,11 @@ export class EmojiController {
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: path.join(FILE_DIR, PATH_EMOJIS),
+        destination: (req, file, cb) => {
+          const dir = path.join(FILE_DIR, PATH_EMOJIS, FileUtils.createValidPath(req.body.key));
+          FileUtils.mkdirSyncIfNotExist(dir, { recursive: true });
+          cb(null, dir);
+        },
         filename: (req, file, cb) => {
           cb(null, FileUtils.randomFileName(file.originalname));
         },
@@ -99,7 +111,7 @@ export class EmojiController {
   @Post('import')
   @UseInterceptors(FilesInterceptor('files', 100, {
     storage: diskStorage({
-      destination: path.join(FILE_DIR, PATH_EMOJIS),
+      destination: EMOJIS_PATH_TEMP,
       filename: (req, file, cb) => {
         cb(null, FileUtils.randomFileName(file.originalname));
       },
