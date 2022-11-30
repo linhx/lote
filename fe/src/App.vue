@@ -7,6 +7,7 @@ import Header from './components/Header.vue';
   <div class="text-gray-800 dark:text-slate-400 px-4 md:px-0 pb-8 md:max-w-3xl mx-auto">
     <router-view />
   </div>
+  <modal-container/>
 </template>
 
 <style>

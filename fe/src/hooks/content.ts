@@ -1,6 +1,9 @@
+import { getEventListeners } from 'events';
 import { nextTick, onBeforeMount, onBeforeUnmount, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useModal } from 'vue-ladom';
 import { PATHS_NAME } from '../constants/paths';
+import ImageZoom from '../components/ImageZoom.vue';
 
 export const useBindContentEvent = (tagRouteName: string, getContent: () => Promise<string>) => {
   let $tocLinks: NodeListOf<Element> | undefined;
@@ -97,18 +100,32 @@ export const useBindContentEvent = (tagRouteName: string, getContent: () => Prom
   };
   
   const router = useRouter();
+  const onClickTag = function (this: any) {
+    router.push({
+      name: tagRouteName,
+      params: {
+        tag: this.innerText,
+      },
+    });
+  }
   const onClickTags = () => {
     const $tags: NodeListOf<HTMLSpanElement> | undefined = contentRef.value?.querySelectorAll('.note__tags .tag');
     $tags?.forEach(($tag) => {
-      $tag.addEventListener('click', () => {
-        router.push({
-          name: tagRouteName,
-          params: {
-            tag: $tag.innerText,
-          }
-        });
-      })
-    })
+      $tag.addEventListener('click', onClickTag);
+    });
+  }
+
+  const modal = useModal();
+  const onClickImage = function (this: any) {
+    modal.open(ImageZoom, {
+      src: this.querySelector('img')?.getAttribute('src'),
+    });
+  }
+  const onClickImages = () => {
+    const $images: NodeListOf<HTMLElement> | undefined = contentRef.value?.querySelectorAll('figure.image');
+    $images?.forEach(($image) => {
+      $image.addEventListener('click', onClickImage);
+    });
   }
 
   const contentHTML = ref('');
@@ -121,6 +138,7 @@ export const useBindContentEvent = (tagRouteName: string, getContent: () => Prom
     });
     nextTick(() => {
       activeTocItemOnScroll();
+      onClickImages();
       onClickTags();
     });
   });
