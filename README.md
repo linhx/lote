@@ -59,9 +59,6 @@ docker compose exec mongo sh /scripts/init.sh
 
 3. Manage by using PM2 or installing as a Linux service.
 
-NOTE: for authentication, I'm using an authentication server to validate the access token from cookie.
-You should change the strategy to your.
-
 #### Admin frontend (admin-fe)
 
 1. Update .env
