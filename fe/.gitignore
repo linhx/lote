@@ -1,12 +1,1 @@
 node_modules
-.DS_Store
-dist
-dist-ssr
-dist-note
-*.local
-
-# VS Code
-.vscode
-
-public/notes
-public/today-i-learneds
