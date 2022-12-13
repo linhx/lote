@@ -1,0 +1,40 @@
+.c-modal-container {
+  @apply overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full inset-0 h-full justify-center items-center flex;
+}
+
+.c-modal-wrapper {
+  @apply relative p-4 w-full h-full flex justify-center items-center;
+}
+
+.c-modal-backdrop {
+  @apply bg-gray-900 bg-opacity-50 fixed inset-0 z-40
+}
+
+.c-modal {
+  @apply relative bg-white rounded-lg shadow;
+}
+
+.c-modal > .header-wrapper {
+  @apply flex justify-between items-start p-4 rounded-t border-b;
+}
+
+.c-modal > .header-wrapper > .header {
+  @apply text-xl font-semibold text-gray-900;
+}
+
+.c-modal > .header-wrapper .btn-close {
+  @apply text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center;
+}
+
+
+.c-modal .footer {
+  @apply flex items-center p-6 space-x-2 rounded-b border-t border-gray-200;
+}
+
+.btn-primary {
+  @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center
+}
+
+.btn-light {
+  @apply text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10;
+}

@@ -1,0 +1,33 @@
+FROM node:16-alpine as build-stage
+
+ARG BE_API_URL
+
+ENV VITE_APP_API_URL=${BE_API_URL}
+
+WORKDIR /apps
+COPY ./admin-fe/package.json ./admin-fe/package-lock.json ./admin-fe/
+RUN npm install --prefix ./admin-fe
+
+COPY ./admin-fe ./admin-fe
+RUN npm run build --prefix ./admin-fe
+
+# production
+FROM nginx:stable-alpine as production-stage
+
+ARG FE_DIR
+ARG FE_DOMAIN
+ARG ADMIN_FE_DOMAIN
+ARG BE_DOMAIN
+
+# env for nginx template
+ENV ADMIN_FE_DIR=/apps/admin-fe
+ENV FE_DOMAIN=${FE_DOMAIN}
+ENV ADMIN_FE_DOMAIN=${ADMIN_FE_DOMAIN}
+ENV BE_DOMAIN=${BE_DOMAIN}
+
+COPY --from=build-stage /apps/admin-fe/dist/. ${ADMIN_FE_DIR}
+
+# TODO use template for setting env: Domain, directory
+COPY ./nginx-templates /etc/nginx/templates
+
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,11 @@
+.textarea-container {
+  position: relative;
+}
+.textarea-container textarea {
+  @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border rounded-md;
+}
+.textarea-container button {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+}
