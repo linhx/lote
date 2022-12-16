@@ -2,8 +2,11 @@ import Link from 'next/link';
 import TagLink from '@/components/shared/atoms/TagLink';
 import { classNames } from '@/utils';
 
+const formatDate = (publishedAt) => {
+  return new Date(publishedAt).toLocaleDateString('vi-VN');
+};
+
 export default function NotePreview({ className, note }) {
-  const publishedDate = new Date(note.publishedAt).toLocaleDateString('vi-VN');
   return (
     <div className={classNames(className, 'flex')}>
       <div className="body text-left space-y-1 w-full">
@@ -21,7 +24,7 @@ export default function NotePreview({ className, note }) {
           </div>
           <div className="mt-2.5">
             <span className="text-gray-600 dark:text-slate-400 mr-2 text-sm">
-              {publishedDate}
+              {formatDate(note.publishedAt)}
             </span>
             {note.tags.map((tag) => (
               <TagLink key={tag} tag={tag} />
