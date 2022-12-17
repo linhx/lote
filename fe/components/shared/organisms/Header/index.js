@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import { classNames } from '../../../../utils';
 import style from './style.module.css';
 import ButtonThemeMode from '../../molecules/ButtonThemeMode';
+import logo from '@/assets/img/logo.svg';
+import logoDark from '@/assets/img/logo-dark.svg';
 
 const BREADCRUMBS = {
   HOME: { label: '/home', path: '/' },
@@ -115,6 +117,8 @@ export default function Header({ innerClass, className }) {
               >
                 {t('blogName')}
               </h2>
+              <img src={logo.src} width="25" className='xs:hidden dark:hidden' />
+              <img src={logoDark.src} width="25" className='hidden dark:inline-block xs:!hidden' />
               <Link
                 href="/today-i-learned"
                 className="ml-auto lowercase hover:underline hover:text-gray-700 dark:hover:text-slate-50 border-r border-slate-200 mr-4 pr-5 dark:border-slate-800"
