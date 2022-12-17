@@ -65,3 +65,11 @@ html, input, textarea {
   padding: 0.175rem;
   @apply hover:shadow-md rounded-sm transition-colors duration-150 text-gray-600 hover:bg-gray-700 hover:text-white bg-gray-200 dark:text-slate-100 dark:hover:bg-gray-200 dark:hover:text-gray-600 dark:bg-gray-700 text-sm mx-1;
 }
+
+#__next {
+  @apply min-h-screen flex flex-col;
+}
+
+#__next .content-wrapper {
+  @apply flex-grow w-full;
+}
