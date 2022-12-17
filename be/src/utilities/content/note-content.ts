@@ -23,9 +23,10 @@ export const formatContent = (_content: string) => {
 
 export const create = (
   note: NoteDocument | TodayILearnedDocument,
+  timeZone?: string,
 ) => {
   const tagsHTML = note.tags?.reduce((tags, tag) => tags + `<span class="tag">${tag}</span>`, '');
-  const publishedAt = note.publishedAt.toLocaleDateString('vi-VN');
+  const publishedAt = note.publishedAt.toLocaleDateString('vi-VN', { timeZone });
   const {
     content,
     tableOfContents,

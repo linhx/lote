@@ -43,6 +43,7 @@ services:
       args: # pass env to Dockefile because they are needed in build time
         - BE_API_URL=${BE_API_URL}
         - RECAPTCHA_SITE_KEY=${RECAPTCHA_SITE_KEY}
+        - TZ=${TZ}
     depends_on:
       - note-be
 

@@ -1,5 +1,5 @@
 import { join } from 'path';
-import * as StringUtils from './utilities/StringUtils';
+import * as StringUtils from '../utilities/StringUtils';
 
 export const PATH_NOTES = 'notes';
 export const PATH_TIL = 'today-i-learned';
@@ -23,3 +23,5 @@ export const NOTE_URL_BASE = StringUtils.joinUrl(
   PATH_NOTES,
   PATH_NOTES_FILE,
 );
+
+export const TZ = process.env.TZ;

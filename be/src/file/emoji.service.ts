@@ -1,12 +1,12 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { FILE_DIR, FILE_URL_PREFIX, PATH_EMOJIS } from 'src/constants';
+import { FILE_DIR, FILE_URL_PREFIX, PATH_EMOJIS } from '../constants';
 import { CSession, Db } from '../common/db';
 import EmojiCreateDto from './dtos/request/emoji-create.dto';
 import { Emoji, EmojiDocument } from './entities/emoji.entity';
 import * as path from 'path';
-import BusinessError from 'src/exceptions/business.error';
+import BusinessError from '../exceptions/business.error';
 import EmojiUpdateDto from './dtos/request/emoji-update.dto';
 import * as FileUtils from '../utilities/FileUtils';
 import EmojiFilterListDto from './dtos/request/emoji-filter-list.dto';

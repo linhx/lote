@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { classNames } from '@/utils';
 
 const formatDate = (publishedAt) => {
-  return new Date(publishedAt).toLocaleDateString('vi-VN');
+  return new Date(publishedAt).toLocaleDateString('vi-VN', { timeZone: process.env.NEXT_PUBLIC_TZ });
 };
 
 export default function TodayILearnedPreview({ className, todayILearned }) {

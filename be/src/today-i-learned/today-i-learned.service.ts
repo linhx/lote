@@ -10,7 +10,7 @@ import TodayILearnedFilterListDto from './dtos/request/today-i-learn-create-filt
 import * as path from 'path';
 import { CSession, Db } from '../common/db';
 import {
-  TILS_PUBLISHED_DIR,
+  TILS_PUBLISHED_DIR, TZ,
 } from '../constants';
 import BusinessError from '../exceptions/business.error';
 import { FileService } from '../file/file.service';
@@ -117,7 +117,7 @@ export class TodayILearnedService {
     const tilComponentName = `${til.permalink}.html`;
     const file = path.join(TILS_PUBLISHED_DIR, tilComponentName);
     FileUtils.unlinkSyncSilentEnoent(file);
-    const tilContentHTML = TodayILearnedContentUtil.create(til);
+    const tilContentHTML = TodayILearnedContentUtil.create(til, TZ);
     FileUtils.writeFileSync(file, tilContentHTML, { recursive: true });
   }
 

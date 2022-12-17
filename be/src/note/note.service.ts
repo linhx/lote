@@ -10,7 +10,7 @@ import NoteFilterListDto from './dtos/request/note-filter-list.dto';
 import * as path from 'path';
 import { CSession, Db } from '../common/db';
 import {
-  NOTES_PUBLISHED_DIR,
+  NOTES_PUBLISHED_DIR, TZ,
 } from '../constants';
 import BusinessError from '../exceptions/business.error';
 import { FileService } from '../file/file.service';
@@ -130,7 +130,7 @@ export class NoteService {
     const noteComponentName = `${note.permalink}.html`;
     const file = path.join(NOTES_PUBLISHED_DIR, noteComponentName);
     FileUtils.unlinkSyncSilentEnoent(file);
-    const noteContentHTML = NoteContentUtil.create(note);
+    const noteContentHTML = NoteContentUtil.create(note, TZ);
     FileUtils.writeFileSync(file, noteContentHTML, { recursive: true });
   }
 
