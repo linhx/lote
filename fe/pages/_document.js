@@ -11,7 +11,7 @@ export default function Document() {
           content="no-cache, no-store, must-revalidate"
         />
         <meta httpEquiv="Pragma" content="no-cache" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <script src='/scripts/set-theme-mode.js'></script>
         <script
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
