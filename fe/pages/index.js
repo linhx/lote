@@ -3,6 +3,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import NotePreview from '@/components/note/molecules/NotePreview';
 import NoteRepository from '@/repositories/NoteRepository';
 import { useTranslation } from 'next-i18next';
+import Seo from '@/components/shared/molecules/Seo';
 
 export async function getServerSideProps({ locale }) {
   const notes = await NoteRepository.getList({
@@ -21,9 +22,7 @@ export default function Home({ notes }) {
   const { t } = useTranslation('common');
   return (
     <>
-      <Head>
-        <title>{t('blogName')}</title>
-      </Head>
+      <Seo title={t('blogName')} description="My space" />
       <div className="w-full md:max-w-3xl mx-auto">
         {notes.map((note) => (
           <NotePreview

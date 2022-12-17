@@ -3,6 +3,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import TodayILearnedRepository from '@/repositories/TodayILearnedRepository';
 import TodayILearnedPreview from '@/components/today-i-learned/TodayILearnedPreview';
 import { useTranslation } from 'next-i18next';
+import Seo from '@/components/shared/molecules/Seo';
 
 export async function getServerSideProps({ locale }) {
   const tils = await TodayILearnedRepository.getList({
@@ -23,9 +24,7 @@ export default function Home({ tils }) {
   const { t } = useTranslation('common');
   return (
     <>
-      <Head>
-        <title>{t('todayILearned')}</title>
-      </Head>
+      <Seo title={t('todayILearned')} description={t('todayILearned')} />
 
       <div className="w-full md:max-w-3xl mx-auto">
         <div>

@@ -2,8 +2,8 @@ import NoteRepository from '@/repositories/NoteRepository';
 import { classNames } from '@/utils';
 import { useBindContentEvent } from '@/hooks/content';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
 import CommentSection from '@/components/note/organisms/CommentSection';
+import Seo from '@/components/shared/molecules/Seo';
 
 export async function getServerSideProps({ locale, query }) {
   const { slug } = query;
@@ -21,18 +21,17 @@ export async function getServerSideProps({ locale, query }) {
       slug,
       contentHTML,
       title: note.title,
+      overview: note.overview,
       ...(await serverSideTranslations(locale, ['common'])),
     },
   };
 }
 
-export default function NoteView({ className, contentHTML, title, slug }) {
+export default function NoteView({ className, contentHTML, title, overview, slug }) {
   const { contentRef } = useBindContentEvent('/tag/[tag]');
   return (
     <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+      <Seo title={title} description={overview} />
       <div
         ref={contentRef}
         className={classNames('note', className)}

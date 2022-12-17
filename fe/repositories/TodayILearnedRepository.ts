@@ -2,6 +2,7 @@ import PageDto from '../dtos/PageDto';
 import TodayILearnedPreviewDto from '../dtos/TodayILearnedPreviewDto';
 import api from './Api'
 import ReqTodayILearnedFilterDto from '../dtos/ReqTodayILearnedFilterDto';
+import TodayILearnedDto from '@/dtos/TodayILearnedDto';
 
 const PATH = '/today-i-learned';
 
@@ -16,7 +17,7 @@ export default {
     return api.get(`files/publish/today-i-learneds/${permalink}.html`);
   },
 
-  getByPermalink(permalink: string): Promise<NoteDto> {
+  getByPermalink(permalink: string): Promise<TodayILearnedDto> {
     return api.get(`${PATH}/l/${permalink}`);
   }
 }
