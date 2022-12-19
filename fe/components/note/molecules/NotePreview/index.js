@@ -22,8 +22,8 @@ export default function NotePreview({ className, note }) {
           <div className="text-sm md:text-base line-clamp-2">
             {note.overview}
           </div>
-          <div className="mt-2.5">
-            <span className="text-gray-600 dark:text-slate-400 mr-2 text-sm">
+          <div className="mt-2.5 flex flex-wrap leading-6">
+            <span className="text-gray-700 dark:text-slate-400 mr-2 text-sm inline-flex items-center">
               {formatDate(note.publishedAt)}
             </span>
             {note.tags.map((tag) => (

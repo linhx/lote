@@ -16,7 +16,6 @@ const getCaptcha = () => {
           reject(e);
         });
       } catch(e) {
-        console.log('e', e)
         reject(e);
       }
     });

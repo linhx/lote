@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { FILE_DIR, FILE_URL_PREFIX, PATH_EMOJIS } from '../constants';
+import { BASE_URL, FILE_DIR, FILE_URL_PREFIX, PATH_EMOJIS } from '../constants';
 import { CSession, Db } from '../common/db';
 import EmojiCreateDto from './dtos/request/emoji-create.dto';
 import { Emoji, EmojiDocument } from './entities/emoji.entity';
@@ -29,10 +29,10 @@ export class EmojiService {
           category: dto.category,
           name: dto.name,
           key: dto.key,
-          url: path.join(
-            FILE_URL_PREFIX,
-            file.path.replace(FILE_DIR, ''),
-          ),
+          url: new URL(
+            path.join(FILE_URL_PREFIX, file.path.replace(FILE_DIR, '')),
+            BASE_URL,
+          ).href,
           type: file.mimetype,
           path: file.path,
         });
@@ -46,24 +46,25 @@ export class EmojiService {
   }
 
   async findAllPaging(dto: EmojiFilterListDto) {
-    const items = await this.emojiModel.find({
-      ...(!!dto.name && { name: dto.name })
-    })
-    .sort({ name: 1 })
-    .skip(dto.getSkip())
-    .limit(dto.limit)
-    .exec();
+    const items = await this.emojiModel
+      .find({
+        ...(!!dto.name && { name: dto.name }),
+      })
+      .sort({ name: 1 })
+      .skip(dto.getSkip())
+      .limit(dto.limit)
+      .exec();
 
     const total = await this.emojiModel.countDocuments({
-      ...(!!dto.name && { name: dto.name })
+      ...(!!dto.name && { name: dto.name }),
     });
 
     return {
       items,
-      total
-    }
+      total,
+    };
   }
-  
+
   findAll() {
     return this.emojiModel.find().sort({ name: 1 });
   }
@@ -92,10 +93,10 @@ export class EmojiService {
         emoji.key = dto.key;
         emoji.name = emoji.name;
         if (!!file) {
-          emoji.url = path.join(
-            FILE_URL_PREFIX,
-            file.path.replace(FILE_DIR, ''),
-          );
+          emoji.url = new URL(
+            path.join(FILE_URL_PREFIX, file.path.replace(FILE_DIR, '')),
+            BASE_URL,
+          ).href;
           emoji.type = file.mimetype;
           emoji.path = file.path;
         }
@@ -119,40 +120,50 @@ export class EmojiService {
     });
   }
 
-  async import(session: CSession, emojis: EmojiCreateDto[], files: Array<Express.Multer.File>) {
-    const _files = files.map(f => f.path);
-    return this.db.withTransaction(session, async (_session) => {
-      const emojiModels = []
-      for(let i = 0; i < emojis.length; i++) {
-        const dto = emojis[i];
-        const file = files[i];
-        const newDest = path.join(FILE_DIR, PATH_EMOJIS, FileUtils.createValidPath(dto.key));
-        FileUtils.mkdirSyncIfNotExist(newDest, { recursive: true });
-        const newPath = path.join(newDest, file.filename);
-        FileUtils.mvSync(file.path, newPath); // move file to under file-dir/emojis/<key>/filename
-        _files[i] = newPath;
-        const emojiModel = new this.emojiModel({
-          group: dto.group,
-          groupName: dto.groupName,
-          category: dto.category,
-          name: dto.name,
-          key: dto.key,
-          url: path.join(
-            FILE_URL_PREFIX,
-            newPath.replace(FILE_DIR, ''),
-          ),
-          type: file.mimetype,
-          path: file.path,
-        });
-        emojiModels.push(emojiModel);
-      }
+  async import(
+    session: CSession,
+    emojis: EmojiCreateDto[],
+    files: Array<Express.Multer.File>,
+  ) {
+    const _files = files.map((f) => f.path);
+    return this.db
+      .withTransaction(session, async (_session) => {
+        const emojiModels = [];
+        for (let i = 0; i < emojis.length; i++) {
+          const dto = emojis[i];
+          const file = files[i];
+          const newDest = path.join(
+            FILE_DIR,
+            PATH_EMOJIS,
+            FileUtils.createValidPath(dto.key),
+          );
+          FileUtils.mkdirSyncIfNotExist(newDest, { recursive: true });
+          const newPath = path.join(newDest, file.filename);
+          FileUtils.mvSync(file.path, newPath); // move file to under file-dir/emojis/<key>/filename
+          _files[i] = newPath;
+          const emojiModel = new this.emojiModel({
+            group: dto.group,
+            groupName: dto.groupName,
+            category: dto.category,
+            name: dto.name,
+            key: dto.key,
+            url: new URL(
+              path.join(FILE_URL_PREFIX, newPath.replace(FILE_DIR, '')),
+              BASE_URL,
+            ).href,
+            type: file.mimetype,
+            path: file.path,
+          });
+          emojiModels.push(emojiModel);
+        }
 
-      return this.emojiModel.bulkSave(emojiModels, { session: _session });
-    }).catch(e => {
-      _files.forEach(file => {
-        FileUtils.unlinkSyncSilentEnoent(file);
+        return this.emojiModel.bulkSave(emojiModels, { session: _session });
+      })
+      .catch((e) => {
+        _files.forEach((file) => {
+          FileUtils.unlinkSyncSilentEnoent(file);
+        });
+        throw e;
       });
-      throw e;
-    });
   }
 }

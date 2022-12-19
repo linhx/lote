@@ -117,7 +117,7 @@ export class TodayILearnedService {
     const tilComponentName = `${til.permalink}.html`;
     const file = path.join(TILS_PUBLISHED_DIR, tilComponentName);
     FileUtils.unlinkSyncSilentEnoent(file);
-    const tilContentHTML = TodayILearnedContentUtil.create(til, TZ);
+    const tilContentHTML = TodayILearnedContentUtil.create(til, null, TZ);
     FileUtils.writeFileSync(file, tilContentHTML, { recursive: true });
   }
 

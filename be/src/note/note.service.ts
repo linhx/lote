@@ -126,11 +126,15 @@ export class NoteService {
    *
    * @param note
    */
-  saveNoteHTMLToPublishedDir(note: NoteDocument) {
+  async saveNoteHTMLToPublishedDir(note: NoteDocument) {
     const noteComponentName = `${note.permalink}.html`;
     const file = path.join(NOTES_PUBLISHED_DIR, noteComponentName);
     FileUtils.unlinkSyncSilentEnoent(file);
-    const noteContentHTML = NoteContentUtil.create(note, TZ);
+    let bannerUrl;
+    if (note.banner) {
+      bannerUrl = (await this.fileService.findById(null, note.banner))?.url;
+    }
+    const noteContentHTML = NoteContentUtil.create(note, bannerUrl, TZ);
     FileUtils.writeFileSync(file, noteContentHTML, { recursive: true });
   }
 

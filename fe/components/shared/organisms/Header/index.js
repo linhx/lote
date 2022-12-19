@@ -65,7 +65,7 @@ export default function Header({ innerClass, className }) {
     };
     window.addEventListener('scroll', onScroll);
     const handleRouteChange = (url) => {
-      setCurPath(old => {
+      setCurPath((old) => {
         setPrevPath(old);
         return url;
       });
@@ -117,11 +117,19 @@ export default function Header({ innerClass, className }) {
               >
                 {t('blogName')}
               </h2>
-              <img src={logo.src} width="25" className='xs:hidden dark:hidden' />
-              <img src={logoDark.src} width="25" className='hidden dark:inline-block xs:!hidden' />
+              <img
+                src={logo.src}
+                width="25"
+                className="xs:hidden dark:hidden"
+              />
+              <img
+                src={logoDark.src}
+                width="25"
+                className="hidden dark:inline-block xs:!hidden"
+              />
               <Link
                 href="/today-i-learned"
-                className="ml-auto lowercase hover:underline hover:text-gray-700 dark:hover:text-slate-50 border-r border-slate-200 mr-4 pr-5 dark:border-slate-800"
+                className="ml-auto lowercase hover:underline hover:text-gray-700 dark:hover:text-slate-50 border-r border-slate-200 mr-4 pr-5 dark:border-slate-800 text-sm sm:text-base"
               >
                 /{t('today-i-learned')}
               </Link>
@@ -138,7 +146,7 @@ export default function Header({ innerClass, className }) {
                   {item.label}
                 </Link>
               ))}
-              <ButtonThemeMode className='ml-auto' onClick={changeThemeMode} />
+              <ButtonThemeMode className="ml-auto" onClick={changeThemeMode} />
             </>
           )}
         </div>

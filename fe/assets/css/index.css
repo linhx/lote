@@ -62,8 +62,11 @@ html, input, textarea {
 }
 
 .tag {
-  padding: 0.175rem;
-  @apply hover:shadow-md rounded-sm transition-colors duration-150 text-gray-600 hover:bg-gray-700 hover:text-white bg-gray-200 dark:text-slate-100 dark:hover:bg-gray-200 dark:hover:text-gray-600 dark:bg-gray-700 text-sm mx-1;
+  padding: 0 0.175rem;
+  @apply mr-2 hover:shadow-md rounded-sm transition-colors duration-150 text-slate-500 hover:bg-gray-700 hover:text-white dark:text-slate-500 dark:hover:bg-gray-200 dark:hover:text-gray-600 text-sm;
+}
+.tag::before {
+  content: '#';
 }
 
 #__next {

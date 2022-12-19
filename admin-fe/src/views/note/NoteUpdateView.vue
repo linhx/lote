@@ -15,6 +15,7 @@
         <c-field label="Banner">
           <c-file-input accept="image/*" name="banner" @change="onChangeBanner" />
         </c-field>
+        <img :src="note.bannerUrl" >
       </div>
       <div class="mt-5 md:mt-0 md:col-span-3">
         <c-field label="Overview">

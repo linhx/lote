@@ -7,7 +7,7 @@ import { Cron } from '@nestjs/schedule';
 import * as DateTimeUtils from '../utilities/DateTimeUtils';
 import * as FileUtils from '../utilities/FileUtils';
 import * as path from 'path';
-import { FILE_DIR, FILE_URL_PREFIX } from '../constants';
+import { BASE_URL, FILE_DIR, FILE_URL_PREFIX } from '../constants';
 
 @Injectable()
 export class FileService {
@@ -97,7 +97,10 @@ export class FileService {
         type: file.mimetype,
         size: file.size,
         path: file.path,
-        url: path.join(FILE_URL_PREFIX, file.destination.replace(FILE_DIR, ''), file.filename),
+        url: new URL(
+          path.join(FILE_URL_PREFIX, file.path.replace(FILE_DIR, '')),
+          BASE_URL,
+        ).href,
         isTemp: true,
       });
 
@@ -137,6 +140,12 @@ export class FileService {
         })
         .session(_session)
         .exec();
+    });
+  }
+
+  findById(session: CSession, fileId: string): Promise<CFileDocument> {
+    return this.db.withTransaction(session, (_session) => {
+      return this.fileModel.findById(fileId).session(_session).exec();
     });
   }
 }

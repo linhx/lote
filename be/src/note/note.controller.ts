@@ -19,12 +19,14 @@ import { NoteService } from './note.service';
 import { PATH_NOTES } from '../constants';
 import { Cache } from 'cache-manager';
 import NoteDto from './dtos/response/note.dto';
+import { FileService } from '../file/file.service';
 
 @SkipThrottle()
 @Controller(PATH_NOTES)
 export class NoteController {
   constructor(
     private readonly noteService: NoteService,
+    private readonly fileService: FileService,
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
 
@@ -65,7 +67,12 @@ export class NoteController {
   @Get('/:id')
   async getById(@Param('id') id: string) {
     const note = await this.noteService.findById(null, id);
-    return NoteDto.fromEntity(note);
+    let bannerUrl;
+    if (note.banner) {
+      const banner = await this.fileService.findById(null, note.banner);
+      bannerUrl = banner?.url;
+    }
+    return NoteDto.fromEntity(note, bannerUrl);
   }
 
   @Post('/:id')

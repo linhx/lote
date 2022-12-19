@@ -5,6 +5,7 @@ export default class NoteDto {
   permalink: string;
   title: string;
   banner: string;
+  bannerUrl: string;
   overview: string;
   tags: string[];
   category: number;
@@ -17,12 +18,13 @@ export default class NoteDto {
   createdAt: Date;
   updatedAt: Date;
 
-  static fromEntityWithoutContent(entity: NoteDocument) {
+  static fromEntityWithoutContent(entity: NoteDocument, bannerUrl?: string) {
     const dto = new NoteDto();
     dto.id = entity.id;
     dto.permalink = entity.permalink;
     dto.title = entity.title;
     dto.banner = entity.banner;
+    dto.bannerUrl = bannerUrl;
     dto.overview = entity.overview;
     dto.tags = entity.tags;
     dto.category = entity.category;
@@ -36,8 +38,8 @@ export default class NoteDto {
     return dto;
   }
 
-  static fromEntity(entity: NoteDocument) {
-    const dto = NoteDto.fromEntityWithoutContent(entity);
+  static fromEntity(entity: NoteDocument, bannerUrl?: string) {
+    const dto = NoteDto.fromEntityWithoutContent(entity, bannerUrl);
     dto.content = entity.content;
     return dto;
   }

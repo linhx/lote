@@ -15,7 +15,7 @@ export default class EmojiDto {
     dto.category = emoji.category;
     dto.key = emoji.key;
     dto.name = emoji.name;
-    dto.url = new URL(emoji.url, process.env.BASE_URL).href;
+    dto.url = emoji.url;
     return dto;
   }
 }

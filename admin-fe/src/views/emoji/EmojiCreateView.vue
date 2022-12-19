@@ -40,7 +40,6 @@ const onSave = () => {
     alert(t('message.succeed'));
   })
   .catch((e) => {
-    console.log('eeee')
     alert(getResponseError(e));
   })
   .finally(() => {

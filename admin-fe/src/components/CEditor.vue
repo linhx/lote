@@ -46,7 +46,7 @@ export default defineComponent({
             }).then(res => {
               return {
                 ...res,
-                urls: { default: new URL(res.url, import.meta.env.VITE_APP_API_URL).href }
+                urls: { default: res.url }
               }
             }).catch(() => {
               throw `Cannot upload file: ${file.name}.`;
