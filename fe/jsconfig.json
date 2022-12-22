@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/repositories/*": ["repositories/*"],
+      "@/components/*": ["components/*"],
+      "@/utils": ["utils"],
+      "@/utils/*": ["utils/*"],
+      "@/layouts/*": ["layouts/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/constants/*": ["constants/*"],
+      "@/assets/*": ["assets/*"],
+      "@/dtos/*": ["dtos/*"]
+    }
+  }
+}

@@ -6,7 +6,7 @@ Linhx's note
 
 1. Backend: Nestjs + Mongodb
 2. Admin frontend: Vuejs + Ckeditor5 + Tailwinds
-3. Frontend: Vuejs + Tailwinds
+3. Frontend: Nextjs + Tailwinds
 
 ## Prerequire
 

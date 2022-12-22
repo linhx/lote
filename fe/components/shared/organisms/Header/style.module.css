@@ -1,0 +1,21 @@
+.header-wrapper {
+  padding-bottom: var(--header-height);
+}
+.header {
+  height: var(--header-height);
+}
+.fixed-header {
+  box-shadow: 0 2px 5px 0 rgba(16, 15, 15, 0.3);
+  height: var(--header-height-small);
+}
+
+.loading {
+  @apply animate-pulse text-red-900;
+  animation-duration: 500ms;
+}
+.title {
+  transition: font-size 150ms;
+}
+.fixed-header .title {
+  @apply text-2xl;
+}

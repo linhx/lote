@@ -29,14 +29,10 @@ services:
       - mongo
     restart: unless-stopped
     volumes:
-      - ./data-deploy/notes:/apps/fe/notes
-      - ./data-deploy/today-i-learneds:/apps/fe/today-i-learneds
       - ./data-deploy/be/files:/apps/data/be-files
       - ./data-deploy/be/logs:/apps/be/logs
     environment:
       - BE_FILE_DIR=/apps/data/be-files
-      - NOTES_PUBLISHED_DIR=/apps/fe/notes
-      - TILS_PUBLISHED_DIR=/apps/fe/today-i-learneds
 
   note-fe:
     env_file:
@@ -45,19 +41,26 @@ services:
       context: ./
       dockerfile: Dockerfile.fe
       args: # pass env to Dockefile because they are needed in build time
-        - FE_DIR=/apps/fe
+        - BE_API_URL=${BE_API_URL}
+        - RECAPTCHA_SITE_KEY=${RECAPTCHA_SITE_KEY}
+        - TZ=${TZ}
+    depends_on:
+      - note-be
+
+  note-admin:
+    env_file:
+      - .env
+    build:
+      context: ./
+      dockerfile: Dockerfile.admin
+      args: # pass env to Dockefile because they are needed in build time
         - FE_DOMAIN=${FE_DOMAIN}
         - ADMIN_FE_DOMAIN=${ADMIN_FE_DOMAIN}
         - BE_DOMAIN=${BE_DOMAIN}
         - BE_API_URL=${BE_API_URL}
-        - RECAPTCHA_SITE_KEY=${RECAPTCHA_SITE_KEY}
-        - FE_NOTES_HTML_PATH=/${FE_PUBLISHED_NOTES_DIR}
-        - FE_TILS_HTML_PATH=/${FE_PUBLISHED_TILS_DIR}
     depends_on:
       - note-be
     volumes:
-      - ./data-deploy/notes:/apps/fe/notes
-      - ./data-deploy/today-i-learneds:/apps/fe/today-i-learneds
       - ./data-deploy/fe/nginx:/etc/nginx/conf.d
     ports:
       - 80:80

@@ -1,30 +1,30 @@
 {
-  "name": "lote",
-  "version": "0.0.0",
+  "name": "lote-fe",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "dev": "next dev -p 3002",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "axios": "^0.23.0",
-    "pinia": "^2.0.14",
-    "postcss-import": "^14.0.2",
-    "vue": "^3.2.41",
-    "vue-i18n": "^9.1.10",
-    "vue-ladom": "^0.0.1-beta.8",
-    "vue-router": "^4.1.6"
+    "axios": "^1.2.1",
+    "eslint": "8.29.0",
+    "eslint-config-next": "13.0.6",
+    "i18next": "^22.4.5",
+    "next": "13.0.6",
+    "next-i18next": "^13.0.1",
+    "nextjs-progressbar": "^0.0.16",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-i18next": "^12.1.1"
   },
   "devDependencies": {
-    "@babel/types": "^7.20.0",
     "@tailwindcss/forms": "^0.5.3",
-    "@types/node": "^16.11.4",
-    "@vitejs/plugin-vue": "^3.2.0",
+    "@types/node": "18.11.15",
     "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.2.1",
-    "typescript": "^4.6.4",
-    "vite": "^3.2.1",
-    "vue-tsc": "^1.0.9"
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4"
   }
 }

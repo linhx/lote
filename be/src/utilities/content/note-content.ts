@@ -23,20 +23,30 @@ export const formatContent = (_content: string) => {
 
 export const create = (
   note: NoteDocument | TodayILearnedDocument,
+  bannerUrl?: string,
+  timeZone?: string,
 ) => {
   const tagsHTML = note.tags?.reduce((tags, tag) => tags + `<span class="tag">${tag}</span>`, '');
-  const publishedAt = note.publishedAt.toLocaleDateString('vi-VN');
+  const publishedAt = note.publishedAt.toLocaleDateString('vi-VN', { timeZone });
   const {
     content,
     tableOfContents,
   } = formatContent(note.content);
 
-  return `<div class="note__header">
+  let banner = '';
+  if (bannerUrl) {
+    banner = `<div class="note__banner" style="background-image: url(${bannerUrl})"></div>
+  <hr class="note__hr"/>
+`
+  }
+
+  return `${banner}<div class="note__header">
   <h2 class="note__header__title">${note.title}</h2>
-  <hr class="note__header__hr"/>
-</div>
-<div class="note__published-date">
-  <span>${publishedAt}</span>
+
+  <div class="note__tags">
+    <span class="note__published-date">${publishedAt}</span>
+    ${tagsHTML}
+  </div>
 </div>
 <div class="note__content-wrapper ck ck-editor">
   <div class="note__toc">
@@ -47,10 +57,6 @@ export const create = (
   <div class="note__content ck ck-content">
     ${content}
   </div>
-</div>
-<div class="note__tags">
-  <span class="note__tags-label">Tags </span>
-  ${tagsHTML}
 </div>
 `;
 };

@@ -3,6 +3,7 @@ export default interface NoteDto {
   permalink: string;
   title: string;
   banner?: string;
+  bannerUrl?: string;
   overview: string;
   content: string;
   tags: string[];
