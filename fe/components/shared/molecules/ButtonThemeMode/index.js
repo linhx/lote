@@ -12,7 +12,7 @@ export default function ButtonThemeMode({ className, onClick }) {
       aria-labelledby="headlessui-listbox-label-3 headlessui-listbox-button-4"
       onClick={onClick}
     >
-      <span className="dark:hidden">
+      <span className="dark:c-hidden">
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -31,7 +31,7 @@ export default function ButtonThemeMode({ className, onClick }) {
           />
         </svg>
       </span>
-      <span className="hidden dark:inline">
+      <span className="c-hidden dark:inline">
         <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
           <path
             fillRule="evenodd"

@@ -111,7 +111,7 @@ export default function Header({ innerClass, className }) {
             <>
               <h2
                 className={classNames(
-                  'm-0 text-3xl hidden xs:inline',
+                  'm-0 text-3xl c-hidden xs:inline',
                   style['title']
                 )}
               >
@@ -120,12 +120,12 @@ export default function Header({ innerClass, className }) {
               <img
                 src={logo.src}
                 width="25"
-                className="xs:hidden dark:hidden"
+                className="xs:c-hidden dark:c-hidden"
               />
               <img
                 src={logoDark.src}
                 width="25"
-                className="hidden dark:inline-block xs:!hidden"
+                className="c-hidden dark:inline-block dark:xs:c-hidden"
               />
               <Link
                 href="/today-i-learned"

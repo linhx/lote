@@ -6,6 +6,11 @@
   .border-t-1 {
     border-top-width: 1px;
   }
+
+  /* some injected stylesheet (from extension) set important for class .hidden */
+  .c-hidden {
+    @apply hidden;
+  }
 }
 
 :root {
