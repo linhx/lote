@@ -115,10 +115,13 @@ export default defineComponent({
           id, {
             ...dto,
             ...data
-          }).catch(e => {
+          })
+          .then(() => {
+            alert(this.$t('message.succeed'));
+          })
+          .catch(e => {
             alert(getResponseError(e));
           });
-        alert(this.$t('message.succeed'));
       } finally {
         this.hideLoading(loader);
       }
@@ -185,6 +188,14 @@ export default defineComponent({
           this.hideLoading(loader);
         });
       }
+    },
+    onPressCtrlS(e: KeyboardEvent) {
+      if (e.ctrlKey) {
+        if (e.code === 'KeyS') {
+          e.preventDefault();
+          this.onSave();
+        }
+      }
     }
   },
 
@@ -199,6 +210,11 @@ export default defineComponent({
     }).finally(() => {
       this.hideLoading(loader);
     });
+
+    window.addEventListener('keydown', this.onPressCtrlS);
+  },
+  beforeUnmount() {
+    window.removeEventListener('keypress', this.onPressCtrlS);
   },
   beforeRouteEnter() {
     window.addEventListener('beforeunload', warningUnsave);

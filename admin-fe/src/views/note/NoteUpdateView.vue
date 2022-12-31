@@ -13,7 +13,7 @@
       </div>
       <div class="mt-5 md:mt-0 md:col-span-1">
         <c-field label="Banner">
-          <c-file-input accept="image/*" name="banner" @change="onChangeBanner" />
+          <c-file-input ref="banner" accept="image/*" name="banner" @change="onChangeBanner" />
         </c-field>
         <img :src="note.bannerUrl" >
       </div>
@@ -113,6 +113,11 @@ export default defineComponent({
     async uploadNoteBanner() {
       if (this.noteBanner) {
         const file = await FileRepository.uploadFile(this.noteBanner);
+        this.note.banner = file.id;
+        this.note.bannerUrl = file.url;
+        // reset file input
+        this.noteBanner = undefined;
+        (this.$refs.banner as any).clear();
         return file.id;
       } else {
         return this.note.banner;
@@ -140,10 +145,13 @@ export default defineComponent({
             ...dto,
             banner,
             ...data
-          }).catch(e => {
+          })
+          .then(() => {
+            alert(this.$t('message.succeed'));
+          })
+          .catch(e => {
             alert(getResponseError(e));
           });
-        alert(this.$t('message.succeed'));
       } finally {
         this.hideLoading(loader);
       }
@@ -221,6 +229,14 @@ export default defineComponent({
           this.hideLoading(loader);
         });
       }
+    },
+    onPressCtrlS(e: KeyboardEvent) {
+      if (e.ctrlKey) {
+        if (e.code === 'KeyS') {
+          e.preventDefault();
+          this.onSave();
+        }
+      }
     }
   },
 
@@ -235,6 +251,11 @@ export default defineComponent({
     }).finally(() => {
       this.hideLoading(loader);
     });
+
+    window.addEventListener('keydown', this.onPressCtrlS);
+  },
+  beforeUnmount() {
+    window.removeEventListener('keypress', this.onPressCtrlS);
   },
   beforeRouteEnter() {
     window.addEventListener('beforeunload', warningUnsave);
