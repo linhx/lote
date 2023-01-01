@@ -45,7 +45,9 @@ export class NoteService {
       if (rest.banner) {
         images.push(rest.banner);
       }
-      images.push(...imagesDto);
+      if (imagesDto) {
+        images.push(...imagesDto);
+      }
 
       // make images not temporary files
       await this.fileService.permanentFile(_session, images);
@@ -80,7 +82,9 @@ export class NoteService {
       if (rest.banner) {
         images.push(rest.banner);
       }
-      images.push(...imagesDto);
+      if (imagesDto) {
+        images.push(...imagesDto);
+      }
 
       const diffImages = ArrayUtils.diffBoth(
         oldNote.images,

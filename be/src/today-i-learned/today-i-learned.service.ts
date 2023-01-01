@@ -40,7 +40,7 @@ export class TodayILearnedService {
         throw new BusinessError('error.til.duplicate-permalink');
       }
 
-      const images = [...imagesDto];
+      const images = imagesDto ? [...imagesDto] : [];
 
       // make images not temporary files
       await this.fileService.permanentFile(_session, images);
@@ -70,7 +70,7 @@ export class TodayILearnedService {
       }
       const { images: imagesDto, ...rest } = dto;
 
-      const images = [...imagesDto];
+      const images = imagesDto ? [...imagesDto] : [];
 
       const diffImages = ArrayUtils.diffBoth(
         oldTodayILearned.images,
