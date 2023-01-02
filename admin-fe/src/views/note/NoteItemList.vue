@@ -5,12 +5,21 @@
         <div class="flex-1 truncate">
           <router-link
             class="w-full text-2xl font-semibold inline-block truncate overflow-ellipsis"
-            :class="titleClass" :to="'/note/' + note.id">
+            :class="titleClass"
+            :to="'/note/' + note.id"
+          >
             {{ note.title }}
           </router-link>
         </div>
         <div class="w-16 text-right">
-          <router-link :to="{ name: 'NOTE_COMMENTS', params: { id: note.id, title: note.title } }" class="p-1 rounded font-semibold inline-block hover:bg-gray-300">
+          <router-link
+            :to="{
+              name: 'NOTE_COMMENTS',
+              params: { id: note.id, title: note.title },
+            }"
+            class="p-1 rounded font-semibold inline-block bg-gray-200 hover:bg-gray-300"
+            :class="note.newCommentsCount > 0 ? 'text-red-600' : 'text-blue-600'"
+          >
             {{ note.newCommentsCount }} 💬
           </router-link>
         </div>
@@ -19,7 +28,11 @@
         <div class="whitespace-nowrap truncate">{{ note.overview }}</div>
         <div class="mt-2.5">
           <span class="text-gray-600 mr-2 text-sm">{{ dateFormat }}</span>
-          <span v-for="tag in note.tags" :key="tag" class="text-gray-600 text-sm bg-gray-200 p-1 mx-1">
+          <span
+            v-for="tag in note.tags"
+            :key="tag"
+            class="text-gray-600 text-sm bg-gray-200 p-1 mx-1"
+          >
             {{ tag }}
           </span>
         </div>
@@ -35,15 +48,15 @@ import NoteItemListDto from '../../dtos/NoteItemListDto';
 const STATE = {
   DRAFT: 'draft',
   UPDATE: 'update',
-  PUBLISH: 'publish'
-}
+  PUBLISH: 'publish',
+};
 
 export default defineComponent({
   props: {
     note: {
       type: Object as PropType<NoteItemListDto>,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     dateFormat() {
@@ -60,8 +73,8 @@ export default defineComponent({
     },
     titleClass() {
       return 'state-' + this.state;
-    }
-  }
+    },
+  },
 });
 </script>
 
