@@ -82,7 +82,7 @@ docker compose exec mongo sh /scripts/init.sh
     ```shell
     cd fe
     npm i
-    npm run build
+    npm start
     ```
 
-3. Deploy the `dist` using a Web server like: nginx or apache2
+3. Manage by using PM2 or installing as a Linux service.
