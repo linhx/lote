@@ -37,7 +37,8 @@
         <c-button variant="blue" class="ml-2" @click="preview" :disabled="isLoading">Preview</c-button>
         <c-button variant="green" class="ml-2" @click="publish" :disabled="isLoading">Publish</c-button>
         <c-button variant="red" class="ml-2" @click="unpublish" :disabled="isLoading">Unpublish</c-button>
-        <c-button variant="red" class="ml-2" @click="softDelete" :disabled="isLoading">Delete</c-button>
+        <c-button variant="red" class="ml-2" @click="softDelete" :disabled="isLoading">Delete (soft)</c-button>
+        <c-button variant="red" class="ml-2" @click="hardDelete" :disabled="isLoading">Delete</c-button>
       </div>
     </div>
   </div>

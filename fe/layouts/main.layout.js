@@ -10,7 +10,7 @@ export default function MainLayout({ children }) {
           className="w-full text-gray-800 dark:text-slate-200"
           innerClass="md:max-w-3xl mx-auto px-4 md:px-0"
         />
-        <div className="content-wrapper text-gray-800 dark:text-slate-400 px-4 md:px-0 pb-6 md:max-w-3xl mx-auto">
+        <div className="content-wrapper text-gray-800 dark:text-slate-400 px-4 md:px-0 pb-3 md:max-w-3xl mx-auto">
           {children}
         </div>
         <Footer

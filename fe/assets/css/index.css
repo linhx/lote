@@ -74,6 +74,16 @@ html, input, textarea {
   content: '#';
 }
 
+/* select text */
+::-moz-selection {
+  color: hsl(212, 100%, 61%);
+  background: hsla(212, 100%, 61%, .15);
+}
+::selection {
+  color: hsl(212, 100%, 61%);
+  background: hsla(212, 100%, 61%, .15);
+}
+
 #__next {
   @apply min-h-screen flex flex-col;
 }
