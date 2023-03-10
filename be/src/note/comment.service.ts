@@ -1,4 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Model } from 'mongoose';
@@ -9,9 +10,9 @@ import CommentCreateDto from './dtos/request/comment-create.dto';
 import { NoteDocument, Note } from './entities/note.entity';
 import { Comment } from './entities/comment.entity';
 import { MailService } from '../mail/mail.service';
-import xss from 'xss';
+import { filterXSS } from 'xss';
 import { NOTE_FE_NOTE_URL } from 'src/constants';
-import { ConfigService } from '@nestjs/config';
+import * as path from 'path';
 
 @Injectable()
 export class CommentService {
@@ -94,8 +95,8 @@ export class CommentService {
         subject: `[Note] - New comment of '${note.title}'`,
         html: `
           <p>From: ${dto.authorName}</p>
-          <p>Content: ${xss(newComment.content)}</p>
-          <p>Go to <a href="${new URL(NOTE_FE_NOTE_URL, permalink).href}">${note.title}</a></p>
+          <p>Content: ${filterXSS(newComment.content)}</p>
+          <p>Go to <a href="${path.join(NOTE_FE_NOTE_URL, permalink)}">${note.title}</a></p>
         `,
       }).catch(e => {
         this.logger.error('error.comment.create.cantSendMail', e.stack);
