@@ -8,6 +8,7 @@ export const PATH_EMOJIS = 'emojis';
 
 export const BASE_URL = process.env.BASE_URL;
 export const NOTE_FE_BASE_URL = process.env.NOTE_FE_BASE_URL;
+export const NOTE_FE_NOTE_URL = new URL('note', NOTE_FE_BASE_URL).href;
 export const NOTES_PUBLISHED_DIR = process.env.NOTES_PUBLISHED_DIR;
 export const TILS_PUBLISHED_DIR = process.env.TILS_PUBLISHED_DIR;
 

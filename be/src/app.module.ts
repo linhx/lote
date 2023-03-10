@@ -8,6 +8,7 @@ import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { TodayILearnedModule } from './today-i-learned/today-i-learned.module';
 import { HealthModule } from './health/health.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { HealthModule } from './health/health.module';
     NoteModule,
     TodayILearnedModule,
     HealthModule,
+    MailModule,
   ],
   controllers: [],
   providers: [

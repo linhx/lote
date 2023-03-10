@@ -8,6 +8,10 @@ import { NoteService } from './note.service';
 import CommentCreateDto from './dtos/request/comment-create.dto';
 import { NoteDocument, Note } from './entities/note.entity';
 import { Comment } from './entities/comment.entity';
+import { MailService } from '../mail/mail.service';
+import xss from 'xss';
+import { NOTE_FE_NOTE_URL } from 'src/constants';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class CommentService {
@@ -17,6 +21,8 @@ export class CommentService {
     @InjectModel(Note.name) private noteModel: Model<NoteDocument>,
     private readonly db: Db,
     private readonly noteService: NoteService,
+    private readonly mailService: MailService,
+    private readonly configService: ConfigService,
   ) {}
 
   async existsRootComment(session: CSession, note: NoteDocument, id: string) {
@@ -38,7 +44,7 @@ export class CommentService {
     note: NoteDocument,
     dto: CommentCreateDto,
     isActive = false,
-  ) {
+  ): Promise<Comment> {
     return this.db.withTransaction(session, async (_session) => {
       let parent = null;
       if (dto.parentId) {
@@ -80,8 +86,21 @@ export class CommentService {
       if (!note) {
         throw new BusinessError('error.comment.create.noteDoesNotExist');
       }
+      const newComment = await this.create(_session, note, dto);
 
-      return this.create(_session, note, dto);
+      // send notification email
+      this.mailService.sendToAdmin({
+        from: this.configService.get('EMAIL_NOTIFICATION'),
+        subject: `[Note] - New comment of '${note.title}'`,
+        html: `
+          <p>From: ${dto.authorName}</p>
+          <p>Content: ${xss(newComment.content)}</p>
+          <p>Go to <a href="${new URL(NOTE_FE_NOTE_URL, permalink).href}">${note.title}</a></p>
+        `,
+      }).catch(e => {
+        this.logger.error('error.comment.create.cantSendMail', e.stack);
+      });
+      return newComment;
     });
   }
 

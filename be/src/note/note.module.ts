@@ -8,6 +8,7 @@ import { FileModule } from '../file/file.module';
 import { CommentController } from './comment.controller';
 import { CommentService } from './comment.service';
 import { HttpModule } from '@nestjs/axios';
+import { MailModule } from 'src/mail/mail.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { HttpModule } from '@nestjs/axios';
     FileModule,
     CacheModule.register(),
     HttpModule,
+    MailModule,
   ],
   controllers: [NoteController, CommentController],
   providers: [NoteService, CommentService],

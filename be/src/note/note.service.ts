@@ -208,7 +208,7 @@ export class NoteService {
     });
   }
 
-  async findPublishedByPermalink(session: CSession, permalink: string) {
+  async findPublishedByPermalink(session: CSession, permalink: string): Promise<NoteDocument> {
     return this.db.withTransaction(session, (ss) => {
       return this.noteModel
         .findOne({
