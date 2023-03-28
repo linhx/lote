@@ -37,7 +37,7 @@ export default defineComponent({
         filemanager: {
           upload({ file, setProgress }: { file: File, setProgress: ({ total, loaded }: { total: number, loaded: number }) => void }) {
             return FileRepository.uploadFile(file, (event) => {
-              if (event.lengthComputable) {
+              if (event.total) {
                 setProgress({
                   total: event.total,
                   loaded: event.loaded
