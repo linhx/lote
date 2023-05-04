@@ -8,6 +8,9 @@ Linhx's note
 2. Admin frontend: Vuejs + Ckeditor5 + Tailwinds
 3. Frontend: Nextjs + Tailwinds
 
+Weird stack. I know, right?
+In [the first version](https://github.com/linhx/lote/tree/feature/fe-vue), the Frontend was Vuejs. I made it as a static SPA + partially publish + Prefetching. Everything was good until I want to do SEO and add today-i-learned section, it's getting hard to maintain. Then I switch to Nextjs, because I feel like Nuxt is not good enough, beside, I want to learn react also.
+
 ## Prerequire
 
 - Node v16.15.0
