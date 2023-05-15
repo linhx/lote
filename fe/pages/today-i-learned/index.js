@@ -1,11 +1,10 @@
-import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import TodayILearnedRepository from '@/repositories/TodayILearnedRepository';
 import TodayILearnedPreview from '@/components/today-i-learned/TodayILearnedPreview';
 import { useTranslation } from 'next-i18next';
 import Seo from '@/components/shared/molecules/Seo';
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   const tils = await TodayILearnedRepository.getList({
     page: 1,
     limit: 100,

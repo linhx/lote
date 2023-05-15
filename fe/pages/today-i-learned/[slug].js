@@ -4,8 +4,22 @@ import { useBindContentEvent } from '@/hooks/content';
 import { classNames } from '@/utils';
 import Seo from '@/components/shared/molecules/Seo';
 
-export async function getServerSideProps({ locale, query }) {
-  const { slug } = query;
+export async function getStaticPaths() {
+  const tils = await TodayILearnedRepository.getList({
+    page: 1,
+    limit: 100,
+  })
+    .then((res) => res.items)
+    .catch(() => []);
+
+  const paths = tils.map((til) => ({
+    params: { slug: til.permalink },
+  }));
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ locale, params }) {
+  const { slug } = params;
   const contentHTML = await TodayILearnedRepository.getContentHTMLByPermalink(
     slug
   ).catch((e) => '');

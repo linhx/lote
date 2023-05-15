@@ -5,10 +5,32 @@ import { useTranslation } from 'next-i18next';
 import TodayILearnedPreview from '@/components/today-i-learned/TodayILearnedPreview';
 import Seo from '@/components/shared/molecules/Seo';
 
-export async function getServerSideProps({ locale, query }) {
-  const { tag } = query;
+export async function getStaticPaths() {
   const tils = await TodayILearnedRepository.getList({
-    page: 1,
+    page: 1, // TODO
+    limit: 100,
+    tag,
+  })
+    .then((res) => res.items)
+    .catch(() => []);
+
+  const tags = new Set();
+  tils.forEach((til) => {
+    til.tags?.forEach((tag) => {
+      tags.add(tag);
+    });
+  });
+  const paths = [...tags].map((tag) => ({
+    params: { tag },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export async function getServerSideProps({ locale, params }) {
+  const { tag } = params;
+  const tils = await TodayILearnedRepository.getList({
+    page: 1, // TODO
     limit: 100,
     tag,
   })

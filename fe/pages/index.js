@@ -1,13 +1,12 @@
-import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import NotePreview from '@/components/note/molecules/NotePreview';
 import NoteRepository from '@/repositories/NoteRepository';
 import { useTranslation } from 'next-i18next';
 import Seo from '@/components/shared/molecules/Seo';
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   const notes = await NoteRepository.getList({
-    page: 1,
+    page: 1, // TODO
     limit: 100,
   }).then(res => res.items).catch(() => []);
   return {

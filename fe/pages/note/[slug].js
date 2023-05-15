@@ -5,8 +5,22 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CommentSection from '@/components/note/organisms/CommentSection';
 import Seo from '@/components/shared/molecules/Seo';
 
-export async function getServerSideProps({ locale, query }) {
-  const { slug } = query;
+export async function getStaticPaths() {
+  const notes = await NoteRepository.getList({
+    page: 1, // TODO
+    limit: 100,
+  })
+    .then((res) => res.items)
+    .catch(() => []);
+
+  const paths = notes.map((note) => ({
+    params: { slug: note.permalink },
+  }));
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ locale, params }) {
+  const { slug } = params;
   const contentHTML = await NoteRepository.getContentHTMLByPermalink(
     slug
   ).catch((e) => '');
@@ -27,7 +41,13 @@ export async function getServerSideProps({ locale, query }) {
   };
 }
 
-export default function NoteView({ className, contentHTML, title, overview, slug }) {
+export default function NoteView({
+  className,
+  contentHTML,
+  title,
+  overview,
+  slug,
+}) {
   const { contentRef } = useBindContentEvent('/tag/[tag]');
   return (
     <>
@@ -37,9 +57,11 @@ export default function NoteView({ className, contentHTML, title, overview, slug
         className={classNames('note', className)}
         dangerouslySetInnerHTML={{ __html: contentHTML }}
       ></div>
-      <div className="note__comment-wrapper">
-        <CommentSection permalink={slug} />
-      </div>
+      {process.env.NEXT_PUBLIC_BUILD_COMMENT === 'true' && (
+        <div className="note__comment-wrapper">
+          <CommentSection permalink={slug} />
+        </div>
+      )}
     </>
   );
 }
