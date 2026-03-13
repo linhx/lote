@@ -10,7 +10,6 @@ import logoDark from '@/assets/img/logo-dark.svg';
 
 const BREADCRUMBS = {
   HOME: { label: '/home', path: '/' },
-  TIL: { label: '/today-i-learned', path: '/today-i-learned' },
 };
 
 const getBreadcrumbs = (prevPath, path) => {
@@ -25,28 +24,6 @@ const getBreadcrumbs = (prevPath, path) => {
       ];
     } else {
       return [BREADCRUMBS.HOME];
-    }
-  }
-  if (path === '/today-i-learned') {
-    return [BREADCRUMBS.HOME];
-  }
-
-  if (path.startsWith('/today-i-learned/tag/')) {
-    return [BREADCRUMBS.HOME, BREADCRUMBS.TIL];
-  }
-
-  if (path.startsWith('/today-i-learned/')) {
-    if (prevPath.startsWith('/today-i-learned/tag/')) {
-      return [
-        BREADCRUMBS.HOME,
-        BREADCRUMBS.TIL,
-        {
-          label: `/${prevPath.replace('/today-i-learned/tag/', '')}`,
-          path: prevPath,
-        },
-      ];
-    } else {
-      return [BREADCRUMBS.HOME, BREADCRUMBS.TIL];
     }
   }
 
@@ -127,13 +104,7 @@ export default function Header({ innerClass, className }) {
                 width="25"
                 className="c-hidden dark:inline-block dark:xs:c-hidden"
               />
-              <Link
-                href="/today-i-learned"
-                className="ml-auto lowercase hover:underline hover:text-gray-700 dark:hover:text-slate-50 border-r border-slate-200 mr-4 pr-5 dark:border-slate-800 text-sm sm:text-base"
-              >
-                /{t('today-i-learned')}
-              </Link>
-              <ButtonThemeMode onClick={changeThemeMode} />
+              <ButtonThemeMode className="ml-auto" onClick={changeThemeMode} />
             </>
           ) : (
             <>
